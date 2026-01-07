@@ -24,8 +24,8 @@ export const config = {
     name: "Combo Café & Gift Shop",
   },
   theme: {
-    default: "dark" as "light" | "dark",
-    accentColor: "#FFDA63",
+    default: "light" as "light" | "dark",
+    accentColor: "#D47B8C",
   },
   hero: {
     backgroundUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ezgif.com-video-to-webp-converter%20(2).webp",
@@ -36,19 +36,19 @@ export const config = {
         headline: "Handcrafted Cakes",
         subtitle: "Taste the Celebration",
         description: "Experience our collection of artisanal cakes, baked with love and the finest ingredients for your special moments.",
-        accentColor: "#FFDA63", // Warm Yellow
+        accentColor: "#D47B8C", // Muted Pink/Coral
       },
       {
         headline: "Fresh Flowers",
         subtitle: "Bloom & Smile",
         description: "Brighten any day with our curated selection of fresh, vibrant flowers, arranged to capture the beauty of nature.",
-        accentColor: "#FF8A80", // Soft Coral
+        accentColor: "#A6C2ED", // Soft Blue
       },
       {
         headline: "Delicious Food",
         subtitle: "Gifts of Joy",
         description: "Discover the perfect pairing of flavors and flowers. Our special combos are designed to make any occasion unforgettable.",
-        accentColor: "#82B1FF", // Sky Blue
+        accentColor: "#F2D59B", // Pale Gold
       },
     ],
   },

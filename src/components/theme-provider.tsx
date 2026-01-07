@@ -8,12 +8,18 @@ import { config } from "@/app/config.tsx";
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   React.useEffect(() => {
     const root = window.document.documentElement;
-    root.style.setProperty('--primary-hsl', hexToHsl(config.theme.accentColor));
+    // This function might not be defined if you removed dark mode logic
+    try {
+      root.style.setProperty('--primary-hsl', hexToHsl(config.theme.accentColor));
+    } catch (e) {
+      console.warn("Could not set primary color from config, hexToHsl might be missing.");
+    }
   }, []);
 
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
 
+// Keeping this function in case it's used elsewhere, but it is part of the theme logic.
 function hexToHsl(hex: string): string {
     hex = hex.replace("#", "");
     const r = parseInt(hex.substring(0, 2), 16) / 255;

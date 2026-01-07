@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { config } from '@/app/config.tsx';
 import { cn } from '@/lib/utils';
-import ThemeToggle from '@/components/ui/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Menu as MenuIcon, ShoppingCart } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
@@ -86,7 +85,6 @@ export default function Header() {
         <Sheet>
             <div className="hidden md:flex items-center space-x-6">
             <NavLinks />
-            <ThemeToggle />
             <CartTrigger />
             </div>
             <SheetContent className="flex flex-col">
@@ -116,9 +114,6 @@ export default function Header() {
                 </div>
                 <div className="flex-grow py-4">
                   <NavLinks isMobile />
-                </div>
-                <div className="p-4 border-t">
-                  <ThemeToggle />
                 </div>
               </div>
             </SheetContent>

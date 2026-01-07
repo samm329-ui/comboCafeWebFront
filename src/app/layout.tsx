@@ -25,8 +25,7 @@ export default function RootLayout({
       <body className="font-body">
         <ThemeProvider
           attribute="class"
-          defaultTheme={config.theme.default}
-          enableSystem
+          defaultTheme="light"
           disableTransitionOnChange
         >
           <CartProvider>

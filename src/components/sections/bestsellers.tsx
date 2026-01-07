@@ -16,7 +16,7 @@ export default function BestSellers() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {config.bestsellers.map(item => (
-            <Card key={item.name} className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 rounded-lg flex flex-col">
+            <Card key={item.name} className="overflow-hidden group border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg flex flex-col">
               <div className="relative aspect-video">
                 <Image src={item.imageUrl} alt={item.name} fill className="object-cover" data-ai-hint={item.imageHint}/>
                 <Badge variant="default" className="absolute top-4 right-4 bg-primary text-primary-foreground font-bold">
@@ -26,7 +26,7 @@ export default function BestSellers() {
               <CardContent className="p-6 flex-grow">
                 <h3 className="font-headline text-2xl text-foreground">{item.name}</h3>
               </CardContent>
-              <CardFooter className="p-4 bg-card/50 flex flex-col sm:flex-row gap-2">
+              <CardFooter className="p-4 bg-card/50 grid grid-cols-2 gap-2">
                  <Button asChild className="w-full">
                     <a href={`tel:${config.contact.phone}`}>
                         <Phone className="mr-2 h-4 w-4" /> Call to Order
