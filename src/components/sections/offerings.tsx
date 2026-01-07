@@ -62,17 +62,17 @@ const ProductCard = ({ item }: { item: Product }) => {
 
   return (
     <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-lg h-full">
-      {discount && (
-        <Badge 
-          variant="destructive" 
-          className="absolute top-2 right-2 z-10"
-        >
-          {discount.percentage}% OFF
-        </Badge>
-      )}
-      <CardHeader className="p-0 relative aspect-square w-full">
-        <Image src={item.imageUrl} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.imageHint} />
-      </CardHeader>
+      <div className="relative w-full" style={{ paddingBottom: '100%' }}>
+        {discount && (
+          <Badge 
+            variant="destructive" 
+            className="absolute top-2 right-2 z-10"
+          >
+            {discount.percentage}% OFF
+          </Badge>
+        )}
+        <Image src={item.imageUrl} alt={item.name} layout="fill" className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.imageHint} />
+      </div>
       <CardContent className="p-3 flex-grow flex flex-col justify-between">
         <div>
             <CardTitle className="font-headline text-lg text-foreground">{item.name}</CardTitle>
@@ -88,15 +88,15 @@ const ProductCard = ({ item }: { item: Product }) => {
       </CardContent>
       <CardFooter className="p-1 border-t">
         <div className="grid grid-cols-3 gap-1 w-full">
-            <Button onClick={handleAddToCart} size="sm" className="text-xs rounded-sm px-3">
+            <Button onClick={handleAddToCart} size="sm" className="text-xs rounded-sm px-3 h-9">
                 Cart
             </Button>
-            <Button asChild variant="outline" size="sm" className="text-xs rounded-sm px-3">
+            <Button asChild variant="outline" size="sm" className="text-xs rounded-sm px-3 h-9">
                 <a href={`tel:${config.contact.phone}`}>
                     Call
                 </a>
             </Button>
-            <Button asChild variant="secondary" size="sm" className="text-xs rounded-sm px-3 bg-blue-400 text-white hover:bg-blue-500">
+            <Button asChild variant="secondary" size="sm" className="text-xs rounded-sm px-3 h-9 bg-blue-400 text-white hover:bg-blue-500">
                 <a href={`https://wa.me/${config.contact.phone}?text=I'd like to order: ${item.name} (${item.price})`} target="_blank" rel="noopener noreferrer">
                     WhatsApp
                 </a>
@@ -106,33 +106,6 @@ const ProductCard = ({ item }: { item: Product }) => {
     </Card>
   );
 };
-
-const FlowerCard = ({ item }: { item: { name: string; description: string; imageUrl: string; imageHint: string; price: string; } }) => (
-    <Card className="overflow-hidden group border-0 shadow-lg dark_shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-none">
-    <CardHeader className="p-0">
-      <div className="aspect-square relative">
-        <Image src={item.imageUrl} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.imageHint} />
-      </div>
-    </CardHeader>
-    <CardContent className="p-6 bg-card flex-grow">
-      <CardTitle className="font-headline text-2xl text-foreground">{item.name}</CardTitle>
-      <p className="text-muted-foreground mt-2 font-body">{item.description}</p>
-       <p className="text-primary font-bold text-xl mt-4">{item.price}</p>
-    </CardContent>
-     <CardFooter className="p-4 bg-card/50 grid grid-cols-1 sm:grid-cols-2 gap-2">
-        <Button asChild className="hover:animate-pulse">
-            <a href={`tel:${config.contact.phone}`}>
-                <Phone /><span>Call to Order</span>
-            </a>
-        </Button>
-        <Button asChild variant="secondary" className="bg-blue-400 text-white hover:bg-blue-500 hover:animate-pulse">
-            <a href={`https://wa.me/${config.contact.phone}?text=I'd like to order: ${item.name}`} target="_blank" rel="noopener noreferrer">
-                <span>Order on WhatsApp</span>
-            </a>
-        </Button>
-      </CardFooter>
-  </Card>
-);
 
 const CategoryCard = ({ title, imageUrl, imageHint, onClick }: { title: string; imageUrl: string; imageHint: string, onClick: () => void }) => (
     <div className="relative aspect-square overflow-hidden group cursor-pointer" onClick={onClick}>
@@ -159,7 +132,7 @@ const MobileCarousel = ({ children, basis }: { children: React.ReactNode, basis?
     >
         <CarouselContent className="-ml-4">
             {React.Children.map(children, (child) => (
-                <CarouselItem className={cn("pl-4", basis || 'basis-4/5')}>{child}</CarouselItem>
+                <CarouselItem className={cn("pl-4", basis || 'basis-4/5 sm:basis-1/2')}>{child}</CarouselItem>
             ))}
         </CarouselContent>
         <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
@@ -300,7 +273,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
           );
         case 'flowers':
            const flowerCards = config.offerings.flowers.map(flower => (
-                <FlowerCard key={flower.name} item={flower} />
+                <ProductCard key={flower.name} item={flower} />
             ));
            return (
             <div>
@@ -404,5 +377,3 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
     </section>
   );
 }
-
-    
