@@ -89,6 +89,12 @@
       "description": "A healthy salad.",
       "imageUrl": "https://images.unsplash.com/photo-1692194740974-21e59c3bbbea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGVhbHRoeSUyMHNhbGFkfGVufDB8fHx8MTc2NzY1Nzg4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "healthy salad"
+    },
+    {
+      "id": "custom-gift-card",
+      "description": "A custom gift card.",
+      "imageUrl": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnaWZ0JTIwY2FyZHxlbnwwfHx8fDE3NjgxODg0MzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gift card"
     }
   ]
 }
