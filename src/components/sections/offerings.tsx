@@ -62,7 +62,7 @@ const ProductCard = ({ item }: { item: Product }) => {
 
   return (
     <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-lg h-full">
-      <div className="relative w-full" style={{ paddingBottom: '85%' }}>
+      <div className="relative w-full" style={{ paddingBottom: '100%' }}>
         {discount && (
           <Badge 
             variant="destructive" 
@@ -73,10 +73,10 @@ const ProductCard = ({ item }: { item: Product }) => {
         )}
         <Image src={item.imageUrl} alt={item.name} layout="fill" className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.imageHint} />
       </div>
-      <CardContent className="p-4 flex-grow flex flex-col">
-        <div className="flex-grow">
+      <CardContent className="p-4 flex flex-col flex-1">
+        <div className="flex-1">
             <CardTitle className="font-headline text-xl text-foreground mb-1">{item.name}</CardTitle>
-            {item.description && <p className="text-muted-foreground font-body text-sm line-clamp-2">{item.description}</p>}
+            {item.description && <p className="text-muted-foreground font-body text-sm line-clamp-2 h-10">{item.description}</p>}
         </div>
         <div className="mt-2">
             <div className="flex items-baseline gap-2">
@@ -178,7 +178,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back to Beverages
                 </Button>
                 <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/5 sm:basis-1/3">{productCards}</MobileCarousel>
+                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{productCards}</MobileCarousel>
             </div>
         )
     }
@@ -202,7 +202,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                   {note && <Badge variant="secondary">{note}</Badge>}
               </div>
                 <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/5 sm:basis-1/3">{productCards}</MobileCarousel>
+                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{productCards}</MobileCarousel>
             </div>
           )
       } else if (selectedCategory === 'food' && selectedSubCategory === 'Snacks') {
@@ -214,7 +214,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to {selectedCategory}
               </Button>
                 <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/5 sm:basis-1/3">{productCards}</MobileCarousel>
+                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{productCards}</MobileCarousel>
             </div>
           )
       } else if (selectedCategory === 'food' && selectedSubCategory === 'Beverages') {
@@ -281,7 +281,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
                 </Button>
                 <DesktopGrid>{flowerCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/5 sm:basis-1/3">{flowerCards}</MobileCarousel>
+                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{flowerCards}</MobileCarousel>
             </div>
            );
         case 'food':
