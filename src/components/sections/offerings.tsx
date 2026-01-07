@@ -96,18 +96,29 @@ const FlowerCard = ({ item }: { item: { name: string; description: string; image
 );
 
 const CategoryCard = ({ title, imageUrl, imageHint, onClick }: { title: string; imageUrl: string; imageHint: string, onClick: () => void }) => (
-  <div className="relative aspect-square overflow-hidden group cursor-pointer" onClick={onClick}>
-    <Image src={imageUrl} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={imageHint} />
-    <div className="absolute inset-0 bg-black/50 flex items-center justify-center p-4">
-      <h3 className="font-headline text-4xl text-white font-bold text-center">{title}</h3>
+    <div className="relative aspect-square overflow-hidden group cursor-pointer" onClick={onClick}>
+        <Image src={imageUrl} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={imageHint} />
+        <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-4">
+            <h3 className="font-headline text-4xl text-white font-bold text-center">{title}</h3>
+            <div className="absolute bottom-10 opacity-0 group-hover:opacity-100 group-hover:bottom-20 transition-all duration-300">
+                <Button variant="outline" className="bg-white/20 border-white/50 text-white backdrop-blur-sm hover:bg-white/30">Explore</Button>
+            </div>
+        </div>
     </div>
-  </div>
 );
+
 
 export default function Offerings() {
   const [selectedCategory, setSelectedCategory] = useState<OfferingCategory | null>(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState<SubCategory | null>(null);
   const [selectedSubSubCategory, setSelectedSubSubCategory] = useState<SubSubCategory | null>(null);
+
+  const getAnimationKey = () => {
+    if (selectedSubSubCategory) return `subsub-${selectedSubSubCategory}`;
+    if (selectedSubCategory) return `sub-${selectedSubCategory}`;
+    if (selectedCategory) return `cat-${selectedCategory}`;
+    return 'main';
+  }
 
   const renderContent = () => {
     
@@ -294,11 +305,11 @@ export default function Offerings() {
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">From celebration cakes to hand-tied bouquets, every creation is a piece of art.</p>
         </div>
         
-        {renderContent()}
+        <div key={getAnimationKey()} className="animate-zoom-in">
+            {renderContent()}
+        </div>
 
       </div>
     </section>
   );
 }
-
-    
