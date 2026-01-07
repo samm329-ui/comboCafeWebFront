@@ -50,7 +50,10 @@ export default function ClientPage() {
         <>
             <Preloader isLoading={isLoading} />
             <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-            <div className={cn("transition-opacity duration-1000", isLoading ? 'opacity-0' : 'opacity-100')}>
+            <div 
+              className={cn("transition-opacity duration-1000", isLoading ? 'opacity-0' : 'opacity-100')}
+              style={{ '--hero-accent-color': heroAccentColor } as React.CSSProperties}
+            >
                 <Header onNavSelect={handleNavSelect} heroAccentColor={heroAccentColor} />
                 <main className="pb-20 md:pb-0">
                     <Hero onExplore={handleExplore} onCategoryChange={(color) => setHeroAccentColor(color)} />
@@ -77,5 +80,3 @@ export default function ClientPage() {
         </>
     );
 }
-
-    
