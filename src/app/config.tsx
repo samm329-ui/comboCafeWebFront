@@ -36,21 +36,21 @@ export const config = {
         headline: "Handcrafted Cakes",
         subtitle: "Taste the Celebration",
         description: "Experience our collection of artisanal cakes, baked with love and the finest ingredients for your special moments.",
-        accentColor: "#F8BBD0", // Soft Pink
+        accentColor: "#FFDA63", // Warm Yellow
       },
       {
         id: "flowers" as const,
         headline: "Fresh Flowers",
         subtitle: "Bloom & Smile",
         description: "Brighten any day with our curated selection of fresh, vibrant flowers, arranged to capture the beauty of nature.",
-        accentColor: "#C8E6C9", // Soft Green
+        accentColor: "#FFDA63", // Warm Yellow
       },
       {
         id: "food" as const,
         headline: "Delicious Food",
         subtitle: "Gifts of Joy",
         description: "Discover the perfect pairing of flavors and flowers. Our special combos are designed to make any occasion unforgettable.",
-        accentColor: "#FFCCBC", // Light Coral
+        accentColor: "#FFDA63", // Warm Yellow
       },
     ],
   },
@@ -202,5 +202,3 @@ export const config = {
     copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
   },
 };
-
-    
