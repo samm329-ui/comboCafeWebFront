@@ -43,14 +43,14 @@ export const config = {
         headline: "Fresh Flowers",
         subtitle: "Bloom & Smile",
         description: "Brighten any day with our curated selection of fresh, vibrant flowers, arranged to capture the beauty of nature.",
-        accentColor: "#FFDA63", // Warm Yellow
+        accentColor: "#FF8A80", // Soft Coral
       },
       {
         id: "food" as const,
         headline: "Delicious Food",
         subtitle: "Gifts of Joy",
         description: "Discover the perfect pairing of flavors and flowers. Our special combos are designed to make any occasion unforgettable.",
-        accentColor: "#FFDA63", // Warm Yellow
+        accentColor: "#82B1FF", // Sky Blue
       },
     ],
   },
