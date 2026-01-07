@@ -21,7 +21,7 @@ export default function Contact() {
                                 <MapPin className="text-primary h-6 w-6 mt-1 flex-shrink-0" />
                                 <div>
                                     <h4 className="font-bold text-lg">Our Location</h4>
-                                    <p className="text-muted-foreground">{config.contact.address}</p>
+                                    <p className="text-muted-foreground">Find us on the map</p>
                                 </div>
                             </div>
                             <Button asChild>
