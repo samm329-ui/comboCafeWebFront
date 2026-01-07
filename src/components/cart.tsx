@@ -29,6 +29,7 @@ const WhatsAppIcon = (props: React.ComponentProps<'svg'>) => (
 
 const parsePrice = (price: string) => {
     // Removes "Rs", commas, and trims whitespace, then converts to a number
+    if (typeof price !== 'string') return 0;
     const cleanedPrice = price.replace(/Rs\.?/i, '').replace(/,/g, '').trim();
     const numericPrice = parseFloat(cleanedPrice);
     return isNaN(numericPrice) ? 0 : numericPrice;
@@ -55,6 +56,17 @@ export default function Cart() {
   }
   
   const totalPrice = cart.reduce((total, item) => total + parsePrice(item.price), 0);
+  const totalDiscount = cart.reduce((total, item) => {
+    if (item.originalPrice) {
+      const original = parsePrice(item.originalPrice);
+      const current = parsePrice(item.price);
+      if (original > current) {
+        return total + (original - current);
+      }
+    }
+    return total;
+  }, 0);
+
 
   const getWhatsAppMessage = (details: Record<string, string>) => {
     const header = `I'd like to place an order for the following items:\n\n*Order Summary:*`;
@@ -91,13 +103,18 @@ export default function Cart() {
         <SheetTitle>Your Cart</SheetTitle>
         {totalPrice > 0 && (
              <SheetDescription>
-                Total: <span className="font-bold text-primary">Rs{totalPrice.toFixed(2)}</span>
+                Total Price: <span className="font-bold text-primary">Rs{totalPrice.toFixed(2)}</span>
+                {totalDiscount > 0 && (
+                    <span className="ml-4 text-green-600 font-semibold">
+                        (You save Rs{totalDiscount.toFixed(2)})
+                    </span>
+                )}
             </SheetDescription>
         )}
       </SheetHeader>
       <Separator />
       {cart.length > 0 ? (
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col overflow-hidden">
             <ScrollArea className="flex-1 -mx-6">
                 <div className="px-6">
                     {cart.map((item, index) => (
@@ -116,7 +133,7 @@ export default function Cart() {
                     ))}
                 </div>
             </ScrollArea>
-            <Separator />
+            <Separator className='-mx-6 w-[calc(100%+48px)]' />
             <SheetFooter className="mt-auto pt-6 grid grid-cols-1 gap-4">
                 <div className='grid grid-cols-2 gap-2'>
                     <Button asChild className="w-full">
@@ -162,5 +179,7 @@ export default function Cart() {
     </>
   );
 }
+
+    
 
     
