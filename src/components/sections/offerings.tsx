@@ -61,7 +61,7 @@ const ProductCard = ({ item }: { item: Product }) => {
   const discount = getDiscount();
 
   return (
-    <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-none h-full">
+    <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-lg h-full">
       {discount && (
         <Badge 
           variant="destructive" 
@@ -88,15 +88,15 @@ const ProductCard = ({ item }: { item: Product }) => {
       </CardContent>
       <CardFooter className="p-1 border-t">
         <div className="grid grid-cols-3 gap-1 w-full">
-            <Button onClick={handleAddToCart} size="sm" className="text-xs rounded-sm">
+            <Button onClick={handleAddToCart} size="sm" className="text-xs rounded-sm px-3">
                 Cart
             </Button>
-            <Button asChild variant="outline" size="sm" className="text-xs rounded-sm">
+            <Button asChild variant="outline" size="sm" className="text-xs rounded-sm px-3">
                 <a href={`tel:${config.contact.phone}`}>
                     Call
                 </a>
             </Button>
-            <Button asChild variant="secondary" size="sm" className="text-xs rounded-sm bg-blue-400 text-white hover:bg-blue-500">
+            <Button asChild variant="secondary" size="sm" className="text-xs rounded-sm px-3 bg-blue-400 text-white hover:bg-blue-500">
                 <a href={`https://wa.me/${config.contact.phone}?text=I'd like to order: ${item.name} (${item.price})`} target="_blank" rel="noopener noreferrer">
                     WhatsApp
                 </a>
@@ -404,3 +404,5 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
     </section>
   );
 }
+
+    

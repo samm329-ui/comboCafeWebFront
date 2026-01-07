@@ -49,15 +49,17 @@ export default function Contact() {
                     {iconActions.map(({ label, Icon, href, target }) => (
                          <Tooltip key={label}>
                             <TooltipTrigger asChild>
-                                 <a 
-                                    href={href} 
-                                    target={target} 
-                                    rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-                                    className="flex flex-col items-center justify-center h-24 w-24 rounded-lg bg-background border shadow-sm"
-                                >
-                                    <Icon className="h-8 w-8 text-primary mb-2" />
-                                    <span className="text-xs font-semibold">{label}</span>
-                                </a>
+                                 <Button asChild variant="ghost" size="icon" className="h-24 w-24">
+                                     <a 
+                                        href={href} 
+                                        target={target} 
+                                        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                                        className="flex flex-col items-center justify-center"
+                                    >
+                                        <Icon className="h-8 w-8 text-primary mb-2" />
+                                        <span className="text-xs font-semibold">{label}</span>
+                                    </a>
+                                </Button>
                             </TooltipTrigger>
                             <TooltipContent>
                                 <p>{label}</p>
@@ -128,3 +130,5 @@ export default function Contact() {
     </section>
   );
 }
+
+    
