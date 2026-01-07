@@ -1,9 +1,16 @@
+"use client";
+
 import { config } from '@/app/config.tsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 
 export default function Contact() {
+
+  const handleScrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="contact" className="py-20 md:py-28 bg-muted/30">
       <div className="container mx-auto px-6">
@@ -52,12 +59,15 @@ export default function Contact() {
                                 <a href={`mailto:${config.contact.email}`}>Send Email</a>
                             </Button>
                         </li>
-                         <li className="flex items-start gap-4">
-                            <Clock className="text-primary h-6 w-6 mt-1 flex-shrink-0" />
-                            <div>
-                                <h4 className="font-bold text-lg">Opening Hours</h4>
-                                <p className="text-muted-foreground">{config.contact.hours}</p>
+                         <li className="flex items-center justify-between gap-4">
+                            <div className='flex items-start gap-4'>
+                                <Clock className="text-primary h-6 w-6 mt-1 flex-shrink-0" />
+                                <div>
+                                    <h4 className="font-bold text-lg">Opening Hours</h4>
+                                    <p className="text-muted-foreground">{config.contact.hours}</p>
+                                </div>
                             </div>
+                            <Button onClick={() => handleScrollTo('contact')}>View Hours</Button>
                         </li>
                     </ul>
                 </CardContent>
