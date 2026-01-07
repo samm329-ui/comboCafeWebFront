@@ -98,17 +98,17 @@ export const config = {
       "Celebration Cakes": {
         note: "You have to order",
         items: [
-          { name: "Chocolate Cake", description: "Decadent layers of rich chocolate sponge and ganache.", price: "Rs 1200", originalPrice: "Rs 1500", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
+          { name: "Chocolate Cake", description: "Decadent layers of rich chocolate sponge and ganache.", price: "Rs 1200", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
           { name: "Vanilla Cake", description: "A classic, elegant vanilla cake with buttercream frosting.", price: "Rs 1000", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
           { name: "Strawberry Cake", description: "Light, fruity, and topped with fresh strawberries.", price: "Rs 1300", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
           { name: "Red Velvet Cake", description: "A southern classic with a hint of cocoa and cream cheese frosting.", price: "Rs 1500", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
           { name: "Chocolate Brownie", description: "Fudgy, dense, and packed with chocolate chunks.", price: "Rs 900", imageUrl: findImage('best-seller-1'), imageHint: findImageHint('best-seller-1') },
-          { name: "Cup Cake (V/C)", description: "Your choice of vanilla or chocolate, perfectly portioned.", price: "Rs 600", imageUrl: findImage('best-seller-3'), imageHint: findImageHint('best-seller-3') },
+          { name: "Cup Cake (V/C)", description: "Your choice of vanilla or chocolate, perfectly portioned.", price: "Rs 60", imageUrl: findImage('best-seller-3'), imageHint: findImageHint('best-seller-3') },
         ]
       },
       "Cakes & Desserts": {
         items: [
-          { name: "Choco Slice", description: "A perfect single serving of our decadent chocolate cake.", price: "Rs 120", originalPrice: "Rs 150", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
+          { name: "Choco Slice", description: "A perfect single serving of our decadent chocolate cake.", price: "Rs 120", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
           { name: "Vanilla Slice", description: "A slice of classic vanilla cake, simple and delicious.", price: "Rs 100", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
           { name: "Strawberry Slice", description: "Enjoy the fresh, fruity flavor of our strawberry cake.", price: "Rs 130", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
           { name: "Red Velvet Slice", description: "A slice of our famous red velvet cake.", price: "Rs 150", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
@@ -142,7 +142,7 @@ export const config = {
         },
         "Cold Beverages": {
             items: [
-                { name: "Cold Coffee", description: "A classic creamy and refreshing cold coffee.", price: "Rs 140", originalPrice: "Rs 175", imageUrl: findImage('healthy-salads'), imageHint: findImageHint('healthy-salads') },
+                { name: "Cold Coffee", description: "A classic creamy and refreshing cold coffee.", price: "Rs 140", imageUrl: findImage('healthy-salads'), imageHint: findImageHint('healthy-salads') },
                 { name: "Iced Latte", description: "Chilled espresso and milk over ice.", price: "Rs 150", imageUrl: findImage('healthy-salads'), imageHint: findImageHint('healthy-salads') },
                 { name: "Chocolate Frappe", description: "A blended iced drink with rich chocolate flavor.", price: "Rs 160", imageUrl: findImage('healthy-salads'), imageHint: findImageHint('healthy-salads') },
                 { name: "Strawberry Milkshake", description: "A thick, creamy milkshake made with real strawberries.", price: "Rs 150", imageUrl: findImage('healthy-salads'), imageHint: findImageHint('healthy-salads') },
