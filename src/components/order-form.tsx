@@ -209,7 +209,7 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Delivery Date</FormLabel>
-                <Popover>
+                <Popover modal={false}>
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
@@ -228,7 +228,7 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
+                  <PopoverContent className="w-auto p-0">
                     <Calendar
                       mode="single"
                       selected={field.value}
@@ -277,5 +277,3 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
     </Form>
   )
 }
-
-    
