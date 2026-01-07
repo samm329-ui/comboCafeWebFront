@@ -8,7 +8,6 @@ import Hero from '@/components/sections/hero';
 import Offerings from '@/components/sections/offerings';
 import Menu from '@/components/sections/menu';
 import BestSellers from '@/components/sections/bestsellers';
-import Faq from '@/components/sections/faq';
 import Contact from '@/components/sections/contact';
 import FinalCta from '@/components/sections/final-cta';
 import { cn } from '@/lib/utils';
@@ -32,7 +31,6 @@ export default function ClientPage() {
                     <Offerings />
                     <Menu />
                     <BestSellers />
-                    <Faq />
                     <Contact />
                     <FinalCta />
                 </main>
