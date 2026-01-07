@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Home, LayoutGrid, BookOpen, Phone, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCart } from '@/context/cart-provider';
@@ -25,6 +25,8 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
   const [activeSection, setActiveSection] = useState('home');
   const { cart } = useCart();
   const { accentColor } = useAccentColor();
+  const [displayColor, setDisplayColor] = useState(accentColor);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,6 +47,12 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
       sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
+
+  useEffect(() => {
+    if (activeSection === 'home') {
+      setDisplayColor(accentColor);
+    }
+  }, [accentColor, activeSection]);
 
   const handleNavClick = (id: string) => {
     if (id === 'menu') {
@@ -67,7 +75,7 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
                 'flex flex-col items-center justify-center text-muted-foreground transition-colors duration-200',
                 isActive ? 'text-primary' : ''
               )}
-               style={isActive ? { color: accentColor } : {}}
+               style={isActive ? { color: displayColor } : {}}
             >
               <item.icon className="h-6 w-6" />
               <span className="text-xs font-medium">{item.label}</span>
