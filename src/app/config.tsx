@@ -95,7 +95,7 @@ export const config = {
   offerings: {
     cakes: {
       "Celebration Cakes": {
-        note: "You have to order",
+        note: "Please order at least 2 hours in advance.",
         items: [
           { name: "Chocolate Cake", description: "Decadent layers of rich chocolate sponge and ganache.", price: "Rs120", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
           { name: "Vanilla Cake", description: "A classic, elegant vanilla cake with buttercream frosting.", price: "Rs100", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
@@ -157,7 +157,7 @@ export const config = {
       { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_49_51%20AM.png" },
       { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_50_51%20AM.png" },
       { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_51_49%20AM.png" },
-      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_54_26%20AM.png" },
+      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%2C%202026%2C%2006_54_26%20AM.png" },
     ],
   },
   bestsellers: [
@@ -202,3 +202,5 @@ export const config = {
     copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
   },
 };
+
+    
