@@ -208,7 +208,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
         <button 
           onClick={handleBrandClick} 
           className="text-xl font-headline font-bold transition-colors duration-300"
-          style={{ color: isSticky ? 'hsl(var(--primary))' : displayColor }}
+          style={{ color: displayColor }}
         >
           {config.brand.name}
         </button>
