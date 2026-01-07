@@ -5,14 +5,10 @@ import { config } from '@/app/config.tsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { useAccentColor } from '@/context/accent-color-provider';
 
 
 export default function Contact() {
-  const { accentColor } = useAccentColor();
-
   const handleScrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -58,7 +54,7 @@ export default function Contact() {
                                         rel={target === '_blank' ? 'noopener noreferrer' : undefined}
                                         className="flex flex-col items-center justify-center"
                                     >
-                                        <Icon className="h-8 w-8 mb-2" style={{ color: accentColor }} />
+                                        <Icon className="h-8 w-8 mb-2 text-primary" />
                                         <span className="text-xs font-semibold">{label}</span>
                                     </a>
                                 </Button>
@@ -80,7 +76,7 @@ export default function Contact() {
                     <ul className="space-y-6">
                         <li className="flex items-center justify-between gap-4">
                             <div className='flex items-start gap-4'>
-                                <MapPin className="text-primary h-6 w-6 mt-1 flex-shrink-0" style={{ color: accentColor }} />
+                                <MapPin className="text-primary h-6 w-6 mt-1 flex-shrink-0" />
                                 <div>
                                     <h4 className="font-bold text-lg">Our Location</h4>
                                     <p className="text-muted-foreground">Find us on the map</p>
@@ -92,7 +88,7 @@ export default function Contact() {
                         </li>
                          <li className="flex items-center justify-between gap-4">
                             <div className='flex items-start gap-4'>
-                                <Phone className="text-primary h-6 w-6 mt-1 flex-shrink-0" style={{ color: accentColor }} />
+                                <Phone className="text-primary h-6 w-6 mt-1 flex-shrink-0" />
                                 <div>
                                     <h4 className="font-bold text-lg">Phone</h4>
                                     <p className="text-muted-foreground">Give us a call</p>
@@ -104,7 +100,7 @@ export default function Contact() {
                         </li>
                          <li className="flex items-center justify-between gap-4">
                             <div className='flex items-start gap-4'>
-                                <Mail className="text-primary h-6 w-6 mt-1 flex-shrink-0" style={{ color: accentColor }} />
+                                <Mail className="text-primary h-6 w-6 mt-1 flex-shrink-0" />
                                 <div>
                                     <h4 className="font-bold text-lg">Email</h4>
                                     <p className="text-muted-foreground">Send us a message</p>
@@ -116,7 +112,7 @@ export default function Contact() {
                         </li>
                          <li className="flex items-center justify-between gap-4">
                             <div className='flex items-start gap-4'>
-                                <Clock className="text-primary h-6 w-6 mt-1 flex-shrink-0" style={{ color: accentColor }} />
+                                <Clock className="text-primary h-6 w-6 mt-1 flex-shrink-0" />
                                 <div>
                                     <h4 className="font-bold text-lg">Opening Hours</h4>
                                     <p className="text-muted-foreground">{config.contact.hours}</p>
