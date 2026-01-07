@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { DialogTitle } from '@radix-ui/react-dialog';
 import { VisuallyHidden } from '@/components/ui/visually-hidden';
 import { X, Phone } from 'lucide-react';
 import { config } from '@/app/config.tsx';
@@ -31,7 +30,7 @@ export default function BestSellersOverlay({ isOpen, onClose }: BestSellersOverl
         isMounted ? 'opacity-100' : 'opacity-0'
     )}>
         <VisuallyHidden>
-            <DialogTitle>Our Best Sellers</DialogTitle>
+            <h2>Our Best Sellers</h2>
         </VisuallyHidden>
 
         <div className="absolute top-4 right-4 z-10">
