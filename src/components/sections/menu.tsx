@@ -1,50 +1,62 @@
-import { config } from '@/app/config.tsx';
-import { Card, CardContent } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 
-const MenuCategory = ({ title, items }: { title: string, items: { name: string, price: string }[] }) => (
-    <div>
-        <h3 className="text-2xl md:text-3xl font-headline text-primary mb-6">{title}</h3>
-        <ul className="space-y-6">
-            {items.map((item, index) => (
-            <li key={item.name}>
-                <div className="flex justify-between items-start gap-4">
-                <div>
-                    <h4 className="font-body font-bold text-lg text-foreground">{item.name}</h4>
-                </div>
-                <p className="font-body font-bold text-lg text-primary flex-shrink-0">{item.price}</p>
-                </div>
-                {index < items.length - 1 && <Separator className="mt-6" />}
-            </li>
-            ))}
-        </ul>
-    </div>
-);
+"use client";
+
+import Image from 'next/image';
+import { config } from '@/app/config.tsx';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+import Autoplay from "embla-carousel-autoplay";
+
 
 export default function Menu() {
   return (
     <section id="menu" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-headline text-foreground">Café Menu</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">A moment of pure enjoyment in every cup and on every plate.</p>
+          <h2 className="text-4xl md:text-5xl font-headline text-foreground">Our Menu</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Take a look at our full menu.</p>
         </div>
 
-        <Card className="max-w-4xl mx-auto shadow-lg dark:shadow-black/20">
-          <CardContent className="p-6 md:p-10 space-y-12">
-            <MenuCategory title="☕ Hot Coffee" items={config.menu.hotCoffee} />
-            <Separator />
-            <MenuCategory title="🧊 Cold Beverages" items={config.menu.coldBeverages} />
-            <Separator />
-            <MenuCategory title="🍰 Cakes & Desserts" items={config.menu.cakesAndDesserts} />
-            <Separator />
-            <MenuCategory title="🎂 Celebration Cakes (Order)" items={config.menu.celebrationCakes} />
-            <Separator />
-            <MenuCategory title="🌸 Flowers & Gifts" items={config.menu.flowersAndGifts} />
-            <Separator />
-            <MenuCategory title="🥪 Snacks" items={config.menu.snacks} />
-          </CardContent>
-        </Card>
+        <Carousel 
+            opts={{
+                align: "start",
+                loop: true,
+            }}
+            plugins={[
+                Autoplay({
+                  delay: 3000,
+                  stopOnInteraction: true,
+                }),
+            ]}
+            className="w-full max-w-4xl mx-auto"
+        >
+          <CarouselContent>
+            {config.menu.cards.map((menu, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Card className="overflow-hidden group">
+                    <CardContent className="p-0 flex items-center justify-center relative aspect-[3/4]">
+                      <Image
+                        src={menu.url}
+                        alt={`Menu page ${index + 1}`}
+                        fill
+                        className="object-contain transform transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 hidden sm:flex" />
+          <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 hidden sm:flex" />
+        </Carousel>
       </div>
     </section>
   );

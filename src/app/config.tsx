@@ -120,42 +120,13 @@ export const config = {
     }
   },
   menu: {
-    hotCoffee: [
-        { name: "Espresso", price: "₹80" },
-        { name: "Americano", price: "₹100" },
-        { name: "Cappuccino", price: "₹120" },
-        { name: "Caffè Latte", price: "₹130" },
-        { name: "Mocha", price: "₹140" },
-        { name: "Hot Chocolate", price: "₹120" },
-    ],
-    coldBeverages: [
-        { name: "Cold Coffee", price: "₹140" },
-        { name: "Iced Latte", price: "₹150" },
-        { name: "Chocolate Frappe", price: "₹160" },
-        { name: "Strawberry Milkshake", price: "₹150" },
-    ],
-    cakesAndDesserts: [
-        { name: "Chocolate Cake (Slice)", price: "₹120" },
-        { name: "Vanilla Cake (Slice)", price: "₹100" },
-        { name: "Strawberry Cake (Slice)", price: "₹130" },
-        { name: "Red Velvet Cake", price: "₹150" },
-        { name: "Chocolate Brownie", price: "₹90" },
-    ],
-    celebrationCakes: [
-        { name: "Chocolate Cake", price: "₹120" },
-        { name: "Vanilla Cake", price: "₹100" },
-        { name: "Strawberry Cake", price: "₹130" },
-        { name: "Red Velvet Cake", price: "₹150" },
-        { name: "Chocolate Brownie", price: "₹90" },
-        { name: "Cup Cake (Chocolate / Vanilla)", price: "₹60" },
-    ],
-    flowersAndGifts: [
-        { name: "Single Rose", price: "₹50" },
-    ],
-    snacks: [
-        { name: "Veg Puff", price: "₹60" },
-        { name: "Cheese Sandwich", price: "₹90" },
-        { name: "Garlic Bread", price: "₹100" },
+    cards: [
+      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_44_35%20AM.png" },
+      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_49_51%20AM.png" },
+      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_49_51%20AM.png" },
+      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_50_51%20AM.png" },
+      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_51_49%20AM.png" },
+      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_54_26%20AM.png" },
     ],
   },
   bestsellers: [
@@ -200,5 +171,3 @@ export const config = {
     copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
   },
 };
-
-    
