@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { config } from '@/app/config.tsx';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import Image from 'next/image';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '../ui/button';
 import { Phone, MessageCircle, ShoppingCart, ArrowLeft } from 'lucide-react';
 import { useCart } from '@/context/cart-provider';
@@ -21,6 +20,7 @@ type Product = {
 };
 
 type OfferingCategory = 'cakes' | 'flowers' | 'food';
+type SubCategory = string;
 
 const ProductCard = ({ item }: { item: Product }) => {
   const { addToCart } = useCart();
@@ -67,7 +67,7 @@ const ProductCard = ({ item }: { item: Product }) => {
 };
 
 const FlowerCard = ({ item }: { item: { name: string; description: string; imageUrl: string; imageHint: string; price: string; } }) => (
-    <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-none">
+    <Card className="overflow-hidden group border-0 shadow-lg dark_shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-none">
     <CardHeader className="p-0">
       <div className="aspect-square relative">
         <Image src={item.imageUrl} alt={item.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.imageHint} />
@@ -96,112 +96,134 @@ const FlowerCard = ({ item }: { item: { name: string; description: string; image
 const CategoryCard = ({ title, imageUrl, imageHint, onClick }: { title: string; imageUrl: string; imageHint: string, onClick: () => void }) => (
   <div className="relative aspect-square overflow-hidden group cursor-pointer" onClick={onClick}>
     <Image src={imageUrl} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={imageHint} />
-    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-      <h3 className="font-headline text-4xl text-white font-bold">{title}</h3>
+    <div className="absolute inset-0 bg-black/50 flex items-center justify-center p-4">
+      <h3 className="font-headline text-4xl text-white font-bold text-center">{title}</h3>
     </div>
   </div>
 );
 
 export default function Offerings() {
   const [selectedCategory, setSelectedCategory] = useState<OfferingCategory | null>(null);
-
-  const handleCategoryClick = (category: OfferingCategory) => {
-    setSelectedCategory(category);
-  };
-
-  const handleBackClick = () => {
-    setSelectedCategory(null);
-  };
+  const [selectedSubCategory, setSelectedSubCategory] = useState<SubCategory | null>(null);
 
   const renderContent = () => {
-    if (selectedCategory) {
+    // Level 3: Show products in the selected sub-category
+    if (selectedCategory && selectedSubCategory) {
+      let items: Product[] = [];
+      let note: string | undefined;
+
+      if (selectedCategory === 'cakes') {
+        const subCatData = config.offerings.cakes[selectedSubCategory as keyof typeof config.offerings.cakes];
+        items = subCatData.items;
+        note = subCatData.note;
+      } else if (selectedCategory === 'food') {
+        items = config.offerings.food[selectedSubCategory as keyof typeof config.offerings.food].items;
+      }
+      
       return (
         <div>
-          <Button variant="ghost" onClick={handleBackClick} className="mb-8">
-            <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
+           <Button variant="ghost" onClick={() => setSelectedSubCategory(null)} className="mb-8">
+            <ArrowLeft className="mr-2 h-4 w-4" /> Back to {selectedCategory}
           </Button>
-
-          <div className={cn(selectedCategory === 'cakes' ? 'block' : 'hidden')}>
-            <Tabs defaultValue="celebration" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-8">
-                <TabsTrigger value="celebration">Celebration Cakes</TabsTrigger>
-                <TabsTrigger value="desserts">Cakes & Desserts</TabsTrigger>
-              </TabsList>
-              <TabsContent value="celebration">
-                <div className='text-center my-4'>
-                    <Badge variant="secondary">{config.offerings.cakes["Celebration Cakes"].note}</Badge>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3">
-                  {config.offerings.cakes["Celebration Cakes"].items.map(cake => (
-                    <ProductCard key={cake.name} item={cake} />
-                  ))}
-                </div>
-              </TabsContent>
-              <TabsContent value="desserts">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3">
-                  {config.offerings.cakes["Cakes & Desserts"].items.map(cake => (
-                    <ProductCard key={cake.name} item={cake} />
-                  ))}
-                </div>
-              </TabsContent>
-            </Tabs>
+          <div className='text-center my-4'>
+              {note && <Badge variant="secondary">{note}</Badge>}
           </div>
-          
-          <div className={cn(selectedCategory === 'flowers' ? 'block' : 'hidden')}>
-             <div className="grid md:grid-cols-2 lg:grid-cols-3">
-              {config.offerings.flowers.map(flower => (
-                <FlowerCard key={flower.name} item={flower} />
-              ))}
-            </div>
-          </div>
-          
-          <div className={cn(selectedCategory === 'food' ? 'block' : 'hidden')}>
-             <Tabs defaultValue="beverages" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 mb-8">
-                <TabsTrigger value="beverages">Beverages</TabsTrigger>
-                <TabsTrigger value="snacks">Snacks</TabsTrigger>
-              </TabsList>
-              <TabsContent value="beverages">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4">
-                  {config.offerings.food["Beverages"].items.map(item => (
-                    <ProductCard key={item.name} item={item} />
-                  ))}
-                </div>
-              </TabsContent>
-              <TabsContent value="snacks">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3">
-                  {config.offerings.food["Snacks"].items.map(item => (
-                    <ProductCard key={item.name} item={item} />
-                  ))}
-                </div>
-              </TabsContent>
-            </Tabs>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4">
+            {items.map(item => <ProductCard key={item.name} item={item} />)}
           </div>
         </div>
-      );
+      )
     }
 
+    // Level 2: Show sub-categories or products for the selected main category
+    if (selectedCategory) {
+      const handleBackClick = () => setSelectedCategory(null);
+      let subCategories, gridCols;
+
+      switch(selectedCategory) {
+        case 'cakes':
+          subCategories = Object.keys(config.offerings.cakes);
+          gridCols = 'md:grid-cols-2';
+          return (
+            <div>
+              <Button variant="ghost" onClick={handleBackClick} className="mb-8">
+                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
+              </Button>
+              <div className={`grid ${gridCols}`}>
+                  {subCategories.map(subCategory => {
+                      const firstItem = config.offerings.cakes[subCategory as keyof typeof config.offerings.cakes].items[0];
+                      return <CategoryCard 
+                                key={subCategory}
+                                title={subCategory}
+                                imageUrl={firstItem.imageUrl}
+                                imageHint={firstItem.imageHint}
+                                onClick={() => setSelectedSubCategory(subCategory)}
+                             />
+                  })}
+              </div>
+            </div>
+          );
+        case 'flowers':
+           return (
+            <div>
+                <Button variant="ghost" onClick={handleBackClick} className="mb-8">
+                    <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
+                </Button>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3">
+                    {config.offerings.flowers.map(flower => (
+                        <FlowerCard key={flower.name} item={flower} />
+                    ))}
+                </div>
+            </div>
+           );
+        case 'food':
+          subCategories = Object.keys(config.offerings.food);
+          gridCols = 'md:grid-cols-2';
+           return (
+            <div>
+              <Button variant="ghost" onClick={handleBackClick} className="mb-8">
+                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
+              </Button>
+              <div className={`grid ${gridCols}`}>
+                  {subCategories.map(subCategory => {
+                      const firstItem = config.offerings.food[subCategory as keyof typeof config.offerings.food].items[0];
+                      return <CategoryCard 
+                                key={subCategory}
+                                title={subCategory}
+                                imageUrl={firstItem.imageUrl}
+                                imageHint={firstItem.imageHint}
+                                onClick={() => setSelectedSubCategory(subCategory)}
+                             />
+                  })}
+              </div>
+            </div>
+          );
+        default:
+          return null;
+      }
+    }
+
+    // Level 1: Show main category cards
     const { cakes, flowers, food } = config.offerings;
-    
     return (
       <div className="grid md:grid-cols-3">
         <CategoryCard 
             title="Cakes" 
             imageUrl={cakes["Cakes & Desserts"].items[0].imageUrl}
             imageHint={cakes["Cakes & Desserts"].items[0].imageHint}
-            onClick={() => handleCategoryClick('cakes')}
+            onClick={() => setSelectedCategory('cakes')}
         />
         <CategoryCard 
             title="Flowers"
             imageUrl={flowers[0].imageUrl}
             imageHint={flowers[0].imageHint}
-            onClick={() => handleCategoryClick('flowers')}
+            onClick={() => setSelectedCategory('flowers')}
         />
         <CategoryCard 
             title="Food"
             imageUrl={food["Beverages"].items[0].imageUrl}
             imageHint={food["Beverages"].items[0].imageHint}
-            onClick={() => handleCategoryClick('food')}
+            onClick={() => setSelectedCategory('food')}
         />
       </div>
     );
