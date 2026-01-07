@@ -68,10 +68,6 @@ export default function Hero({ onExplore }: HeroProps) {
         }
     };
   }, []);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--primary-hex', currentCategory.accentColor);
-  }, [currentCategory]);
   
   const handleManualChange = (direction: 'next' | 'prev') => {
     changeCategory(direction);
@@ -83,8 +79,13 @@ export default function Hero({ onExplore }: HeroProps) {
   };
   
   const PrimaryButton = () => (
-    <Button size="lg" onClick={() => onExplore(currentCategory.id)} className="font-semibold shadow-lg hover:shadow-xl transition-shadow bg-primary text-primary-foreground hover:bg-primary/90">
-      {config.hero.primaryCta.text} {currentCategory.headline}
+    <Button 
+        size="lg" 
+        onClick={() => onExplore(currentCategory.id as OfferingCategory)} 
+        className="font-semibold shadow-lg hover:shadow-xl transition-shadow"
+        style={{ backgroundColor: currentCategory.accentColor, color: '#333' }}
+    >
+      {config.hero.primaryCta.text}
     </Button>
   );
 
@@ -106,13 +107,13 @@ export default function Hero({ onExplore }: HeroProps) {
         unoptimized
       />
       
-      <div className="relative z-20 container mx-auto px-6 h-full flex md:items-center">
-        {/* Left Side Content */}
-        <div className="w-full md:w-1/2 mt-auto md:mt-0 mb-20 md:mb-0">
+      <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-end md:justify-center">
+        {/* Mobile: bottom aligned content */}
+        <div className="w-full md:w-1/2 mb-20 md:mb-0">
           <div className={cn('transition-all duration-300 ease-in-out', isChanging ? 'opacity-0 -translate-y-4' : 'opacity-100 translate-y-0')}>
-            <h2 className="text-sm font-body uppercase tracking-widest text-primary">{currentCategory.subtitle}</h2>
-            <h1 className="font-headline text-5xl md:text-7xl font-bold my-4 leading-tight">{currentCategory.headline}</h1>
-            <p className="font-body text-lg text-white/80 max-w-md">{currentCategory.description}</p>
+            <h2 className="text-sm font-body uppercase tracking-widest" style={{ color: currentCategory.accentColor }}>{currentCategory.subtitle}</h2>
+            <h1 className="font-headline text-5xl md:text-7xl font-bold my-4 leading-tight" style={{ color: currentCategory.accentColor }}>{currentCategory.headline}</h1>
+            <p className="font-body text-lg text-white/80 max-w-md" style={{ color: currentCategory.accentColor }}>{currentCategory.description}</p>
             <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <PrimaryButton />
               <SecondaryButton />
@@ -145,5 +146,3 @@ export default function Hero({ onExplore }: HeroProps) {
     </section>
   );
 }
-
-

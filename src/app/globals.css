@@ -5,9 +5,6 @@
 
 @layer base {
   :root {
-    /* Define a variable for the hex color, which can be changed by JS */
-    --primary-hex: #FFDA63;
-
     --background: 240 10% 97%; /* #F5F7F8 */
     --foreground: 224 8% 20%; /* #2E313D */
     

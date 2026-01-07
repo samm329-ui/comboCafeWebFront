@@ -13,8 +13,6 @@ import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import { cn } from '@/lib/utils';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import Autoplay from "embla-carousel-autoplay";
-
 
 type Product = {
   name: string;
@@ -144,7 +142,7 @@ const CategoryCard = ({ title, imageUrl, imageHint, onClick }: { title: string; 
 );
 
 const DesktopGrid = ({ children }: { children: React.ReactNode }) => (
-    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4">
+    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {children}
     </div>
 );
@@ -159,6 +157,8 @@ const MobileCarousel = ({ children, basis }: { children: React.ReactNode, basis?
                 <CarouselItem className={cn("pl-4", basis || 'basis-4/5')}>{child}</CarouselItem>
             ))}
         </CarouselContent>
+        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
     </Carousel>
 );
 
@@ -256,8 +256,8 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                 <Button variant="ghost" onClick={() => setSelectedSubCategory(null)} className="mb-8">
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back to Food
                 </Button>
-                <div className="hidden md:grid md:grid-cols-2">{categoryCards}</div>
-                <MobileCarousel basis="basis-full">{categoryCards}</MobileCarousel>
+                <DesktopGrid>{categoryCards}</DesktopGrid>
+                <MobileCarousel basis="basis-4/5 sm:basis-1/2">{categoryCards}</MobileCarousel>
             </div>
           )
       }
@@ -289,8 +289,8 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
               <Button variant="ghost" onClick={handleBackClick} className="mb-8">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
               </Button>
-              <div className="hidden md:grid md:grid-cols-2">{cakeCategoryCards}</div>
-              <MobileCarousel basis="basis-full">{cakeCategoryCards}</MobileCarousel>
+              <DesktopGrid>{cakeCategoryCards}</DesktopGrid>
+              <MobileCarousel basis="basis-4/5 sm:basis-1/2">{cakeCategoryCards}</MobileCarousel>
             </div>
           );
         case 'flowers':
@@ -302,7 +302,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                 <Button variant="ghost" onClick={handleBackClick} className="mb-8">
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
                 </Button>
-                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3">{flowerCards}</div>
+                <DesktopGrid>{flowerCards}</DesktopGrid>
                 <MobileCarousel>{flowerCards}</MobileCarousel>
             </div>
            );
@@ -326,8 +326,8 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
               <Button variant="ghost" onClick={handleBackClick} className="mb-8">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
               </Button>
-              <div className="hidden md:grid md:grid-cols-2">{foodCategoryCards}</div>
-              <MobileCarousel basis="basis-full">{foodCategoryCards}</MobileCarousel>
+              <DesktopGrid>{foodCategoryCards}</DesktopGrid>
+              <MobileCarousel basis="basis-4/5 sm:basis-1/2">{foodCategoryCards}</MobileCarousel>
             </div>
           );
         default:
@@ -363,8 +363,8 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
 
     return (
         <>
-            <div className="hidden md:grid md:grid-cols-3">{mainCategories}</div>
-            <MobileCarousel basis="basis-full">{mainCategories}</MobileCarousel>
+            <DesktopGrid>{mainCategories}</DesktopGrid>
+            <MobileCarousel basis="basis-4/5 sm:basis-1/2">{mainCategories}</MobileCarousel>
         </>
     );
   };
@@ -372,7 +372,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
 
   return (
     <section id="offerings" className="py-20 md:py-28 bg-muted/30">
-      <div className="container mx-auto md:px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-16">
             <h2 className="text-4xl md:text-5xl font-headline text-foreground">Our Offerings</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">From celebration cakes to hand-tied bouquets, every creation is a piece of art.</p>
