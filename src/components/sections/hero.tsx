@@ -106,9 +106,9 @@ export default function Hero({ onExplore }: HeroProps) {
         unoptimized
       />
       
-      <div className="relative z-20 container mx-auto px-6 h-full flex items-center">
+      <div className="relative z-20 container mx-auto px-6 h-full flex md:items-center">
         {/* Left Side Content */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 mt-auto md:mt-0 mb-20 md:mb-0">
           <div className={cn('transition-all duration-300 ease-in-out', isChanging ? 'opacity-0 -translate-y-4' : 'opacity-100 translate-y-0')}>
             <h2 className="text-sm font-body uppercase tracking-widest text-primary">{currentCategory.subtitle}</h2>
             <h1 className="font-headline text-5xl md:text-7xl font-bold my-4 leading-tight">{currentCategory.headline}</h1>
@@ -120,8 +120,8 @@ export default function Hero({ onExplore }: HeroProps) {
           </div>
         </div>
 
-        {/* Right Side Navigation */}
-        <div className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 flex items-center space-x-4 md:space-x-6">
+        {/* Right Side Navigation (Desktop Only) */}
+        <div className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 hidden md:flex items-center space-x-4 md:space-x-6">
           <div className="text-right">
             <div className="relative h-12 w-12 flex items-center justify-center">
               <p className={cn("font-mono text-5xl font-bold transition-opacity duration-300", isChanging ? 'opacity-0' : 'opacity-100')}>
@@ -145,4 +145,5 @@ export default function Hero({ onExplore }: HeroProps) {
     </section>
   );
 }
+
 
