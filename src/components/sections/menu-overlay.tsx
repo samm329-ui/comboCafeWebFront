@@ -16,6 +16,8 @@ import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { VisuallyHidden } from '../ui/visually-hidden';
+import { DialogTitle } from '@radix-ui/react-dialog';
 
 type MenuOverlayProps = {
     isOpen: boolean;
@@ -36,6 +38,9 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
         "fixed inset-0 bg-background/95 backdrop-blur-sm z-[200] flex flex-col items-center justify-center transition-opacity duration-500", 
         isMounted ? 'opacity-100' : 'opacity-0'
     )}>
+        <VisuallyHidden>
+          <DialogTitle>Menu</DialogTitle>
+        </VisuallyHidden>
       <div className="absolute top-4 right-4">
         <Button variant="ghost" size="icon" onClick={onClose} className="text-foreground/70 hover:text-foreground">
           <X className="h-6 w-6" />

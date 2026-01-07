@@ -6,7 +6,7 @@ import { config } from '@/app/config.tsx';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Menu as MenuIcon, ShoppingCart, ChevronDown } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,6 +21,7 @@ import { useCart } from '@/context/cart-provider';
 import { Badge } from '@/components/ui/badge';
 import Cart from '@/components/cart';
 import { useAccentColor } from '@/context/accent-color-provider';
+import { VisuallyHidden } from '../ui/visually-hidden';
 
 type HeaderProps = {
     onNavSelect: (path: string) => void;
@@ -229,6 +230,9 @@ export default function Header({ onNavSelect }: HeaderProps) {
             </SheetTrigger>
             <SheetContent side="right" className="w-[80vw]">
               <div className="flex flex-col h-full">
+                <VisuallyHidden>
+                  <SheetTitle>Main Menu</SheetTitle>
+                </VisuallyHidden>
                 <div className="py-4 border-b">
                   <span className="text-xl font-headline font-bold text-primary px-4" style={{ color: displayColor }}>
                     {config.brand.name}

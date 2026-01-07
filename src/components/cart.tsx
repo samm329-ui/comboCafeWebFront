@@ -11,6 +11,7 @@ import { config } from '@/app/config.tsx';
 import { Phone, Trash, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from './ui/badge.tsx';
+import { VisuallyHidden } from './ui/visually-hidden.tsx';
 
 // A custom component for the WhatsApp icon
 const WhatsAppIcon = (props: React.ComponentProps<'svg'>) => (
@@ -55,6 +56,9 @@ export default function Cart() {
     <>
       <SheetHeader>
         <SheetTitle>Your Cart</SheetTitle>
+        <VisuallyHidden>
+          <SheetTitle>Cart</SheetTitle>
+        </VisuallyHidden>
       </SheetHeader>
       <Separator />
       {cart.length > 0 ? (
