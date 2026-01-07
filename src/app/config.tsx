@@ -37,7 +37,7 @@ export const config = {
         headline: "Handcrafted Cakes",
         subtitle: "Taste the Celebration",
         description: "Experience our collection of artisanal cakes, baked with love and the finest ingredients for your special moments.",
-        accentColor: "#FFDA63", // Warm Yellow
+        accentColor: "#FFB6C1", // Baby Pink
       },
       {
         id: "flowers" as const,
