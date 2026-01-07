@@ -33,27 +33,13 @@ function hexToHsl(hex: string): string {
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   React.useEffect(() => {
     const root = window.document.documentElement;
-    const initialAccentColor = config.hero.categories[0].accentColor;
+    // Set a static accent color from your config
+    const accentColor = config.theme.accentColor;
     
-    // Set initial color
-    root.style.setProperty('--primary', hexToHsl(initialAccentColor));
-    
-    // Create an observer to watch for changes on the --primary-hex variable
-    const observer = new MutationObserver((mutationsList) => {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-          const newHex = root.style.getPropertyValue('--primary-hex').trim();
-          if (newHex) {
-            root.style.setProperty('--primary', hexToHsl(newHex));
-            root.style.setProperty('--ring', hexToHsl(newHex));
-          }
-        }
-      }
-    });
-
-    observer.observe(root, { attributes: true });
-
-    return () => observer.disconnect();
+    if (accentColor) {
+      root.style.setProperty('--primary', hexToHsl(accentColor));
+      root.style.setProperty('--ring', hexToHsl(accentColor));
+    }
   }, []);
 
   // Force light theme and remove theme-switching capabilities
