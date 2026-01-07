@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { config } from '@/app/config.tsx';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -36,8 +36,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
   const [isSticky, setSticky] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { cart } = useCart();
-  const { accentColor } = useAccentColor();
-  const [displayColor, setDisplayColor] = useState(accentColor);
+  const { displayColor } = useAccentColor();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,13 +63,6 @@ export default function Header({ onNavSelect }: HeaderProps) {
       sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
-
-  useEffect(() => {
-    if (activeSection === 'home') {
-      setDisplayColor(accentColor);
-    }
-  }, [accentColor, activeSection]);
-
 
   const handleBrandClick = () => {
     window.location.reload();

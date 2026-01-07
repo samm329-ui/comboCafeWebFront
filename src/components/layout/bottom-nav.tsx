@@ -24,9 +24,7 @@ const navItems = [
 export default function BottomNav({ onNavSelect }: BottomNavProps) {
   const [activeSection, setActiveSection] = useState('home');
   const { cart } = useCart();
-  const { accentColor } = useAccentColor();
-  const [displayColor, setDisplayColor] = useState(accentColor);
-
+  const { displayColor } = useAccentColor();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,12 +45,6 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
       sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
-
-  useEffect(() => {
-    if (activeSection === 'home') {
-      setDisplayColor(accentColor);
-    }
-  }, [accentColor, activeSection]);
 
   const handleNavClick = (id: string) => {
     if (id === 'menu') {
