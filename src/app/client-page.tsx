@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import Preloader from '@/components/preloader';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
+import BottomNav from '@/components/layout/bottom-nav';
 import Hero from '@/components/sections/hero';
 import Offerings from '@/components/sections/offerings';
 import Menu from '@/components/sections/menu';
@@ -45,7 +46,7 @@ export default function ClientPage() {
             <Preloader isLoading={isLoading} />
             <div className={cn("transition-opacity duration-1000", isLoading ? 'opacity-0' : 'opacity-100')}>
                 <Header onNavSelect={handleNavSelect} heroAccentColor={heroAccentColor} />
-                <main>
+                <main className="pb-20 md:pb-0">
                     <Hero onExplore={handleExplore} onCategoryChange={(color) => setHeroAccentColor(color)} />
                     <div className="hidden md:block">
                         <BestSellers />
@@ -65,6 +66,7 @@ export default function ClientPage() {
                     <FinalCta />
                 </main>
                 <Footer />
+                <BottomNav />
             </div>
         </>
     );
