@@ -39,8 +39,8 @@ export const config = {
         accentColor: "#FFDA63", // Warm Yellow
       },
       {
-        id: "flowers",
-        headline: "Fresh Flowers",
+        id: "gifts",
+        headline: "Curated Gifts",
         subtitle: "Bloom & Smile",
         description: "Brighten any day with our curated selection of fresh, vibrant flowers, arranged to capture the beauty of nature.",
         accentColor: "#FF8A80", // Soft Coral Pink
@@ -70,7 +70,7 @@ export const config = {
               { id: "cakes:Cakes & Desserts", label: "Cakes & Desserts" },
             ]
           },
-          { id: "flowers", label: "Flowers" },
+          { id: "gifts", label: "Gifts" },
           { 
             id: "food", 
             label: "Food",
@@ -115,7 +115,7 @@ export const config = {
         ]
       }
     },
-    flowers: [
+    gifts: [
         { name: "Single Rose", description: "A timeless, classic gesture of love and appreciation.", imageUrl: findImage('roses'), imageHint: findImageHint('roses'), price: "Rs50" },
         { name: "Flower Bouquets", description: "A stunning, artfully arranged collection of fresh blooms.", imageUrl: findImage('bouquets'), imageHint: findImageHint('bouquets'), price: "Starting at Rs500" },
         { name: "Cake + Flower Combo", description: "The perfect pair: a delicious treat and a beautiful bouquet.", imageUrl: findImage('gift-combos'), imageHint: findImageHint('gift-combos'), price: "Starting at Rs700" },
@@ -202,7 +202,3 @@ export const config = {
     copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
   },
 };
-
-    
-
-    

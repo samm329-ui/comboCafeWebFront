@@ -54,7 +54,14 @@ export default function ClientPage() {
             setNavigatedCategory({ category, subCategory, subSubCategory });
             document.getElementById('offerings')?.scrollIntoView({ behavior: 'smooth' });
         } else {
-            document.getElementById(path)?.scrollIntoView({ behavior: 'smooth' });
+            const el = document.getElementById(path);
+            if (el) {
+                const categoryId = el.dataset.categoryId;
+                if (categoryId) {
+                    setNavigatedCategory({ category: categoryId as OfferingCategory });
+                }
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     };
 

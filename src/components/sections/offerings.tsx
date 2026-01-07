@@ -26,7 +26,7 @@ type Product = {
   description?: string;
 };
 
-export type OfferingCategory = 'cakes' | 'flowers' | 'food';
+export type OfferingCategory = 'cakes' | 'gifts' | 'food';
 export type SubCategory = string;
 export type SubSubCategory = string;
 
@@ -35,19 +35,6 @@ type OfferingsProps = {
     exploreClicked: boolean;
     onResetExplore: () => void;
 };
-
-// A custom component for the WhatsApp icon
-const WhatsAppIcon = (props: React.ComponentProps<'svg'>) => (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-label="WhatsApp"
-    >
-      <path d="M16.75 13.96c.25.13.42.2.46.3.05.1.05.75-.2 1.3-.25.55-1.12 1.1-1.52 1.25-.4.15-1.07.13-1.6-.08s-2.15-1-3.6-2.5c-1.15-1.15-2-2.5-2.2-2.9-.2-.4-.04-.6.12-.77.16-.17.35-.2.5-.2s.33.02.47.22c.14.2.3.66.35.7.05.05.07.12.02.2-.05.08-.1.18-.2.25-.1.08-.2.12-.25.2-.06.07-.12.15-.05.27.07.12.33.56.7.92.56.5.94.75 1.1.8.14.05.24.03.32-.03.1-.06.42-.5.54-.66.12-.17.22-.15.32-.1.1.04.65.3.75.36zM12 2a10 10 0 0 0-10 10 10 10 0 0 0 10 10c1.85 0 3.55-.5 5-1.35l-1.3-1.3c-1.1.5-2.35.8-3.7.8a8 8 0 1 1 8-8c0 1.35-.3 2.6-.8 3.7l1.3 1.3C21.5 15.55 22 13.85 22 12A10 10 0 0 0 12 2z"/>
-    </svg>
-);
 
 const parsePrice = (price: string) => {
     if (typeof price !== 'string') return 0;
@@ -329,17 +316,17 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
               <MobileCarousel>{cakeCategoryCards}</MobileCarousel>
             </div>
           );
-        case 'flowers':
-           const flowerCards = config.offerings.flowers.map(flower => (
-                <ProductCard key={flower.name} item={flower} />
+        case 'gifts':
+           const giftCards = config.offerings.gifts.map(gift => (
+                <ProductCard key={gift.name} item={gift} />
             ));
            return (
             <div>
                 <Button variant="ghost" onClick={handleBackClick} className="mb-8">
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back to Product Categories
                 </Button>
-                <DesktopGrid>{flowerCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{flowerCards}</MobileCarousel>
+                <DesktopGrid>{giftCards}</DesktopGrid>
+                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{giftCards}</MobileCarousel>
             </div>
            );
         case 'food':
@@ -372,7 +359,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
     }
 
     // Level 1: Show main category cards
-    const { cakes, flowers, food } = config.offerings;
+    const { cakes, gifts, food } = config.offerings;
     const mainCategories = [
       <CategoryCard 
           key="cakes"
@@ -382,11 +369,11 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
           onClick={() => setSelectedCategory('cakes')}
       />,
       <CategoryCard 
-          key="flowers"
-          title="Flowers"
-          imageUrl={flowers[0].imageUrl}
-          imageHint={flowers[0].imageHint}
-          onClick={() => setSelectedCategory('flowers')}
+          key="gifts"
+          title="Gifts"
+          imageUrl={gifts[0].imageUrl}
+          imageHint={gifts[0].imageHint}
+          onClick={() => setSelectedCategory('gifts')}
       />,
       <CategoryCard 
           key="food"
@@ -424,7 +411,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-16">
             <h2 className="text-4xl md:text-5xl font-headline text-foreground">Product Categories</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Explore our delicious cakes, beautiful flowers, and tasty treats.</p>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Explore our delicious cakes, beautiful gifts, and tasty treats.</p>
         </div>
         
         <div key={getAnimationKey()} className="animate-zoom-in">
