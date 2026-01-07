@@ -58,16 +58,16 @@ const ProductCard = ({ item }: { item: Product }) => {
       </CardContent>
       <CardFooter className="p-4 bg-card/50 grid grid-cols-1 sm:grid-cols-3 gap-2">
          <Button onClick={handleAddToCart}>
-            <ShoppingCart /> Cart
+            <ShoppingCart /><span>Cart</span>
         </Button>
          <Button asChild variant="outline">
             <a href={`tel:${config.contact.phone}`}>
-                <Phone /> Call
+                <Phone /><span>Call</span>
             </a>
         </Button>
         <Button asChild variant="secondary">
             <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer">
-                <MessageCircle /> WhatsApp
+                <MessageCircle /><span>WhatsApp</span>
             </a>
         </Button>
       </CardFooter>
@@ -90,12 +90,12 @@ const FlowerCard = ({ item }: { item: { name: string; description: string; image
      <CardFooter className="p-4 bg-card/50 grid grid-cols-1 sm:grid-cols-2 gap-2">
         <Button asChild>
             <a href={`tel:${config.contact.phone}`}>
-                <Phone /> Call to Order
+                <Phone /><span>Call to Order</span>
             </a>
         </Button>
         <Button asChild variant="secondary">
             <a href={`https://wa.me/${config.contact.phone}?text=I'd like to order: ${item.name}`} target="_blank" rel="noopener noreferrer">
-                <MessageCircle /> WhatsApp
+                <MessageCircle /><span>WhatsApp</span>
             </a>
         </Button>
       </CardFooter>
