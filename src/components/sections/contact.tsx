@@ -45,15 +45,19 @@ export default function Contact() {
         {/* Mobile View: Icon bar */}
         <div className="md:hidden">
             <TooltipProvider>
-                <div className="flex justify-around">
+                <div className="flex justify-around items-center">
                     {iconActions.map(({ label, Icon, href, target }) => (
                          <Tooltip key={label}>
                             <TooltipTrigger asChild>
-                                 <Button asChild variant="ghost" size="icon" className="w-16 h-16">
-                                    <a href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
-                                        <Icon className="h-6 w-6 text-primary" />
-                                    </a>
-                                </Button>
+                                 <a 
+                                    href={href} 
+                                    target={target} 
+                                    rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                                    className="flex flex-col items-center justify-center h-24 w-24 rounded-lg bg-background border shadow-sm"
+                                >
+                                    <Icon className="h-8 w-8 text-primary mb-2" />
+                                    <span className="text-xs font-semibold">{label}</span>
+                                </a>
                             </TooltipTrigger>
                             <TooltipContent>
                                 <p>{label}</p>

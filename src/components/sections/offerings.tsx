@@ -200,7 +200,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back to Beverages
                 </Button>
                 <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel>{productCards}</MobileCarousel>
+                <MobileCarousel basis="basis-2/5">{productCards}</MobileCarousel>
             </div>
         )
     }
@@ -224,7 +224,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                   {note && <Badge variant="secondary">{note}</Badge>}
               </div>
                 <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel>{productCards}</MobileCarousel>
+                <MobileCarousel basis="basis-2/5">{productCards}</MobileCarousel>
             </div>
           )
       } else if (selectedCategory === 'food' && selectedSubCategory === 'Snacks') {
@@ -236,7 +236,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to {selectedCategory}
               </Button>
                 <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel>{productCards}</MobileCarousel>
+                <MobileCarousel basis="basis-2/5">{productCards}</MobileCarousel>
             </div>
           )
       } else if (selectedCategory === 'food' && selectedSubCategory === 'Beverages') {
@@ -303,7 +303,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
                 </Button>
                 <DesktopGrid>{flowerCards}</DesktopGrid>
-                <MobileCarousel>{flowerCards}</MobileCarousel>
+                <MobileCarousel basis="basis-2/5">{flowerCards}</MobileCarousel>
             </div>
            );
         case 'food':
@@ -362,10 +362,20 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
     ];
 
     return (
-        <>
-            <DesktopGrid>{mainCategories}</DesktopGrid>
-            <MobileCarousel basis="basis-4/5 sm:basis-1/2">{mainCategories}</MobileCarousel>
-        </>
+        <div className="relative">
+            <Carousel opts={{ align: "start" }} className="w-full md:hidden">
+                <CarouselContent className="-ml-4">
+                    {React.Children.map(mainCategories, (child) => (
+                        <CarouselItem className="pl-4 basis-4/5 sm:basis-1/2">{child}</CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+                <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
+            </Carousel>
+            <div className="hidden md:grid md:grid-cols-3 gap-8">
+                {mainCategories}
+            </div>
+        </div>
     );
   };
 
