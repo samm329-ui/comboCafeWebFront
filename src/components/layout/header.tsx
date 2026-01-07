@@ -87,6 +87,7 @@ export default function Header({ onNavSelect, heroAccentColor = config.hero.cate
                   'font-body font-semibold transition-colors w-full text-left p-4 text-lg',
                   isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
                 )}
+                style={isActive ? { color: heroAccentColor } : {}}
               >
                 {link.label}
               </button>
@@ -116,6 +117,7 @@ export default function Header({ onNavSelect, heroAccentColor = config.hero.cate
                   'text-sm',
                   isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
                 )}
+                style={isActive ? { color: heroAccentColor } : {}}
               >
                 {link.label} <ChevronDown className="h-4 w-4" />
               </button>
@@ -138,6 +140,7 @@ export default function Header({ onNavSelect, heroAccentColor = config.hero.cate
             isMobile ? 'block w-full text-left p-4 text-lg' : 'text-sm',
             isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
           )}
+          style={isActive ? { color: heroAccentColor } : {}}
         >
           {link.label}
         </Comp>
@@ -222,7 +225,7 @@ export default function Header({ onNavSelect, heroAccentColor = config.hero.cate
             <SheetContent side="right" className="w-[80vw]">
               <div className="flex flex-col h-full">
                 <div className="py-4 border-b">
-                  <span className="text-xl font-headline font-bold text-primary px-4">
+                  <span className="text-xl font-headline font-bold text-primary px-4" style={{ color: heroAccentColor }}>
                     {config.brand.name}
                   </span>
                 </div>
