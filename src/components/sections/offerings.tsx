@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from 'react';
@@ -336,33 +337,34 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
 
     // Level 1: Show main category cards
     const { cakes, flowers, food } = config.offerings;
-    const mainCategories = (
-        <>
-            <CategoryCard 
-                title="Cakes" 
-                imageUrl={cakes["Cakes & Desserts"].items[0].imageUrl}
-                imageHint={cakes["Cakes & Desserts"].items[0].imageHint}
-                onClick={() => setSelectedCategory('cakes')}
-            />
-            <CategoryCard 
-                title="Flowers"
-                imageUrl={flowers[0].imageUrl}
-                imageHint={flowers[0].imageHint}
-                onClick={() => setSelectedCategory('flowers')}
-            />
-            <CategoryCard 
-                title="Food"
-                imageUrl={food.Beverages["Hot Beverages"].items[0].imageUrl}
-                imageHint={food.Beverages["Hot Beverages"].items[0].imageHint}
-                onClick={() => setSelectedCategory('food')}
-            />
-        </>
-    );
+    const mainCategories = [
+      <CategoryCard 
+          key="cakes"
+          title="Cakes" 
+          imageUrl={cakes["Cakes & Desserts"].items[0].imageUrl}
+          imageHint={cakes["Cakes & Desserts"].items[0].imageHint}
+          onClick={() => setSelectedCategory('cakes')}
+      />,
+      <CategoryCard 
+          key="flowers"
+          title="Flowers"
+          imageUrl={flowers[0].imageUrl}
+          imageHint={flowers[0].imageHint}
+          onClick={() => setSelectedCategory('flowers')}
+      />,
+      <CategoryCard 
+          key="food"
+          title="Food"
+          imageUrl={food.Beverages["Hot Beverages"].items[0].imageUrl}
+          imageHint={food.Beverages["Hot Beverages"].items[0].imageHint}
+          onClick={() => setSelectedCategory('food')}
+      />,
+    ];
 
     return (
         <>
             <div className="hidden md:grid md:grid-cols-3">{mainCategories}</div>
-            <MobileCarousel>{mainCategories}</MobileCarousel>
+            <MobileCarousel basis="basis-full">{mainCategories}</MobileCarousel>
         </>
     );
   };

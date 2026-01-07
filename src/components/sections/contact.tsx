@@ -1,3 +1,4 @@
+
 "use client";
 
 import { config } from '@/app/config.tsx';
@@ -42,28 +43,26 @@ export default function Contact() {
         </div>
 
         {/* Mobile View: Icon bar */}
-        <Card className="md:hidden shadow-lg border-0 p-2">
-            <CardContent className="p-0">
-                <TooltipProvider>
-                    <div className="flex justify-around">
-                        {iconActions.map(({ label, Icon, href, target }) => (
-                             <Tooltip key={label}>
-                                <TooltipTrigger asChild>
-                                     <Button asChild variant="ghost" size="icon" className="w-16 h-16">
-                                        <a href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
-                                            <Icon className="h-6 w-6 text-primary" />
-                                        </a>
-                                    </Button>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>{label}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        ))}
-                    </div>
-                </TooltipProvider>
-            </CardContent>
-        </Card>
+        <div className="md:hidden">
+            <TooltipProvider>
+                <div className="flex justify-around">
+                    {iconActions.map(({ label, Icon, href, target }) => (
+                         <Tooltip key={label}>
+                            <TooltipTrigger asChild>
+                                 <Button asChild variant="ghost" size="icon" className="w-16 h-16">
+                                    <a href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
+                                        <Icon className="h-6 w-6 text-primary" />
+                                    </a>
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>{label}</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    ))}
+                </div>
+            </TooltipProvider>
+        </div>
 
 
         {/* Desktop View: Full List */}
