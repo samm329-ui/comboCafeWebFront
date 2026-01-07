@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog.tsx";
 
 const deliveryHours = [
   "9:00 AM - 11:00 AM",
@@ -209,35 +210,35 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Delivery Date</FormLabel>
-                <Popover modal={false}>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        className={cn(
-                          "w-full pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
-                        )}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+                <Dialog>
+                    <DialogTrigger asChild>
+                         <FormControl>
+                          <Button
+                            variant={"outline"}
+                            className={cn(
+                              "w-full pl-3 text-left font-normal",
+                              !field.value && "text-muted-foreground"
+                            )}
+                          >
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                    </DialogTrigger>
+                    <DialogContent className="w-auto p-0">
+                        <Calendar
+                          mode="single"
+                          selected={field.value}
+                          onSelect={field.onChange}
+                          disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() - 1))}
+                          initialFocus
+                        />
+                    </DialogContent>
+                </Dialog>
                 <FormMessage />
               </FormItem>
             )}
@@ -277,3 +278,5 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
     </Form>
   )
 }
+
+    
