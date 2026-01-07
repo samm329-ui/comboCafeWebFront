@@ -83,8 +83,8 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 hidden lg:flex" />
-          <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 hidden lg:flex" />
+          <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
+          <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
         </Carousel>
       </div>
     </div>
