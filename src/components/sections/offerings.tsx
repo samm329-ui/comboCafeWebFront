@@ -323,7 +323,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
           return (
             <div>
               <Button variant="ghost" onClick={handleBackClick} className="mb-8">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
+                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Product Categories
               </Button>
               <DesktopGrid>{cakeCategoryCards}</DesktopGrid>
               <MobileCarousel>{cakeCategoryCards}</MobileCarousel>
@@ -336,7 +336,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
            return (
             <div>
                 <Button variant="ghost" onClick={handleBackClick} className="mb-8">
-                    <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
+                    <ArrowLeft className="mr-2 h-4 w-4" /> Back to Product Categories
                 </Button>
                 <DesktopGrid>{flowerCards}</DesktopGrid>
                 <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{flowerCards}</MobileCarousel>
@@ -360,7 +360,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
            return (
             <div>
               <Button variant="ghost" onClick={handleBackClick} className="mb-8">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Offerings
+                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Product Categories
               </Button>
               <DesktopGrid>{foodCategoryCards}</DesktopGrid>
               <MobileCarousel>{foodCategoryCards}</MobileCarousel>
@@ -423,8 +423,8 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
     <section id="offerings" className="py-20 md:py-28 bg-muted/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-4xl md:text-5xl font-headline text-foreground">Our Offerings</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">From celebration cakes to hand-tied bouquets, every creation is a piece of art.</p>
+            <h2 className="text-4xl md:text-5xl font-headline text-foreground">Product Categories</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Explore our delicious cakes, beautiful flowers, and tasty treats.</p>
         </div>
         
         <div key={getAnimationKey()} className="animate-zoom-in">
@@ -435,5 +435,3 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
     </section>
   );
 }
-
-    
