@@ -32,7 +32,7 @@ type NavLink = {
   sublinks?: NavLink[];
 };
 
-export default function Header({ onNavSelect, heroAccentColor = '#FFDA63' }: HeaderProps) {
+export default function Header({ onNavSelect, heroAccentColor = config.hero.categories[0].accentColor }: HeaderProps) {
   const [isSticky, setSticky] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { cart } = useCart();
@@ -74,6 +74,7 @@ export default function Header({ onNavSelect, heroAccentColor = '#FFDA63' }: Hea
   const renderNavLinks = (links: NavLink[], isMobile = false): React.ReactNode[] => {
     return links.map(link => {
       const hasSublinks = link.sublinks && link.sublinks.length > 0;
+      const isActive = activeSection === link.id;
 
       if (hasSublinks) {
         if (isMobile) {
@@ -84,7 +85,7 @@ export default function Header({ onNavSelect, heroAccentColor = '#FFDA63' }: Hea
                 onClick={() => onNavSelect(link.id)}
                 className={cn(
                   'font-body font-semibold transition-colors w-full text-left p-4 text-lg',
-                  activeSection === link.id ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
+                  isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
                 )}
               >
                 {link.label}
@@ -113,7 +114,7 @@ export default function Header({ onNavSelect, heroAccentColor = '#FFDA63' }: Hea
                 className={cn(
                   'font-body font-semibold transition-colors flex items-center gap-1',
                   'text-sm',
-                  activeSection === link.id ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
+                  isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
                 )}
               >
                 {link.label} <ChevronDown className="h-4 w-4" />
@@ -135,7 +136,7 @@ export default function Header({ onNavSelect, heroAccentColor = '#FFDA63' }: Hea
           className={cn(
             'font-body font-semibold transition-colors',
             isMobile ? 'block w-full text-left p-4 text-lg' : 'text-sm',
-            activeSection === link.id ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
+            isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
           )}
         >
           {link.label}
@@ -191,7 +192,7 @@ export default function Header({ onNavSelect, heroAccentColor = '#FFDA63' }: Hea
         <button 
           onClick={handleBrandClick} 
           className="text-xl font-headline font-bold transition-colors duration-300"
-          style={{ color: heroAccentColor }}
+          style={{ color: isSticky ? 'hsl(var(--primary))' : heroAccentColor }}
         >
           {config.brand.name}
         </button>
