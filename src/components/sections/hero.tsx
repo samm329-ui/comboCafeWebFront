@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { config } from '@/app/config.tsx';
 import { Button } from '@/components/ui/button';
 import { ArrowUp, ArrowDown } from 'lucide-react';
@@ -17,27 +17,9 @@ export default function Hero({ onExplore }: HeroProps) {
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
   const [parallaxStyle, setParallaxStyle] = useState<React.CSSProperties>({});
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   
   const currentCategory = config.hero.categories[currentCategoryIndex];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const scale = 1 + scrollY * 0.0003;
-      const translateY = scrollY * 0.3;
-      setParallaxStyle({
-        transform: `scale(${scale}) translateY(${translateY}px) translateZ(0)`,
-        willChange: 'transform'
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--primary-hex', currentCategory.accentColor);
-  }, [currentCategory]);
 
   const changeCategory = (direction: 'next' | 'prev') => {
     if (isChanging) return;
@@ -54,6 +36,47 @@ export default function Hero({ onExplore }: HeroProps) {
       setTimeout(() => setIsChanging(false), 300);
     }, 300);
   };
+  
+  const resetInterval = () => {
+    if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+        changeCategory('next');
+    }, 5000);
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const scale = 1 + scrollY * 0.0003;
+      const translateY = scrollY * 0.3;
+      setParallaxStyle({
+        transform: `scale(${scale}) translateY(${translateY}px) translateZ(0)`,
+        willChange: 'transform'
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    resetInterval();
+
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+    };
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--primary-hex', currentCategory.accentColor);
+  }, [currentCategory]);
+  
+  const handleManualChange = (direction: 'next' | 'prev') => {
+    changeCategory(direction);
+    resetInterval();
+  }
 
   const handleScrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -109,11 +132,11 @@ export default function Hero({ onExplore }: HeroProps) {
             <p className="font-body text-sm uppercase tracking-widest text-white/70">/ 0{config.hero.categories.length}</p>
           </div>
           <div className="flex flex-col items-center space-y-2">
-            <Button variant="ghost" size="icon" className="text-white/70 hover:text-white rounded-full backdrop-blur-sm" onClick={() => changeCategory('prev')} aria-label="Previous category">
+            <Button variant="ghost" size="icon" className="text-white/70 hover:text-white rounded-full backdrop-blur-sm" onClick={() => handleManualChange('prev')} aria-label="Previous category">
               <ArrowUp />
             </Button>
             <div className="h-16 w-px bg-white/30" />
-            <Button variant="ghost" size="icon" className="text-white/70 hover:text-white rounded-full backdrop-blur-sm" onClick={() => changeCategory('next')} aria-label="Next category">
+            <Button variant="ghost" size="icon" className="text-white/70 hover:text-white rounded-full backdrop-blur-sm" onClick={() => handleManualChange('next')} aria-label="Next category">
               <ArrowDown />
             </Button>
           </div>
