@@ -153,11 +153,12 @@ export const config = {
   },
   menu: {
     cards: [
-      { "url": "https://picsum.photos/seed/menu1/450/600" },
-      { "url": "https://picsum.photos/seed/menu2/450/600" },
-      { "url": "https://picsum.photos/seed/menu3/450/600" },
-      { "url": "https://picsum.photos/seed/menu4/450/600" },
-      { "url": "https://picsum.photos/seed/menu5/450/600" }
+      { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_44_35%20AM.png" },
+      { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_45_57%20AM.png" },
+      { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_49_51%20AM.png" },
+      { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_50_51%20AM.png" },
+      { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_51_49%20AM.png" },
+      { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_54_26%20AM.png" }
     ]
   },
   bestsellers: [
@@ -202,5 +203,7 @@ export const config = {
     copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
   },
 };
+
+    
 
     
