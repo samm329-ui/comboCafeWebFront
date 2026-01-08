@@ -24,17 +24,13 @@ const deliveryHours = [
   "5:00 PM - 7:00 PM",
 ];
 
-const allowedPincodes = ["731224", "731223", "731216", "731241", "731242"];
+const allowedPincodes = ["731224", "731223", "731216", "731241", "731242"] as const;
 
 const formSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   address: z.string().min(1, "Address is required"),
-  pincode: z.string()
-    .regex(/^\d{6}$/, "Must be a 6-digit pincode")
-    .refine(pincode => allowedPincodes.includes(pincode), {
-      message: "Sorry, we only deliver to select pincodes currently. See list below.",
-    }),
+  pincode: z.string().min(1, "Pincode is required"),
   streetNumber: z.string().optional(),
   houseNumber: z.string().optional(),
   landmarks: z.string().min(1, "Landmark is required"),
@@ -158,11 +154,22 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Pincode</FormLabel>
-                  <FormControl>
-                    <Input placeholder="123456" {...field} />
-                  </FormControl>
+                   <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select delivery pincode" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {allowedPincodes.map((pincode) => (
+                        <SelectItem key={pincode} value={pincode}>
+                          {pincode}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormDescription>
-                    One-day delivery available for: 731224, 731223, 731216, 731241, 731242.
+                    One-day delivery available for these areas.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -290,5 +297,6 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
     </Form>
   )
 }
+    
 
     
