@@ -167,26 +167,12 @@ const CategoryCard = ({ title, imageUrl, imageHint, onClick }: { title: string; 
     </div>
 );
 
-const DesktopGrid = ({ children }: { children: React.ReactNode }) => (
-    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+const ItemsGrid = ({ children }: { children: React.ReactNode }) => (
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {children}
     </div>
 );
 
-const MobileCarousel = ({ children, basis }: { children: React.ReactNode, basis?: string }) => (
-    <Carousel 
-        opts={{ align: "start" }} 
-        className="w-full md:hidden"
-    >
-        <CarouselContent className="-ml-4">
-            {React.Children.map(children, (child) => (
-                <CarouselItem className={cn("pl-4", basis || 'basis-4/5 sm:basis-1/2')}>{child}</CarouselItem>
-            ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
-        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
-    </Carousel>
-);
 
 const Breadcrumbs = ({ path, onNavigate }: { path: string[], onNavigate: (index: number) => void }) => {
     const { displayColor } = useAccentColor();
@@ -260,10 +246,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
         const items = config.offerings.food.Beverages[selectedSubSubCategory as keyof typeof config.offerings.food.Beverages].items;
         const productCards = items.map(item => <ProductCard key={item.name} item={item} />);
         return (
-            <div>
-                <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{productCards}</MobileCarousel>
-            </div>
+            <ItemsGrid>{productCards}</ItemsGrid>
         )
     }
 
@@ -282,18 +265,14 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
               <div className='text-center my-4'>
                   {note && <Badge variant="secondary">{note}</Badge>}
               </div>
-                <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{productCards}</MobileCarousel>
+                <ItemsGrid>{productCards}</ItemsGrid>
             </div>
           )
       } else if (selectedCategory === 'food' && selectedSubCategory === 'Snacks') {
           items = config.offerings.food[selectedSubCategory as keyof typeof config.offerings.food].items;
           const productCards = items.map(item => <ProductCard key={item.name} item={item} />);
           return (
-            <div>
-                <DesktopGrid>{productCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{productCards}</MobileCarousel>
-            </div>
+            <ItemsGrid>{productCards}</ItemsGrid>
           )
       } else if (selectedCategory === 'food' && selectedSubCategory === 'Beverages') {
           const beverageCategories = Object.keys(config.offerings.food.Beverages);
@@ -308,10 +287,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                       />
           });
           return (
-            <div>
-                <DesktopGrid>{categoryCards}</DesktopGrid>
-                <MobileCarousel>{categoryCards}</MobileCarousel>
-            </div>
+            <ItemsGrid>{categoryCards}</ItemsGrid>
           )
       }
     }
@@ -332,20 +308,14 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                      />
           });
           return (
-            <div>
-              <DesktopGrid>{cakeCategoryCards}</DesktopGrid>
-              <MobileCarousel>{cakeCategoryCards}</MobileCarousel>
-            </div>
+            <ItemsGrid>{cakeCategoryCards}</ItemsGrid>
           );
         case 'gifts':
            const giftCards = config.offerings.gifts.map(gift => (
                 <ProductCard key={gift.name} item={gift} />
             ));
            return (
-            <div>
-                <DesktopGrid>{giftCards}</DesktopGrid>
-                <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{giftCards}</MobileCarousel>
-            </div>
+            <ItemsGrid>{giftCards}</ItemsGrid>
            );
         case 'food':
           const foodSubCategories = Object.keys(config.offerings.food);
@@ -363,10 +333,7 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
                      />
           });
            return (
-            <div>
-              <DesktopGrid>{foodCategoryCards}</DesktopGrid>
-              <MobileCarousel>{foodCategoryCards}</MobileCarousel>
-            </div>
+            <ItemsGrid>{foodCategoryCards}</ItemsGrid>
           );
         default:
           return null;
@@ -400,23 +367,9 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
     ];
 
     return (
-        <div className="relative">
-             <Carousel 
-                opts={{ align: "start" }} 
-                className="w-full md:hidden"
-            >
-                <CarouselContent className="-ml-4">
-                    {React.Children.map(mainCategories, (child) => (
-                        <CarouselItem className="pl-4 basis-4/5 sm:basis-1/2">{child}</CarouselItem>
-                    ))}
-                </CarouselContent>
-                <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
-                <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
-            </Carousel>
-            <div className="hidden md:grid md:grid-cols-3 gap-8">
-                {mainCategories}
-            </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        {mainCategories}
+      </div>
     );
   };
   
