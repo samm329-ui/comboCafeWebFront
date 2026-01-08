@@ -15,11 +15,8 @@ const LegalPageLayout = ({ title, children }: { title: string, children: React.R
 );
 
 export default function TermsOfServicePage() {
-    const lastUpdated = "January 8, 2026";
-
     return (
         <LegalPageLayout title="Terms of Service">
-            <p><em>Last Updated: {lastUpdated}</em></p>
             
             <h3>1. Agreement to Terms</h3>
             <p>

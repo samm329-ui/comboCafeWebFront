@@ -15,11 +15,9 @@ const LegalPageLayout = ({ title, children }: { title: string, children: React.R
 );
 
 export default function PrivacyPolicyPage() {
-    const lastUpdated = "January 8, 2026";
-
     return (
         <LegalPageLayout title="Privacy Policy">
-            <p><em>Last Updated: {lastUpdated}</em></p>
+            
             <p>
                 {config.brand.name} (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
             </p>
