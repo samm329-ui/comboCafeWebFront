@@ -16,7 +16,14 @@ export default function Footer() {
             <ul className="space-y-2">
               {config.footer.links.map(link => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm hover:text-primary transition-colors">{link.label}</a>
+                  <a 
+                    href={link.href} 
+                    className="text-sm hover:text-primary transition-colors"
+                    target={link.href.startsWith('/') ? '_blank' : '_self'}
+                    rel={link.href.startsWith('/') ? 'noopener noreferrer' : ''}
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>

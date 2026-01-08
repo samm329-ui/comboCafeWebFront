@@ -172,7 +172,7 @@ export const config = {
     phone: "8436860216",
     email: "combocafe24x7@gmail.com",
     hours: "Mon-Sat: 8am - 8pm | Sun: 9am - 6pm",
-    locationUrl: "https://www.google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/@24.1772241,87.7728579,17z/data=!4m7!3m6!1s0x39fa1c2b13747f7d:0x20d4a8fe5d070ebc!8m2!3d24.1772509!4d87.7727781!10e9!16s%2Fg%2F11f10f6vs5?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+    locationUrl: "https://www.google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/@24.1772241,87.7728579,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipPa8FLuLWnB1huMew0G3KiWQ6ZlK760fuVO02So!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipPa8FLuLWnB1huMew0G3KiWQ6ZlK760fuVO02So%3Dw137-h195-k-no!7i2480!8i3508!4m7!3m6!1s0x39fa1c2b13747f7d:0x20d4a8fe5d070ebc!8m2!3d24.1772509!4d87.7727781!10e9!16s%2Fg%2F11f10f6vs5?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
   },
   faq: {
     items: [
@@ -189,10 +189,10 @@ export const config = {
   },
   footer: {
     links: [
-      { label: "About", href: "#" },
+      { label: "About", href: "/about" },
       { label: "Contact", href: "#contact" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
     ],
     social: [
       { label: "Instagram", Icon: Instagram, href: "#" },
@@ -203,7 +203,3 @@ export const config = {
     copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
   },
 };
-
-    
-
-    
