@@ -115,7 +115,7 @@ const ProductCard = ({ item }: { item: Product }) => {
         )}
         <Image src={item.imageUrl} alt={item.name} fill className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.imageHint} />
       </div>
-      <CardContent className="p-2">
+      <CardContent className="p-2 flex-grow flex flex-col justify-between">
         <div>
             <CardTitle className="font-headline text-base text-foreground mb-0.5 line-clamp-1">{item.name}</CardTitle>
             {item.description && <p className="text-muted-foreground font-body text-xs line-clamp-1 h-4">{item.description}</p>}
@@ -167,7 +167,7 @@ const CategoryCard = ({ title, imageUrl, imageHint, onClick }: { title: string; 
     <div className="relative aspect-square overflow-hidden group cursor-pointer" onClick={onClick}>
         <Image src={imageUrl} alt={title} fill className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" data-ai-hint={imageHint} />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-4">
-            <h3 className="font-headline text-4xl text-white font-bold text-center">{title}</h3>
+            <h3 className="font-headline text-2xl md:text-4xl text-white font-bold text-center">{title}</h3>
             <div className="absolute bottom-10 opacity-0 group-hover:opacity-100 group-hover:bottom-20 transition-all duration-300">
                 <Button variant="outline" className="bg-white/20 border-white/50 text-white backdrop-blur-sm hover:bg-white/30">Explore</Button>
             </div>
