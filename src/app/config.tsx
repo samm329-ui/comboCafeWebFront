@@ -153,9 +153,12 @@ export const config = {
   },
   menu: {
     cards: [
-      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_44_35%20AM.png" },
-      { url: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_49_51%20AM.png" }
-    ],
+      { "url": "https://picsum.photos/seed/menu1/450/600" },
+      { "url": "https://picsum.photos/seed/menu2/450/600" },
+      { "url": "https://picsum.photos/seed/menu3/450/600" },
+      { "url": "https://picsum.photos/seed/menu4/450/600" },
+      { "url": "https://picsum.photos/seed/menu5/450/600" }
+    ]
   },
   bestsellers: [
     { name: "Cappuccino", tag: "Most Loved", description: "A classic blend of rich espresso, steamed milk, and a delicate layer of foam. It's the perfect pick-me-up at any time of day, loved for its balanced and comforting flavor.", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
@@ -199,3 +202,5 @@ export const config = {
     copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
   },
 };
+
+    
