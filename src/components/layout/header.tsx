@@ -70,7 +70,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
   };
 
   const handleNavClick = (id: string) => {
-    if (id === 'menu') {
+    if (id === 'menu' && window.innerWidth < 768) {
        onNavSelect('menu');
     } else {
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -215,12 +215,6 @@ export default function Header({ onNavSelect }: HeaderProps) {
             </SheetContent>
         </Sheet>
         <div className="md:hidden flex items-center gap-2">
-            <Sheet>
-                <CartTrigger />
-                <SheetContent className="flex flex-col">
-                   <Cart />
-                </SheetContent>
-            </Sheet>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -239,7 +233,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
                   </span>
                 </div>
                 <div className="flex-grow py-4">
-                  {renderNavLinks(config.navigation.links, true)}
+                  {renderNavLinks(config.navigation.links.filter(l => l.id !== 'bestsellers'), true)}
                 </div>
               </div>
             </SheetContent>

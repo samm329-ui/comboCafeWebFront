@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Home, LayoutGrid, BookOpen, Phone, ShoppingCart } from 'lucide-react';
+import { Home, LayoutGrid, BookOpen, Star, ShoppingCart, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCart } from '@/context/cart-provider';
 import { Badge } from '@/components/ui/badge';
@@ -17,6 +17,7 @@ type BottomNavProps = {
 const navItems = [
   { id: 'home', label: 'Home', icon: Home },
   { id: 'offerings', label: 'Categories', icon: LayoutGrid },
+  { id: 'bestsellers', label: 'Best Sellers', icon: Star },
   { id: 'menu', label: 'Menu', icon: BookOpen },
   { id: 'contact', label: 'Contact', icon: Phone },
 ];
@@ -47,7 +48,7 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
   }, []);
 
   const handleNavClick = (id: string) => {
-    if (id === 'menu') {
+    if (id === 'menu' && window.innerWidth < 768) {
       onNavSelect('menu');
     } else {
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -64,23 +65,23 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
               key={item.id}
               onClick={() => handleNavClick(item.id)}
               className={cn(
-                'flex flex-col items-center justify-center text-muted-foreground transition-colors duration-200',
+                'flex flex-col items-center justify-center text-muted-foreground transition-colors duration-200 text-[10px] leading-tight w-14',
                 isActive ? 'text-primary' : ''
               )}
                style={isActive ? { color: displayColor } : {}}
             >
-              <item.icon className="h-6 w-6" />
-              <span className="text-xs font-medium">{item.label}</span>
+              <item.icon className="h-5 w-5 mb-0.5" />
+              <span className="font-medium">{item.label}</span>
             </button>
           );
         })}
         <Sheet>
           <SheetTrigger asChild>
-            <button className="flex flex-col items-center justify-center text-muted-foreground relative">
-              <ShoppingCart className="h-6 w-6" />
-              <span className="text-xs font-medium">Cart</span>
+            <button className="flex flex-col items-center justify-center text-muted-foreground relative text-[10px] leading-tight w-14">
+              <ShoppingCart className="h-5 w-5 mb-0.5" />
+              <span className="font-medium">Cart</span>
               {cart.length > 0 && (
-                <Badge variant="destructive" className="absolute -top-1 right-1 h-5 w-5 rounded-full flex items-center justify-center text-xs p-0">{cart.length}</Badge>
+                <Badge variant="destructive" className="absolute -top-1 -right-0.5 h-4 w-4 rounded-full flex items-center justify-center text-[10px] p-0">{cart.length}</Badge>
               )}
             </button>
           </SheetTrigger>
@@ -92,5 +93,3 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
     </div>
   );
 }
-
-    
