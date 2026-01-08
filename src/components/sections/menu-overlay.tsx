@@ -34,8 +34,8 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
 
   return (
     <div className={cn(
-        "fixed inset-0 bg-background/95 backdrop-blur-sm z-[200] flex flex-col items-center justify-center transition-opacity duration-500", 
-        isMounted ? 'opacity-100' : 'opacity-0'
+        "fixed inset-0 bg-background/95 backdrop-blur-sm z-[200] flex flex-col items-center justify-center transition-all duration-500", 
+        isMounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
     )}>
         <div className="absolute top-4 right-4">
             <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close" className="text-foreground/70 hover:text-foreground">
@@ -51,10 +51,7 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
             <p className="mt-2 max-w-2xl mx-auto text-lg text-muted-foreground">Take a look at our full menu.</p>
         </div>
 
-        <div className={cn(
-            "w-full max-w-7xl mx-auto transition-transform duration-700 delay-200 transform", 
-            isMounted ? 'scale-100 opacity-100' : 'scale-90 opacity-0'
-        )}>
+        <div className={cn("w-full max-w-7xl mx-auto")}>
             <Carousel 
                 opts={{
                     align: "start",
@@ -70,7 +67,7 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
             >
                 <CarouselContent className="-ml-2 md:-ml-4">
                     {config.menu.cards.map((menu, index) => (
-                        <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                        <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                             <div className="p-1">
                                 <Card className="overflow-hidden group rounded-lg border-0 shadow-lg">
                                     <CardContent className="p-0 flex items-center justify-center relative aspect-[3/4]">

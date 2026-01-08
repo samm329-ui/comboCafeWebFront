@@ -74,7 +74,9 @@ export default function ClientPage() {
                 <Header onNavSelect={handleNavSelect} />
                 <main className="pb-20 md:pb-0">
                     <Hero onExplore={handleExplore} />
-                    <BestSellers />
+                    <div className="hidden md:block">
+                        <BestSellers />
+                    </div>
                     <Offerings 
                         initialCategoryState={navigatedCategory}
                         exploreClicked={exploreClicked || !!navigatedCategory}
@@ -83,7 +85,9 @@ export default function ClientPage() {
                             setNavigatedCategory(null);
                         }}
                     />
-                    <Menu />
+                    <div className="hidden md:block">
+                      <Menu />
+                    </div>
                     <Contact />
                     <FinalCta />
                 </main>

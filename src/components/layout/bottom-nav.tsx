@@ -33,8 +33,6 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const newActiveSection = entry.target.id;
-            // Best sellers is not a main section on mobile
-            if (window.innerWidth < 768 && newActiveSection === 'bestsellers') return;
             setActiveSection(newActiveSection);
           }
         });

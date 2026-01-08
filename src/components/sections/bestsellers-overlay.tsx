@@ -17,6 +17,7 @@ type BestSellersOverlayProps = {
 };
 
 const parsePrice = (price: string) => {
+    if (typeof price !== 'string') return 0;
     const match = price.match(/(\d+(\.\d+)?)/);
     if (!match) return 0;
     return parseFloat(match[0]);
@@ -138,8 +139,8 @@ export default function BestSellersOverlay({ isOpen, onClose }: BestSellersOverl
 
   return (
     <div className={cn(
-        "fixed inset-0 bg-background/95 backdrop-blur-sm z-[200] flex flex-col items-center justify-start transition-opacity duration-300", 
-        isMounted ? 'opacity-100' : 'opacity-0'
+        "fixed inset-0 bg-background/95 backdrop-blur-sm z-[200] flex flex-col items-center justify-start transition-all duration-500", 
+        isMounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
     )}>
       <div className="absolute top-4 right-4 z-10">
             <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close" className="text-foreground/70 hover:text-foreground">
@@ -147,10 +148,7 @@ export default function BestSellersOverlay({ isOpen, onClose }: BestSellersOverl
             </Button>
         </div>
 
-        <div className={cn(
-            "w-full h-full overflow-y-auto transition-transform duration-500 transform",
-            isMounted ? 'scale-100 opacity-100' : 'scale-90 opacity-0'
-        )}>
+        <div className={cn("w-full h-full overflow-y-auto")}>
             <div className="container mx-auto px-6 py-20">
                 <div className="text-center mb-12 animate-fade-in-down">
                     <VisuallyHidden>

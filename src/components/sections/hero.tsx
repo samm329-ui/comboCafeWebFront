@@ -19,7 +19,7 @@ export default function Hero({ onExplore }: HeroProps) {
   const [isChanging, setIsChanging] = useState(false);
   const [parallaxStyle, setParallaxStyle] = useState<React.CSSProperties>({});
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const { setAccentColor } = useAccentColor();
+  const { setAccentColor, displayColor } = useAccentColor();
   
   const currentCategory = config.hero.categories[currentCategoryIndex];
 
@@ -86,16 +86,17 @@ export default function Hero({ onExplore }: HeroProps) {
   
   const PrimaryButton = () => (
     <Button 
-        size="lg" 
+        size="sm" 
         onClick={() => onExplore(currentCategory.id as OfferingCategory)} 
-        className="font-semibold shadow-lg hover:shadow-xl transition-shadow"
+        className="font-semibold shadow-lg hover:shadow-xl transition-shadow md:h-11 md:rounded-md md:px-8"
+        style={{ backgroundColor: displayColor }}
     >
       {config.hero.primaryCta.text}
     </Button>
   );
 
   const SecondaryButton = () => (
-    <Button size="lg" variant="outline" onClick={() => handleScrollTo(config.hero.secondaryCta.href)} className="border-2 text-white border-white/80 bg-black/20 hover:bg-white/20 backdrop-blur-sm">
+    <Button size="sm" variant="outline" onClick={() => handleScrollTo(config.hero.secondaryCta.href)} className="border-2 text-white border-white/80 bg-black/20 hover:bg-white/20 backdrop-blur-sm md:h-11 md:rounded-md md:px-8">
       {config.hero.secondaryCta.text}
     </Button>
   );
@@ -112,18 +113,20 @@ export default function Hero({ onExplore }: HeroProps) {
         priority
       />
       
-      <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center">
-        <div className="text-left">
-          <div className={cn('transition-all duration-300 ease-in-out', isChanging ? 'opacity-0 -translate-y-4' : 'opacity-100 translate-y-0')}>
-            <h2 className="text-sm font-body uppercase tracking-widest" style={{ color: currentCategory.accentColor }}>{currentCategory.subtitle}</h2>
-            <h1 className="font-headline text-5xl md:text-7xl font-bold my-4 leading-tight" style={{ color: currentCategory.accentColor }}>{currentCategory.headline}</h1>
-            <p className="font-body text-lg text-white/80 max-w-md hidden md:block">{currentCategory.description}</p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-start">
+      <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center md:justify-center">
+        <div className={cn('transition-all duration-300 ease-in-out text-center md:text-left', isChanging ? 'opacity-0 -translate-y-4' : 'opacity-100 translate-y-0')}>
+          <h2 className="text-sm font-body uppercase tracking-widest" style={{ color: currentCategory.accentColor }}>{currentCategory.subtitle}</h2>
+          <h1 className="font-headline text-5xl md:text-7xl font-bold my-4 leading-tight" style={{ color: currentCategory.accentColor }}>{currentCategory.headline}</h1>
+          <p className="font-body text-lg text-white/80 max-w-md hidden md:block">{currentCategory.description}</p>
+        </div>
+        
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:relative md:bottom-auto md:left-auto md:translate-x-0 md:mt-8 w-full px-6 md:px-0 md:w-auto">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <PrimaryButton />
               <SecondaryButton />
             </div>
-          </div>
         </div>
+
 
         {/* Right Side Navigation (Desktop Only) */}
         <div className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 hidden md:flex items-center space-x-4 md:space-x-6">
