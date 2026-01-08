@@ -109,7 +109,7 @@ const ProductCard = ({ item }: { item: Product }) => {
       <CardContent className="p-4 flex flex-col flex-grow">
         <div className="flex-grow mb-2">
             <CardTitle className="font-headline text-xl text-foreground mb-1 line-clamp-1">{item.name}</CardTitle>
-            {item.description && <p className="text-muted-foreground font-body text-sm line-clamp-2 h-10">{item.description}</p>}
+            {item.description && <p className="text-muted-foreground font-body text-sm line-clamp-2 h-auto">{item.description}</p>}
         </div>
         <div>
             <div className="flex items-baseline gap-2">
