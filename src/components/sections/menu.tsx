@@ -43,7 +43,7 @@ export default function Menu() {
           >
             <CarouselContent className="-ml-4">
               {config.menu.cards.map((menu, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-4 md:basis-1/2">
                   <div className="p-1">
                     <Card className="overflow-hidden group rounded-lg border-0 shadow-lg">
                       <CardContent className="p-0 flex items-center justify-center relative aspect-[3/4]">
