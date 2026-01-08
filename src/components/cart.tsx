@@ -118,38 +118,38 @@ export default function Cart() {
                 </div>
             </ScrollArea>
             <Separator className='-mx-6 w-[calc(100%+48px)]' />
-            <SheetFooter className="mt-auto pt-6 grid grid-cols-1 gap-4">
+            <SheetFooter className="mt-auto pt-6 grid grid-cols-1 gap-2">
                 <div className='grid grid-cols-2 gap-2'>
                     <Button asChild className="w-full">
                         <a href={`tel:${config.contact.phone}`}>
                             <Phone /><span>Call to Order</span>
                         </a>
                     </Button>
-                    <Sheet>
-                       <SheetTrigger asChild>
-                           <Button variant="secondary" className="w-full bg-blue-400 text-white hover:bg-blue-500 hover:animate-pulse">
-                               Order on WhatsApp
-                           </Button>
-                       </SheetTrigger>
-                       <SheetContent side="right" className="w-[90vw] sm:max-w-lg overflow-y-auto">
-                            <SheetHeader>
-                                <SheetTitle>Delivery Information</SheetTitle>
-                                <SheetDescription>
-                                    Please provide your details to place the order.
-                                </SheetDescription>
-                            </SheetHeader>
-                            <OrderForm
-                                onSubmit={handleWhatsAppOrder} 
-                                totalPrice={totalPrice}
-                            />
-                       </SheetContent>
-                    </Sheet>
+                    <SheetClose asChild>
+                        <Button variant="outline" onClick={handleClearCart}>
+                            <Trash /><span>Empty Cart</span>
+                        </Button>
+                    </SheetClose>
                 </div>
-                <SheetClose asChild>
-                    <Button variant="outline" onClick={handleClearCart}>
-                        <Trash /><span>Empty Cart</span>
-                    </Button>
-                </SheetClose>
+                <Sheet>
+                    <SheetTrigger asChild>
+                       <Button variant="secondary" className="w-full bg-green-500 text-white hover:bg-green-600 hover:animate-pulse">
+                           Order on WhatsApp
+                       </Button>
+                    </SheetTrigger>
+                    <SheetContent side="right" className="w-[90vw] sm:max-w-lg overflow-y-auto">
+                         <SheetHeader>
+                             <SheetTitle>Delivery Information</SheetTitle>
+                             <SheetDescription>
+                                 Please provide your details to place the order.
+                             </SheetDescription>
+                         </SheetHeader>
+                         <OrderForm
+                             onSubmit={handleWhatsAppOrder} 
+                             totalPrice={totalPrice}
+                         />
+                    </SheetContent>
+                </Sheet>
             </SheetFooter>
         </div>
       ) : (
