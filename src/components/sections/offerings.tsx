@@ -7,7 +7,7 @@ import { config } from '@/app/config.tsx';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import Image from 'next/image';
 import { Button } from '../ui/button';
-import { Phone, ShoppingCart, ArrowLeft, Mail } from 'lucide-react';
+import { Phone, ShoppingCart, ArrowLeft, Mail, ChevronRight } from 'lucide-react';
 import { useCart } from '@/context/cart-provider';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
@@ -185,6 +185,31 @@ const MobileCarousel = ({ children, basis }: { children: React.ReactNode, basis?
     </Carousel>
 );
 
+const Breadcrumbs = ({ path, onNavigate }: { path: string[], onNavigate: (index: number) => void }) => {
+    if (path.length === 0) return null;
+    
+    return (
+        <div className="mb-8 flex items-center flex-wrap gap-2 text-sm text-muted-foreground">
+            <Button variant="link" className="p-0 h-auto" onClick={() => onNavigate(-1)}>Home</Button>
+            <ChevronRight className="h-4 w-4" />
+            {path.map((item, index) => (
+                <React.Fragment key={item}>
+                    {index < path.length - 1 ? (
+                        <>
+                            <Button variant="link" className="p-0 h-auto" onClick={() => onNavigate(index)}>
+                                {item}
+                            </Button>
+                            <ChevronRight className="h-4 w-4" />
+                        </>
+                    ) : (
+                        <span className="font-semibold text-foreground">{item}</span>
+                    )}
+                </React.Fragment>
+            ))}
+        </div>
+    );
+};
+
 
 export default function Offerings({ initialCategoryState, exploreClicked, onResetExplore }: OfferingsProps) {
   const [selectedCategory, setSelectedCategory] = useState<OfferingCategory | null>(null);
@@ -203,6 +228,19 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
     }
   }, [exploreClicked, initialCategoryState, onResetExplore, selectedCategory]);
 
+  const handleBreadcrumbNavigate = (index: number) => {
+    if (index < 0) { // Home
+        setSelectedCategory(null);
+        setSelectedSubCategory(null);
+        setSelectedSubSubCategory(null);
+    } else if (index === 0) { // Main Category
+        setSelectedSubCategory(null);
+        setSelectedSubSubCategory(null);
+    } else if (index === 1) { // Sub Category
+        setSelectedSubSubCategory(null);
+    }
+  };
+
 
   const getAnimationKey = () => {
     if (selectedSubSubCategory) return `subsub-${selectedSubSubCategory}`;
@@ -219,9 +257,6 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
         const productCards = items.map(item => <ProductCard key={item.name} item={item} />);
         return (
             <div>
-                <Button variant="ghost" onClick={() => setSelectedSubSubCategory(null)} className="mb-8">
-                    <ArrowLeft className="mr-2 h-4 w-4" /> Back to Beverages
-                </Button>
                 <DesktopGrid>{productCards}</DesktopGrid>
                 <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{productCards}</MobileCarousel>
             </div>
@@ -240,9 +275,6 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
         const productCards = items.map(item => <ProductCard key={item.name} item={item} />);
         return (
             <div>
-               <Button variant="ghost" onClick={() => setSelectedSubCategory(null)} className="mb-8">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to {selectedCategory}
-              </Button>
               <div className='text-center my-4'>
                   {note && <Badge variant="secondary">{note}</Badge>}
               </div>
@@ -255,9 +287,6 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
           const productCards = items.map(item => <ProductCard key={item.name} item={item} />);
           return (
             <div>
-               <Button variant="ghost" onClick={() => setSelectedSubCategory(null)} className="mb-8">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to {selectedCategory}
-              </Button>
                 <DesktopGrid>{productCards}</DesktopGrid>
                 <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{productCards}</MobileCarousel>
             </div>
@@ -276,9 +305,6 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
           });
           return (
             <div>
-                <Button variant="ghost" onClick={() => setSelectedSubCategory(null)} className="mb-8">
-                    <ArrowLeft className="mr-2 h-4 w-4" /> Back to Food
-                </Button>
                 <DesktopGrid>{categoryCards}</DesktopGrid>
                 <MobileCarousel>{categoryCards}</MobileCarousel>
             </div>
@@ -288,12 +314,6 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
 
     // Level 2: Show sub-categories for the selected main category
     if (selectedCategory) {
-      const handleBackClick = () => {
-        setSelectedCategory(null);
-        setSelectedSubCategory(null);
-        setSelectedSubSubCategory(null);
-      };
-      
       switch(selectedCategory) {
         case 'cakes':
           const cakeSubCategories = Object.keys(config.offerings.cakes);
@@ -309,9 +329,6 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
           });
           return (
             <div>
-              <Button variant="ghost" onClick={handleBackClick} className="mb-8">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Product Categories
-              </Button>
               <DesktopGrid>{cakeCategoryCards}</DesktopGrid>
               <MobileCarousel>{cakeCategoryCards}</MobileCarousel>
             </div>
@@ -322,9 +339,6 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
             ));
            return (
             <div>
-                <Button variant="ghost" onClick={handleBackClick} className="mb-8">
-                    <ArrowLeft className="mr-2 h-4 w-4" /> Back to Product Categories
-                </Button>
                 <DesktopGrid>{giftCards}</DesktopGrid>
                 <MobileCarousel basis="basis-2/3 sm:basis-1/2 md:basis-1/3">{giftCards}</MobileCarousel>
             </div>
@@ -346,9 +360,6 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
           });
            return (
             <div>
-              <Button variant="ghost" onClick={handleBackClick} className="mb-8">
-                <ArrowLeft className="mr-2 h-4 w-4" /> Back to Product Categories
-              </Button>
               <DesktopGrid>{foodCategoryCards}</DesktopGrid>
               <MobileCarousel>{foodCategoryCards}</MobileCarousel>
             </div>
@@ -404,15 +415,27 @@ export default function Offerings({ initialCategoryState, exploreClicked, onRese
         </div>
     );
   };
+  
+  const breadcrumbPath = [
+      selectedCategory,
+      selectedSubCategory,
+      selectedSubSubCategory,
+    ].filter(Boolean) as string[];
 
 
   return (
     <section id="offerings" className="py-20 md:py-28 bg-muted/30">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-4xl md:text-5xl font-headline text-foreground">Product Categories</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Explore our delicious cakes, beautiful gifts, and tasty treats.</p>
-        </div>
+        { !selectedCategory ? (
+            <div className="text-center mb-12 md:mb-16">
+                <h2 className="text-4xl md:text-5xl font-headline text-foreground">Product Categories</h2>
+                <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Explore our delicious cakes, beautiful gifts, and tasty treats.</p>
+            </div>
+        ) : (
+            <div className="mb-12 md:mb-16">
+                <Breadcrumbs path={breadcrumbPath} onNavigate={handleBreadcrumbNavigate} />
+            </div>
+        )}
         
         <div key={getAnimationKey()} className="animate-zoom-in">
             {renderContent()}
