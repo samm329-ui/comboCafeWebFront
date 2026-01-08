@@ -1,14 +1,45 @@
 
 "use client";
 
+import React, { useState, useEffect } from 'react';
 import { config } from '@/app/config.tsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 import { useAccentColor } from '@/context/accent-color-provider';
+import { cn } from '@/lib/utils';
 
 export default function Contact() {
   const { displayColor } = useAccentColor();
+  const [shopStatus, setShopStatus] = useState<'loading' | 'open' | 'closed'>('loading');
+
+  useEffect(() => {
+    // This logic runs only on the client to avoid hydration mismatch
+    const checkOpeningStatus = () => {
+      // IST is UTC+5:30
+      const now = new Date();
+      const utcOffset = now.getTimezoneOffset() * 60000;
+      const istOffset = 5.5 * 3600000;
+      const istTime = new Date(now.getTime() + utcOffset + istOffset);
+
+      const hours = istTime.getHours();
+      const openingHour = 10; // 10 AM
+      const closingHour = 20; // 8 PM
+
+      if (hours >= openingHour && hours < closingHour) {
+        setShopStatus('open');
+      } else {
+        setShopStatus('closed');
+      }
+    };
+
+    checkOpeningStatus();
+    // Optional: Check every minute
+    const interval = setInterval(checkOpeningStatus, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+
   const handleScrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -68,7 +99,18 @@ export default function Contact() {
                                 <p className="text-muted-foreground text-sm">{config.contact.hours}</p>
                             </div>
                         </div>
-                        <Button variant="outline" size="lg" className="w-28 sm:w-32 justify-center text-xs sm:text-sm" disabled>Open</Button>
+                        <Button
+                            variant={shopStatus === 'open' ? 'secondary' : 'destructive'}
+                            size="lg"
+                            className={cn(
+                                "w-28 sm:w-32 justify-center text-xs sm:text-sm transition-colors",
+                                shopStatus === 'open' && 'bg-green-500 hover:bg-green-600 text-white',
+                                shopStatus === 'closed' && 'bg-red-500 hover:bg-red-600 text-white'
+                            )}
+                            disabled
+                        >
+                            {shopStatus === 'loading' ? '...' : shopStatus.charAt(0).toUpperCase() + shopStatus.slice(1)}
+                        </Button>
                     </li>
                 </ul>
             </CardContent>
@@ -77,5 +119,3 @@ export default function Contact() {
     </section>
   );
 }
-
-    
