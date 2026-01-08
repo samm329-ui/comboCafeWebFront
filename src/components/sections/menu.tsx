@@ -40,11 +40,11 @@ export default function Menu() {
             ]}
             className="w-full max-w-5xl mx-auto"
         >
-          <CarouselContent className="-ml-0">
+          <CarouselContent className="-ml-4">
             {config.menu.cards.map((menu, index) => (
-              <CarouselItem key={index} className="pl-0 md:basis-1/2 lg:basis-1/3">
-                <div className="p-0">
-                  <Card className="overflow-hidden group rounded-none border-0">
+              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Card className="overflow-hidden group rounded-lg border-0 shadow-lg">
                     <CardContent className="p-0 flex items-center justify-center relative aspect-[3/4]">
                       <Image
                         src={menu.url}
@@ -59,8 +59,8 @@ export default function Menu() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 hidden sm:flex" />
-          <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 hidden sm:flex" />
+          <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+          <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
         </Carousel>
       </div>
     </section>
