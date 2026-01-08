@@ -218,9 +218,6 @@ export default function Header({ onNavSelect }: HeaderProps) {
             </SheetTrigger>
             <SheetContent side="right" className="w-[80vw]">
               <div className="flex flex-col h-full">
-                <VisuallyHidden>
-                  <SheetTitle>Main Menu</SheetTitle>
-                </VisuallyHidden>
                 <div className="py-4 border-b">
                   <span className="text-xl font-headline font-bold text-primary px-4" style={{ color: displayColor }}>
                     {config.brand.name}

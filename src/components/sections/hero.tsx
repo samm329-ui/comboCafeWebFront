@@ -88,7 +88,7 @@ export default function Hero({ onExplore }: HeroProps) {
     <Button 
         size="lg" 
         onClick={() => onExplore(currentCategory.id as OfferingCategory)} 
-        className="font-semibold shadow-lg hover:shadow-xl transition-shadow text-primary-foreground"
+        className="font-semibold shadow-lg hover:shadow-xl transition-shadow"
     >
       {config.hero.primaryCta.text}
     </Button>
