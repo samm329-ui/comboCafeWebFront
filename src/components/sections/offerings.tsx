@@ -103,7 +103,7 @@ const ProductCard = ({ item }: { item: Product }) => {
   const discount = getDiscount();
 
   return (
-    <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-lg">
+    <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 rounded-lg">
       <div className="relative w-full aspect-square">
         {discount && (
           <Badge 
@@ -113,9 +113,9 @@ const ProductCard = ({ item }: { item: Product }) => {
             {discount.percentage}% OFF
           </Badge>
         )}
-        <Image src={item.imageUrl} alt={item.name} width={400} height={400} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.imageHint} />
+        <Image src={item.imageUrl} alt={item.name} fill className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.imageHint} />
       </div>
-      <CardContent className="p-2 flex flex-col">
+      <CardContent className="p-2">
         <div>
             <CardTitle className="font-headline text-base text-foreground mb-0.5 line-clamp-1">{item.name}</CardTitle>
             {item.description && <p className="text-muted-foreground font-body text-xs line-clamp-1 h-4">{item.description}</p>}
@@ -165,7 +165,7 @@ const ProductCard = ({ item }: { item: Product }) => {
 
 const CategoryCard = ({ title, imageUrl, imageHint, onClick }: { title: string; imageUrl: string; imageHint: string, onClick: () => void }) => (
     <div className="relative aspect-square overflow-hidden group cursor-pointer" onClick={onClick}>
-        <Image src={imageUrl} alt={title} width={400} height={400} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" data-ai-hint={imageHint} />
+        <Image src={imageUrl} alt={title} fill className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" data-ai-hint={imageHint} />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-4">
             <h3 className="font-headline text-4xl text-white font-bold text-center">{title}</h3>
             <div className="absolute bottom-10 opacity-0 group-hover:opacity-100 group-hover:bottom-20 transition-all duration-300">
