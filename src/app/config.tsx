@@ -20,7 +20,7 @@ const findImageHint = (id: string) => PlaceHolderImages.find(img => img.id === i
 
 export const config = {
   brand: {
-    name: "Combo Café & Gift Shop",
+    name: "Combo Café &amp; Gift Shop",
   },
   theme: {
     default: "light" as "light" | "dark",
@@ -41,7 +41,7 @@ export const config = {
       {
         id: "gifts",
         headline: "Curated Gifts",
-        subtitle: "Bloom & Smile",
+        subtitle: "Bloom &amp; Smile",
         description: "Brighten any day with our curated selection of fresh, vibrant flowers, arranged to capture the beauty of nature.",
         accentColor: "#FF8A80", // Soft Coral Pink
       },
@@ -66,7 +66,7 @@ export const config = {
             label: "Cakes",
             sublinks: [
               { id: "cakes:Celebration Cakes", label: "Celebration Cakes" },
-              { id: "cakes:Cakes & Desserts", label: "Cakes & Desserts" },
+              { id: "cakes:Cakes &amp; Desserts", label: "Cakes &amp; Desserts" },
             ]
           },
           { id: "gifts", label: "Gifts" },
@@ -95,23 +95,19 @@ export const config = {
       "Celebration Cakes": {
         note: "Please order at least 2 hours in advance.",
         items: [
-          { name: "Chocolate Cake", description: "Decadent layers of rich chocolate sponge and ganache.", price: "Rs120", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
-          { name: "Vanilla Cake", description: "A classic, elegant vanilla cake with buttercream frosting.", price: "Rs100", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
-          { name: "Strawberry Cake", description: "Light, fruity, and topped with fresh strawberries.", price: "Rs130", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
-          { name: "Red Velvet Cake", description: "A southern classic with a hint of cocoa and cream cheese frosting.", price: "Rs150", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
-          { name: "Chocolate Brownie", description: "Fudgy, dense, and packed with chocolate chunks.", price: "Rs90", imageUrl: findImage('best-seller-1'), imageHint: findImageHint('best-seller-1') },
-          { name: "Cup Cake (V/C)", description: "Your choice of vanilla or chocolate, perfectly portioned.", price: "Rs60", imageUrl: findImage('best-seller-3'), imageHint: findImageHint('best-seller-3') },
+          { name: "Chocolate Celebration Cake", description: "Rich, decadent chocolate layers.", price: "Rs599", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
+          { name: "Vanilla Celebration Cake", description: "A classic, elegant vanilla cake.", price: "Rs549", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
+          { name: "Strawberry Cake (Slice)", description: "Light, fruity, and delicious.", price: "Rs649", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
+          { name: "Custom Theme Cake", description: "Your vision, our creation.", price: "Price on Request", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
         ]
       },
-       "Cakes & Desserts": {
+       "Cakes &amp; Desserts": {
         note: "Please order at least 2 hours in advance.",
         items: [
-          { name: "Chocolate Cake", description: "Decadent layers of rich chocolate sponge and ganache.", price: "Rs120", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
-          { name: "Vanilla Cake", description: "A classic, elegant vanilla cake with buttercream frosting.", price: "Rs100", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
-          { name: "Strawberry Cake", description: "Light, fruity, and topped with fresh strawberries.", price: "Rs130", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
-          { name: "Red Velvet Cake", description: "A southern classic with a hint of cocoa and cream cheese frosting.", price: "Rs150", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
-          { name: "Chocolate Brownie", description: "Fudgy, dense, and packed with chocolate chunks.", price: "Rs90", imageUrl: findImage('best-seller-1'), imageHint: findImageHint('best-seller-1') },
-          { name: "Cup Cake (V/C)", description: "Your choice of vanilla or chocolate, perfectly portioned.", price: "Rs60", imageUrl: findImage('best-seller-3'), imageHint: findImageHint('best-seller-3') },
+          { name: "Chocolate Celebration Cake", description: "Rich, decadent chocolate layers.", price: "Rs599", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
+          { name: "Vanilla Celebration Cake", description: "A classic, elegant vanilla cake.", price: "Rs549", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
+          { name: "Strawberry Cake (Slice)", description: "Light, fruity, and delicious.", price: "Rs649", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
+          { name: "Custom Theme Cake", description: "Your vision, our creation.", price: "Price on Request", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
         ]
       },
     },
@@ -187,7 +183,7 @@ export const config = {
     phone: "8436860216",
     email: "combocafe24x7@gmail.com",
     hours: "Open Daily: 10am - 8pm",
-    locationUrl: "https://www.google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/@24.1772241,87.7728579,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipPa8FLuLWnB1huMew0G3KiWQ6ZlK760fuVO02So!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipPa8FLuLWnB1huMew0G3KiWQ6ZlK760fuVO02So%3Dw137-h195-k-no!7i2480!8i3508!4m7!3m6!1s0x39fa1c2b13747f7d:0x20d4a8fe5d070ebc!8m2!3d24.1772509!4d87.7727781!10e9!16s%2Fg%2F11f10f6vs5?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+    locationUrl: "https://www.google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/@24.1772241,87.7728579,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipPa8FLuLWnB1huMew0G3KiWQ6ZlK760fuVO02So!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipPa8FLuLWnB1huMew0G3KiWQ6ZlK760fuVO02So%3Dw137-h195-k-no!7i2480!8i3508!4m7!3m6!1s0x39fa1c2b13747f7d:0x20d4a8fe5d070ebc!8m2!3d24.1772509!4d87.7727781!10e9!16s%2Fg%2F11f10f2vs5?entry=ttu&amp;g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
   },
   faq: {
     items: [
@@ -215,7 +211,7 @@ export const config = {
       { label: "Facebook", Icon: Facebook, href: "#" },
       { label: "WhatsApp", Icon: WhatsAppIcon, href: "https://wa.me/8436860216" }
     ],
-    copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
+    copyright: `© ${new Date().getFullYear()} Combo Café &amp; Gift Shop. All rights reserved.`,
   },
 };
 
