@@ -20,7 +20,7 @@ const findImageHint = (id: string) => PlaceHolderImages.find(img => img.id === i
 
 export const config = {
   brand: {
-    name: "Combo Café &amp; Gift Shop",
+    name: "Combo Café & Gift Shop",
   },
   theme: {
     default: "light" as "light" | "dark",
@@ -41,7 +41,7 @@ export const config = {
       {
         id: "gifts",
         headline: "Curated Gifts",
-        subtitle: "Bloom &amp; Smile",
+        subtitle: "Bloom & Smile",
         description: "Brighten any day with our curated selection of fresh, vibrant flowers, arranged to capture the beauty of nature.",
         accentColor: "#FF8A80", // Soft Coral Pink
       },
@@ -95,10 +95,13 @@ export const config = {
       "Celebration Cakes": {
         note: "Please order at least 2 hours in advance.",
         items: [
-          { name: "Chocolate Celebration Cake", description: "Rich, decadent chocolate layers.", price: "Rs599", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
-          { name: "Vanilla Celebration Cake", description: "A classic, elegant vanilla cake.", price: "Rs549", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
-          { name: "Strawberry Cake", description: "Light, fruity, and delicious.", price: "Rs649", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
-          { name: "Custom Theme Cake", description: "Your vision, our creation.", price: "Price on Request", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
+          { name: "Chocolate Truffle", description: "Rich, decadent chocolate layers.", price: "Rs599", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
+          { name: "Black Forest", description: "A classic, elegant vanilla cake.", price: "Rs549", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
+          { name: "White Forest", description: "Light, fruity, and delicious.", price: "Rs649", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
+          { name: "Butterscotch", description: "Your vision, our creation.", price: "Rs599", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
+          { name: "Fresh Fruit", description: "Your vision, our creation.", price: "Rs799", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
+          { name: "Pineapple", description: "Your vision, our creation.", price: "Rs599", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
+          { name: "Strawberry", description: "Your vision, our creation.", price: "Rs649", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
         ]
       },
        "Cakes & Desserts": {
@@ -213,9 +216,11 @@ export const config = {
       { label: "Facebook", Icon: Facebook, href: "#" },
       { label: "WhatsApp", Icon: WhatsAppIcon, href: "https://wa.me/8436860216" }
     ],
-    copyright: `© ${new Date().getFullYear()} Combo Café &amp; Gift Shop. All rights reserved.`,
+    copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
   },
 };
 
     
+    
+
     
