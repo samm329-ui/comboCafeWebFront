@@ -14,6 +14,8 @@ import Contact from '@/components/sections/contact';
 import FinalCta from '@/components/sections/final-cta';
 import MenuOverlay from '@/components/sections/menu-overlay';
 import BestSellersOverlay from '@/components/sections/bestsellers-overlay';
+import GiftsOverlay from '@/components/sections/gifts-overlay';
+import GiftsGallery from '@/components/sections/gifts-gallery';
 import { cn } from '@/lib/utils';
 import type { OfferingCategory, SubCategory, SubSubCategory } from '@/components/sections/offerings';
 
@@ -21,6 +23,7 @@ export default function ClientPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isBestSellersOpen, setIsBestSellersOpen] = useState(false);
+    const [isGiftsOpen, setIsGiftsOpen] = useState(false);
     const [exploreClicked, setExploreClicked] = useState(false);
     const [navigatedCategory, setNavigatedCategory] = useState<{ category: OfferingCategory, subCategory?: SubCategory, subSubCategory?: SubSubCategory} | null>(null);
 
@@ -47,6 +50,11 @@ export default function ClientPage() {
             return;
         }
         
+        if (path === 'gifts-gallery') {
+            setIsGiftsOpen(true);
+            return;
+        }
+        
         if (path.includes(':')) {
             const [category, subCategory, subSubCategory] = path.split(':') as [OfferingCategory, SubCategory?, SubSubCategory?];
             setNavigatedCategory({ category, subCategory, subSubCategory });
@@ -68,6 +76,8 @@ export default function ClientPage() {
             <Preloader isLoading={isLoading} />
             <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
             <BestSellersOverlay isOpen={isBestSellersOpen} onClose={() => setIsBestSellersOpen(false)} />
+            <GiftsOverlay isOpen={isGiftsOpen} onClose={() => setIsGiftsOpen(false)} />
+
             <div 
               className={cn("transition-opacity duration-1000", isLoading ? 'opacity-0' : 'opacity-100')}
             >
@@ -87,6 +97,9 @@ export default function ClientPage() {
                     />
                     <div className="hidden md:block">
                       <Menu />
+                    </div>
+                    <div className="hidden md:block">
+                        <GiftsGallery />
                     </div>
                     <Contact />
                     <FinalCta />

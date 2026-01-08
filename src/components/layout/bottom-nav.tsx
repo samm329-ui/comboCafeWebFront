@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Home, LayoutGrid, BookOpen, Star, ShoppingCart, Phone } from 'lucide-react';
+import { Home, LayoutGrid, BookOpen, Star, ShoppingCart, Phone, Gift } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCart } from '@/context/cart-provider';
 import { Badge } from '@/components/ui/badge';
@@ -17,9 +17,9 @@ type BottomNavProps = {
 const navItems = [
   { id: 'home', label: 'Home', icon: Home },
   { id: 'offerings', label: 'Categories', icon: LayoutGrid },
+  { id: 'gifts-gallery', label: 'Gifts', icon: Gift },
   { id: 'bestsellers', label: 'Best Sellers', icon: Star },
   { id: 'menu', label: 'Menu', icon: BookOpen },
-  { id: 'contact', label: 'Contact', icon: Phone },
 ];
 
 export default function BottomNav({ onNavSelect }: BottomNavProps) {

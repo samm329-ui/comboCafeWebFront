@@ -161,6 +161,21 @@ export const config = {
       { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%207,%202026,%2006_54_26%20AM.png" }
     ]
   },
+  giftsGallery: [
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.00%20(1).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.00.jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(1).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(10).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(2).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(3).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(4).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(5).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(6).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(7).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(8).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01%20(9).jpeg" },
+    { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01.jpeg" }
+  ],
   bestsellers: [
     { name: "Cappuccino", tag: "Most Loved", description: "A classic blend of rich espresso, steamed milk, and a delicate layer of foam. It's the perfect pick-me-up at any time of day, loved for its balanced and comforting flavor.", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
     { name: "Chocolate Cake", tag: "Top Pick", description: "Our decadent chocolate cake is a slice of heaven for any chocolate lover. Made with rich cocoa and a silky ganache, it's an unforgettable indulgent experience.", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
