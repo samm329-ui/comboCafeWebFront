@@ -1,4 +1,5 @@
 
+
 "use client"
 
 import * as React from 'react';
@@ -95,7 +96,7 @@ const ProductCard = ({ item }: { item: Product }) => {
 
   return (
     <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 flex flex-col rounded-lg">
-      <div className="relative w-full aspect-[4/3]">
+      <div className="relative w-full aspect-square">
         {discount && (
           <Badge 
             variant="destructive" 
