@@ -139,6 +139,7 @@ export default function Cart() {
                          <OrderForm
                              getWhatsAppMessage={getWhatsAppMessage}
                              totalPrice={totalPrice}
+                             totalDiscount={totalDiscount}
                          />
                     </SheetContent>
                 </Sheet>

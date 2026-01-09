@@ -49,9 +49,10 @@ type OrderFormValues = z.infer<typeof formSchema>;
 type OrderFormProps = {
   getWhatsAppMessage: (values: Record<string,string>) => string;
   totalPrice: number;
+  totalDiscount?: number;
 };
 
-export function OrderForm({ getWhatsAppMessage, totalPrice }: OrderFormProps) {
+export function OrderForm({ getWhatsAppMessage, totalPrice, totalDiscount }: OrderFormProps) {
   const [isPaymentDialogOpen, setPaymentDialogOpen] = useState(false);
   const [formData, setFormData] = useState<OrderFormValues | null>(null);
 
@@ -307,7 +308,8 @@ export function OrderForm({ getWhatsAppMessage, totalPrice }: OrderFormProps) {
         
         <div className="pt-6">
             <Button type="submit" className="w-full" size="lg">
-              Proceed to Pay (Total: Rs{totalPrice.toFixed(2)})
+              Proceed to Pay (Total: Rs{totalPrice.toFixed(2)}
+              {totalDiscount && totalDiscount > 0 ? `, Save Rs${totalDiscount.toFixed(2)}` : ''})
             </Button>
         </div>
       </form>
