@@ -73,7 +73,7 @@ const ProductCard = ({ item }: { item: Product }) => {
         `Delivery Date: ${details.deliveryDate}\n` +
         `Delivery Time: ${details.deliveryHours}`;
     
-    const finalMessage = [messageHeader, orderItem, total, customerDetails].join('\n') + `\n\nI have completed the payment and sent the screenshot.`;
+    const finalMessage = [messageHeader, orderItem, total, customerDetails].join('\n') + `\n\nI have completed the payment. Please find the screenshot attached.`;
     return encodeURIComponent(finalMessage);
   };
 

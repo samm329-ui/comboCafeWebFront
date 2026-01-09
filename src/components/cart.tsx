@@ -71,7 +71,7 @@ export default function Cart() {
         `Delivery Date: ${details.deliveryDate}\n` +
         `Delivery Time: ${details.deliveryHours}`;
 
-    const finalMessage = [header, items, total, customerDetails].join('\n') + `\n\nI have completed the payment and sent the screenshot.`;
+    const finalMessage = [header, items, total, customerDetails].join('\n') + `\n\nI have completed the payment. Please find the screenshot attached.`;
     return encodeURIComponent(finalMessage);
   }
 

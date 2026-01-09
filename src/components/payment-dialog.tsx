@@ -2,7 +2,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, ChangeEvent } from "react";
 import {
   Dialog,
   DialogContent,
@@ -12,10 +11,6 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { toast } from "@/hooks/use-toast";
-import { Upload } from "lucide-react";
 import { Badge } from "./ui/badge";
 
 type PaymentDialogProps = {
