@@ -11,7 +11,6 @@ import { config } from '@/app/config.tsx';
 import { Phone, Trash, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from './ui/badge.tsx';
-import { VisuallyHidden } from './ui/visually-hidden.tsx';
 import { OrderForm } from './order-form';
 
 const parsePrice = (price: string) => {
@@ -72,13 +71,8 @@ export default function Cart() {
         `Delivery Date: ${details.deliveryDate}\n` +
         `Delivery Time: ${details.deliveryHours}`;
 
-    return encodeURIComponent([header, items, total, customerDetails].join('\n'));
-  }
-
-  const handleWhatsAppOrder = (details: Record<string, string>) => {
-    const message = getWhatsAppMessage(details);
-    const url = `https://wa.me/${config.contact.phone}?text=${message}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+    const finalMessage = [header, items, total, customerDetails].join('\n') + `\n\nI have completed the payment and sent the screenshot.`;
+    return encodeURIComponent(finalMessage);
   }
 
   return (
@@ -119,7 +113,7 @@ export default function Cart() {
             </ScrollArea>
             <Separator className='-mx-6 w-[calc(100%+48px)]' />
             <SheetFooter className="mt-auto pt-6 grid grid-cols-1 gap-4">
-                <div className='grid grid-cols-2 gap-2'>
+                 <div className='grid grid-cols-2 gap-2'>
                     <Button asChild className="w-full">
                         <a href={`tel:${config.contact.phone}`}>
                             <Phone /><span>Call to Order</span>
@@ -133,7 +127,7 @@ export default function Cart() {
                 </div>
                 <Sheet>
                     <SheetTrigger asChild>
-                       <Button variant="secondary" className="w-full bg-green-500 text-white hover:bg-green-600 hover:animate-pulse">
+                       <Button className="w-full">
                            Order on WhatsApp
                        </Button>
                     </SheetTrigger>
@@ -145,7 +139,7 @@ export default function Cart() {
                              </SheetDescription>
                          </SheetHeader>
                          <OrderForm
-                             onSubmit={handleWhatsAppOrder} 
+                             getWhatsAppMessage={getWhatsAppMessage}
                              totalPrice={totalPrice}
                          />
                     </SheetContent>

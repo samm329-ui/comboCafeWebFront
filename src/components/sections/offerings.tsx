@@ -56,36 +56,25 @@ const ProductCard = ({ item }: { item: Product }) => {
     });
   }
 
-  const getWhatsAppMessage = (details?: Record<string, string>) => {
-    let message: string;
-    if (details) {
-        const messageHeader = `I'd like to place an order for the following item:\n\n*Order Summary:*`;
-        const orderItem = `- ${item.name} (${item.price})`;
-        const total = `\n*Total: ${item.price}*`;
+  const getWhatsAppMessage = (details: Record<string, string>) => {
+    const messageHeader = `I'd like to place an order for the following item:\n\n*Order Summary:*`;
+    const orderItem = `- ${item.name} (${item.price})`;
+    const total = `\n*Total: ${item.price}*`;
 
-        const customerDetails = `\n\n*Delivery Details:*\n` +
-            `Name: ${details.firstName} ${details.lastName}\n` +
-            `Phone: ${details.phoneNumber}\n` +
-            (details.emailId ? `Email: ${details.emailId}\n` : '') +
-            `Address: ${details.address}\n` +
-            (details.houseNumber ? `  House No: ${details.houseNumber}\n` : '') +
-            (details.streetNumber ? `  Street: ${details.streetNumber}\n` : '') +
-            `  Landmark: ${details.landmarks}\n` +
-            `  Pincode: ${details.pincode}\n` +
-            `Delivery Date: ${details.deliveryDate}\n` +
-            `Delivery Time: ${details.deliveryHours}`;
-        
-        message = [messageHeader, orderItem, total, customerDetails].join('\n');
-    } else {
-        message = `I'd like to inquire about this product: ${item.name} (${item.price})`;
-    }
+    const customerDetails = `\n\n*Delivery Details:*\n` +
+        `Name: ${details.firstName} ${details.lastName}\n` +
+        `Phone: ${details.phoneNumber}\n` +
+        (details.emailId ? `Email: ${details.emailId}\n` : '') +
+        `Address: ${details.address}\n` +
+        (details.houseNumber ? `  House No: ${details.houseNumber}\n` : '') +
+        (details.streetNumber ? `  Street: ${details.streetNumber}\n` : '') +
+        `  Landmark: ${details.landmarks}\n` +
+        `  Pincode: ${details.pincode}\n` +
+        `Delivery Date: ${details.deliveryDate}\n` +
+        `Delivery Time: ${details.deliveryHours}`;
     
-    return encodeURIComponent(message);
-  };
-  
-  const handleWhatsAppOrder = (details: Record<string, string>) => {
-    const url = `https://wa.me/${config.contact.phone}?text=${getWhatsAppMessage(details)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+    const finalMessage = [messageHeader, orderItem, total, customerDetails].join('\n') + `\n\nI have completed the payment and sent the screenshot.`;
+    return encodeURIComponent(finalMessage);
   };
 
   const getDiscount = () => {
@@ -153,7 +142,7 @@ const ProductCard = ({ item }: { item: Product }) => {
                     </SheetDescription>
                 </SheetHeader>
                 <OrderForm 
-                    onSubmit={handleWhatsAppOrder}
+                    getWhatsAppMessage={getWhatsAppMessage}
                     totalPrice={parsePrice(item.price)}
                 />
             </SheetContent>

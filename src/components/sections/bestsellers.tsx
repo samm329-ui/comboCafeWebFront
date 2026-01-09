@@ -51,7 +51,7 @@ const BestSellerCard = ({ item, reverse = false }: { item: typeof config.bestsel
     const price = offeringItem?.price || 'N/A';
     const numericPrice = parsePrice(price);
 
-    const handleWhatsAppOrder = (details: Record<string, string>) => {
+    const getWhatsAppMessage = (details: Record<string, string>) => {
         const messageHeader = `I'd like to place an order for the following best seller:\n\n*Order Summary:*`;
         const orderItem = `- ${item.name} (${price})`;
         const total = `\n*Total: ${price}*`;
@@ -68,9 +68,8 @@ const BestSellerCard = ({ item, reverse = false }: { item: typeof config.bestsel
             `Delivery Date: ${details.deliveryDate}\n` +
             `Delivery Time: ${details.deliveryHours}`;
         
-        const message = encodeURIComponent([messageHeader, orderItem, total, customerDetails].join('\n'));
-        const url = `https://wa.me/${config.contact.phone}?text=${message}`;
-        window.open(url, '_blank', 'noopener,noreferrer');
+        const finalMessage = [messageHeader, orderItem, total, customerDetails].join('\n') + `\n\nI have completed the payment and sent the screenshot.`;
+        return encodeURIComponent(finalMessage);
     };
 
     return (
@@ -115,7 +114,7 @@ const BestSellerCard = ({ item, reverse = false }: { item: typeof config.bestsel
                         </SheetDescription>
                     </SheetHeader>
                     <OrderForm 
-                        onSubmit={handleWhatsAppOrder}
+                        getWhatsAppMessage={getWhatsAppMessage}
                         totalPrice={numericPrice}
                     />
                 </SheetContent>

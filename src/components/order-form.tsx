@@ -1,6 +1,7 @@
 
 "use client"
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -15,6 +16,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "@/components/ui/dialog.tsx";
 import { VisuallyHidden } from "./ui/visually-hidden.tsx";
+import { PaymentDialog } from "./payment-dialog";
+import { config } from "@/app/config.tsx";
+
 
 const deliveryHours = [
   "9:00 AM - 11:00 AM",
@@ -43,11 +47,14 @@ const formSchema = z.object({
 type OrderFormValues = z.infer<typeof formSchema>;
 
 type OrderFormProps = {
-  onSubmit: (values: OrderFormValues) => void;
+  getWhatsAppMessage: (values: Record<string,string>) => string;
   totalPrice: number;
 };
 
-export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
+export function OrderForm({ getWhatsAppMessage, totalPrice }: OrderFormProps) {
+  const [isPaymentDialogOpen, setPaymentDialogOpen] = useState(false);
+  const [formData, setFormData] = useState<OrderFormValues | null>(null);
+
   const form = useForm<OrderFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -65,14 +72,24 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
   });
 
   const onFormSubmit = (values: OrderFormValues) => {
-    const formattedValues = {
-      ...values,
-      deliveryDate: format(values.deliveryDate, "PPP"),
-    };
-    onSubmit(formattedValues);
+    setFormData(values);
+    setPaymentDialogOpen(true);
   };
+  
+  const handlePlaceOrder = () => {
+    if (!formData) return;
+    const formattedValues = {
+        ...formData,
+        deliveryDate: format(formData.deliveryDate, "PPP"),
+    };
+    const message = getWhatsAppMessage(formattedValues);
+    const url = `https://wa.me/${config.contact.phone}?text=${message}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    setPaymentDialogOpen(false);
+  }
 
   return (
+    <>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onFormSubmit)} className="space-y-6 py-6">
         <div className="grid grid-cols-2 gap-4">
@@ -290,13 +307,17 @@ export function OrderForm({ onSubmit, totalPrice }: OrderFormProps) {
         
         <div className="pt-6">
             <Button type="submit" className="w-full" size="lg">
-              Proceed to WhatsApp (Total: Rs{totalPrice.toFixed(2)})
+              Proceed to Pay (Total: Rs{totalPrice.toFixed(2)})
             </Button>
         </div>
       </form>
     </Form>
+
+    <PaymentDialog
+        isOpen={isPaymentDialogOpen}
+        onClose={() => setPaymentDialogOpen(false)}
+        onConfirm={handlePlaceOrder}
+    />
+    </>
   )
 }
-    
-
-    
