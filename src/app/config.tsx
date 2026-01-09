@@ -102,7 +102,7 @@ export const config = {
           { name: "Butterscotch", description: "Deliciously rich with a butterscotch glaze.", price: "Rs390", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/butterscotch%20390.jpeg", imageHint: "butterscotch cake" },
           { name: "Butterscotch", description: "A crowd-pleasing butterscotch creation.", price: "Rs450", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/butterscotch%20450%20(2).jpeg", imageHint: "butterscotch cake" },
           { name: "Butterscotch", description: "Irresistible butterscotch flavor in every bite.", price: "Rs450", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/butterscotch%20450.jpeg", imageHint: "butterscotch cake" },
-          { name: "Choco Cafe", description: "A delicate chocolate cake with a rosy hint.", price: "Rs500", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20blush%20500.jpeg", imageHint: "chocolate cake" },
+          { name: "Choco Blush", description: "A delicate chocolate cake with a rosy hint.", price: "Rs500", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20blush%20500.jpeg", imageHint: "chocolate cake" },
           { name: "Choco Cafe", description: "A coffee-lover's dream in cake form.", price: "Rs400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20cafe%20400.jpeg", imageHint: "coffee cake" },
           { name: "Choco Cafe", description: "Rich coffee-infused chocolate cake.", price: "Rs430", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20cafe%20430%20.jpeg", imageHint: "coffee cake" },
           { name: "Choco Crunch", description: "A chocolate cake with a satisfying crunch.", price: "Rs400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20crunch%20400%20(2).jpeg", imageHint: "crunchy cake" },
@@ -172,9 +172,9 @@ export const config = {
     food: {
       "Snacks": {
         items: [
-          { name: "Veg Puff", description: "A flaky pastry filled with a savory vegetable mixture.", price: "Rs60", imageUrl: findImage('gourmet-sandwiches'), imageHint: findImageHint('gourmet-sandwiches') },
-          { name: "Cheese Sandwich", description: "A classic comfort food, grilled to perfection.", price: "Rs90", imageUrl: findImage('gourmet-sandwiches'), imageHint: findImageHint('gourmet-sandwiches'), originalPrice: "Rs110" },
-          { name: "Garlic Bread", description: "Toasted bread with a generous spread of garlic butter.", price: "Rs100", imageUrl: findImage('gourmet-sandwiches'), imageHint: findImageHint('gourmet-sandwiches') },
+          { name: "Veg Puff", description: "A flaky pastry filled with a savory vegetable mixture.", price: "Rs60", imageUrl: findImage('veg-puff'), imageHint: findImageHint('veg-puff') },
+          { name: "Cheese Sandwich", description: "A classic comfort food, grilled to perfection.", price: "Rs90", imageUrl: findImage('cheese-sandwich'), imageHint: findImageHint('cheese-sandwich'), originalPrice: "Rs110" },
+          { name: "Garlic Bread", description: "Toasted bread with a generous spread of garlic butter.", price: "Rs100", imageUrl: findImage('garlic-bread'), imageHint: findImageHint('garlic-bread') },
         ]
       },
       "Beverages": {

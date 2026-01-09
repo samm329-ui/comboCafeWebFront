@@ -75,7 +75,7 @@
     {
       "id": "gourmet-sandwiches",
       "description": "A gourmet sandwich.",
-      "imageUrl": "https://images.unsplash.com/photo-1764620977411-9f06b1425064?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxnb3VybWV0JTIwc2FuZHdpY2h8ZW58MHx8fHwxNzY3NzQ4MzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1528736235302-52922df5c122?q=80&w=1254&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "gourmet sandwich"
     },
     {
@@ -167,6 +167,24 @@
       "description": "A thick, creamy milkshake made with real strawberries.",
       "imageUrl": "https://images.unsplash.com/photo-1629174114500-6ec256a6213f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "strawberry milkshake"
+    },
+    {
+      "id": "veg-puff",
+      "description": "A flaky pastry filled with a savory vegetable mixture.",
+      "imageUrl": "https://images.unsplash.com/photo-1625220194771-7ebdea0d3DB3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "vegetable puff"
+    },
+    {
+      "id": "garlic-bread",
+      "description": "Toasted bread with a generous spread of garlic butter.",
+      "imageUrl": "https://images.unsplash.com/photo-1716393374741-02f485f25d61?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "garlic bread"
+    },
+    {
+      "id": "cheese-sandwich",
+      "description": "A classic comfort food, grilled to perfection.",
+      "imageUrl": "https://images.unsplash.com/photo-1528736235302-52922df5c122?q=80&w=1254&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "cheese sandwich"
     }
   ]
 }
