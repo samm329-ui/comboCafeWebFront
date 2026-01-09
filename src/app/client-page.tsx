@@ -28,10 +28,24 @@ export default function ClientPage() {
     const [navigatedCategory, setNavigatedCategory] = useState<{ category: OfferingCategory, subCategory?: SubCategory, subSubCategory?: SubSubCategory} | null>(null);
 
     useEffect(() => {
-        // Hide preloader after a short delay.
-        const timer = setTimeout(() => setIsLoading(false), 500); 
-        return () => clearTimeout(timer);
-    }, []);
+        const handleLoad = () => {
+          setIsLoading(false);
+        };
+    
+        // Fallback to a timeout
+        const timer = setTimeout(() => setIsLoading(false), 3000);
+    
+        if (document.readyState === 'complete') {
+          handleLoad();
+        } else {
+          window.addEventListener('load', handleLoad);
+        }
+    
+        return () => {
+          clearTimeout(timer);
+          window.removeEventListener('load', handleLoad);
+        };
+      }, []);
 
     const handleExplore = (category: OfferingCategory) => {
         setExploreClicked(true);
