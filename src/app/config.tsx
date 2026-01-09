@@ -1,4 +1,3 @@
-
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Facebook, Instagram, X } from "lucide-react";
 
@@ -121,7 +120,7 @@ export const config = {
           { name: "Choco Vanilla", description: "Classic flavors in a beautifully designed cake.", price: "Rs380", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20vanilla%20380%20(2).jpeg", imageHint: "vanilla cake" },
           { name: "Choco Vanilla", description: "Simply delicious chocolate and vanilla.", price: "Rs380", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20vanilla%20380.jpeg", imageHint: "vanilla cake" },
           { name: "Choco Vanilla", description: "A timeless favorite for any occasion.", price: "Rs390", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20vanilla%20390.jpeg", imageHint: "vanilla cake" },
-          { name: "Choco Vanilla", description: "Rich chocolate and smooth vanilla in harmony.", price: "Rs400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/Choco%20vanilla%20400.jpeg", imageHint: "vanilla cake" },
+          { name: "Choco vanilla", description: "Rich chocolate and smooth vanilla in harmony.", price: "Rs400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/Choco%20vanilla%20400.jpeg", imageHint: "vanilla cake" },
           { name: "Christmas Cake", description: "A festive treat to celebrate the holiday season.", price: "Rs400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/christmas%20cake%20400.jpeg", imageHint: "christmas cake" },
           { name: "Cup Cake", description: "A delightful, single-serving treat.", price: "Rs55", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/cup%20cake%2055.jpeg", imageHint: "cupcake" },
           { name: "Doll Cake (2 pounds)", description: "A beautiful doll cake, perfect for a princess party.", price: "Rs750", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/doll%20cake%20750%202%20punds.jpeg", imageHint: "doll cake" },
@@ -158,8 +157,8 @@ export const config = {
           { name: "Vanilla Cake (Slice)", description: "A classic, elegant vanilla cake with buttercream frosting.", price: "Rs100", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
           { name: "Strawberry Cake (Slice)", description: "Light, fruity, and topped with fresh strawberries.", price: "Rs130", imageUrl: findImage('strawberry-cake'), imageHint: findImageHint('strawberry-cake') },
           { name: "Red Velvet Cake", description: "A southern classic with a hint of cocoa and cream cheese frosting.", price: "Rs150", imageUrl: findImage('celebration-cake'), imageHint: findImageHint('celebration-cake') },
-          { name: "Chocolate Brownie", description: "Fudgy, dense, and packed with chocolate chunks.", price: "Rs90", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
-          { name: "Cup Cake (V/C)", description: "Your choice of vanilla or chocolate, perfectly portioned.", price: "Rs60", imageUrl: findImage('vanilla-cake'), imageHint: findImageHint('vanilla-cake') },
+          { name: "Chocolate Brownie", description: "Fudgy, dense, and packed with chocolate chunks.", price: "Rs90", imageUrl: findImage('chocolate-brownie'), imageHint: findImageHint('chocolate-brownie') },
+          { name: "Cup Cake (V/C)", description: "Your choice of vanilla or chocolate, perfectly portioned.", price: "Rs60", imageUrl: findImage('cup-cake'), imageHint: findImageHint('cup-cake') },
         ]
       },
     },
@@ -263,10 +262,6 @@ export const config = {
       { label: "Facebook", Icon: Facebook, href: "#" },
       { label: "WhatsApp", Icon: WhatsAppIcon, href: "https://wa.me/8436860216" }
     ],
-    copyright: `© ${new Date().getFullYear()} Combo Café & Gift Shop. All rights reserved.`,
+    copyright: `© ${new Date().getFullYear()} Combo Café &amp; Gift Shop. All rights reserved.`,
   },
 };
-
-    
-
-    
