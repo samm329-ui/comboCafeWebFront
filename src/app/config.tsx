@@ -266,3 +266,5 @@ export const config = {
     copyright: `© ${new Date().getFullYear()} Combo Café &amp; Gift Shop. All rights reserved.`,
   },
 };
+
+    
