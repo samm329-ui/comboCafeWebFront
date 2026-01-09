@@ -92,6 +92,8 @@ const ProductCard = ({ item }: { item: Product }) => {
   }
 
   const discount = getDiscount();
+  const isStartingAt = item.price && item.price.toLowerCase().includes('starting at');
+  const displayPrice = isStartingAt ? item.price.replace(/starting at/i, '').trim() : item.price;
 
   return (
     <Card className="overflow-hidden group border-0 shadow-lg dark:shadow-black/20 hover:shadow-xl transition-shadow duration-300 rounded-lg">
@@ -112,8 +114,9 @@ const ProductCard = ({ item }: { item: Product }) => {
             {item.description && <p className="text-muted-foreground font-body text-xs line-clamp-1 h-4">{item.description}</p>}
         </div>
         <div className="mt-1.5">
+            {isStartingAt && <p className="text-muted-foreground text-xs">Starting at</p>}
             <div className="flex items-baseline gap-2">
-                <p className="text-primary font-bold text-sm">{item.price}</p>
+                <p className="text-primary font-bold text-sm">{displayPrice}</p>
                 {item.originalPrice && <p className="text-muted-foreground line-through text-xs">{item.originalPrice}</p>}
             </div>
             {discount && <p className="text-xs text-green-600 font-semibold">Save Rs{discount.saved.toFixed(0)}</p>}
