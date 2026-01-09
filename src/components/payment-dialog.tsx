@@ -38,7 +38,7 @@ export function PaymentDialog({ isOpen, onClose, onConfirm }: PaymentDialogProps
         <div className="flex flex-col items-center gap-6 py-4">
           <div className="relative w-48 h-48 sm:w-56 sm:h-56">
             <Image
-              src="/qr-code.png"
+              src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/qr/WhatsApp%20Image%202026-01-09%20at%2010.03.14.jpeg"
               alt="Payment QR Code"
               fill
               className="object-contain rounded-md border"
