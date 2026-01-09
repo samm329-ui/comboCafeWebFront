@@ -17,7 +17,7 @@ type BottomNavProps = {
 const navItems = [
   { id: 'home', label: 'Home', icon: Home },
   { id: 'offerings', label: 'Categories', icon: LayoutGrid },
-  { id: 'gifts-gallery', label: 'Gifts', icon: Gift },
+  { id: 'gifts-gallery', label: 'Gift Gallery', icon: Gift },
   { id: 'bestsellers', label: 'Best Sellers', icon: Star },
   { id: 'menu', label: 'Menu', icon: BookOpen },
 ];
