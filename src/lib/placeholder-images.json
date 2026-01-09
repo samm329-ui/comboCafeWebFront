@@ -107,6 +107,42 @@
       "description": "A yummy cupcake.",
       "imageUrl": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/cup%20cake%2055.jpeg",
       "imageHint": "cupcake"
+    },
+    {
+      "id": "espresso",
+      "description": "A strong, concentrated shot of pure coffee.",
+      "imageUrl": "https://images.unsplash.com/photo-1676689082818-bc4fed83bad3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "espresso shot"
+    },
+    {
+      "id": "americano",
+      "description": "Espresso diluted with hot water for a milder flavor.",
+      "imageUrl": "https://images.unsplash.com/photo-1669872484166-e11b9638b50e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "americano coffee"
+    },
+    {
+      "id": "cappuccino",
+      "description": "The perfect balance of espresso, steamed milk, and foam.",
+      "imageUrl": "https://images.unsplash.com/photo-1718267050132-2f3126e1e57e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "cappuccino art"
+    },
+    {
+      "id": "caffe-latte",
+      "description": "A creamier option with more steamed milk than a cappuccino.",
+      "imageUrl": "https://images.unsplash.com/photo-1729364983489-d4d569978fd7?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "latte art"
+    },
+    {
+      "id": "mocha",
+      "description": "A delightful mix of chocolate, espresso, and steamed milk.",
+      "imageUrl": "https://images.unsplash.com/photo-1592663533909-f75fe1ae99a4?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "mocha coffee"
+    },
+    {
+      "id": "hot-chocolate",
+      "description": "Rich, creamy, and comforting, made with real chocolate.",
+      "imageUrl": "https://images.unsplash.com/photo-1637572815755-c4b80092dce1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "hot chocolate"
     }
   ]
 }

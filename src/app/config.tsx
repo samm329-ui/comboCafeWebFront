@@ -1,3 +1,4 @@
+
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Facebook, Instagram, X } from "lucide-react";
 
@@ -179,12 +180,12 @@ export const config = {
       "Beverages": {
         "Hot Beverages": {
             items: [
-                { name: "Espresso", description: "A strong, concentrated shot of pure coffee.", price: "Rs80", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
-                { name: "Americano", description: "Espresso diluted with hot water for a milder flavor.", price: "Rs100", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
-                { name: "Cappuccino", description: "The perfect balance of espresso, steamed milk, and foam.", price: "Rs120", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
-                { name: "Caffè Latte", description: "A creamier option with more steamed milk than a cappuccino.", price: "Rs130", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
-                { name: "Mocha", description: "A delightful mix of chocolate, espresso, and steamed milk.", price: "Rs140", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
-                { name: "Hot Chocolate", description: "Rich, creamy, and comforting, made with real chocolate.", price: "Rs120", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
+                { name: "Espresso", description: "A strong, concentrated shot of pure coffee.", price: "Rs80", imageUrl: findImage('espresso'), imageHint: findImageHint('espresso') },
+                { name: "Americano", description: "Espresso diluted with hot water for a milder flavor.", price: "Rs100", imageUrl: findImage('americano'), imageHint: findImageHint('americano') },
+                { name: "Cappuccino", description: "The perfect balance of espresso, steamed milk, and foam.", price: "Rs120", imageUrl: findImage('cappuccino'), imageHint: findImageHint('cappuccino') },
+                { name: "Caffè Latte", description: "A creamier option with more steamed milk than a cappuccino.", price: "Rs130", imageUrl: findImage('caffe-latte'), imageHint: findImageHint('caffe-latte') },
+                { name: "Mocha", description: "A delightful mix of chocolate, espresso, and steamed milk.", price: "Rs140", imageUrl: findImage('mocha'), imageHint: findImageHint('mocha') },
+                { name: "Hot Chocolate", description: "Rich, creamy, and comforting, made with real chocolate.", price: "Rs120", imageUrl: findImage('hot-chocolate'), imageHint: findImageHint('hot-chocolate') },
             ]
         },
         "Cold Beverages": {
@@ -224,7 +225,7 @@ export const config = {
     { "url": "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/WhatsApp%20Image%202026-01-08%20at%2020.19.01.jpeg" }
   ],
   bestsellers: [
-    { name: "Cappuccino", tag: "Most Loved", description: "A classic blend of rich espresso, steamed milk, and a delicate layer of foam. It's the perfect pick-me-up at any time of day, loved for its balanced and comforting flavor.", imageUrl: findImage('specialty-coffee'), imageHint: findImageHint('specialty-coffee') },
+    { name: "Cappuccino", tag: "Most Loved", description: "A classic blend of rich espresso, steamed milk, and a delicate layer of foam. It's the perfect pick-me-up at any time of day, loved for its balanced and comforting flavor.", imageUrl: findImage('cappuccino'), imageHint: findImageHint('cappuccino') },
     { name: "Chocolate Cake", tag: "Top Pick", description: "Our decadent chocolate cake is a slice of heaven for any chocolate lover. Made with rich cocoa and a silky ganache, it's an unforgettable indulgent experience.", imageUrl: findImage('chocolate-cake'), imageHint: findImageHint('chocolate-cake') },
     { name: "Cold Coffee", tag: "Fan Favorite", description: "A refreshing and creamy cold coffee to cool you down on a hot day. It's a sweet, smooth, and energizing treat that has become a customer favorite.", imageUrl: findImage('healthy-salads'), imageHint: findImageHint('healthy-salads') },
     { name: "Cake + Flower Combo", tag: "Perfect Gift", description: "The perfect combination of a delicious cake and a beautiful bouquet. This thoughtful gift is ideal for birthdays, anniversaries, or just to make someone's day special.", imageUrl: findImage('gift-combos'), imageHint: findImageHint('gift-combos') },
