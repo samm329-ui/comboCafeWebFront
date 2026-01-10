@@ -16,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [heroAccentColor, setHeroAccentColor] = useState(config.hero.categories[0].accentColor);
+  const [accentColor, setAccentColor] = useState(config.hero.categories[0].accentColor);
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -30,7 +30,7 @@ export default function RootLayout({
       </head>
       <body 
         className="font-body"
-        style={{ '--hero-accent-color': heroAccentColor } as React.CSSProperties}
+        style={{ '--hero-accent-color': accentColor } as React.CSSProperties}
       >
         <ThemeProvider
           attribute="class"
@@ -38,7 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CartProvider>
-            <AccentColorProvider initialColor={heroAccentColor} onSetColor={setHeroAccentColor}>
+            <AccentColorProvider>
               {children}
               <Toaster />
             </AccentColorProvider>

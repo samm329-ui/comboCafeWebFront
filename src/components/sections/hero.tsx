@@ -19,7 +19,7 @@ export default function Hero({ onExplore }: HeroProps) {
   const [isChanging, setIsChanging] = useState(false);
   const [parallaxStyle, setParallaxStyle] = useState<React.CSSProperties>({});
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const { setAccentColor, displayColor } = useAccentColor();
+  const { setAccentColor, accentColor } = useAccentColor();
   
   const currentCategory = config.hero.categories[currentCategoryIndex];
 
@@ -89,7 +89,7 @@ export default function Hero({ onExplore }: HeroProps) {
         size="sm" 
         onClick={() => onExplore(currentCategory.id as OfferingCategory)} 
         className="font-semibold shadow-lg hover:shadow-xl transition-shadow md:h-11 md:rounded-md md:px-8"
-        style={{ backgroundColor: displayColor }}
+        style={{ backgroundColor: accentColor }}
     >
       {config.hero.primaryCta.text}
     </Button>

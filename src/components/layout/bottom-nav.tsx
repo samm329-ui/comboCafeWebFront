@@ -25,7 +25,7 @@ const navItems = [
 export default function BottomNav({ onNavSelect }: BottomNavProps) {
   const [activeSection, setActiveSection] = useState('home');
   const { cart } = useCart();
-  const { displayColor } = useAccentColor();
+  const { accentColor } = useAccentColor();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,7 +65,7 @@ export default function BottomNav({ onNavSelect }: BottomNavProps) {
                 'flex flex-col items-center justify-center text-muted-foreground transition-colors duration-200 text-[10px] leading-tight w-14',
                 isActive ? 'text-primary' : ''
               )}
-               style={isActive ? { color: displayColor } : {}}
+               style={isActive ? { color: accentColor } : {}}
             >
               <item.icon className="h-5 w-5 mb-0.5" />
               <span className="font-medium">{item.label}</span>

@@ -37,7 +37,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
   const [isSticky, setSticky] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { cart } = useCart();
-  const { displayColor } = useAccentColor();
+  const { accentColor } = useAccentColor();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,7 +87,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
                     isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
                   )}
                 >
-                   <span style={isActive ? { color: displayColor } : {}}>{link.label}</span>
+                   <span style={isActive ? { color: accentColor } : {}}>{link.label}</span>
                 </button>
               </SheetClose>
               <div className="pl-8">
@@ -117,7 +117,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
                   isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
                 )}
               >
-                <span style={isActive ? { color: displayColor } : {}}>{link.label}</span> <ChevronDown className="h-4 w-4" />
+                <span style={isActive ? { color: accentColor } : {}}>{link.label}</span> <ChevronDown className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
@@ -141,7 +141,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
             isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
           )}
         >
-          <span style={isActive ? { color: displayColor } : {}}>{link.label}</span>
+          <span style={isActive ? { color: accentColor } : {}}>{link.label}</span>
         </Comp>
       );
     })
@@ -192,7 +192,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
         <button 
           onClick={handleBrandClick} 
           className="text-xl font-headline font-bold transition-colors duration-300"
-          style={{ color: displayColor }}
+          style={{ color: accentColor }}
         >
           {config.brand.name}
         </button>
@@ -221,7 +221,7 @@ export default function Header({ onNavSelect }: HeaderProps) {
             <SheetContent side="right" className="w-[80vw]">
               <div className="flex flex-col h-full">
                 <div className="py-4 border-b">
-                  <span className="text-xl font-headline font-bold text-primary px-4" style={{ color: displayColor }}>
+                  <span className="text-xl font-headline font-bold text-primary px-4" style={{ color: accentColor }}>
                     {config.brand.name}
                   </span>
                 </div>

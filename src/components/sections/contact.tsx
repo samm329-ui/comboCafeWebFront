@@ -10,7 +10,7 @@ import { useAccentColor } from '@/context/accent-color-provider';
 import { cn } from '@/lib/utils';
 
 export default function Contact() {
-  const { displayColor } = useAccentColor();
+  const { accentColor } = useAccentColor();
   const [shopStatus, setShopStatus] = useState<'loading' | 'open' | 'closed'>('loading');
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Contact() {
                 <ul className="space-y-6">
                     <li className="flex items-center justify-between gap-4">
                         <div className='flex items-start gap-4'>
-                            <MapPin className="h-6 w-6 mt-1 flex-shrink-0" style={{ color: displayColor }} />
+                            <MapPin className="h-6 w-6 mt-1 flex-shrink-0" style={{ color: accentColor }} />
                             <div>
                                 <h4 className="font-bold text-lg">Our Location</h4>
                                 <p className="text-muted-foreground text-sm">Find us on the map</p>
@@ -76,7 +76,7 @@ export default function Contact() {
                     </li>
                      <li className="flex items-center justify-between gap-4">
                         <div className='flex items-start gap-4'>
-                            <Phone className="h-6 w-6 mt-1 flex-shrink-0" style={{ color: displayColor }} />
+                            <Phone className="h-6 w-6 mt-1 flex-shrink-0" style={{ color: accentColor }} />
                             <div>
                                 <h4 className="font-bold text-lg">Phone</h4>
                                 <p className="text-muted-foreground text-sm">Give us a call</p>
@@ -88,7 +88,7 @@ export default function Contact() {
                     </li>
                      <li className="flex items-center justify-between gap-4">
                         <div className='flex items-start gap-4'>
-                            <Mail className="h-6 w-6 mt-1 flex-shrink-0" style={{ color: displayColor }} />
+                            <Mail className="h-6 w-6 mt-1 flex-shrink-0" style={{ color: accentColor }} />
                             <div>
                                 <h4 className="font-bold text-lg">Email</h4>
                                 <p className="text-muted-foreground text-sm">Send us a message</p>
@@ -100,7 +100,7 @@ export default function Contact() {
                     </li>
                      <li className="flex items-center justify-between gap-4">
                         <div className='flex items-start gap-4'>
-                            <Clock className="h-6 w-6 mt-1 flex-shrink-0" style={{ color: displayColor }} />
+                            <Clock className="h-6 w-6 mt-1 flex-shrink-0" style={{ color: accentColor }} />
                             <div>
                                 <h4 className="font-bold text-lg">Opening Hours</h4>
                                 <p className="text-muted-foreground text-sm">{config.contact.hours}</p>

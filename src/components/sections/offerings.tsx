@@ -197,18 +197,18 @@ const SubCategoryGrid = ({ children }: { children: React.ReactNode }) => (
 
 
 const Breadcrumbs = ({ path, onNavigate }: { path: string[], onNavigate: (index: number) => void }) => {
-    const { displayColor } = useAccentColor();
+    const { accentColor } = useAccentColor();
     if (path.length === 0) return null;
     
     return (
         <div className="mb-8 flex items-center flex-wrap gap-2 text-sm text-muted-foreground">
-            <Button variant="link" className="p-0 h-auto" onClick={() => onNavigate(-1)} style={{ color: displayColor }}>Home</Button>
+            <Button variant="link" className="p-0 h-auto" onClick={() => onNavigate(-1)} style={{ color: accentColor }}>Home</Button>
             <ChevronRight className="h-4 w-4" />
             {path.map((item, index) => (
                 <React.Fragment key={item}>
                     {index < path.length - 1 ? (
                         <>
-                            <Button variant="link" className="p-0 h-auto" onClick={() => onNavigate(index)} style={{ color: displayColor }}>
+                            <Button variant="link" className="p-0 h-auto" onClick={() => onNavigate(index)} style={{ color: accentColor }}>
                                 {item}
                             </Button>
                             <ChevronRight className="h-4 w-4" />
