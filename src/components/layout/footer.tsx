@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
 
         {/* Social and Payments */}
-        <div className="mt-12 py-6 border-t flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="mt-12 py-6 border-t flex flex-col md:flex-row justify-center items-center gap-6">
            <div className="flex items-center gap-4">
              <span className="text-sm font-medium">Follow Us:</span>
              <div className="flex items-center gap-3">
@@ -71,12 +71,6 @@ export default function Footer() {
                 </a>
               ))}
              </div>
-           </div>
-           <div className="flex items-center gap-4">
-            <span className="text-sm font-medium">We Accept:</span>
-             <div className="relative h-6 w-48">
-              <Image src={config.footer.paymentIconsUrl} alt="Payment methods" layout="fill" objectFit="contain" />
-            </div>
            </div>
         </div>
       </div>
