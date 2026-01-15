@@ -10,14 +10,9 @@ export const config = {
     },
     logoUrl: `https://picsum.photos/seed/brand-logo/180/40`,
     navLinks: [
-      { id: "birthday", label: "Birthday", href: "#" },
-      { id: "anniversary", label: "Anniversary", href: "#" },
-      { id: "cakes", label: "Cakes", href: "#" },
-      { id: "flowers", label: "Flowers", href: "#" },
-      { id: "plants", label: "Plants", href: "#" },
-      { id: "gifts", label: "Gifts", href: "#" },
-      { id: "personalised", label: "Personalised", href: "#" },
-      { id: "combos", label: "Combos", href: "#" },
+      { id: "cakes", label: "Cakes", href: "#best-selling-cakes" },
+      { id: "gifts", label: "Gifts", href: "/gifts" },
+      { id: "food", label: "Food", href: "#" },
     ],
   },
   hero: {
@@ -133,3 +128,5 @@ export const config = {
     }
   }
 };
+
+    
