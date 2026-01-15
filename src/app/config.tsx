@@ -50,49 +50,19 @@ export const config = {
       { id: "3", name: "Sweet Butterscotch Cake", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/butter%20scotch%20400.jpeg", description: "Rich with crunchy butterscotch bits." },
       { id: "4", name: "Choco Blush Cake", price: "500", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20blush%20500.jpeg", description: "A beautiful and delicious chocolate creation.", badge: "PREMIUM" },
     ],
-    birthdaySpecial: [
-      { id: "5", name: "Personalised Birthday Mug", price: "349", imageUrl: `${supabaseUrl}/prod-bday-1.jpg`, description: "A custom mug for a personal touch." },
-      { id: "6", name: "Elegant Birthday Flower Bouquet", price: "899", imageUrl: `${supabaseUrl}/prod-bday-2.jpg`, description: "Fresh blooms to celebrate their day.", badge: "BESTSELLER" },
-      { id: "7", name: "Birthday Explosion Box", price: "799", imageUrl: `${supabaseUrl}/prod-bday-3.jpg`, description: "A surprise in every layer.", badge: "NEW" },
-      { id: "8", name: "Zodiac Sign Hamper", price: "1299", imageUrl: `${supabaseUrl}/prod-bday-4.jpg`, description: "A gift tailored to their star sign." },
+    customGiftsMugs: [
+      { id: "cg1", name: "Customized White Mug", price: "249", imageUrl: "https://picsum.photos/seed/mug1/400/400", description: "A classic white mug, personalized for you." },
+      { id: "cg2", name: "Customized Colour Mug", price: "280", imageUrl: "https://picsum.photos/seed/mug2/400/400", description: "Add a splash of color to your daily coffee." },
+      { id: "cg3", name: "Customized Black Mug", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/black%20mug%20330.jpeg", description: "A sleek and stylish personalized black mug." },
+      { id: "cg4", name: "Magic Mug", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/magic-mug-399.jpg", description: "Pour in a hot drink and watch your image appear!" },
+      { id: "cg5", name: "Customized Cushion", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hero%20images/ChatGPT%20Image%20Jan%2015,%202026,%2011_24_37%20PM.png", description: "A soft, personalized cushion for your home." },
     ],
-    anniversaryGifts: [
-      { id: "9", name: "Forever Rose in Glass Dome", price: "1499", imageUrl: `${supabaseUrl}/prod-anni-1.jpg`, description: "An everlasting symbol of your love.", badge: "PREMIUM" },
-      { id: "10", name: "Personalised Couple Caricature", price: "999", imageUrl: `${supabaseUrl}/prod-anni-2.jpg`, description: "A fun and quirky keepsake." },
-      { id: "11", name: "Heart-Shaped Red Velvet Cake", price: "749", imageUrl: `${supabaseUrl}/prod-anni-3.jpg`, description: "A romantic and delicious gesture." },
-      { id: "12", name: "Anniversary Wine Glasses Set", price: "1199", imageUrl: `${supabaseUrl}/prod-anni-4.jpg`, description: "Toast to your years together." },
-    ]
-  },
-  occasionTabs: {
-    title: "Gifts by Occasion",
-    tabs: [
-      { id: "for-her", label: "For Her" },
-      { id: "for-him", label: "For Him" },
-      { id: "for-kids", label: "For Kids" },
-      { id: "for-parents", label: "For Parents" },
+    customGiftsFrames: [
+      { id: "cf1", name: "Customized Normal Frame (8x12)", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/customized-photo-frame-350.jpg", description: "Frame your favorite memories in a classic 8x12 frame." },
+      { id: "cf2", name: "Customized LED Frame (8x12)", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-frame-800.jpg", description: "Light up your photos with a stunning LED frame." },
+      { id: "cf3", name: "Customized LED Frame (12x18)", price: "799", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-premium-frame-650.jpg", description: "A larger LED frame for your most cherished moments." },
+      { id: "cf4", name: "Heart/Round Mirror Frame", price: "349", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-mirror-350.jpg", description: "A unique and stylish mirror frame for your pictures." },
     ],
-    products: {
-      "for-her": [
-        { id: "13", name: "Jewellery Box", price: "899", imageUrl: `${supabaseUrl}/prod-her-1.jpg`, description: "An elegant box for her treasures." },
-        { id: "14", name: "Scented Candle Set", price: "699", imageUrl: `${supabaseUrl}/prod-her-2.jpg`, description: "Aromas to relax and soothe." },
-        { id: "15", name: "Luxury Spa Hamper", price: "1599", imageUrl: `${supabaseUrl}/prod-her-3.jpg`, description: "A pampering spa experience at home." },
-        { id: "16", name: "Personalised Photo Frame", price: "499", imageUrl: `${supabaseUrl}/prod-her-4.jpg`, description: "Capture a cherished memory." },
-      ],
-      "for-him": [
-        { id: "17", name: "Leather Wallet & Belt Combo", price: "1299", imageUrl: `${supabaseUrl}/prod-him-1.jpg`, description: "A classic and stylish accessory set." },
-        { id: "18", name: "Grooming Kit", price: "999", imageUrl: `${supabaseUrl}/prod-him-2.jpg`, description: "Everything he needs to look his best." },
-        { id: "19", name: "Whiskey Decanter Set", price: "2499", imageUrl: `${supabaseUrl}/prod-him-3.jpg`, description: "For the distinguished gentleman." },
-        { id: "20", name: "Smart Watch", price: "3499", imageUrl: `${supabaseUrl}/prod-him-4.jpg`, description: "Stay connected in style." },
-      ],
-      "for-kids": [
-        { id: "21", name: "Plush Toy", price: "599", imageUrl: `${supabaseUrl}/prod-kids-1.jpg`, description: "A cuddly friend for your little one." },
-        { id: "22", name: "Remote Control Car", price: "1199", imageUrl: `${supabaseUrl}/prod-kids-2.jpg`, description: "Hours of racing fun." },
-      ],
-      "for-parents": [
-         { id: "23", name: "Personalised Mugs", price: "699", imageUrl: `${supabaseUrl}/prod-parents-1.jpg`, description: "A daily reminder of your love." },
-         { id: "24", name: "Indoor Plant", price: "799", imageUrl: `${supabaseUrl}/prod-parents-2.jpg`, description: "A touch of green to brighten their home." },
-      ]
-    },
   },
   paymentBanners: {
     partners: { imageUrl: `${supabaseUrl}/payment-partners.png`, alt: "Payment partners" },
@@ -110,28 +80,19 @@ export const config = {
   },
   collections: {
     flowers: [
-        { title: "Roses", imageUrl: "https://images.unsplash.com/photo-1518621736915-f3b17a1d02b2?w=500&auto=format&fit=crop" },
-        { title: "Lilies", imageUrl: "https://images.unsplash.com/photo-1502978379013-094950a51928?w=500&auto=format&fit=crop" },
-        { title: "Carnations", imageUrl: "https://images.unsplash.com/photo-1600851893991-c75f32187d97?w=500&auto=format&fit=crop" },
-        { title: "Orchids", imageUrl: "https://images.unsplash.com/photo-1519323719453-7313a1e50e94?w=500&auto=format&fit=crop" },
-        { title: "Mixed Flowers", imageUrl: "https://images.unsplash.com/photo-1533616688484-a461e5a6c387?w=500&auto=format&fit=crop" },
+      { title: "Roses", imageUrl: "https://images.unsplash.com/photo-1518621736915-f3b17a1d02b2?w=500&auto=format&fit=crop" },
+      { title: "Lilies", imageUrl: "https://images.unsplash.com/photo-1502978379013-094950a51928?w=500&auto=format&fit=crop" },
+      { title: "Carnations", imageUrl: "https://images.unsplash.com/photo-1600851893991-c75f32187d97?w=500&auto=format&fit=crop" },
+      { title: "Orchids", imageUrl: "https://images.unsplash.com/photo-1519323719453-7313a1e50e94?w=500&auto=format&fit=crop" },
+      { title: "Mixed Flowers", imageUrl: "https://images.unsplash.com/photo-1533616688484-a461e5a6c387?w=500&auto=format&fit=crop" },
     ],
     cakes: [
-      { id: "25", title: "Choco Cafe Cake", description: "A rich coffee and chocolate blend.", price: "430", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20cafe%20430%20.jpeg" },
-      { id: "26", title: "Choco Crunch Cake", description: "A crunchy, chocolatey delight.", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20crunch%20400.jpeg" },
-      { id: "27", title: "Choco Heart Cake", description: "A lovely heart-shaped chocolate cake.", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20heart%20550.jpeg" },
-      { id: "28", title: "Choco KitKat Cake", description: "Loaded with delicious KitKat bars.", price: "480", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20kitkat%20480.jpeg" },
-      { id: "29", title: "Choco Oreo Blush Cake", description: "A beautiful blend of Oreo and chocolate.", price: "450", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20oreo%20blush%20450%20.jpeg" },
-      { id: "30", title: "Doll Cake", description: "A beautiful doll-themed cake for a princess.", price: "800", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/doll%20cake%20800.jpeg" },
-      { id: "31", title: "Doraemon Cake", description: "A fun cake for fans of the beloved character.", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/doraemon%20400.jpeg" },
-      { id: "32", title: "Mango Delight Cake", description: "A refreshing and fruity mango treat.", price: "450", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/mango%20delight%20450.jpeg" },
-      { id: "33", title: "Pineapple Cake", description: "A classic, light, and tangy pineapple cake.", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/pineapple%20350.jpeg" },
-      { id: "34", title: "Christmas Cake", description: "A festive cake to celebrate the season.", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/christmas%20cake%20400.jpeg" },
-      { id: "35", title: "Choco Vanilla Cake", description: "The perfect blend of chocolate and vanilla.", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20vanilla%20350%20.jpeg" },
-      { id: "36", title: "Yummy Butterscotch", description: "A buttery and sweet delight for all ages.", price: "380", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/yummy%20butterscotch%20380%20.jpeg" },
-      { id: "37", title: "Pure Choco Cake", description: "For the ultimate chocolate lover.", price: "450", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/pure%20choco%20450.jpeg" },
-      { id: "38", title: "White Forest Cake", description: "A sweet and creamy white chocolate version of a classic.", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/white%20forest%20400.jpeg" },
-      { id: "39", title: "Vanilla Heart Cake", description: "A lovely heart-shaped vanilla cake for someone special.", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/vanilla%20heart%20400.jpeg" }
+        { id: "dc1", title: "Choco Cafe Cake", description: "A rich coffee and chocolate blend.", price: "430", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20cafe%20430%20.jpeg" },
+        { id: "dc2", title: "Choco Crunch Cake", description: "A crunchy, chocolatey delight.", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20crunch%20400.jpeg" },
+        { id: "dc3", title: "Choco Heart Cake", description: "A lovely heart-shaped chocolate cake.", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20heart%20550.jpeg" },
+        { id: "dc4", title: "Choco KitKat Cake", description: "Loaded with delicious KitKat bars.", price: "480", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20kitkat%20480.jpeg" },
+        { id: "dc5", title: "Choco Oreo Blush Cake", description: "A beautiful blend of Oreo and chocolate.", price: "450", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20oreo%20blush%20450%20.jpeg" },
+        { id: "dc6", title: "Doll Cake", description: "A beautiful doll-themed cake for a princess.", price: "800", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/doll%20cake%20800.jpeg" },
     ]
   },
   footer: {

@@ -5,7 +5,6 @@ import Hero from '@/components/sections/hero';
 import IconCategoryStrip from '@/components/sections/icon-category-strip';
 import ServiceStrip from '@/components/sections/service-strip';
 import ProductSection from '@/components/sections/product-section';
-import OccasionTabs from '@/components/sections/occasion-tabs';
 import PaymentOfferBanners from '@/components/sections/payment-offer-banners';
 import GiftFinder from '@/components/sections/gift-finder';
 import HorizontalCollection from '@/components/sections/horizontal-collection';
@@ -24,13 +23,17 @@ export default function Home() {
           subtitle="Loved by everyone"
           items={config.productSections.bestSellingCakes}
         />
-        <OccasionTabs />
         <PaymentOfferBanners />
         <ProductSection 
-          title="Anniversary Gifts"
-          subtitle="Celebrate your journey of love"
-          items={config.productSections.anniversaryGifts}
+          title="Personalised Mugs & Cushions"
+          subtitle="Add a personal touch to your gifts"
+          items={config.productSections.customGiftsMugs}
           bgColor="bg-accent"
+        />
+        <ProductSection 
+          title="Custom Photo Frames"
+          subtitle="Frame your cherished memories"
+          items={config.productSections.customGiftsFrames}
         />
         <GiftFinder />
         <HorizontalCollection 
