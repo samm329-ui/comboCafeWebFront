@@ -13,6 +13,7 @@ export const config = {
       { id: "cakes", label: "Cakes", href: "#best-selling-cakes" },
       { id: "gifts", label: "Gifts", href: "/gifts" },
       { id: "food", label: "Food", href: "#" },
+      { id: "our-menu", label: "Our Menu", href: "#" },
     ],
   },
   hero: {
@@ -128,5 +129,7 @@ export const config = {
     }
   }
 };
+
+    
 
     
