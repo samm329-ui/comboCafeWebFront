@@ -1,3 +1,4 @@
+
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import Image from 'next/image';
@@ -47,12 +48,12 @@ const CollectionCard = ({ item }: { item: CollectionItem }) => {
             )}
         </CardContent>
         <div className="p-3 pt-0 bg-white space-y-2">
-            <Button asChild variant="secondary" className="w-full text-xs" size="sm">
+            <Button asChild variant="secondary" className="w-full text-xs text-center" size="sm">
                 <a href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`} target="_blank" rel="noopener noreferrer">
                     Order on WhatsApp
                 </a>
             </Button>
-            <Button asChild variant="outline" className="w-full text-xs" size="sm">
+            <Button asChild variant="outline" className="w-full text-xs text-center" size="sm">
                 <a href={`tel:+${phoneNumber}`}>
                     Call to Order
                 </a>
