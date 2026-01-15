@@ -1,15 +1,20 @@
 
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { ChevronDown, MapPin, Search, ShoppingBag } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { ChevronDown, MapPin, Search, ShoppingBag, User } from 'lucide-react';
 import { config } from '@/app/config';
 import { useCart } from '@/context/cart-provider';
 import { Button } from '../ui/button';
 
 const TopUtilityBar = () => (
   <div className="bg-gray-100 text-gray-600 text-xs py-1.5">
-    <div className="container mx-auto flex justify-center items-center">
+    <div className="container mx-auto flex justify-between items-center">
+      <div className="flex gap-4">
+        <a href="#" className="hover:underline">Help</a>
+        <a href="#" className="hover:underline">Track Order</a>
+      </div>
       <p>{config.header.utilityBar.promoText}</p>
     </div>
   </div>
@@ -17,16 +22,26 @@ const TopUtilityBar = () => (
 
 const MainHeader = () => {
   const { cart } = useCart();
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
   return (
     <div className="bg-background border-b">
       <div className="container mx-auto flex items-center py-4 gap-8">
         {/* Logo */}
-        <a href="#" className="shrink-0">
+        <a href="/" className="shrink-0">
           <span className="text-xl font-bold text-gray-800">combo cafe and gift shop</span>
         </a>
         
         {/* Location & Search */}
-        <div className="flex-grow flex items-center border rounded-md">
+        <form onSubmit={handleSearchSubmit} className="flex-grow flex items-center border rounded-md">
           <div className="flex items-center p-2 border-r cursor-pointer hover:bg-gray-50">
             <MapPin className="h-5 w-5 text-gray-500" />
             <input 
@@ -41,15 +56,21 @@ const MainHeader = () => {
               type="text"
               placeholder="Search for gifts, cakes, flowers..."
               className="w-full bg-transparent focus:outline-none text-sm placeholder-gray-400"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <Button variant="ghost" size="icon" className="w-8 h-8">
+            <Button type="submit" variant="ghost" size="icon" className="w-8 h-8">
               <Search className="h-5 w-5 text-gray-400" />
             </Button>
           </div>
-        </div>
+        </form>
         
         {/* Action Icons */}
         <div className="flex items-center space-x-6">
+           <a href="#" className="flex flex-col items-center text-gray-600 hover:text-gray-900">
+            <User className="h-6 w-6" />
+            <span className="text-xs mt-1">Account</span>
+          </a>
           <a href="#" className="relative flex flex-col items-center text-gray-600 hover:text-gray-900">
             <ShoppingBag className="h-6 w-6" />
             <span className="text-xs mt-1">Cart</span>
