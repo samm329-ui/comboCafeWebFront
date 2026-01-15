@@ -5,7 +5,6 @@ import Hero from '@/components/sections/hero';
 import IconCategoryStrip from '@/components/sections/icon-category-strip';
 import ServiceStrip from '@/components/sections/service-strip';
 import ProductSection from '@/components/sections/product-section';
-import PaymentOfferBanners from '@/components/sections/payment-offer-banners';
 import GiftFinder from '@/components/sections/gift-finder';
 import HorizontalCollection from '@/components/sections/horizontal-collection';
 import { config } from './config';
@@ -23,7 +22,6 @@ export default function Home() {
           subtitle="Loved by everyone"
           items={config.productSections.bestSellingCakes}
         />
-        <PaymentOfferBanners />
         <ProductSection 
           title="Personalised Mugs & Cushions"
           subtitle="Add a personal touch to your gifts"
