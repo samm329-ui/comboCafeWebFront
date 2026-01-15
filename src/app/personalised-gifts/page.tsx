@@ -14,7 +14,7 @@ export default function PersonalisedGiftsPage() {
       <main className="bg-white">
         <div className="container mx-auto">
             <Button asChild variant="outline" className="my-6">
-                <Link href="/">
+                <Link href="/#personalised-mugs-cushions">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back
                 </Link>

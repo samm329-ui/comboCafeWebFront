@@ -18,11 +18,13 @@ export default function Home() {
         <IconCategoryStrip />
         <ServiceStrip />
         <ProductSection
+          id="best-selling-cakes"
           title="Best Selling Cakes"
           subtitle="Loved by everyone"
           items={config.productSections.bestSellingCakes}
         />
         <ProductSection 
+          id="top-gifts"
           title="Top Gifts"
           subtitle="A selection of our finest gift items"
           items={config.productSections.gifts.slice(0, 4)}
@@ -30,12 +32,14 @@ export default function Home() {
           viewAllLink="/gifts"
         />
         <ProductSection 
+          id="personalised-mugs-cushions"
           title="Personalised Mugs & Cushions"
           subtitle="Add a personal touch to your gifts"
           items={config.productSections.personalisedMugsAndCushions.slice(0, 4)}
           viewAllLink="/personalised-gifts"
         />
         <ProductSection 
+          id="personalised-frames"
           title="Personalised Frames"
           subtitle="Frame your cherished memories"
           items={config.productSections.personalisedFrames.slice(0, 4)}

@@ -19,6 +19,7 @@ type Product = {
 };
 
 type ProductSectionProps = {
+  id?: string;
   title: string;
   subtitle?: string;
   items: Product[];
@@ -70,9 +71,9 @@ const ProductCard = ({ item }: { item: Product }) => {
   );
 };
 
-export default function ProductSection({ title, subtitle, items, bgColor = 'bg-white', viewAllLink = "#", showViewAll = true }: ProductSectionProps) {
+export default function ProductSection({ id, title, subtitle, items, bgColor = 'bg-white', viewAllLink = "#", showViewAll = true }: ProductSectionProps) {
   return (
-    <section className={bgColor}>
+    <section id={id} className={bgColor}>
       <div className="container mx-auto">
         <div className="flex justify-between items-center mb-6">
           <div>
