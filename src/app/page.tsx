@@ -32,7 +32,8 @@ export default function Home() {
         <ProductSection 
           title="Personalised Mugs & Cushions"
           subtitle="Add a personal touch to your gifts"
-          items={config.productSections.personalisedMugsAndCushions}
+          items={config.productSections.personalisedMugsAndCushions.slice(0, 4)}
+          viewAllLink="/personalised-gifts"
         />
         <ProductSection 
           title="Personalised Frames"
