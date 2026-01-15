@@ -43,11 +43,6 @@ export default function Home() {
           title="Flower Collections"
           items={config.collections.flowers}
         />
-        <HorizontalCollection 
-          title="Delectable Cakes"
-          items={config.collections.cakes}
-          bgColor="bg-section-alternate"
-        />
       </main>
       <Footer />
     </>
