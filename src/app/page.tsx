@@ -46,10 +46,11 @@ export default function Home() {
           viewAllLink="/personalised-frames"
         />
         <GiftFinder />
-        <HorizontalCollection 
-          title="Flower Collections"
-          items={config.collections.flowers}
-          viewAllLink="#"
+        <ProductSection
+          title="Flowers & More"
+          subtitle="Fresh arrangements and thoughtful gifts"
+          items={config.productSections.flowerProducts}
+          showViewAll={false}
         />
         <HorizontalCollection 
           title="Delectable Cakes"

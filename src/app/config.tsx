@@ -139,6 +139,13 @@ export const config = {
         { id: "f12", name: "Chocolate Frappe", price: "160", imageUrl: `https://picsum.photos/seed/food12/400/400`, description: "A blended iced coffee drink with rich chocolate flavor." },
         { id: "f13", name: "Strawberry Milkshake", price: "150", imageUrl: `https://picsum.photos/seed/food13/400/400`, description: "A sweet and creamy shake made with fresh strawberries." }
     ],
+    flowerProducts: [
+      { id: "fp1", name: "Single Rose", price: "50", imageUrl: "https://picsum.photos/seed/flower1/400/400", description: "A single, elegant rose for a simple gesture." },
+      { id: "fp2", name: "Rose Bouquet", price: "299", imageUrl: "https://picsum.photos/seed/flower2/400/400", description: "A beautiful bouquet of fresh roses." },
+      { id: "fp3", name: "Mixed Flower Bouquet", price: "399", imageUrl: "https://picsum.photos/seed/flower3/400/400", description: "A vibrant mix of seasonal flowers." },
+      { id: "fp4", name: "Cake + Flower Combo", price: "699", imageUrl: "https://picsum.photos/seed/flower4/400/400", description: "The perfect combo for any celebration." },
+      { id: "fp5", name: "Gift Hampers", price: "499", imageUrl: "https://picsum.photos/seed/flower5/400/400", description: "Thoughtfully curated hampers for your loved ones." },
+    ],
     personalisedFrames: [
         { id: "pf1", name: "Customized Photo Frame (Normal)", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/customized-photo-frame-350.jpg", description: "A classic frame for your cherished photos." },
         { id: "pf2", name: "Normal Frame (8x12)", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/normal-frame-350.jpg", description: "Standard 8x12 inch photo frame." },
@@ -212,6 +219,3 @@ export const config = {
     }
   }
 };
-
-    
-    
