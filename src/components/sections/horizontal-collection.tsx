@@ -3,6 +3,7 @@ import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Link from 'next/link';
 
 type CollectionItem = {
   title: string;
@@ -20,7 +21,7 @@ type HorizontalCollectionProps = {
 const CollectionCard = ({ item }: { item: CollectionItem }) => (
   <Card className="overflow-hidden group border-0 rounded-lg">
     <CardContent className="p-0">
-      <a href="#" className="block">
+      <Link href="#" className="block">
         <div className="relative aspect-[4/5]">
           <Image 
             src={item.imageUrl} 
@@ -36,10 +37,10 @@ const CollectionCard = ({ item }: { item: CollectionItem }) => (
         </div>
         {item.price && (
           <div className="p-3 bg-white">
-            <p className="font-semibold text-gray-900 text-sm">{item.price}</p>
+            <p className="font-semibold text-gray-900 text-sm">{`Rs. ${item.price}`}</p>
           </div>
         )}
-      </a>
+      </Link>
     </CardContent>
   </Card>
 );
@@ -50,7 +51,9 @@ export default function HorizontalCollection({ title, items, bgColor = 'bg-white
       <div className="container mx-auto">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl font-semibold">{title}</h2>
-          <Button variant="outline">View All</Button>
+          <Button variant="outline" asChild>
+            <Link href="#">View All</Link>
+          </Button>
         </div>
         <Carousel
             opts={{
@@ -73,5 +76,3 @@ export default function HorizontalCollection({ title, items, bgColor = 'bg-white
     </section>
   );
 }
-
-    

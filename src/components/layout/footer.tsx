@@ -1,9 +1,11 @@
 
+"use client";
 import React from 'react';
 import { config } from '@/app/config';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Image from 'next/image';
+import { useToast } from '@/hooks/use-toast';
 
 const FooterLinkColumn = ({ title, links }: { title: string; links: { label: string; href: string }[] }) => (
   <div>
@@ -21,6 +23,20 @@ const FooterLinkColumn = ({ title, links }: { title: string; links: { label: str
 );
 
 export default function Footer() {
+  const { toast } = useToast();
+
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const email = e.currentTarget.email.value;
+    if (email) {
+      toast({
+        title: "Subscribed!",
+        description: `Thank you for subscribing, ${email}!`,
+      });
+      e.currentTarget.reset();
+    }
+  };
+
   return (
     <footer className="bg-section-alternate pt-12">
       <div className="container mx-auto">
@@ -32,10 +48,10 @@ export default function Footer() {
               {config.footer.about}
             </p>
             <h4 className="font-semibold text-gray-800 mb-4">Subscribe to our newsletter</h4>
-            <div className="flex gap-2">
-              <Input type="email" placeholder="Enter your email" className="bg-white" />
-              <Button>Subscribe</Button>
-            </div>
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <Input name="email" type="email" placeholder="Enter your email" className="bg-white" required />
+              <Button type="submit">Subscribe</Button>
+            </form>
           </div>
 
           {/* Link Columns */}
