@@ -43,7 +43,7 @@ const ProductCard = ({ item }: { item: Product }) => {
   return (
     <Card className="overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-300 border-0 rounded-lg flex flex-col">
       <CardContent className="p-0 flex-grow">
-        <Link href="#" className="flex flex-col h-full">
+        <Link href={`/search?q=${encodeURIComponent(item.name)}`} className="flex flex-col h-full">
           <div className="relative aspect-square">
             <Image 
               src={item.imageUrl} 
@@ -80,7 +80,7 @@ export default function ProductSection({ id, title, subtitle, items, bgColor = '
             <h2 className="text-3xl font-semibold">{title}</h2>
             {subtitle && <p className="text-md text-gray-500 mt-1">{subtitle}</p>}
           </div>
-           {showViewAll && <Button variant="outline" asChild>
+           {showViewAll && viewAllLink && <Button variant="outline" asChild>
             <Link href={viewAllLink}>View All</Link>
           </Button>}
         </div>

@@ -16,6 +16,7 @@ type HorizontalCollectionProps = {
   title: string;
   items: CollectionItem[];
   bgColor?: string;
+  viewAllLink?: string;
 };
 
 const CollectionCard = ({ item }: { item: CollectionItem }) => (
@@ -45,14 +46,14 @@ const CollectionCard = ({ item }: { item: CollectionItem }) => (
   </Card>
 );
 
-export default function HorizontalCollection({ title, items, bgColor = 'bg-white' }: HorizontalCollectionProps) {
+export default function HorizontalCollection({ title, items, bgColor = 'bg-white', viewAllLink = '#' }: HorizontalCollectionProps) {
   return (
     <section className={bgColor}>
       <div className="container mx-auto">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl font-semibold">{title}</h2>
           <Button variant="outline" asChild>
-            <Link href="#">View All</Link>
+            <Link href={viewAllLink}>View All</Link>
           </Button>
         </div>
         <Carousel

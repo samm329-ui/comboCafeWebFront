@@ -20,6 +20,7 @@ export default function Home() {
           title="Best Selling Cakes"
           subtitle="Loved by everyone"
           items={config.productSections.bestSellingCakes}
+          viewAllLink="/cakes"
         />
         <ProductSection 
           id="top-gifts"
@@ -48,11 +49,13 @@ export default function Home() {
         <HorizontalCollection 
           title="Flower Collections"
           items={config.collections.flowers}
+          viewAllLink="#"
         />
         <HorizontalCollection 
           title="Delectable Cakes"
           items={config.collections.cakes}
           bgColor="bg-section-alternate"
+          viewAllLink="/cakes"
         />
       </main>
       <Footer />
