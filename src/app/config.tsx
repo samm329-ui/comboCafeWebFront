@@ -214,7 +214,6 @@ export const config = {
     ],
     links: {
       help: [
-        { label: "Track Your Order", href: "#" },
         { label: "Contact Us", href: "#" },
         { label: "FAQs", href: "#" },
         { label: "Customer Reviews", href: "#" },
