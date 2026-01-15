@@ -48,12 +48,12 @@ const CollectionCard = ({ item }: { item: CollectionItem }) => {
             )}
         </CardContent>
         <div className="p-3 pt-0 bg-white space-y-2">
-            <Button asChild variant="secondary" className="w-full text-xs h-9">
+            <Button asChild variant="secondary" className="w-full text-xs" size="sm">
                 <a href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`} target="_blank" rel="noopener noreferrer">
                     <MessageSquare className="mr-2 h-4 w-4" /> Order on WhatsApp
                 </a>
             </Button>
-            <Button asChild variant="outline" className="w-full text-xs h-9">
+            <Button asChild variant="outline" className="w-full text-xs" size="sm">
                 <a href={`tel:+${phoneNumber}`}>
                     <Phone className="mr-2 h-4 w-4" /> Call to Order
                 </a>
