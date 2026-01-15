@@ -1,106 +1,59 @@
-# Combo Café & Gift Shop - Next.js Showcase
+# Ferns & Petals - E-commerce UI Clone
 
-This project is a fully-featured, production-ready website for a café and gift shop, built with Next.js, React, and Tailwind CSS. It serves as a comprehensive example of how to build a modern, responsive, and interactive e-commerce storefront.
+This project is a high-fidelity UI clone of a domestic e-commerce website, built with Next.js, React, and Tailwind CSS. It serves as a comprehensive example of a modern, multi-category online storefront.
 
 ## Key Features
 
-### 1. Fully Responsive & Mobile-First Design
-- **Core Technology:** Styled with Tailwind CSS using a utility-first approach for rapid and consistent UI development.
-- **Mobile Experience:** Features a dedicated bottom navigation bar (`src/components/layout/bottom-nav.tsx`) for easy access on mobile devices, ensuring a seamless user experience.
-- **Desktop Experience:** Utilizes a sticky header (`src/components/layout/header.tsx`) and multi-column grid layouts that adapt to larger screen sizes.
+### 1. Global Layout & Styling
+- **Desktop-First Design:** Optimized for a 1440px centered viewport.
+- **Color Palette:** A clean and soft color scheme with a white primary background, pastel section alternates (`#FFF7F1`, `#F9FAFB`), a soft peach primary accent, and an olive green secondary accent.
+- **Typography:** Uses the "Inter" font family for a clean, modern look across all text elements.
+- **Spacing System:** Adheres to a consistent spacing system for vertical rhythm and grid layouts.
 
-### 2. Interactive & Dynamic Hero Section
-- **Component:** `src/components/sections/hero.tsx`
-- **Functionality:** A full-screen hero that cycles through the main business categories (e.g., Cakes, Gifts, Food).
-- **Dynamic Theming:** The site's primary accent color changes dynamically based on the active category displayed in the hero section, powered by the `AccentColorProvider` (`src/context/accent-color-provider.tsx`).
-- **Effects:** Includes a subtle parallax scroll effect on the background image for a premium feel.
+### 2. Header & Navigation
+- **Top Utility Bar:** A slim bar at the very top for promotions and secondary links like "Help" and "Track Order".
+- **Main Header:** Features the brand logo, a central location selector combined with a large search bar, and user-centric icons for Account, Wishlist, and Cart.
+- **Sticky Category Navigation:** A horizontal, scrollable list of main product categories that remains visible at the top of the page as the user scrolls.
 
-### 3. Multi-Level Dynamic Product Catalog
-- **Component:** `src/components/sections/offerings.tsx`
-- **Data Source:** All product information, including categories, sub-categories, items, prices, and image URLs, is managed from a single configuration file: `src/app/config.tsx`.
-- **Hierarchical Navigation:** Users can drill down from main categories (e.g., "Food") to sub-categories (e.g., "Beverages") and even further (e.g., "Hot Beverages"), with smooth, animated transitions.
-- **Centralized Images:** Product images are mapped through `src/lib/placeholder-images.json`, making it easy to manage and update all images from one location.
+### 3. Interactive Page Sections
+- **Hero Carousel:** A full-width carousel for promotional banners, featuring autoplay and navigation controls.
+- **Icon Category Strip:** A quick-access strip with circular icons for major product categories, complete with a subtle hover animation.
+- **Domestic Service Strip:** Highlights key domestic delivery services like "Get Today" and "Midnight Delivery", explicitly excluding any international options.
+- **Standardized Product Sections:** Reusable modules for displaying products in a grid, each with a title, optional subtitle, and a "View All" link. Product cards feature a clean design with hover-zoom effects.
+- **Tabbed Sections:** Pill-style tabs (e.g., for Occasions) that dynamically filter and display different sets of products.
 
-### 4. Integrated Ordering and Payment Flow
-- **WhatsApp Ordering:** Instead of a traditional backend, the app facilitates ordering directly via WhatsApp.
-    - The **Order Form** (`src/components/order-form.tsx`) uses `react-hook-form` and `zod` for robust validation.
-    - On submission, it generates a pre-formatted WhatsApp message containing all order and delivery details.
-- **UPI Payment:**
-    - A **Payment Dialog** (`src/components/payment-dialog.tsx`) displays a QR code for payment via any UPI app.
-    - The user enters the 12-digit UPI transaction ID to confirm payment before the WhatsApp message is generated.
+### 4. Specialized UI Modules
+- **Payment & Offer Banners:** Dedicated banner sections to showcase domestic payment partners and promotional offers.
+- **Gift Finder:** An interactive module with a soft mint background designed to help users find the perfect gift through a series of filters.
+- **Horizontal Collections:** Image-first, horizontally scrollable carousels for showcasing curated collections like "Flower Collections" and "Delectable Cakes".
 
-### 5. Robust Shopping Cart
-- **State Management:** The cart state is managed globally using a React Context via `src/context/cart-provider.tsx`.
-- **Functionality:** Users can add items, view the cart in a slide-out sheet, remove items, and see the running total. The cart icon in the header and bottom nav displays a badge with the number of items.
+### 5. Domestic-Only Focus
+- **No International Elements:** The entire UI has been carefully crafted to represent a domestic-only business. All references to international shipping, country selectors, world maps, and foreign currencies have been completely removed.
+- **Relevant Content:** All sections, from the service strip to the footer, are tailored to a single-country operational model.
 
-### 6. Showcasing and Galleries
-- **Best Sellers:** A dedicated section (`src/components/sections/bestsellers.tsx`) to highlight popular products and drive sales.
-- **Image Carousels:** The Menu (`src/components/sections/menu.tsx`) and Gifts Gallery (`src/components/sections/gifts-gallery.tsx`) are presented in swipe-able carousels, using `embla-carousel-react`.
-
-### 7. Real-Time Shop Status
-- **Component:** `src/components/sections/contact.tsx`
-- **Functionality:** The contact section includes a badge that automatically indicates whether the shop is currently "Open" or "Closed". This logic runs client-side to check the current time against the business hours defined in `src/app/config.tsx`.
+### 6. Footer
+- **Comprehensive Links:** The footer is organized into logical columns for "Help & Support," "Business Solutions," and "Our Policies".
+- **Newsletter & Socials:** Includes a newsletter subscription form and links to social media profiles.
 
 ## Project Structure
 
 ```
 /src
 ├── app/
-│   ├── (legal)/
-│   │   ├── about/page.tsx       # About Us page
-│   │   ├── privacy-policy/page.tsx # Privacy Policy page
-│   │   └── terms-of-service/page.tsx # Terms of Service page
-│   ├── client-page.tsx        # Main client component orchestrating the page sections
-│   ├── config.tsx             # ★ THE MOST IMPORTANT FILE: All site data lives here
-│   ├── globals.css            # Global styles and Tailwind CSS theme variables
+│   ├── globals.css            # Global styles, Tailwind directives, and CSS variables
+│   ├── layout.tsx             # Root layout for the entire application
 │   └── page.tsx               # The main entry point for the home page
 │
 ├── components/
-│   ├── layout/                # Header, Footer, BottomNav
-│   ├── sections/              # Major page sections (Hero, Offerings, Contact, etc.)
-│   ├── ui/                    # Reusable ShadCN UI components (Button, Card, etc.)
-│   ├── cart.tsx               # The slide-out cart component
-│   ├── order-form.tsx         # The delivery details form
-│   └── payment-dialog.tsx     # The UPI QR code and transaction ID dialog
+│   ├── layout/                # Header and Footer components
+│   ├── sections/              # All major page sections (Hero, ProductSection, GiftFinder, etc.)
+│   └── ui/                    # Reusable ShadCN UI components (Button, Card, etc.)
 │
 ├── context/
-│   ├── accent-color-provider.tsx # Manages the dynamic theme accent color
-│   └── cart-provider.tsx      # Manages the global shopping cart state
+│   └── cart-provider.tsx      # Manages the global shopping cart state (if implemented)
 │
 └── lib/
-    ├── placeholder-images.json # Central repository for all image URLs and hints
-    ├── placeholder-images.ts  # Loader for the JSON data
     └── utils.ts               # Utility functions (e.g., `cn` for classnames)
 ```
 
-## How to Customize for Another Website
-
-To adapt this project for a different business, you only need to edit a few key files:
-
-### 1. Update Brand, Contact, and Content
-- **File:** `src/app/config.tsx`
-- **Actions:**
-    - Change `brand.name`.
-    - Update all contact details in `contact` (phone, email, address, map URL).
-    - Modify the text content for the `hero`, `finalCta`, `footer`, etc.
-
-### 2. Update Products and Categories
-- **File:** `src/app/config.tsx`
-- **Actions:**
-    - Modify the `offerings` object to reflect your own product structure. You can add, remove, or rename categories, sub-categories, and items.
-    - Update item properties: `name`, `description`, `price`, and `imageUrl`. The `imageUrl` should correspond to an ID in the placeholder JSON file.
-
-### 3. Update Images
-- **File:** `src/lib/placeholder-images.json`
-- **Actions:**
-    - To change an image, simply update the `imageUrl` for the corresponding `id`.
-    - To add a new image, create a new entry with a unique `id`, `description`, `imageUrl`, and a `imageHint` (for AI).
-    - Then, reference this new `id` in your `config.tsx` file.
-
-### 4. Update Theme and Styling
-- **File:** `src/app/globals.css`
-- **Actions:**
-    - Adjust the HSL values for `--background`, `--foreground`, and other CSS variables to match your brand's color palette.
-- **File:** `tailwind.config.ts`
-- **Actions:**
-    - Change the `fontFamily` to use different Google Fonts for body and headline text. Remember to update the font import link in `src/app/layout.tsx`.
+This project demonstrates a robust and scalable frontend architecture for a modern e-commerce platform, with a strong emphasis on cloning a specific UI design and tailoring it to a domestic market.

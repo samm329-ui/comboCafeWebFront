@@ -1,34 +1,67 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 240 10% 97%; /* #F5F7F8 */
-    --foreground: 224 8% 20%; /* #2E313D */
+    --background: 255 100% 100%; /* #FFFFFF */
+    --foreground: 220 13% 20%; /* #29313D, close to #1F2937 & #4B5563 */
     
-    --card: 240 10% 100%;
-    --card-foreground: 224 8% 20%;
-    --popover: 240 10% 100%;
-    --popover-foreground: 224 8% 20%;
+    --card: 255 100% 100%;
+    --card-foreground: 220 13% 20%;
     
-    --hero-accent-color: 48 100% 70%; /* Default to yellow */
-    --primary: var(--hero-accent-color);
-    --primary-foreground: 240 10% 10%; /* Darker text for light primary colors */
+    --popover: 255 100% 100%;
+    --popover-foreground: 220 13% 20%;
     
-    --secondary: 240 5% 94%;
-    --secondary-foreground: 224 8% 20%;
-    --muted: 240 5% 94%;
-    --muted-foreground: 240 4% 46%;
-    --accent: 240 5% 94%;
-    --accent-foreground: 224 8% 20%;
+    --primary: 26 100% 85%; /* #FFCDB2 - Soft Peach */
+    --primary-foreground: 220 13% 20%;
+    
+    --secondary: 80 25% 48%; /* #8A9A5B - Muted Olive Green */
+    --secondary-foreground: 255 100% 100%;
+    
+    --muted: 210 17% 95%;   /* #F0F3F5, close to #9CA3AF for foreground text */
+    --muted-foreground: 215 14% 65%; /* #9CA3AF */
+    
+    --accent: 28 100% 97%;   /* #FFF7F1 - Section Alternate 1 */
+    --accent-foreground: 220 13% 20%;
+
+    --section-alternate: 210 20% 98%; /* #F9FAFB - Section Alternate 2 */
+    
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5% 90%;
-    --input: 240 5% 90%;
-    --ring: var(--hero-accent-color);
-    --radius: 0.75rem;
+    
+    --border: 220 13% 91%; /* #E4E7EB */
+    --input: 220 13% 91%;
+    --ring: 26 100% 85%;
+    
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* All variables are the same as light mode to enforce no dark mode */
+    --background: 255 100% 100%;
+    --foreground: 220 13% 20%;
+    --card: 255 100% 100%;
+    --card-foreground: 220 13% 20%;
+    --popover: 255 100% 100%;
+    --popover-foreground: 220 13% 20%;
+    --primary: 26 100% 85%;
+    --primary-foreground: 220 13% 20%;
+    --secondary: 80 25% 48%;
+    --secondary-foreground: 255 100% 100%;
+    --muted: 210 17% 95%;
+    --muted-foreground: 215 14% 65%;
+    --accent: 28 100% 97%;
+    --accent-foreground: 220 13% 20%;
+    --section-alternate: 210 20% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 26 100% 85%;
   }
 }
 
@@ -40,25 +73,13 @@
     @apply scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-sans;
+    color: #4B5563;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: #1F2937;
   }
   section {
-    @apply scroll-mt-20;
+    @apply py-12; /* 48px */
   }
-}
-
-@layer utilities {
-    @keyframes fade-in-down {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    .animate-fade-in-down {
-        animation: fade-in-down 0.5s ease-out forwards;
-    }
 }

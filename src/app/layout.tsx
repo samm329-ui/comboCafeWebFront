@@ -1,47 +1,36 @@
 
-"use client";
-
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { config } from './config.tsx';
 import { ThemeProvider } from '@/components/theme-provider';
 import { CartProvider } from '@/context/cart-provider';
-import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { AccentColorProvider } from '@/context/accent-color-provider';
+import React from 'react';
 
+export const metadata = {
+  title: 'Ferns & Petals - Gifts, Cakes, Flowers',
+  description: 'A one-stop-shop for gifts, cakes, flowers, and more for domestic delivery.',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [accentColor, setAccentColor] = useState(config.hero.categories[0].accentColor);
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
-        <title>{config.brand.name}</title>
-        <meta name="description" content="A cozy yet premium café experience offering handcrafted cakes, fresh flowers, and thoughtful gifts." />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body 
-        className="font-body"
-        style={{ '--hero-accent-color': accentColor } as React.CSSProperties}
-      >
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <CartProvider>
-            <AccentColorProvider>
               {children}
               <Toaster />
-            </AccentColorProvider>
           </CartProvider>
         </ThemeProvider>
       </body>

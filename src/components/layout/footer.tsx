@@ -1,45 +1,73 @@
 
-import { config } from "@/app/config.tsx";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { config } from '@/app/config';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import Image from 'next/image';
+
+const FooterLinkColumn = ({ title, links }: { title: string; links: { label: string; href: string }[] }) => (
+  <div>
+    <h4 className="font-semibold text-gray-800 mb-4">{title}</h4>
+    <ul className="space-y-3">
+      {links.map((link) => (
+        <li key={link.label}>
+          <a href={link.href} className="text-sm text-gray-600 hover:text-gray-900 hover:underline">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 export default function Footer() {
   return (
-    <footer className="bg-muted text-muted-foreground py-12">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
-          <div className="flex flex-col items-center md:items-start">
-            <h3 className="font-headline text-2xl text-foreground">{config.brand.name}</h3>
-            <p className="mt-2 text-sm max-w-xs">Blending taste, warmth, and celebration under one roof.</p>
+    <footer className="bg-section-alternate pt-12">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          {/* About & Newsletter */}
+          <div className="md:col-span-2">
+            <h4 className="font-semibold text-gray-800 mb-4">About The Company</h4>
+            <p className="text-sm text-gray-600 mb-6 max-w-md">
+              {config.footer.about}
+            </p>
+            <h4 className="font-semibold text-gray-800 mb-4">Subscribe to our newsletter</h4>
+            <div className="flex gap-2">
+              <Input type="email" placeholder="Enter your email" className="bg-white" />
+              <Button>Subscribe</Button>
+            </div>
           </div>
-          <div className="md:justify-self-center">
-            <h4 className="font-bold tracking-wider uppercase text-foreground mb-4">Links</h4>
-            <ul className="space-y-2">
-              {config.footer.links.map(link => (
-                <li key={link.label}>
-                  <a 
-                    href={link.href} 
-                    className="text-sm hover:text-primary transition-colors"
-                    target={link.href.startsWith('/') ? '_blank' : '_self'}
-                    rel={link.href.startsWith('/') ? 'noopener noreferrer' : ''}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="md:justify-self-end">
-             <h4 className="font-bold tracking-wider uppercase text-foreground mb-4">Follow Us</h4>
-             <div className="flex justify-center md:justify-start space-x-4">
+
+          {/* Link Columns */}
+          <FooterLinkColumn title="Help & Support" links={config.footer.links.help} />
+          <FooterLinkColumn title="Business Solutions" links={config.footer.links.business} />
+          <FooterLinkColumn title="Our Policies" links={config.footer.links.policies} />
+        </div>
+
+        {/* Social and Payments */}
+        <div className="mt-12 py-6 border-t flex flex-col md:flex-row justify-between items-center gap-6">
+           <div className="flex items-center gap-4">
+             <span className="text-sm font-medium">Follow Us:</span>
+             <div className="flex items-center gap-3">
               {config.footer.social.map(({label, Icon, href}) => (
-                <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Icon className="w-6 h-6" />
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900">
+                  <Icon className="w-5 h-5" />
                 </a>
               ))}
              </div>
-          </div>
+           </div>
+           <div className="flex items-center gap-4">
+            <span className="text-sm font-medium">We Accept:</span>
+             <div className="relative h-6 w-48">
+              <Image src={config.footer.paymentIconsUrl} alt="Payment methods" layout="fill" objectFit="contain" />
+            </div>
+           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-border/50 text-center text-sm">
+      </div>
+      
+      {/* Copyright */}
+      <div className="bg-gray-800 text-gray-300 py-3">
+        <div className="container mx-auto text-center text-xs">
           <p>{config.footer.copyright}</p>
         </div>
       </div>
