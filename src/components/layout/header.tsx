@@ -49,7 +49,7 @@ const MainHeader = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (searchQuery.trim().length > 1) {
+    if (searchQuery.trim().length > 0) {
       const filtered = allProducts.filter(product => {
         const searchTerms = searchQuery.toLowerCase().split(' ').filter(term => term);
         const productName = product.name.toLowerCase();
