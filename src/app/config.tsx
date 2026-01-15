@@ -24,7 +24,7 @@ export const config = {
     banners: [
       { imageUrl: `${supabaseUrl}/hero-banner-1.jpg`, alt: "Anniversary Gifts" },
       { imageUrl: `${supabaseUrl}/hero-banner-2.jpg`, alt: "Birthday Gifts" },
-      { imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hero%20images/ChatGPT%20Image%20Jan%2015,%202026,%2011_24_37%20PM.png`, alt: "New Collection" },
+      { imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hero%20images/ChatGPT%20Image%20Jan%2015,%202026,%2011_50_28%20PM.png`, alt: "New Collection" },
       { imageUrl: `${supabaseUrl}/hero-banner-3.jpg`, alt: "Same Day Delivery" },
     ],
   },
