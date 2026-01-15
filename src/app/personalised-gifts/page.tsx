@@ -16,7 +16,7 @@ export default function PersonalisedGiftsPage() {
             <Button asChild variant="outline" className="my-6">
                 <Link href="/">
                     <ArrowLeft className="mr-2 h-4 w-4" />
-                    Back to Home
+                    Back
                 </Link>
             </Button>
         </div>
