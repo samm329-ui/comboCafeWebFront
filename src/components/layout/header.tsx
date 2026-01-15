@@ -25,7 +25,7 @@ const MainHeader = () => (
     <div className="container mx-auto flex items-center py-4 gap-8">
       {/* Logo */}
       <a href="#" className="shrink-0">
-        <Image src={config.header.logoUrl} alt="Brand Logo" width={180} height={40} />
+        <Image src={config.header.logoUrl} alt="Brand Logo" width={180} height={40} priority />
       </a>
       
       {/* Location & Search */}
