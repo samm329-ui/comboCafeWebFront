@@ -110,11 +110,11 @@ export const config = {
   },
   collections: {
     flowers: [
-        { title: "Roses", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images/collection-roses.jpg" },
-        { title: "Lilies", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images/collection-lilies.jpg" },
-        { title: "Carnations", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images/collection-carnations.jpg" },
-        { title: "Orchids", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images/collection-orchids.jpg" },
-        { title: "Mixed Flowers", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images/collection-mixed.jpg" },
+        { title: "Roses", imageUrl: "https://images.unsplash.com/photo-1518621736915-f3b17a1d02b2?w=500&auto=format&fit=crop" },
+        { title: "Lilies", imageUrl: "https://images.unsplash.com/photo-1502978379013-094950a51928?w=500&auto=format&fit=crop" },
+        { title: "Carnations", imageUrl: "https://images.unsplash.com/photo-1600851893991-c75f32187d97?w=500&auto=format&fit=crop" },
+        { title: "Orchids", imageUrl: "https://images.unsplash.com/photo-1519323719453-7313a1e50e94?w=500&auto=format&fit=crop" },
+        { title: "Mixed Flowers", imageUrl: "https://images.unsplash.com/photo-1533616688484-a461e5a6c387?w=500&auto=format&fit=crop" },
     ],
     cakes: [
       { id: "25", title: "Choco Cafe Cake", description: "A rich coffee and chocolate blend.", price: "430", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20cafe%20430%20.jpeg" },
