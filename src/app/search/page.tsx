@@ -9,7 +9,6 @@ import ProductSection from '@/components/sections/product-section';
 import { config } from '@/app/config';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
 
 type Product = {
   id: string;
@@ -33,10 +32,18 @@ function SearchResults() {
   const router = useRouter();
   const query = searchParams.get('q') || '';
 
-  const filteredProducts = allProducts.filter(product =>
-    product.name.toLowerCase().includes(query.toLowerCase()) ||
-    product.description.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredProducts = query
+    ? allProducts.filter(product => {
+        const searchTerms = query.toLowerCase().split(' ').filter(term => term);
+        const productName = product.name.toLowerCase();
+        const productDescription = product.description.toLowerCase();
+
+        return searchTerms.some(term =>
+          productName.includes(term) ||
+          productDescription.includes(term)
+        );
+      })
+    : [];
 
   return (
     <>
