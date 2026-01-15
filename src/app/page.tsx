@@ -54,6 +54,13 @@ export default function Home() {
           showViewAll={false}
         />
         <ProductSection
+          title="Hot Beverages"
+          subtitle="Warm up with our selection of coffees and more"
+          items={config.productSections.hotBeverages}
+          bgColor="bg-accent"
+          showViewAll={false}
+        />
+        <ProductSection
           title="Flowers & More"
           subtitle="Fresh arrangements and thoughtful gifts"
           items={config.productSections.flowerProducts}

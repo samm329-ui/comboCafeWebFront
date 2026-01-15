@@ -144,6 +144,14 @@ export const config = {
         { id: "s2", name: "Cheese Sandwich", price: "90", imageUrl: `https://picsum.photos/seed/snack2/400/400`, description: "A classic sandwich with a generous layer of cheese." },
         { id: "s3", name: "Garlic Bread", price: "100", imageUrl: `https://picsum.photos/seed/snack3/400/400`, description: "Toasted bread with a savory garlic butter spread." },
     ],
+    hotBeverages: [
+        { id: "hb1", name: "Espresso", price: "80", imageUrl: `https://picsum.photos/seed/beverage1/400/400`, description: "A strong and concentrated coffee shot." },
+        { id: "hb2", name: "Americano", price: "100", imageUrl: `https://picsum.photos/seed/beverage2/400/400`, description: "Espresso diluted with hot water." },
+        { id: "hb3", name: "Cappuccino", price: "120", imageUrl: `https://picsum.photos/seed/beverage3/400/400`, description: "Espresso, steamed milk, and milk foam." },
+        { id: "hb4", name: "Caffè Latte", price: "130", imageUrl: `https://picsum.photos/seed/beverage4/400/400`, description: "Espresso with a larger amount of steamed milk." },
+        { id: "hb5", name: "Mocha", price: "140", imageUrl: `https://picsum.photos/seed/beverage5/400/400`, description: "A rich blend of espresso, chocolate, and milk." },
+        { id: "hb6", name: "Hot Chocolate", price: "120", imageUrl: `https://picsum.photos/seed/beverage6/400/400`, description: "A warm and comforting chocolate drink." },
+    ],
     flowerProducts: [
       { id: "fp1", name: "Single Rose", price: "50", imageUrl: "https://picsum.photos/seed/flower1/400/400", description: "A single, elegant rose for a simple gesture." },
       { id: "fp2", name: "Rose Bouquet", price: "299", imageUrl: "https://picsum.photos/seed/flower2/400/400", description: "A beautiful bouquet of fresh roses." },
