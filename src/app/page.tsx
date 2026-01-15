@@ -18,29 +18,25 @@ export default function Home() {
         <IconCategoryStrip />
         <ServiceStrip />
         <ProductSection 
-          title="Best Selling Cakes"
-          subtitle="Loved by everyone"
-          items={config.productSections.bestSellingCakes}
+          title="Top Gifts"
+          subtitle="A selection of our finest gift items"
+          items={config.productSections.gifts}
         />
         <ProductSection 
           title="Personalised Mugs & Cushions"
           subtitle="Add a personal touch to your gifts"
-          items={config.productSections.customGiftsMugs}
+          items={config.productSections.personalisedMugsAndCushions}
           bgColor="bg-accent"
         />
         <ProductSection 
-          title="Custom Photo Frames"
+          title="Personalised Frames"
           subtitle="Frame your cherished memories"
-          items={config.productSections.customGiftsFrames}
+          items={config.productSections.personalisedFrames}
         />
         <GiftFinder />
         <HorizontalCollection 
           title="Flower Collections"
           items={config.collections.flowers}
-        />
-         <HorizontalCollection
-          title="Delectable Cakes"
-          items={config.collections.cakes}
           bgColor="bg-section-alternate"
         />
       </main>
@@ -48,3 +44,5 @@ export default function Home() {
     </>
   );
 }
+
+    

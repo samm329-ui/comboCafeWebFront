@@ -37,36 +37,37 @@ export const config = {
     { label: "Plants", imageUrl: `${supabaseUrl}/icon-plants.png`, href: "#" },
     { label: "Combos", imageUrl: `${supabaseUrl}/icon-combos.png`, href: "#" },
   ],
-  serviceStrip: [
-    { title: "Get Today", description: "Same Day Delivery", imageUrl: `${supabaseUrl}/service-get-today.png` },
-    { title: "Midnight", description: "Midnight Delivery", imageUrl: `${supabaseUrl}/service-midnight.png` },
-    { title: "Just Launched", description: "New Arrivals", imageUrl: `${supabaseUrl}/service-just-launched.png` },
-    { title: "Send in Bulk", description: "Bulk Orders", imageUrl: `${supabaseUrl}/service-send-in-bulk.png` },
-  ],
-  productSections: {
-    bestSellingCakes: [
-      { id: "1", name: "Birthday Delight Cake", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/birthday%20delight%20350.jpeg", description: "A festive treat to make any birthday special.", badge: "BESTSELLER" },
-      { id: "2", name: "Classic Black Forest Cake", price: "450", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/Black%20forest450%20.jpeg", description: "Layers of chocolate, cream, and cherries." },
-      { id: "3", name: "Sweet Butterscotch Cake", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/butter%20scotch%20400.jpeg", description: "Rich with crunchy butterscotch bits." },
-      { id: "4", name: "Choco Blush Cake", price: "500", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20blush%20500.jpeg", description: "A beautiful and delicious chocolate creation.", badge: "PREMIUM" },
-    ],
-    customGiftsMugs: [
-      { id: "cg1", name: "Customized White Mug", price: "249", imageUrl: "https://picsum.photos/seed/mug1/400/400", description: "A classic white mug, personalized for you." },
-      { id: "cg2", name: "Customized Colour Mug", price: "280", imageUrl: "https://picsum.photos/seed/mug2/400/400", description: "Add a splash of color to your daily coffee." },
-      { id: "cg3", name: "Customized Black Mug", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/black%20mug%20330.jpeg", description: "A sleek and stylish personalized black mug." },
-      { id: "cg4", name: "Magic Mug", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/magic-mug-399.jpg", description: "Pour in a hot drink and watch your image appear!" },
-      { id: "cg5", name: "Customized Cushion", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hero%20images/ChatGPT%20Image%20Jan%2015,%202026,%2011_24_37%20PM.png", description: "A soft, personalized cushion for your home." },
-    ],
-    customGiftsFrames: [
-      { id: "cf1", name: "Customized Normal Frame (8x12)", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/customized-photo-frame-350.jpg", description: "Frame your favorite memories in a classic 8x12 frame." },
-      { id: "cf2", name: "Customized LED Frame (8x12)", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-frame-800.jpg", description: "Light up your photos with a stunning LED frame." },
-      { id: "cf3", name: "Customized LED Frame (12x18)", price: "799", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-premium-frame-650.jpg", description: "A larger LED frame for your most cherished moments." },
-      { id: "cf4", name: "Heart/Round Mirror Frame", price: "349", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-mirror-350.jpg", description: "A unique and stylish mirror frame for your pictures." },
-    ],
+  serviceStrip: {
+    title: "Bulk orders are acceptable",
   },
-  paymentBanners: {
-    partners: { imageUrl: `${supabaseUrl}/payment-partners.png`, alt: "Payment partners" },
-    appDownload: { imageUrl: `${supabaseUrl}/app-download-banner.png`, alt: "Download the app" },
+  productSections: {
+    gifts: [
+      { id: "g1", name: "Coffee Mug", price: "199", imageUrl: "https://picsum.photos/seed/giftMug1/400/400", description: "A classic mug for your daily coffee." },
+      { id: "g2", name: "Colour Mug", price: "280", imageUrl: "https://picsum.photos/seed/giftMug2/400/400", description: "A vibrant mug to brighten your day." },
+      { id: "g3", name: "Black Mug", price: "299", imageUrl: "https://picsum.photos/seed/giftMug3/400/400", description: "A sleek and stylish black mug." },
+      { id: "g4", name: "Black Mug (Premium)", price: "330", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/black%20mug%20330.jpeg", description: "A premium quality sleek black mug." },
+      { id: "g5", name: "Magic Mug", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/magic-mug-399.jpg", description: "Reveals a surprise image with hot liquid." },
+      { id: "g6", name: "Magic Mug (Custom)", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/magic-mug-399.jpg", description: "Customizable mug that reveals your image." },
+      { id: "g7", name: "LED Mirror", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-mirror-350.jpg", description: "A stylish mirror with built-in LED lights." },
+      { id: "g8", name: "Mirror Frame (Heart/Round)", price: "349", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-mirror-350.jpg", description: "A unique shaped mirror frame for your pictures." },
+      { id: "g9", name: "Pair Combo Gift", price: "399", imageUrl: "https://picsum.photos/seed/giftCombo/400/400", description: "A perfect gift set for a couple." }
+    ],
+    personalisedFrames: [
+      { id: "pf1", name: "Customized Photo Frame (Normal)", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/customized-photo-frame-350.jpg", description: "A classic frame for your cherished photos." },
+      { id: "pf2", name: "Normal Frame (8x12)", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/customized-photo-frame-350.jpg", description: "Standard 8x12 inch photo frame." },
+      { id: "pf3", name: "LED Frame (8x12)", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-frame-800.jpg", description: "An 8x12 inch frame with LED illumination." },
+      { id: "pf4", name: "LED Frame (12x18)", price: "799", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-premium-frame-650.jpg", description: "A large 12x18 inch frame with LED illumination." },
+      { id: "pf5", name: "LED Frame", price: "800", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-frame-800.jpg", description: "A beautiful LED illuminated photo frame." },
+      { id: "pf6", name: "LED Premium Frame", price: "650", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-premium-frame-650.jpg", description: "Premium quality LED frame, includes photo printing." },
+      { id: "pf7", name: "LED Premium Frame", price: "800", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/led-premium-frame-650.jpg", description: "Top-tier premium LED illuminated photo frame." }
+    ],
+    personalisedMugsAndCushions: [
+      { id: "pm1", name: "Customized White Mug", price: "249", imageUrl: "https://picsum.photos/seed/mug1/400/400", description: "A classic white mug, personalized for you." },
+      { id: "pm2", name: "Customized Mug", price: "249", imageUrl: "https://picsum.photos/seed/mug2/400/400", description: "Your personal design on a quality mug." },
+      { id: "pm3", name: "Magic Mug (Customized)", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/magic-mug-399.jpg", description: "Pour in hot liquid to reveal your custom image." },
+      { id: "pm4", name: "Magic Mug (Customized, Premium)", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/magic-mug-399.jpg", description: "Premium version of the custom magic mug." },
+      { id: "pm5", name: "Customized Cushion", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hero%20images/ChatGPT%20Image%20Jan%2015,%202026,%2011_24_37%20PM.png", description: "A soft, personalized cushion for your home." }
+    ],
   },
   giftFinder: {
     title: "Looking for a perfect gift?",
@@ -86,14 +87,6 @@ export const config = {
       { title: "Orchids", imageUrl: "https://images.unsplash.com/photo-1519323719453-7313a1e50e94?w=500&auto=format&fit=crop" },
       { title: "Mixed Flowers", imageUrl: "https://images.unsplash.com/photo-1533616688484-a461e5a6c387?w=500&auto=format&fit=crop" },
     ],
-    cakes: [
-        { id: "dc1", title: "Choco Cafe Cake", description: "A rich coffee and chocolate blend.", price: "430", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20cafe%20430%20.jpeg" },
-        { id: "dc2", title: "Choco Crunch Cake", description: "A crunchy, chocolatey delight.", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20crunch%20400.jpeg" },
-        { id: "dc3", title: "Choco Heart Cake", description: "A lovely heart-shaped chocolate cake.", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20heart%20550.jpeg" },
-        { id: "dc4", title: "Choco KitKat Cake", description: "Loaded with delicious KitKat bars.", price: "480", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20kitkat%20480.jpeg" },
-        { id: "dc5", title: "Choco Oreo Blush Cake", description: "A beautiful blend of Oreo and chocolate.", price: "450", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/choco%20oreo%20blush%20450%20.jpeg" },
-        { id: "dc6", title: "Doll Cake", description: "A beautiful doll-themed cake for a princess.", price: "800", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/doll%20cake%20800.jpeg" },
-    ]
   },
   footer: {
     about: "Discover the perfect gift for every occasion. We are your one-stop destination for gifts, cakes, flowers, and more, offering reliable domestic delivery.",
