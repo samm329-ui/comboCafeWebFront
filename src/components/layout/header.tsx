@@ -9,13 +9,8 @@ import { Button } from '../ui/button';
 
 const TopUtilityBar = () => (
   <div className="bg-gray-100 text-gray-600 text-xs py-1.5">
-    <div className="container mx-auto flex justify-between items-center">
+    <div className="container mx-auto flex justify-center items-center">
       <p>{config.header.utilityBar.promoText}</p>
-      <div className="flex items-center space-x-6">
-        <a href="#" className="hover:text-gray-900">Help</a>
-        <a href="#" className="hover:text-gray-900">Track Order</a>
-        <a href="#" className="hover:text-gray-900">Login</a>
-      </div>
     </div>
   </div>
 );
