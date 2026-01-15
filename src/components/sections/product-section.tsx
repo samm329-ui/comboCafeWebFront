@@ -23,6 +23,7 @@ type ProductSectionProps = {
   subtitle?: string;
   items: Product[];
   bgColor?: string;
+  viewAllLink?: string;
 };
 
 const ProductCard = ({ item }: { item: Product }) => {
@@ -68,7 +69,7 @@ const ProductCard = ({ item }: { item: Product }) => {
   );
 };
 
-export default function ProductSection({ title, subtitle, items, bgColor = 'bg-white' }: ProductSectionProps) {
+export default function ProductSection({ title, subtitle, items, bgColor = 'bg-white', viewAllLink = "#" }: ProductSectionProps) {
   return (
     <section className={bgColor}>
       <div className="container mx-auto">
@@ -78,7 +79,7 @@ export default function ProductSection({ title, subtitle, items, bgColor = 'bg-w
             {subtitle && <p className="text-md text-gray-500 mt-1">{subtitle}</p>}
           </div>
            <Button variant="outline" asChild>
-            <Link href="#">View All</Link>
+            <Link href={viewAllLink}>View All</Link>
           </Button>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

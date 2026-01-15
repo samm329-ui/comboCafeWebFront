@@ -25,8 +25,9 @@ export default function Home() {
         <ProductSection 
           title="Top Gifts"
           subtitle="A selection of our finest gift items"
-          items={config.productSections.gifts}
+          items={config.productSections.gifts.slice(0, 4)}
           bgColor="bg-accent"
+          viewAllLink="/gifts"
         />
         <ProductSection 
           title="Personalised Mugs & Cushions"
