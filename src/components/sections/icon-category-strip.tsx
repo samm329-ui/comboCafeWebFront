@@ -11,7 +11,7 @@ export default function IconCategoryStrip() {
           {config.iconCategories.map((category: any) => (
             <Link href={category.href} key={category.id} className="group shrink-0 w-24">
               <div className="flex justify-center items-center">
-                  <div className="relative w-20 h-20 rounded-full bg-accent flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 overflow-hidden">
+                  <div className="relative w-20 h-20 rounded-lg bg-accent flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 overflow-hidden">
                       {category.imageUrl ? (
                         <Image src={category.imageUrl} alt={category.label} layout="fill" objectFit="cover" />
                       ) : (
