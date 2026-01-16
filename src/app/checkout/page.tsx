@@ -28,6 +28,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { format, addDays, startOfDay } from "date-fns";
 
 
@@ -42,6 +50,10 @@ export default function CheckoutPage() {
   const router = useRouter();
   const [date, setDate] = useState<Date | undefined>(addDays(new Date(), 1));
   const [timeSlot, setTimeSlot] = useState("10-12");
+
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+  const [transactionId, setTransactionId] = useState('');
+  const [customerDetails, setCustomerDetails] = useState<any>(null);
 
   const cartItems = useMemo((): CartItemView[] => {
     const groupedItems: { [key: string]: CartItemView } = {};
@@ -63,10 +75,9 @@ export default function CheckoutPage() {
     removeFromCart(productId, true);
   }
 
-  const handlePlaceOrder = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const name = formData.get('name');
     
     if (cart.length === 0) {
       toast({
@@ -75,6 +86,28 @@ export default function CheckoutPage() {
         description: "Please add items to your cart before placing an order.",
       });
       return;
+    }
+    
+    setCustomerDetails({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        address: formData.get('address'),
+        landmark: formData.get('landmark'),
+        pincode: formData.get('pincode'),
+    });
+
+    setIsQrModalOpen(true);
+  };
+
+  const handleSendToWhatsapp = () => {
+    if (!transactionId) {
+        toast({
+            variant: "destructive",
+            title: "Transaction ID is required",
+            description: "Please enter the transaction ID after payment.",
+        });
+        return;
     }
 
     const deliveryDate = date ? format(date, "PPP") : "Not selected";
@@ -86,12 +119,41 @@ export default function CheckoutPage() {
         '18-20': '06:00 PM - 08:00 PM',
     };
 
-    toast({
-      title: "Order Placed!",
-      description: `Thank you, ${name}! Your order is confirmed for delivery on ${deliveryDate} during the ${timeSlotMap[timeSlot]} slot.`,
-    });
+    const itemsSummary = cartItems.map(item => `${item.product.name} (x${item.quantity})`).join('\n - ');
 
+    const whatsappMessage = `
+*New Order from Combo Cafe Website*
+
+*Customer Details:*
+Name: ${customerDetails.name}
+Phone: ${customerDetails.phone}
+Email: ${customerDetails.email}
+
+*Delivery Details:*
+Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDetails.landmark}` : ''}, ${customerDetails.pincode}
+Date: ${deliveryDate}
+Time Slot: ${timeSlotMap[timeSlot]}
+
+*Order Items:*
+ - ${itemsSummary}
+
+*Order Total: Rs. ${total.toFixed(2)}*
+
+*Payment Information:*
+Transaction ID: *${transactionId}*
+    `.trim().replace(/^\s+/gm, '');
+    
+    const phoneNumber = "918436860216";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappUrl, '_blank');
+    
     clearCart();
+    setIsQrModalOpen(false);
+    toast({
+        title: "Order details sent!",
+        description: "Your order has been sent via WhatsApp. We will confirm shortly.",
+    });
     router.push('/');
   };
 
@@ -176,7 +238,7 @@ export default function CheckoutPage() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                    <form onSubmit={handlePlaceOrder} className="w-full space-y-4">
+                    <form onSubmit={handleFormSubmit} className="w-full space-y-4">
                          <div className="space-y-2">
                             <Label htmlFor="name">Full Name</Label>
                             <Input id="name" name="name" placeholder="John Doe" required suppressHydrationWarning />
@@ -257,6 +319,45 @@ export default function CheckoutPage() {
         </div>
       </main>
       <Footer />
+       <Dialog open={isQrModalOpen} onOpenChange={setIsQrModalOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Scan to Pay</DialogTitle>
+            <DialogDescription>
+              1. Scan the QR code to pay Rs. {total.toFixed(2)}.
+              <br />
+              2. Enter the transaction ID below.
+              <br />
+              3. Click confirm to place your order via WhatsApp.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center justify-center py-4">
+            <Image
+              src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/qr/qr%20code.jpeg"
+              alt="Payment QR Code"
+              width={250}
+              height={250}
+              className="rounded-md ring-1 ring-border"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="transactionId">Transaction ID</Label>
+            <Input
+              id="transactionId"
+              value={transactionId}
+              onChange={(e) => setTransactionId(e.target.value)}
+              placeholder="Enter payment transaction ID"
+              required
+              suppressHydrationWarning
+            />
+          </div>
+          <DialogFooter className="sm:justify-start">
+            <Button onClick={handleSendToWhatsapp} className="w-full" suppressHydrationWarning>
+              Confirm and Place Order via WhatsApp
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
