@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, MapPin, Search, ShoppingBag, Menu, X, Flag } from 'lucide-react';
+import { ChevronDown, MapPin, Search, ShoppingCart, Menu, X, Flag } from 'lucide-react';
 import { config } from '@/app/config';
 import { useCart } from '@/context/cart-provider';
 import { Button } from '../ui/button';
@@ -130,7 +130,7 @@ const MainHeader = () => {
         {/* Action Icons */}
         <div className="flex items-center space-x-6">
           <Link href="/checkout" className="relative flex flex-col items-center text-gray-600 hover:text-gray-900">
-            <ShoppingBag className="h-6 w-6" />
+            <ShoppingCart className="h-6 w-6" />
             <span className="text-xs mt-1">Cart</span>
             {cart.length > 0 && (
               <div className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
@@ -190,7 +190,7 @@ const MobileHeader = () => {
 
                 <div className="flex items-center gap-3">
                     <Link href="/checkout" className="relative text-gray-600">
-                        <ShoppingBag className="h-6 w-6" />
+                        <ShoppingCart className="h-6 w-6" />
                         {cart.length > 0 && (
                             <div className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
                                 {cart.length}
