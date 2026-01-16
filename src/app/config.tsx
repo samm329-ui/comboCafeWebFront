@@ -11,7 +11,16 @@ export const config = {
     logoUrl: `https://picsum.photos/seed/brand-logo/180/40`,
     navLinks: [
       { id: "cakes", label: "Cakes", href: "/cakes" },
-      { id: "gifts", label: "Gifts", href: "/gifts" },
+      {
+        id: "gifts",
+        label: "Gifts",
+        href: "/gifts",
+        subLinks: [
+          { id: "all-gifts", label: "All Gifts", href: "/gifts" },
+          { id: "personalised-frames", label: "Personalised Frames", href: "/personalised-frames" },
+          { id: "personalised-mugs-cushions", label: "Personalised Mugs & Cushions", href: "/personalised-gifts" },
+        ]
+      },
       { id: "food", label: "Food", href: "/food" },
       { id: "our-menu", label: "Our Menu", href: "/menu" },
       { id: "flowers", label: "Flowers & More", href: "/flowers" },
