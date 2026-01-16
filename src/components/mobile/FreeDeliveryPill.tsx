@@ -1,14 +1,18 @@
 
-import { Bike } from 'lucide-react';
+import Image from 'next/image';
 import React from 'react';
 
 export default function FreeDeliveryPill() {
   return (
     <div className="px-4 py-2">
-        <div className="bg-secondary/20 text-secondary-foreground rounded-lg p-2 flex items-center justify-center gap-2 text-xs shadow-sm">
-            <Bike className="h-5 w-5 text-secondary" />
-            <span className="font-medium text-secondary">FREE DELIVERY!!! On eligible delivery time slots.</span>
-        </div>
+      <div className="relative aspect-[350/65] w-full overflow-hidden rounded-lg">
+        <Image
+          src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/image%20(3).png"
+          alt="Free delivery banner"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
     </div>
   );
 }
