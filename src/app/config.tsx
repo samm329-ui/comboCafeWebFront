@@ -37,13 +37,13 @@ export const config = {
     ],
   },
   iconCategories: [
-    { id: "birthday", label: "Birthday", href: "/search?q=birthday", Icon: PartyPopper },
+    { id: "birthday", label: "Birthday", href: "/search?q=birthday", Icon: PartyPopper, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2007_04_13%20PM.png" },
     { id: "cakes", label: "Cakes", href: "/cakes", Icon: CakeSlice, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_40_12%20PM.png" },
     { id: "gifts", label: "Gifts", href: "/gifts", Icon: Gift, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_41_52%20PM.png" },
     { id: "flowers", label: "Flowers", href: "/flowers", Icon: Flower, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_45_36%20PM.png" },
-    { id: "combos", label: "Combos", href: "/flowers", Icon: Package },
-    { id: "personalised", label: "Custom", href: "/personalised-gifts", Icon: Sparkles },
-    { id: "anniversary", label: "Celebrate", href: "/search?q=anniversary", Icon: Heart },
+    { id: "combos", label: "Combos", href: "/flowers", Icon: Package, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2007_09_22%20PM.png" },
+    { id: "personalised", label: "Custom", href: "/personalised-gifts", Icon: Sparkles, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2007_09_22%20PM.png" },
+    { id: "anniversary", label: "Celebrate", href: "/search?q=anniversary", Icon: Heart, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2007_09_22%20PM.png" },
     { id: "snacks", label: "Snacks", href: "/food", Icon: Cookie, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_52_11%20PM.png" },
   ],
   serviceStrip: {
