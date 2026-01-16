@@ -1,3 +1,4 @@
+
 "use client";
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
@@ -27,6 +28,7 @@ import {
 } from "@/components/ui/select"
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel';
 
 
 type Product = {
@@ -136,7 +138,7 @@ Transaction ID: *${transactionId}*
 
   return (
     <>
-      <Card className="overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-300 border-0 rounded-lg flex flex-col">
+      <Card className="overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-300 border-0 rounded-lg flex flex-col h-full">
         <CardContent className="p-0 flex-grow">
           <Link href={`/search?q=${encodeURIComponent(item.name)}`} className="flex flex-col h-full">
             <div className="relative aspect-square">
@@ -290,6 +292,8 @@ Transaction ID: *${transactionId}*
 };
 
 export default function ProductSection({ id, title, subtitle, items, bgColor = 'bg-white', viewAllLink = "#", showViewAll = true }: ProductSectionProps) {
+  const useCarousel = ['best-selling-cakes', 'top-gifts', 'quick-bites', 'hot-beverages'].includes(id || '');
+
   return (
     <section id={id} className={bgColor}>
       <div className="container mx-auto">
@@ -302,11 +306,35 @@ export default function ProductSection({ id, title, subtitle, items, bgColor = '
             <Link href={viewAllLink}>View All</Link>
           </Button>}
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-4 gap-6">
           {items.map((item) => (
             <ProductCard key={item.id} item={item} />
           ))}
         </div>
+
+        {/* Mobile: Carousel for specific sections, Grid for others */}
+        <div className="md:hidden">
+          {useCarousel ? (
+            <Carousel opts={{ align: "start", slidesToScroll: "auto" }}>
+              <CarouselContent className="-ml-2">
+                {items.map((item, index) => (
+                  <CarouselItem key={index} className="basis-1/2 pl-2">
+                    <ProductCard item={item} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          ) : (
+            <div className="grid grid-cols-2 gap-4">
+              {items.map((item) => (
+                <ProductCard key={item.id} item={item} />
+              ))}
+            </div>
+          )}
+        </div>
+
       </div>
     </section>
   );

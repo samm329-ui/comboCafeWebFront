@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from '../ui/button';
@@ -304,15 +305,17 @@ export default function HorizontalCollection({ title, items, bgColor = 'bg-white
         >
             <CarouselContent className="-ml-4">
                 {items.map((item, index) => (
-                    <CarouselItem key={index} className="pl-4 md:basis-1/4 lg:basis-1/5">
+                    <CarouselItem key={index} className="pl-4 basis-4/5 sm:basis-1/2 md:basis-1/4 lg:basis-1/5">
                         <div className="h-full">
                             <CollectionCard item={item} />
                         </div>
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10" />
+            <div className="hidden md:block">
+              <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10" />
+              <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10" />
+            </div>
         </Carousel>
       </div>
     </section>

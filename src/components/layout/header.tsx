@@ -3,11 +3,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, MapPin, Search, ShoppingBag, User } from 'lucide-react';
+import { ChevronDown, MapPin, Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { config } from '@/app/config';
 import { useCart } from '@/context/cart-provider';
 import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger, PopoverAnchor } from "@/components/ui/popover"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 type Product = {
   id: string;
@@ -28,7 +29,7 @@ const allProducts: Product[] = [
 
 
 const TopUtilityBar = () => (
-  <div className="bg-gray-100 text-gray-600 text-xs py-1.5">
+  <div className="bg-gray-100 text-gray-600 text-xs py-1.5 hidden md:block">
     <div className="container mx-auto flex justify-end items-center">
       <p>{config.header.utilityBar.promoText}</p>
     </div>
@@ -72,7 +73,7 @@ const MainHeader = () => {
 
 
   return (
-    <div className="bg-background border-b">
+    <div className="bg-background border-b hidden md:block">
       <div className="container mx-auto flex items-center py-4 gap-8">
         {/* Logo */}
         <Link href="/" className="shrink-0">
@@ -144,11 +145,72 @@ const MainHeader = () => {
   );
 };
 
+const MobileHeader = () => {
+    const { cart } = useCart();
+    const [isSheetOpen, setIsSheetOpen] = useState(false);
+    return (
+        <div className="md:hidden bg-background border-b sticky top-0 z-50">
+            <div className="container mx-auto flex items-center justify-between h-16">
+                <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+                    <SheetTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                            <Menu />
+                            <span className="sr-only">Open menu</span>
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="left">
+                        <SheetHeader>
+                            <SheetTitle className="text-left">
+                                <Link href="/" onClick={() => setIsSheetOpen(false)}>
+                                    <span className="text-xl font-bold text-gray-800">combo cafe and gift shop</span>
+                                </Link>
+                            </SheetTitle>
+                        </SheetHeader>
+                        <div className="mt-8 flex flex-col gap-4">
+                            {config.header.navLinks.map((link) => (
+                                <a 
+                                    key={link.id} 
+                                    href={link.href}
+                                    onClick={() => setIsSheetOpen(false)}
+                                    className="text-lg font-medium text-gray-700 hover:text-primary"
+                                >
+                                    {link.label}
+                                </a>
+                            ))}
+                        </div>
+                    </SheetContent>
+                </Sheet>
+                
+                <Link href="/" className="shrink-0">
+                    <span className="text-lg font-bold text-gray-800">combo cafe and gift shop</span>
+                </Link>
+
+                <div className="flex items-center gap-2">
+                    <Button asChild variant="ghost" size="icon">
+                        <Link href="/search">
+                            <Search className="h-6 w-6" />
+                        </Link>
+                    </Button>
+                    <Link href="/checkout" className="relative text-gray-600 hover:text-gray-900 p-2">
+                        <ShoppingBag className="h-6 w-6" />
+                        {cart.length > 0 && (
+                            <div className="absolute top-0 right-0 bg-red-500 text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
+                                {cart.length}
+                            </div>
+                        )}
+                        <span className="sr-only">Cart</span>
+                    </Link>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 const CategoryNavigation = () => {
     const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
     return (
-        <div className="bg-background shadow-sm sticky top-0 z-40">
+        <div className="bg-background shadow-sm sticky top-0 z-40 hidden md:block">
             <div className="container mx-auto">
                 <div ref={scrollContainerRef} className="flex items-center gap-6 overflow-x-auto whitespace-nowrap py-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     {config.header.navLinks.map((link) => (
@@ -171,6 +233,7 @@ export default function Header() {
     <header>
       <TopUtilityBar />
       <MainHeader />
+      <MobileHeader />
       <CategoryNavigation />
     </header>
   );

@@ -1,4 +1,5 @@
 
+
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import Hero from '@/components/sections/hero';
@@ -32,6 +33,7 @@ export default function Home() {
         />
         <GiftFinder />
         <ProductSection
+          id="quick-bites"
           title="Quick Bites"
           subtitle="Delicious and savory snacks"
           items={config.productSections.snacks}
@@ -39,6 +41,7 @@ export default function Home() {
           showViewAll={false}
         />
         <ProductSection
+          id="hot-beverages"
           title="Hot Beverages"
           subtitle="Warm up with our selection of coffees and more"
           items={config.productSections.hotBeverages}
@@ -46,6 +49,7 @@ export default function Home() {
           showViewAll={false}
         />
         <ProductSection
+          id="flowers-more"
           title="Flowers & More"
           subtitle="Fresh arrangements and thoughtful gifts"
           items={config.productSections.flowerProducts}
