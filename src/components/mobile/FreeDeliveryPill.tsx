@@ -10,7 +10,7 @@ export default function FreeDeliveryPill() {
           src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/image%20(3).png"
           alt="Free delivery banner"
           layout="fill"
-          objectFit="cover"
+          objectFit="contain"
         />
       </div>
     </div>
