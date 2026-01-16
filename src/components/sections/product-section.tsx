@@ -4,32 +4,10 @@ import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import Image from 'next/image';
 import { Badge } from '../ui/badge';
-import Link from 'next/link';
 import { useCart } from '@/context/cart-provider';
 import { useToast } from '@/hooks/use-toast';
-import { useState } from 'react';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../ui/dialog';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import { format, addDays, startOfDay } from "date-fns";
-import { cn } from "@/lib/utils"
-import { Calendar } from "@/components/ui/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Calendar as CalendarIcon } from 'lucide-react';
-import { Separator } from '../ui/separator';
-import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel';
-
+import Link from 'next/link';
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 type Product = {
   id: string;
@@ -66,7 +44,7 @@ const ProductCard = ({ item }: { item: Product }) => {
     <>
       <Card className="overflow-hidden group shadow-sm hover:shadow-lg transition-shadow duration-300 border-0 rounded-lg flex flex-col h-full">
         <CardContent className="p-0 flex-grow">
-          <Link href={`/search?q=${encodeURIComponent(item.name)}`} className="flex flex-col h-full">
+          <div className="flex flex-col h-full">
             <div className="relative aspect-square">
               <Image 
                 src={item.imageUrl} 
@@ -83,7 +61,7 @@ const ProductCard = ({ item }: { item: Product }) => {
               <p className="text-xs text-gray-500 mt-1 line-clamp-1">{item.description}</p>
               <p className="font-semibold text-gray-900 mt-auto pt-2">{`Rs. ${item.price}`}</p>
             </div>
-          </Link>
+          </div>
         </CardContent>
         <div className="p-4 pt-0">
            <Button onClick={handleAddToCart} variant="outline" className="w-full text-xs text-center" size="sm" suppressHydrationWarning>

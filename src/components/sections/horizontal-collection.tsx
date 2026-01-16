@@ -126,7 +126,7 @@ Transaction ID: *${transactionId}*
     <>
         <Card className="overflow-hidden group border-0 rounded-lg shadow-sm flex flex-col h-full">
             <CardContent className="p-0 flex-grow">
-                <Link href={`/search?q=${encodeURIComponent(item.title)}`} className="block">
+                <div className="block">
                     <div className="relative aspect-[4/5]">
                     <Image 
                         src={item.imageUrl} 
@@ -140,7 +140,7 @@ Transaction ID: *${transactionId}*
                         {item.description && <p className="text-xs text-gray-200 mt-1 line-clamp-1">{item.description}</p>}
                     </div>
                     </div>
-                </Link>
+                </div>
                 {item.price && (
                 <div className="p-3 bg-white">
                     <p className="font-semibold text-gray-900 text-sm">{`Rs. ${item.price}`}</p>
