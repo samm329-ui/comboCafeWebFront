@@ -101,11 +101,11 @@ export default function CheckoutPage() {
   };
 
   const handleSendToWhatsapp = () => {
-    if (!transactionId) {
+    if (!transactionId || transactionId.length < 10) {
         toast({
             variant: "destructive",
-            title: "Transaction ID is required",
-            description: "Please enter the transaction ID after payment.",
+            title: "Valid Transaction ID is required",
+            description: "Please enter a transaction ID of at least 10 characters.",
         });
         return;
     }
@@ -346,8 +346,9 @@ Transaction ID: *${transactionId}*
               id="transactionId"
               value={transactionId}
               onChange={(e) => setTransactionId(e.target.value)}
-              placeholder="Enter payment transaction ID"
+              placeholder="Enter 10+ digit transaction ID"
               required
+              minLength={10}
               suppressHydrationWarning
             />
           </div>
