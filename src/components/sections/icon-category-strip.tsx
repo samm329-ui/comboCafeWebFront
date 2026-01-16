@@ -7,7 +7,7 @@ export default function IconCategoryStrip() {
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto">
-        <div className="flex items-start md:grid md:grid-cols-4 md:gap-8 md:justify-around text-center gap-4 overflow-x-auto scrollbar-hide">
+        <div className="flex items-start md:grid md:grid-cols-4 md:gap-4 md:justify-around text-center gap-2 overflow-x-auto scrollbar-hide">
           {config.iconCategories.map((category: any) => (
             <Link href={category.href} key={category.id} className="group shrink-0 w-24">
               <div className="flex justify-center items-center">
@@ -27,5 +27,3 @@ export default function IconCategoryStrip() {
     </section>
   );
 }
-
-    
