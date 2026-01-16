@@ -53,7 +53,7 @@ export default function IconCategoryStrip() {
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto">
-        <div className="grid grid-cols-4 gap-x-2 gap-y-6 justify-items-center">
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-x-2 md:gap-x-4 gap-y-6 justify-items-center">
           {categories.map((category: any) => (
             <Link
               href={category.href}
