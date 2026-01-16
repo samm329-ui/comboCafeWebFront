@@ -53,86 +53,12 @@ type ProductSectionProps = {
 const ProductCard = ({ item }: { item: Product }) => {
   const { addToCart } = useCart();
   const { toast } = useToast();
-  const phoneNumber = "918436860216";
   
-  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
-  const [transactionId, setTransactionId] = useState('');
-  const [date, setDate] = useState<Date | undefined>(addDays(new Date(), 1));
-  const [timeSlot, setTimeSlot] = useState("10-12");
-  const [customerDetails, setCustomerDetails] = useState({
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      landmark: '',
-      pincode: '',
-  });
-
-  const handleDetailsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setCustomerDetails(prev => ({ ...prev, [name]: value }));
-  };
-
   const handleAddToCart = () => {
     addToCart(item);
     toast({
       title: "Added to Cart",
       description: `${item.name} has been added to your cart.`,
-    });
-  };
-
-  const handleSendToWhatsapp = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!transactionId || transactionId.length < 10) {
-        toast({
-            variant: "destructive",
-            title: "Valid Transaction ID is required",
-            description: "Please enter a transaction ID of at least 10 characters.",
-        });
-        return;
-    }
-
-    const deliveryDate = date ? format(date, "PPP") : "Not selected";
-    const timeSlotMap: { [key: string]: string } = {
-        '10-12': '10:00 AM - 12:00 PM',
-        '12-14': '12:00 PM - 02:00 PM',
-        '14-16': '02:00 PM - 04:00 PM',
-        '16-18': '04:00 PM - 06:00 PM',
-        '18-20': '06:00 PM - 08:00 PM',
-    };
-
-    const whatsappMessage = `
-*New Single Item Order from Combo Cafe Website*
-
-*Customer Details:*
-Name: ${customerDetails.name}
-Phone: ${customerDetails.phone}
-Email: ${customerDetails.email}
-
-*Delivery Details:*
-Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDetails.landmark}` : ''}, ${customerDetails.pincode}
-Date: ${deliveryDate}
-Time Slot: ${timeSlotMap[timeSlot]}
-
-*Order Item:*
-- ${item.name}
-
-*Order Total: Rs. ${item.price}*
-
-*Payment Information:*
-Transaction ID: *${transactionId}*
-    `.trim().replace(/^\s+/gm, '');
-    
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-    window.open(whatsappUrl, '_blank');
-    
-    setIsQrModalOpen(false);
-    setTransactionId('');
-    setCustomerDetails({ name: '', email: '', phone: '', address: '', landmark: '', pincode: '' });
-    toast({
-        title: "Order details sent!",
-        description: "Your order has been sent via WhatsApp. We will confirm shortly.",
     });
   };
 
@@ -159,140 +85,18 @@ Transaction ID: *${transactionId}*
             </div>
           </Link>
         </CardContent>
-        <div className="p-4 pt-0 space-y-2">
-          <div className="flex flex-col sm:flex-row gap-2">
-            <Button onClick={handleAddToCart} variant="outline" className="w-full text-xs text-center" size="sm" suppressHydrationWarning>
+        <div className="p-4 pt-0">
+           <Button onClick={handleAddToCart} variant="outline" className="w-full text-xs text-center" size="sm" suppressHydrationWarning>
               Add to Cart
             </Button>
-            <Button onClick={() => setIsQrModalOpen(true)} variant="secondary" className="w-full text-xs text-center" size="sm" suppressHydrationWarning>
-                Order on WhatsApp
-            </Button>
-          </div>
-          <Button asChild variant="outline" className="w-full text-xs text-center hidden md:block" size="sm" suppressHydrationWarning>
-              <a href={`tel:+${phoneNumber}`}>
-                  Call to Order
-              </a>
-          </Button>
         </div>
       </Card>
-      <Dialog open={isQrModalOpen} onOpenChange={setIsQrModalOpen}>
-        <DialogContent className="sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle>Order: {item.name}</DialogTitle>
-            <DialogDescription>
-              Fill your details, pay via QR, and confirm your order on WhatsApp.
-            </DialogDescription>
-          </DialogHeader>
-           <form onSubmit={handleSendToWhatsapp} className="space-y-4 max-h-[70vh] overflow-y-auto p-1 pr-3">
-              <div className="space-y-2">
-                <Label htmlFor={`name-${item.id}`}>Full Name</Label>
-                <Input id={`name-${item.id}`} name="name" placeholder="John Doe" required onChange={handleDetailsChange} value={customerDetails.name} suppressHydrationWarning />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`email-${item.id}`}>Email</Label>
-                <Input id={`email-${item.id}`} name="email" type="email" placeholder="you@example.com" required onChange={handleDetailsChange} value={customerDetails.email} suppressHydrationWarning />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`phone-${item.id}`}>Phone Number</Label>
-                <Input id={`phone-${item.id}`} name="phone" type="tel" placeholder="9876543210" required onChange={handleDetailsChange} value={customerDetails.phone} suppressHydrationWarning />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`address-${item.id}`}>Delivery Address</Label>
-                <Input id={`address-${item.id}`} name="address" placeholder="123 Main St, Rampurhat" required onChange={handleDetailsChange} value={customerDetails.address} suppressHydrationWarning />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`landmark-${item.id}`}>Landmark</Label>
-                <Input id={`landmark-${item.id}`} name="landmark" placeholder="Near City Mall" onChange={handleDetailsChange} value={customerDetails.landmark} suppressHydrationWarning />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`pincode-${item.id}`}>Pincode</Label>
-                <Input id={`pincode-${item.id}`} name="pincode" type="text" placeholder="731235" maxLength={6} required onChange={handleDetailsChange} value={customerDetails.pincode} suppressHydrationWarning />
-              </div>
-               <div className="space-y-2">
-                  <Label htmlFor={`date-${item.id}`}>Delivery Date</Label>
-                  <Popover>
-                      <PopoverTrigger asChild>
-                          <Button
-                              variant={"outline"}
-                              className={cn(
-                                  "w-full justify-start text-left font-normal",
-                                  !date && "text-muted-foreground"
-                              )}
-                            suppressHydrationWarning>
-                              <CalendarIcon className="mr-2 h-4 w-4" />
-                              {date ? format(date, "PPP") : <span>Pick a date</span>}
-                          </Button>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0">
-                          <Calendar
-                              mode="single"
-                              selected={date}
-                              onSelect={setDate}
-                              disabled={(day) =>
-                                day < addDays(startOfDay(new Date()), 1) || day > addDays(new Date(), 30)
-                              }
-                              initialFocus
-                          />
-                      </PopoverContent>
-                  </Popover>
-              </div>
-              <div className="space-y-2">
-                  <Label htmlFor={`time-${item.id}`}>Delivery Time</Label>
-                  <Select value={timeSlot} onValueChange={setTimeSlot}>
-                      <SelectTrigger id={`time-${item.id}`} suppressHydrationWarning>
-                          <SelectValue placeholder="Select a time slot" />
-                      </SelectTrigger>
-                      <SelectContent>
-                          <SelectItem value="10-12">10:00 AM - 12:00 PM</SelectItem>
-                          <SelectItem value="12-14">12:00 PM - 02:00 PM</SelectItem>
-                          <SelectItem value="14-16">02:00 PM - 04:00 PM</SelectItem>
-                          <SelectItem value="16-18">04:00 PM - 06:00 PM</SelectItem>
-                          <SelectItem value="18-20">06:00 PM - 08:00 PM</SelectItem>
-                      </SelectContent>
-                  </Select>
-              </div>
-
-              <Separator />
-
-              <div className="text-sm text-center text-muted-foreground">
-                1. Scan the QR code to pay Rs. {item.price}.<br/>2. Enter the transaction ID below.
-              </div>
-
-              <div className="flex items-center justify-center py-2">
-                <Image
-                  src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/qr/qr%20code.jpeg"
-                  alt="Payment QR Code"
-                  width={200}
-                  height={200}
-                  className="rounded-md ring-1 ring-border"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor={`transactionId-${item.id}`}>Transaction ID</Label>
-                <Input
-                  id={`transactionId-${item.id}`}
-                  value={transactionId}
-                  onChange={(e) => setTransactionId(e.target.value)}
-                  placeholder="Enter 10+ digit transaction ID"
-                  required
-                  minLength={10}
-                  suppressHydrationWarning
-                />
-              </div>
-              <DialogFooter className="sm:justify-start pt-4">
-                <Button type="submit" className="w-full" disabled={!transactionId || transactionId.length < 10} suppressHydrationWarning>
-                  Confirm and Place Order via WhatsApp
-                </Button>
-              </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
     </>
   );
 };
 
 export default function ProductSection({ id, title, subtitle, items, bgColor = 'bg-white', viewAllLink = "#", showViewAll = true }: ProductSectionProps) {
-  const useCarousel = ['best-selling-cakes', 'quick-bites'].includes(id || '');
+  const useCarousel = ['best-selling-cakes', 'quick-bites', 'top-gifts'].includes(id || '');
 
   return (
     <section id={id} className={bgColor}>

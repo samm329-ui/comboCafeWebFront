@@ -3,12 +3,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, MapPin, Search, ShoppingBag, Menu, X } from 'lucide-react';
+import { ChevronDown, MapPin, Search, ShoppingBag, Menu, X, Flag, Wallet } from 'lucide-react';
 import { config } from '@/app/config';
 import { useCart } from '@/context/cart-provider';
 import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger, PopoverAnchor } from "@/components/ui/popover"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import TopPromoBar from '../mobile/TopPromoBar';
 
 type Product = {
   id: string;
@@ -148,18 +149,20 @@ const MainHeader = () => {
 const MobileHeader = () => {
     const { cart } = useCart();
     const [isSheetOpen, setIsSheetOpen] = useState(false);
+
     return (
-        <div className="md:hidden bg-background/95 backdrop-blur border-b sticky top-0 z-50">
-            <div className="container mx-auto grid grid-cols-3 items-center h-16">
-                <div className="flex justify-start">
+        <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background shadow-sm">
+            <TopPromoBar />
+            <div className="flex items-center justify-between px-4 py-2 border-b">
+                <div className="flex items-center gap-2">
                     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                         <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon">
+                            <Button variant="ghost" size="icon" className="-ml-2">
                                 <Menu className="h-6 w-6" />
                                 <span className="sr-only">Open menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="left">
+                        <SheetContent side="left" className="w-3/4">
                             <SheetHeader>
                                 <SheetTitle className="text-left">
                                     <Link href="/" onClick={() => setIsSheetOpen(false)}>
@@ -181,22 +184,19 @@ const MobileHeader = () => {
                             </div>
                         </SheetContent>
                     </Sheet>
+                    <Flag className="h-5 w-5 text-gray-600" />
+                    <div>
+                        <p className="font-semibold text-sm">Where to deliver?</p>
+                        <p className="text-xs text-red-500">Location missing</p>
+                    </div>
                 </div>
-                
-                <Link href="/" className="text-center">
-                    <span className="text-lg font-bold text-gray-800 truncate">combo cafe</span>
-                </Link>
 
-                <div className="flex items-center justify-end">
-                    <Button asChild variant="ghost" size="icon">
-                        <Link href="/search">
-                            <Search className="h-6 w-6" />
-                        </Link>
-                    </Button>
-                    <Link href="/checkout" className="relative text-gray-600 hover:text-gray-900 p-2">
+                <div className="flex items-center gap-3">
+                    <Wallet className="h-6 w-6 text-gray-600" />
+                    <Link href="/checkout" className="relative text-gray-600">
                         <ShoppingBag className="h-6 w-6" />
                         {cart.length > 0 && (
-                            <div className="absolute top-1 right-1 bg-red-500 text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
+                            <div className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">
                                 {cart.length}
                             </div>
                         )}
@@ -233,10 +233,17 @@ const CategoryNavigation = () => {
 export default function Header() {
   return (
     <header>
-      <TopUtilityBar />
-      <MainHeader />
-      <MobileHeader />
-      <CategoryNavigation />
+      {/* Desktop Header */}
+      <div className='hidden md:block'>
+        <TopUtilityBar />
+        <MainHeader />
+        <CategoryNavigation />
+      </div>
+
+      {/* Mobile Header */}
+      <div className='md:hidden'>
+        <MobileHeader />
+      </div>
     </header>
   );
 }

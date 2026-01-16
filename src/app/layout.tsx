@@ -4,7 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { CartProvider } from '@/context/cart-provider';
 import React from 'react';
-import MobileCartFab from '@/components/common/MobileCartFab';
+import Header from '@/components/layout/header';
+import MobileBottomNav from '@/components/mobile/MobileBottomNav';
 
 export const metadata = {
   title: 'Ferns & Petals - Gifts, Cakes, Flowers',
@@ -30,8 +31,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CartProvider>
-              {children}
-              <MobileCartFab />
+              <Header />
+              <div className='md:pt-0 pt-28'>
+                {children}
+              </div>
+              <MobileBottomNav />
               <Toaster />
           </CartProvider>
         </ThemeProvider>

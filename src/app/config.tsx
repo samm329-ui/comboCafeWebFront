@@ -1,5 +1,5 @@
 
-import { Facebook, Instagram, Twitter, CakeSlice, Gift, Flower, Cookie } from "lucide-react";
+import { Facebook, Instagram, Twitter, CakeSlice, Gift, Flower, Cookie, Home, Clock, Globe, User } from "lucide-react";
 
 const supabaseUrl = "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images";
 
@@ -223,5 +223,19 @@ export const config = {
         { label: "Privacy Policy", href: "/privacy" },
       ]
     }
+  },
+  mobile: {
+    promoBar: {
+      text: "Save 20% | Code: NEWAPP",
+      buttonText: "OPEN APP",
+      buttonLink: "#"
+    },
+    bottomNav: [
+      { id: "home", label: "Home", href: "/", Icon: Home },
+      { id: "sameday", label: "Same Day", href: "/coming-soon", Icon: Clock },
+      { id: "allgifts", label: "All Gifts", href: "/gifts", Icon: Gift },
+      { id: "abroad", label: "Abroad", href: "/coming-soon", Icon: Globe },
+      { id: "account", label: "Account", href: "/coming-soon", Icon: User }
+    ]
   }
 };

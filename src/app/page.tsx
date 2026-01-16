@@ -9,11 +9,19 @@ import GiftFinder from '@/components/sections/gift-finder';
 import HorizontalCollection from '@/components/sections/horizontal-collection';
 import { config } from './config';
 import IconCategoryStrip from '@/components/sections/icon-category-strip';
+import TopPromoBar from '@/components/mobile/TopPromoBar';
+import MobileSearch from '@/components/mobile/MobileSearch';
+import FreeDeliveryPill from '@/components/mobile/FreeDeliveryPill';
 
 export default function Home() {
   return (
     <>
-      <Header />
+      {/* Mobile-only header content */}
+      <div className="md:hidden">
+        <MobileSearch />
+        <FreeDeliveryPill />
+      </div>
+
       <main>
         <Hero />
         <IconCategoryStrip />
