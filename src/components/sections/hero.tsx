@@ -7,7 +7,7 @@ import { config } from '@/app/config';
 
 export default function Hero() {
   return (
-    <section id="home" className="bg-gray-50 pt-4 md:pt-8 pb-8">
+    <section id="home" className="bg-gray-50 pt-8 pb-8">
       <div className="container mx-auto">
         <Carousel
           opts={{ loop: true }}
@@ -16,8 +16,8 @@ export default function Hero() {
           <CarouselContent>
             {config.hero.banners.map((banner, index) => (
               <CarouselItem key={index}>
-                <div className="relative h-[220px] sm:h-[280px] md:aspect-[2.5/1] rounded-lg overflow-hidden bg-gray-100">
-                  <Image src={banner.imageUrl} alt={banner.alt} layout="fill" objectFit="cover" />
+                <div className="relative h-[280px] md:aspect-[2.5/1] rounded-lg overflow-hidden bg-gray-100">
+                  <Image src={banner.imageUrl} alt={banner.alt} layout="fill" objectFit="contain" />
                 </div>
               </CarouselItem>
             ))}
