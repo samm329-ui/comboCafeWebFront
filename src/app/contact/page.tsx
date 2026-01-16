@@ -71,7 +71,7 @@ export default function ContactPage() {
                   <MapPin className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold">Our Address</h3>
-                    <p className="text-gray-600">NH 60, near Tarapith Road, Rampurhat, West Bengal 731224</p>
+                    <p className="text-gray-600">Nischintapur, Rampurhat, West Bengal 731224</p>
                     <a href="https://google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/data=!4m2!3m1!1s0x0:0x20d4a8fe5d070ebc?sa=X&ved=1t:2428&ictx=111" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
                       Get Directions
                     </a>
