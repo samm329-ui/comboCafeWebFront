@@ -30,21 +30,6 @@ export default function Home() {
           bgColor="bg-accent"
           viewAllLink="/gifts"
         />
-        <ProductSection 
-          id="personalised-mugs-cushions"
-          title="Personalised Mugs & Cushions"
-          subtitle="Add a personal touch to your gifts"
-          items={config.productSections.personalisedMugsAndCushions.slice(0, 4)}
-          viewAllLink="/personalised-gifts"
-        />
-        <ProductSection 
-          id="personalised-frames"
-          title="Personalised Frames"
-          subtitle="Frame your cherished memories"
-          items={config.productSections.personalisedFrames.slice(0, 4)}
-          bgColor="bg-accent"
-          viewAllLink="/personalised-frames"
-        />
         <GiftFinder />
         <ProductSection
           title="Quick Bites"
