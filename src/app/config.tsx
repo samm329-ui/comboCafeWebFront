@@ -15,6 +15,8 @@ export const config = {
       { id: "food", label: "Food", href: "/food" },
       { id: "our-menu", label: "Our Menu", href: "/menu" },
       { id: "flowers", label: "Flowers & More", href: "/flowers" },
+      { id: "about-us", label: "About Us", href: "/about" },
+      { id: "contact-us", label: "Contact Us", href: "/contact" },
     ],
   },
   hero: {
