@@ -9,7 +9,6 @@ import GiftFinder from '@/components/sections/gift-finder';
 import HorizontalCollection from '@/components/sections/horizontal-collection';
 import { config } from './config';
 import IconCategoryStrip from '@/components/sections/icon-category-strip';
-import TopPromoBar from '@/components/mobile/TopPromoBar';
 import MobileSearch from '@/components/mobile/MobileSearch';
 import FreeDeliveryPill from '@/components/mobile/FreeDeliveryPill';
 

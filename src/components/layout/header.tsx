@@ -6,9 +6,8 @@ import { ChevronDown, MapPin, Search, ShoppingBag, Menu, X, Flag } from 'lucide-
 import { config } from '@/app/config';
 import { useCart } from '@/context/cart-provider';
 import { Button } from '../ui/button';
-import { Popover, PopoverContent, PopoverTrigger, PopoverAnchor } from "@/components/ui/popover"
+import { Popover, PopoverContent, PopoverAnchor } from "@/components/ui/popover"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import TopPromoBar from '../mobile/TopPromoBar';
 
 type Product = {
   id: string;
@@ -151,7 +150,6 @@ const MobileHeader = () => {
 
     return (
         <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background shadow-sm">
-            <TopPromoBar />
             <div className="flex items-center justify-between px-4 py-2 border-b">
                 <div className="flex items-center gap-2">
                     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
