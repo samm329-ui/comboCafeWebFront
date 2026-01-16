@@ -1,6 +1,6 @@
 'use client';
 
-import { Menu, Flag, ShoppingCart } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import Link from 'next/link';
 import { useCart } from "@/context/cart-provider";
 import { Button } from "../ui/button";
@@ -64,11 +64,9 @@ const MobileHeader = () => {
                             </div>
                         </SheetContent>
                     </Sheet>
-                    <Flag className="h-5 w-5 text-gray-600" />
-                    <div>
-                        <p className="font-semibold text-sm">Where to deliver?</p>
-                        <p className="text-xs text-red-500">Location missing</p>
-                    </div>
+                    <Link href="/" className="shrink-0">
+                      <span className="text-lg font-bold text-gray-800">combo cafe</span>
+                    </Link>
                 </div>
 
                 <div className="flex items-center gap-3">

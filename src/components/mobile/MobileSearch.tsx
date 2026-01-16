@@ -1,38 +1,113 @@
-
 'use client';
 
-import { Search, Mic } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { MapPin, Search, ChevronDown } from 'lucide-react';
+import { config } from '@/app/config';
+import { Popover, PopoverContent, PopoverAnchor } from "@/components/ui/popover";
+import { Button } from '../ui/button';
+
+type Product = {
+    id: string;
+    name: string;
+    price: string;
+    imageUrl: string;
+    description: string;
+    badge?: string;
+};
+
+const allProducts: Product[] = Array.from(new Set([ // Use Set to remove duplicates
+    ...config.productSections.bestSellingCakes,
+    ...config.productSections.allCakes,
+    ...config.productSections.gifts,
+    ...config.collections.cakes.map(c => ({...c, id: c.id || c.title, name: c.title, price: c.price || '0', description: c.description || ''})),
+    ...config.productSections.foodItems,
+]));
+
 
 export default function MobileSearch() {
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState('');
+    const [suggestions, setSuggestions] = useState<Product[]>([]);
+    const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+    useEffect(() => {
+        if (searchQuery.trim().length > 1) {
+            const filtered = allProducts.filter(product => {
+                const searchTerms = searchQuery.toLowerCase().split(' ').filter(term => term);
+                const productName = product.name.toLowerCase();
+                return searchTerms.some(term => productName.includes(term));
+            });
+            setSuggestions(filtered.slice(0, 5));
+            setIsPopoverOpen(filtered.length > 0);
+        } else {
+            setSuggestions([]);
+            setIsPopoverOpen(false);
+        }
+    }, [searchQuery]);
 
     const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsPopoverOpen(false);
         if (searchQuery.trim()) {
             router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
         }
     };
 
+    const handleSuggestionClick = () => {
+        setIsPopoverOpen(false);
+        setSearchQuery('');
+    };
+
     return (
-        <form onSubmit={handleSearchSubmit} className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                <Search className="h-5 w-5 text-gray-400" />
-            </div>
-            <input
-                type="search"
-                name="search"
-                id="search"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="block w-full rounded-md border-gray-300 bg-gray-100 pl-10 pr-10 py-3 text-sm placeholder:text-gray-500 focus:border-primary focus:ring-primary"
-                placeholder="Personalised Gifts, Cakes, Flowers..."
-            />
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                <Mic className="h-5 w-5 text-gray-400" />
-            </div>
-        </form>
+        <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+            <form onSubmit={handleSearchSubmit} className="flex items-center border rounded-md relative bg-gray-100">
+                <a 
+                    href="https://google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/data=!4m2!3m1!1s0x0:0x20d4a8fe5d070ebc?sa=X&ved=1t:2428&ictx=111" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center p-2 border-r cursor-pointer"
+                >
+                    <MapPin className="h-5 w-5 text-gray-500" />
+                    <span className="ml-1 text-sm font-medium">Rampurhat</span>
+                    <ChevronDown className="h-4 w-4 text-gray-500 ml-1" />
+                </a>
+                <PopoverAnchor asChild>
+                    <div className="flex-grow flex items-center">
+                        <input
+                            type="search"
+                            name="search"
+                            id="search"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="block w-full bg-transparent pl-3 pr-4 py-2 text-sm placeholder:text-gray-500 focus:outline-none"
+                            placeholder="Search Combo Cafe..."
+                            autoComplete="off"
+                        />
+                        <Button type="submit" variant="ghost" size="icon" className="w-10 h-10">
+                            <Search className="h-5 w-5 text-gray-500" />
+                        </Button>
+                    </div>
+                </PopoverAnchor>
+            </form>
+            <PopoverContent
+                onOpenAutoFocus={(e) => e.preventDefault()}
+                className="w-[--radix-popover-trigger-width] mt-1"
+            >
+                <div className="space-y-2">
+                    {suggestions.map((product) => (
+                        <Link
+                            key={product.id}
+                            href={`/search?q=${encodeURIComponent(product.name)}`}
+                            className="block p-2 -m-2 rounded-md hover:bg-accent"
+                            onClick={handleSuggestionClick}
+                        >
+                            <p className="text-sm font-medium truncate">{product.name}</p>
+                        </Link>
+                    ))}
+                </div>
+            </PopoverContent>
+        </Popover>
     );
 }
