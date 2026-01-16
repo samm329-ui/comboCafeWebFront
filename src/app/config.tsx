@@ -225,8 +225,9 @@ export const config = {
       policies: [
         { label: "Terms & Conditions", href: "#" },
         { label: "Privacy Policy", href: "#" },
-        { label: "Sitemap", href: "#" },
       ]
     }
   }
 };
+
+    
