@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from '../ui/button';
@@ -10,6 +11,23 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { format, addDays, startOfDay } from "date-fns";
+import { cn } from "@/lib/utils"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Calendar as CalendarIcon } from 'lucide-react';
+import { Separator } from '../ui/separator';
 
 type CollectionItem = {
   id?: string;
@@ -31,8 +49,24 @@ const CollectionCard = ({ item }: { item: CollectionItem }) => {
     const { toast } = useToast();
     const [isQrModalOpen, setIsQrModalOpen] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    const [date, setDate] = useState<Date | undefined>(addDays(new Date(), 1));
+    const [timeSlot, setTimeSlot] = useState("10-12");
+    const [customerDetails, setCustomerDetails] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        landmark: '',
+        pincode: '',
+    });
 
-    const handleSendToWhatsapp = () => {
+    const handleDetailsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setCustomerDetails(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSendToWhatsapp = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         if (!transactionId) {
             toast({
                 variant: "destructive",
@@ -42,8 +76,27 @@ const CollectionCard = ({ item }: { item: CollectionItem }) => {
             return;
         }
 
+        const deliveryDate = date ? format(date, "PPP") : "Not selected";
+        const timeSlotMap: { [key: string]: string } = {
+            '10-12': '10:00 AM - 12:00 PM',
+            '12-14': '12:00 PM - 02:00 PM',
+            '14-16': '02:00 PM - 04:00 PM',
+            '16-18': '04:00 PM - 06:00 PM',
+            '18-20': '06:00 PM - 08:00 PM',
+        };
+
         const whatsappMessage = `
 *New Single Item Order from Combo Cafe Website*
+
+*Customer Details:*
+Name: ${customerDetails.name}
+Phone: ${customerDetails.phone}
+Email: ${customerDetails.email}
+
+*Delivery Details:*
+Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDetails.landmark}` : ''}, ${customerDetails.pincode}
+Date: ${deliveryDate}
+Time Slot: ${timeSlotMap[timeSlot]}
 
 *Order Item:*
 - ${item.title}
@@ -60,11 +113,14 @@ Transaction ID: *${transactionId}*
         
         setIsQrModalOpen(false);
         setTransactionId('');
+        setCustomerDetails({ name: '', email: '', phone: '', address: '', landmark: '', pincode: '' });
         toast({
             title: "Order details sent!",
             description: "Your order has been sent via WhatsApp. We will confirm shortly.",
         });
     };
+
+    const cardId = item.id || item.title;
 
     return (
     <>
@@ -113,42 +169,115 @@ Transaction ID: *${transactionId}*
 
         {item.price && (
             <Dialog open={isQrModalOpen} onOpenChange={setIsQrModalOpen}>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Scan to Pay for {item.title}</DialogTitle>
-                    <DialogDescription>
-                      1. Scan the QR code to pay Rs. {item.price}.
-                      <br />
-                      2. Enter the transaction ID below.
-                      <br />
-                      3. Click confirm to place your order via WhatsApp.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="flex items-center justify-center py-4">
-                    <Image
-                      src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/qr/qr%20code.jpeg"
-                      alt="Payment QR Code"
-                      width={250}
-                      height={250}
-                      className="rounded-md ring-1 ring-border"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor={`transactionId-collection-${item.id || item.title}`}>Transaction ID</Label>
-                    <Input
-                      id={`transactionId-collection-${item.id || item.title}`}
-                      value={transactionId}
-                      onChange={(e) => setTransactionId(e.target.value)}
-                      placeholder="Enter payment transaction ID"
-                      required
-                      suppressHydrationWarning
-                    />
-                  </div>
-                  <DialogFooter className="sm:justify-start">
-                    <Button onClick={handleSendToWhatsapp} className="w-full" suppressHydrationWarning>
-                      Confirm and Place Order via WhatsApp
-                    </Button>
-                  </DialogFooter>
+                <DialogContent className="sm:max-w-lg">
+                    <DialogHeader>
+                        <DialogTitle>Order: {item.title}</DialogTitle>
+                        <DialogDescription>
+                        Fill your details, pay via QR, and confirm your order on WhatsApp.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleSendToWhatsapp} className="space-y-4 max-h-[70vh] overflow-y-auto p-1 pr-3">
+                         <div className="space-y-2">
+                            <Label htmlFor={`name-${cardId}`}>Full Name</Label>
+                            <Input id={`name-${cardId}`} name="name" placeholder="John Doe" required onChange={handleDetailsChange} value={customerDetails.name} suppressHydrationWarning />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor={`email-${cardId}`}>Email</Label>
+                            <Input id={`email-${cardId}`} name="email" type="email" placeholder="you@example.com" required onChange={handleDetailsChange} value={customerDetails.email} suppressHydrationWarning />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor={`phone-${cardId}`}>Phone Number</Label>
+                            <Input id={`phone-${cardId}`} name="phone" type="tel" placeholder="9876543210" required onChange={handleDetailsChange} value={customerDetails.phone} suppressHydrationWarning />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor={`address-${cardId}`}>Delivery Address</Label>
+                            <Input id={`address-${cardId}`} name="address" placeholder="123 Main St, Rampurhat" required onChange={handleDetailsChange} value={customerDetails.address} suppressHydrationWarning />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor={`landmark-${cardId}`}>Landmark</Label>
+                            <Input id={`landmark-${cardId}`} name="landmark" placeholder="Near City Mall" onChange={handleDetailsChange} value={customerDetails.landmark} suppressHydrationWarning />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor={`pincode-${cardId}`}>Pincode</Label>
+                            <Input id={`pincode-${cardId}`} name="pincode" type="text" placeholder="731235" maxLength={6} required onChange={handleDetailsChange} value={customerDetails.pincode} suppressHydrationWarning />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor={`date-${cardId}`}>Delivery Date</Label>
+                            <Popover>
+                                <PopoverTrigger asChild>
+                                    <Button
+                                        variant={"outline"}
+                                        className={cn(
+                                            "w-full justify-start text-left font-normal",
+                                            !date && "text-muted-foreground"
+                                        )}
+                                    suppressHydrationWarning>
+                                        <CalendarIcon className="mr-2 h-4 w-4" />
+                                        {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-auto p-0">
+                                    <Calendar
+                                        mode="single"
+                                        selected={date}
+                                        onSelect={setDate}
+                                        disabled={(day) =>
+                                        day < addDays(startOfDay(new Date()), 1) || day > addDays(new Date(), 30)
+                                        }
+                                        initialFocus
+                                    />
+                                </PopoverContent>
+                            </Popover>
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor={`time-${cardId}`}>Delivery Time</Label>
+                            <Select value={timeSlot} onValueChange={setTimeSlot}>
+                                <SelectTrigger id={`time-${cardId}`} suppressHydrationWarning>
+                                    <SelectValue placeholder="Select a time slot" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="10-12">10:00 AM - 12:00 PM</SelectItem>
+                                    <SelectItem value="12-14">12:00 PM - 02:00 PM</SelectItem>
+                                    <SelectItem value="14-16">02:00 PM - 04:00 PM</SelectItem>
+                                    <SelectItem value="16-18">04:00 PM - 06:00 PM</SelectItem>
+                                    <SelectItem value="18-20">06:00 PM - 08:00 PM</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        <Separator />
+
+                        <div className="text-sm text-center text-muted-foreground">
+                            1. Scan the QR code to pay Rs. {item.price}.<br/>2. Enter the transaction ID below.
+                        </div>
+
+                        <div className="flex items-center justify-center py-2">
+                            <Image
+                            src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/qr/qr%20code.jpeg"
+                            alt="Payment QR Code"
+                            width={200}
+                            height={200}
+                            className="rounded-md ring-1 ring-border"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor={`transactionId-collection-${cardId}`}>Transaction ID</Label>
+                            <Input
+                            id={`transactionId-collection-${cardId}`}
+                            value={transactionId}
+                            onChange={(e) => setTransactionId(e.target.value)}
+                            placeholder="Enter payment transaction ID"
+                            required
+                            suppressHydrationWarning
+                            />
+                        </div>
+                        <DialogFooter className="sm:justify-start pt-4">
+                            <Button type="submit" className="w-full" suppressHydrationWarning>
+                            Confirm and Place Order via WhatsApp
+                            </Button>
+                        </DialogFooter>
+                    </form>
                 </DialogContent>
               </Dialog>
         )}
