@@ -191,8 +191,8 @@ export const config = {
     links: {
       help: [
         { label: "Contact Us", href: "/contact" },
-        { label: "FAQs", href: "#" },
-        { label: "Customer Reviews", href: "#" },
+        { label: "FAQs", href: "/faqs" },
+        { label: "Customer Reviews", href: "/reviews" },
       ],
       business: [
         { label: "Corporate Gifting", href: "#" },
