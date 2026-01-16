@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '@/components/layout/header';
-import Footer from '@/components/layout/footer';
 import { useCart, Product } from '@/context/cart-provider';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -160,7 +158,6 @@ Transaction ID: *${transactionId}*
 
   return (
     <>
-      <Header />
       <main className="bg-gray-50 py-12">
         <div className="container mx-auto">
           <div className="mb-6">
@@ -319,7 +316,6 @@ Transaction ID: *${transactionId}*
           </div>
         </div>
       </main>
-      <Footer />
        <Dialog open={isQrModalOpen} onOpenChange={setIsQrModalOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>

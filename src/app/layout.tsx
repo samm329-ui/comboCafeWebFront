@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { CartProvider } from '@/context/cart-provider';
 import React from 'react';
 import Header from '@/components/layout/header';
+import Footer from '@/components/layout/footer';
 import MobileBottomNav from '@/components/mobile/MobileBottomNav';
 
 export const metadata = {
@@ -31,9 +32,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CartProvider>
-              <Header />
-              <div className='md:pt-0 pt-28'>
-                {children}
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className='flex-grow md:pt-0 pt-28'>
+                  {children}
+                </main>
+                <Footer />
               </div>
               <MobileBottomNav />
               <Toaster />
@@ -43,5 +47,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-    

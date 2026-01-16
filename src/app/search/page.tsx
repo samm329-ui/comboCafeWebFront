@@ -2,8 +2,6 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import Header from '@/components/layout/header';
-import Footer from '@/components/layout/footer';
 import ProductSection from '@/components/sections/product-section';
 import { config } from '@/app/config';
 import { Button } from '@/components/ui/button';
@@ -66,51 +64,47 @@ function SearchResults() {
   };
 
   return (
-    <>
-      <Header />
-      <main className="bg-white">
-        <div className="container mx-auto py-6">
-          <div className="md:hidden mb-6">
-            <form onSubmit={handleSearchSubmit} className="flex items-center border rounded-md">
-              <Input 
-                type="text"
-                placeholder="Search for gifts, cakes, flowers..."
-                className="w-full bg-transparent focus:outline-none text-sm placeholder-gray-400 border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                autoComplete="off"
-                suppressHydrationWarning
-              />
-              <Button type="submit" variant="ghost" size="icon" className="w-10 h-10" suppressHydrationWarning>
-                <Search className="h-5 w-5 text-gray-500" />
-              </Button>
-            </form>
-          </div>
-          <Button onClick={() => router.back()} variant="outline" className="mb-6 hidden md:inline-flex">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back
-          </Button>
-
-          {isClient && initialQuery && (
-            filteredProducts.length > 0 ? (
-              <ProductSection
-                title={`Search Results for "${initialQuery}"`}
-                subtitle={`${filteredProducts.length} items found`}
-                items={filteredProducts}
-                bgColor="bg-white"
-                showViewAll={false}
-              />
-            ) : (
-              <div className="text-center py-20">
-                <h2 className="text-2xl font-semibold">No results found for "{initialQuery}"</h2>
-                <p className="text-gray-500 mt-2">Try searching for something else.</p>
-              </div>
-            )
-          )}
+    <main className="bg-white">
+      <div className="container mx-auto py-6">
+        <div className="md:hidden mb-6">
+          <form onSubmit={handleSearchSubmit} className="flex items-center border rounded-md">
+            <Input 
+              type="text"
+              placeholder="Search for gifts, cakes, flowers..."
+              className="w-full bg-transparent focus:outline-none text-sm placeholder-gray-400 border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              autoComplete="off"
+              suppressHydrationWarning
+            />
+            <Button type="submit" variant="ghost" size="icon" className="w-10 h-10" suppressHydrationWarning>
+              <Search className="h-5 w-5 text-gray-500" />
+            </Button>
+          </form>
         </div>
-      </main>
-      <Footer />
-    </>
+        <Button onClick={() => router.back()} variant="outline" className="mb-6 hidden md:inline-flex">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back
+        </Button>
+
+        {isClient && initialQuery && (
+          filteredProducts.length > 0 ? (
+            <ProductSection
+              title={`Search Results for "${initialQuery}"`}
+              subtitle={`${filteredProducts.length} items found`}
+              items={filteredProducts}
+              bgColor="bg-white"
+              showViewAll={false}
+            />
+          ) : (
+            <div className="text-center py-20">
+              <h2 className="text-2xl font-semibold">No results found for "{initialQuery}"</h2>
+              <p className="text-gray-500 mt-2">Try searching for something else.</p>
+            </div>
+          )
+        )}
+      </div>
+    </main>
   );
 }
 

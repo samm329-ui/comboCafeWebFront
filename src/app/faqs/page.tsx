@@ -1,6 +1,4 @@
 
-import Header from '@/components/layout/header';
-import Footer from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
@@ -37,35 +35,31 @@ const faqs = [
 
 export default function FaqsPage() {
   return (
-    <>
-      <Header />
-      <main className="bg-white">
-        <div className="container mx-auto py-12">
-          <Button asChild variant="outline" className="mb-8">
-            <Link href="/">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Home
-            </Link>
-          </Button>
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold tracking-tight">Frequently Asked Questions</h1>
-                <p className="mt-2 text-lg text-muted-foreground">Find answers to common questions below.</p>
-            </div>
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger suppressHydrationWarning>{faq.question}</AccordionTrigger>
-                  <AccordionContent>
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+    <main className="bg-white">
+      <div className="container mx-auto py-12">
+        <Button asChild variant="outline" className="mb-8">
+          <Link href="/">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
+        </Button>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold tracking-tight">Frequently Asked Questions</h1>
+              <p className="mt-2 text-lg text-muted-foreground">Find answers to common questions below.</p>
           </div>
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger suppressHydrationWarning>{faq.question}</AccordionTrigger>
+                <AccordionContent>
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </main>
   );
 }
