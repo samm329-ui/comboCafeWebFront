@@ -202,7 +202,7 @@ export default function CheckoutPage() {
                             <Input id="pincode" name="pincode" type="text" placeholder="731235" maxLength={6} required />
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
                               <Label htmlFor="date">Delivery Date</Label>
                               <Popover>
