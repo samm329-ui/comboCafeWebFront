@@ -1,9 +1,8 @@
-
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, MapPin, Search, ShoppingBag, Menu, X, Flag, Wallet } from 'lucide-react';
+import { ChevronDown, MapPin, Search, ShoppingBag, Menu, X, Flag } from 'lucide-react';
 import { config } from '@/app/config';
 import { useCart } from '@/context/cart-provider';
 import { Button } from '../ui/button';
@@ -192,7 +191,6 @@ const MobileHeader = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <Wallet className="h-6 w-6 text-gray-600" />
                     <Link href="/checkout" className="relative text-gray-600">
                         <ShoppingBag className="h-6 w-6" />
                         {cart.length > 0 && (
