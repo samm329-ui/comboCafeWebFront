@@ -1,5 +1,5 @@
 
-import { Facebook, Instagram, Twitter, CakeSlice, Gift, Flower, Cookie, Home, Clock, Globe, User, ShoppingCart, BookOpen } from "lucide-react";
+import { Facebook, Instagram, Twitter, CakeSlice, Gift, Flower, Cookie, Home, Clock, Globe, User, ShoppingCart, BookOpen, PartyPopper, Heart, Sparkles, Package } from "lucide-react";
 
 const supabaseUrl = "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images";
 
@@ -41,6 +41,10 @@ export const config = {
     { id: "gifts", label: "Gifts", href: "/gifts", Icon: Gift, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_41_52%20PM.png" },
     { id: "flowers", label: "Flowers", href: "/flowers", Icon: Flower, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_45_36%20PM.png" },
     { id: "snacks", label: "Snacks", href: "/food", Icon: Cookie, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_52_11%20PM.png" },
+    { id: "birthday", label: "Birthday", href: "/search?q=birthday", Icon: PartyPopper },
+    { id: "anniversary", label: "Anniversary", href: "/search?q=anniversary", Icon: Heart },
+    { id: "personalised", label: "Personalised", href: "/personalised-gifts", Icon: Sparkles },
+    { id: "combos", label: "Combos", href: "/flowers", Icon: Package },
   ],
   serviceStrip: {
     title: "Bulk orders are acceptable",
