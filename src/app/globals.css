@@ -16,7 +16,7 @@
     --popover: 255 100% 100%;
     --popover-foreground: 220 13% 20%;
     
-    --primary: 26 100% 85%; /* #FFCDB2 - Soft Peach */
+    --primary: 46 100% 70%; /* #FFDA63 - Warm Yellow */
     --primary-foreground: 220 13% 20%;
     
     --secondary: 80 25% 48%; /* #8A9A5B - Muted Olive Green */
@@ -35,7 +35,7 @@
     
     --border: 220 13% 91%; /* #E4E7EB */
     --input: 220 13% 91%;
-    --ring: 26 100% 85%;
+    --ring: 46 100% 70%;
     
     --radius: 0.75rem;
   }
@@ -48,7 +48,7 @@
     --card-foreground: 220 13% 20%;
     --popover: 255 100% 100%;
     --popover-foreground: 220 13% 20%;
-    --primary: 26 100% 85%;
+    --primary: 46 100% 70%; /* #FFDA63 - Warm Yellow */
     --primary-foreground: 220 13% 20%;
     --secondary: 80 25% 48%;
     --secondary-foreground: 255 100% 100%;
@@ -61,7 +61,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 26 100% 85%;
+    --ring: 46 100% 70%;
     --radius: 0.75rem;
   }
 }
