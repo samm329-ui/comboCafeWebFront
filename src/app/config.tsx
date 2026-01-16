@@ -190,7 +190,7 @@ export const config = {
     ],
     links: {
       help: [
-        { label: "Contact Us", href: "#" },
+        { label: "Contact Us", href: "/contact" },
         { label: "FAQs", href: "#" },
         { label: "Customer Reviews", href: "#" },
       ],
@@ -199,8 +199,8 @@ export const config = {
         { label: "Franchise", href: "#" },
       ],
       policies: [
-        { label: "Terms & Conditions", href: "#" },
-        { label: "Privacy Policy", href: "#" },
+        { label: "Terms & Conditions", href: "/terms" },
+        { label: "Privacy Policy", href: "/privacy" },
       ]
     }
   }
