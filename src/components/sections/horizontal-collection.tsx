@@ -20,7 +20,7 @@ type HorizontalCollectionProps = {
 };
 
 const CollectionCard = ({ item }: { item: CollectionItem }) => {
-    const phoneNumber = "919474771771";
+    const phoneNumber = "918436860216";
     const whatsappMessage = `I'd like to inquire about: ${item.title}`;
 
     return (

@@ -30,7 +30,7 @@ type ProductSectionProps = {
 const ProductCard = ({ item }: { item: Product }) => {
   const { addToCart } = useCart();
   const { toast } = useToast();
-  const phoneNumber = "919474771771";
+  const phoneNumber = "918436860216";
   const whatsappMessage = `I'd like to place an order for: ${item.name} (Price: Rs. ${item.price}).`;
 
 
