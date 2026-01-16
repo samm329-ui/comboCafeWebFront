@@ -37,6 +37,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { format, addDays, startOfDay } from "date-fns";
+import { config } from '@/app/config';
 
 
 type CartItemView = {
@@ -333,11 +334,12 @@ Transaction ID: *${transactionId}*
           </DialogHeader>
           <div className="flex items-center justify-center py-4">
             <Image
-              src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/qr/qr%20code.jpeg"
+              src={config.payment.qrCodeUrl}
               alt="Payment QR Code"
               width={250}
               height={250}
               className="rounded-md ring-1 ring-border"
+              priority
             />
           </div>
           <div className="space-y-2">

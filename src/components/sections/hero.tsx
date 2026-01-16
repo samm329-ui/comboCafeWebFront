@@ -13,10 +13,10 @@ export default function Hero() {
           opts={{ loop: true, align: 'start' }}
           plugins={[Autoplay({ delay: 5000 })]}
         >
-          <CarouselContent className="-ml-6">
+          <CarouselContent className="-ml-8">
             {config.hero.banners.map((banner, index) => (
-              <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-2/5">
-                <div className="relative h-[280px] md:aspect-video rounded-lg overflow-hidden bg-gray-100">
+              <CarouselItem key={index} className="pl-8 md:basis-1/2 lg:basis-2/5">
+                <div className="relative h-[280px] md:h-[320px] rounded-lg overflow-hidden bg-gray-100">
                   <Image src={banner.imageUrl} alt={banner.alt} layout="fill" objectFit="cover" />
                 </div>
               </CarouselItem>

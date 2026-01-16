@@ -19,6 +19,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
 import { useCart } from '@/context/cart-provider';
+import { config } from '@/app/config';
 
 type Product = {
   id: string;
@@ -251,11 +252,12 @@ Transaction ID: *${transactionId}*
 
                 <div className="flex items-center justify-center py-2">
                     <Image
-                    src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/qr/qr%20code.jpeg"
+                    src={config.payment.qrCodeUrl}
                     alt="Payment QR Code"
                     width={200}
                     height={200}
                     className="rounded-md ring-1 ring-border"
+                    priority
                     />
                 </div>
                 <div className="space-y-2">
