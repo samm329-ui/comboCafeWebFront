@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/select"
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
+import { useCart } from '@/context/cart-provider';
 
 type CollectionItem = {
   id?: string;
@@ -47,6 +48,7 @@ type HorizontalCollectionProps = {
 const CollectionCard = ({ item }: { item: CollectionItem }) => {
     const phoneNumber = "918436860216";
     const { toast } = useToast();
+    const { addToCart } = useCart();
     const [isQrModalOpen, setIsQrModalOpen] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [date, setDate] = useState<Date | undefined>(addDays(new Date(), 1));
@@ -59,6 +61,28 @@ const CollectionCard = ({ item }: { item: CollectionItem }) => {
         landmark: '',
         pincode: '',
     });
+
+    const handleAddToCart = () => {
+        if (!item.id || !item.price) { 
+             toast({
+                variant: "destructive",
+                title: "Cannot add to cart",
+                description: "This item cannot be added to the cart directly.",
+            });
+            return;
+        }
+        addToCart({
+            id: item.id,
+            name: item.title,
+            price: item.price,
+            imageUrl: item.imageUrl,
+            description: item.description || ''
+        });
+        toast({
+            title: "Added to cart",
+            description: `${item.title} has been added to your cart.`,
+        });
+    };
 
     const handleDetailsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -148,6 +172,11 @@ Transaction ID: *${transactionId}*
                 )}
             </CardContent>
             <div className="p-3 pt-0 bg-white space-y-2">
+                {item.price && (
+                     <Button onClick={handleAddToCart} className="w-full text-xs text-center" size="sm" suppressHydrationWarning>
+                        Add to Cart
+                    </Button>
+                )}
                 {item.price ? (
                     <Button onClick={() => setIsQrModalOpen(true)} variant="secondary" className="w-full text-xs text-center" size="sm" suppressHydrationWarning>
                         Order on WhatsApp

@@ -18,6 +18,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
+import { useCart } from '@/context/cart-provider';
 
 type Product = {
   id: string;
@@ -40,6 +41,7 @@ type ProductSectionProps = {
 
 const ProductCard = ({ item }: { item: Product }) => {
   const { toast } = useToast();
+  const { addToCart } = useCart();
   const phoneNumber = "918436860216";
 
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
@@ -54,6 +56,14 @@ const ProductCard = ({ item }: { item: Product }) => {
       landmark: '',
       pincode: '',
   });
+
+  const handleAddToCart = () => {
+    addToCart(item);
+    toast({
+      title: "Added to cart",
+      description: `${item.name} has been added to your cart.`,
+    });
+  };
 
   const handleDetailsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
@@ -141,6 +151,9 @@ Transaction ID: *${transactionId}*
           </div>
         </CardContent>
         <div className="p-4 pt-0 space-y-2">
+            <Button onClick={handleAddToCart} className="w-full text-xs text-center" size="sm" suppressHydrationWarning>
+                Add to Cart
+            </Button>
             <Button onClick={() => setIsQrModalOpen(true)} variant="secondary" className="w-full text-xs text-center" size="sm" suppressHydrationWarning>
                 Order on WhatsApp
             </Button>
