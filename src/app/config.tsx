@@ -126,10 +126,10 @@ export const config = {
         { id: "f6", name: "Cappuccino", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/cappacuino.jpg`, description: "A classic coffee drink with equal parts espresso, steamed milk, and milk foam." },
         { id: "f7", name: "Caffè Latte", price: "130", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/latte.jpg`, description: "A coffee drink made with espresso and steamed milk." },
         { id: "f9", name: "Hot Chocolate", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/hot%20chocolate.jpg`, description: "A warm and comforting chocolate-flavored drink." },
-        { id: "f10", name: "Cold Coffee", price: "140", imageUrl: `https://picsum.photos/seed/food10/400/400`, description: "A refreshing chilled coffee beverage." },
-        { id: "f11", name: "Iced Latte", price: "150", imageUrl: `https://picsum.photos/seed/food11/400/400`, description: "Chilled espresso mixed with cold milk over ice." },
-        { id: "f12", name: "Chocolate Frappe", price: "160", imageUrl: `https://picsum.photos/seed/food12/400/400`, description: "A blended iced coffee drink with rich chocolate flavor." },
-        { id: "f13", name: "Strawberry Milkshake", price: "150", imageUrl: `https://picsum.photos/seed/food13/400/400`, description: "A sweet and creamy shake made with fresh strawberries." }
+        { id: "f10", name: "Cold Coffee", price: "140", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/cold%20coffee.jpg`, description: "A refreshing chilled coffee beverage." },
+        { id: "f11", name: "Iced Latte", price: "150", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/iced%20latte.jpg`, description: "Chilled espresso mixed with cold milk over ice." },
+        { id: "f12", name: "Chocolate Frappe", price: "160", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/chocolate%20frappe.jpg`, description: "A blended iced coffee drink with rich chocolate flavor." },
+        { id: "f13", name: "Strawberry Milkshake", price: "150", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/strawberry%20milkshake.jpg`, description: "A sweet and creamy shake made with fresh strawberries." }
     ],
     snacks: [
         { id: "s1", name: "Veg Puff", price: "60", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A savory and flaky pastry filled with spiced vegetables." },
