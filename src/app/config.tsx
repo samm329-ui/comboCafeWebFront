@@ -42,8 +42,8 @@ export const config = {
     { id: "flowers", label: "Flowers", href: "/flowers", Icon: Flower, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_45_36%20PM.png" },
     { id: "snacks", label: "Snacks", href: "/food", Icon: Cookie, imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2016,%202026,%2005_52_11%20PM.png" },
     { id: "birthday", label: "Birthday", href: "/search?q=birthday", Icon: PartyPopper },
-    { id: "anniversary", label: "Anniversary", href: "/search?q=anniversary", Icon: Heart },
-    { id: "personalised", label: "Personalised", href: "/personalised-gifts", Icon: Sparkles },
+    { id: "anniversary", label: "Celebrate", href: "/search?q=anniversary", Icon: Heart },
+    { id: "personalised", label: "Custom", href: "/personalised-gifts", Icon: Sparkles },
     { id: "combos", label: "Combos", href: "/flowers", Icon: Package },
   ],
   serviceStrip: {
