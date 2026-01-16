@@ -17,7 +17,7 @@ export default function Hero() {
             {config.hero.banners.map((banner, index) => (
               <CarouselItem key={index}>
                 <div className="relative h-[220px] sm:h-[280px] md:aspect-[2.5/1] rounded-lg overflow-hidden bg-gray-100">
-                  <Image src={banner.imageUrl} alt={banner.alt} layout="fill" objectFit="contain" />
+                  <Image src={banner.imageUrl} alt={banner.alt} layout="fill" objectFit="cover" />
                 </div>
               </CarouselItem>
             ))}
