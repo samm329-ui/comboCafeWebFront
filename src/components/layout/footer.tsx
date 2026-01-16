@@ -1,6 +1,6 @@
 
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { config } from '@/app/config';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
@@ -24,6 +24,13 @@ const FooterLinkColumn = ({ title, links }: { title: string; links: { label: str
 
 export default function Footer() {
   const { toast } = useToast();
+  const [copyrightText, setCopyrightText] = useState(config.footer.copyright);
+
+  useEffect(() => {
+    setCopyrightText(
+      config.footer.copyright.replace('{YEAR}', new Date().getFullYear().toString())
+    );
+  }, []);
 
   const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -78,7 +85,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="bg-gray-800 text-gray-300 py-3">
         <div className="container mx-auto text-center text-xs">
-          <p>{config.footer.copyright}</p>
+          <p>{copyrightText}</p>
         </div>
       </div>
     </footer>

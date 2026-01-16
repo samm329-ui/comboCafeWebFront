@@ -205,7 +205,7 @@ export const config = {
   },
   footer: {
     about: "Discover the perfect gift for every occasion. We are your one-stop destination for gifts, cakes, flowers, and more, offering reliable domestic delivery.",
-    copyright: `© ${new Date().getFullYear()} Ferns & Petals. All rights reserved.`,
+    copyright: `© {YEAR} Ferns & Petals. All rights reserved.`,
     social: [
       { label: "Facebook", Icon: Facebook, href: "#" },
       { label: "Instagram", Icon: Instagram, href: "#" },
@@ -229,5 +229,3 @@ export const config = {
     }
   }
 };
-
-    
