@@ -7,6 +7,7 @@ import React from 'react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import MobileBottomNav from '@/components/mobile/MobileBottomNav';
+import MobileCartFab from '@/components/common/MobileCartFab';
 
 export const metadata = {
   title: 'Ferns & Petals - Gifts, Cakes, Flowers',
@@ -40,6 +41,7 @@ export default function RootLayout({
                 <Footer />
               </div>
               <MobileBottomNav />
+              <MobileCartFab />
               <Toaster />
           </CartProvider>
         </ThemeProvider>

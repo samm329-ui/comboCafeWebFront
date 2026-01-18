@@ -244,7 +244,7 @@ export const config = {
       buttonLink: "#"
     },
     bottomNav: [
-      { id: "cart", label: "Cart", href: "/checkout", Icon: ShoppingCart },
+      { id: "home", label: "Home", href: "/", Icon: Home },
       { id: "menu", label: "Menu", href: "/menu", Icon: BookOpen },
       { id: "gifts", label: "Gifts", href: "/gifts", Icon: Gift },
       { id: "flowers", label: "Flowers", href: "/flowers", Icon: Flower },
