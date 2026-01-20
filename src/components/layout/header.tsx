@@ -183,11 +183,6 @@ const CategoryNavigation = () => (
                 </nav>
                 <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background/95 to-transparent pointer-events-none" />
             </div>
-            {config.header.bannerUrl && (
-                <div className="pl-6 shrink-0">
-                    <Image src={config.header.bannerUrl} alt="Special Offer" width={200} height={40} />
-                </div>
-            )}
         </div>
     </div>
 );

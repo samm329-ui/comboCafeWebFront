@@ -46,7 +46,6 @@ export const config = {
       { id: "about-us", label: "About Us", href: "/about" },
       { id: "contact-us", label: "Contact Us", href: "/contact" },
     ],
-    bannerUrl: 'https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/image%20(8).png',
   },
   hero: {
     banners: [
