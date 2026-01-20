@@ -59,7 +59,7 @@ const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) 
   return (
     <Card className="overflow-hidden group bg-card shadow-card border-0 rounded-card flex flex-col h-full">
       <div className="relative">
-        <div className="relative aspect-square w-full overflow-hidden rounded-t-card bg-background">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-card bg-background">
           <Image
             src={item.imageUrl}
             alt={item.name}
@@ -153,3 +153,5 @@ export default function ProductSection({ id, title, subtitle, items, bgColor = '
     </section>
   );
 }
+
+    

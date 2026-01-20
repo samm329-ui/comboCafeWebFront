@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from '../ui/button';
@@ -152,7 +153,7 @@ Transaction ID: *${transactionId}*
         <Card className="overflow-hidden group border-0 rounded-lg shadow-sm flex flex-col h-full">
             <CardContent className="p-0 flex-grow">
                 <div className="block">
-                    <div className="relative aspect-square">
+                    <div className="relative aspect-[4/3]">
                     <Image 
                         src={item.imageUrl} 
                         alt={item.title} 
@@ -367,3 +368,5 @@ export default function HorizontalCollection({ title, items, bgColor = 'bg-white
     </section>
   );
 }
+
+    
