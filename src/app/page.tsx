@@ -43,7 +43,7 @@ export default function Home() {
 
       <BestSellingSection />
 
-      <div className="relative w-full aspect-[24/5]">
+      <div className="relative w-full aspect-[3/1]">
         <Image
           src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/1ChatGPT%20Image%20Jan%2020,%202026,%2003_26_56%20PM_upscayl_2x_digital-art-4x.webp"
           alt="Delectable Cakes Banner"
@@ -71,7 +71,7 @@ export default function Home() {
         viewAllLink="/food"
       />
 
-      <div className="relative w-full aspect-[24/5]">
+      <div className="relative w-full aspect-[3/1]">
         <Image
           src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2020,%202026,%2003_m33_32%20PM_upscayl_2x_digital-art-4x.webp"
           alt="Hot Beverages Banner"
