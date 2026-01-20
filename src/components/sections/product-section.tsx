@@ -96,13 +96,14 @@ const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) 
 
         <div className="mt-auto pt-2">
           <p className="font-sans font-bold text-base text-primary-dark">{`Rs. ${item.price}`}</p>
-           <div className="mt-2 space-y-2">
-                <Button onClick={handleAddToCart} variant="secondary" size="lg" className="w-full rounded-lg h-11" suppressHydrationWarning>
+           <div className="mt-2 flex items-center gap-2">
+                <Button onClick={handleAddToCart} variant="secondary" size="lg" className="w-full flex-1 rounded-lg h-11" suppressHydrationWarning>
                     Add to Cart
                 </Button>
-                <Button variant="outline" size="lg" className="w-full rounded-lg h-11 border-primary-dark/30 text-primary-dark/80 hover:bg-primary-dark/10" asChild suppressHydrationWarning>
+                <Button variant="outline" size="icon" className="h-11 w-11 shrink-0 rounded-lg border-primary-dark/30 text-primary-dark/80 hover:bg-primary-dark/10" asChild suppressHydrationWarning>
                    <a href={`tel:${phoneNumber}`}>
-                    <Phone className="mr-2 h-4 w-4" /> Call to Order
+                    <Phone className="h-5 w-5" />
+                    <span className="sr-only">Call to Order</span>
                    </a>
                 </Button>
             </div>
