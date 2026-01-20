@@ -141,7 +141,10 @@ export const config = {
         { id: "hb4", name: "Caffe Latte", price: "120", imageUrl: `https://images.unsplash.com/photo-1729364983489-d4d569978fd7?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A creamy coffee with more steamed milk." },
         { id: "hb5", name: "Mocha", price: "130", imageUrl: `https://images.unsplash.com/photo-1592663533909-f75fe1ae99a4?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A rich blend of coffee and chocolate." },
         { id: "hb6", name: "Hot Chocolate", price: "110", imageUrl: `https://images.unsplash.com/photo-1637572815755-c4b80092dce1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A warm and comforting chocolate beverage." },
-        { id: "f10", name: "Cold Coffee", price: "140", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/cold%20coffee.jpg`, description: "A refreshing chilled coffee beverage." },
+        { id: "cb1", name: "Chocolate Frappe", price: "160", imageUrl: 'https://images.unsplash.com/photo-1696487773677-c0c8061fe3d2?q=80&w=699&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A rich and creamy chocolate frappe.' },
+        { id: "cb2", name: "Iced Latte", price: "130", imageUrl: 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?q=80&w=714&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Chilled espresso with milk over ice.' },
+        { id: "cb3", name: "Cold Coffee", price: "140", imageUrl: 'https://images.unsplash.com/photo-1592663527359-cf6642f54cff?q=80&w=2038&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A classic refreshing cold coffee.' },
+        { id: "cb4", name: "Strawberry Milkshake", price: "150", imageUrl: 'https://images.unsplash.com/photo-1629174114500-6ec256a6213f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A sweet and creamy strawberry milkshake.' },
     ],
     snacks: [
         { id: "s1", name: "Veg Puff", price: "60", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A savory and flaky pastry filled with spiced vegetables.", badge: "QUICK BITE" },
@@ -155,6 +158,12 @@ export const config = {
         { id: "hb4", name: "Caffe Latte", price: "120", imageUrl: `https://images.unsplash.com/photo-1729364983489-d4d569978fd7?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A creamy coffee with more steamed milk." },
         { id: "hb5", name: "Mocha", price: "130", imageUrl: `https://images.unsplash.com/photo-1592663533909-f75fe1ae99a4?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A rich blend of coffee and chocolate." },
         { id: "hb6", name: "Hot Chocolate", price: "110", imageUrl: `https://images.unsplash.com/photo-1637572815755-c4b80092dce1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A warm and comforting chocolate beverage." },
+    ],
+    coldBeverages: [
+      { id: "cb1", name: "Chocolate Frappe", price: "160", imageUrl: 'https://images.unsplash.com/photo-1696487773677-c0c8061fe3d2?q=80&w=699&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A rich and creamy chocolate frappe.', badge: "CHILLED" },
+      { id: "cb2", name: "Iced Latte", price: "130", imageUrl: 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?q=80&w=714&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'Chilled espresso with milk over ice.' },
+      { id: "cb3", name: "Cold Coffee", price: "140", imageUrl: 'https://images.unsplash.com/photo-1592663527359-cf6642f54cff?q=80&w=2038&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A classic refreshing cold coffee.' },
+      { id: "cb4", name: "Strawberry Milkshake", price: "150", imageUrl: 'https://images.unsplash.com/photo-1629174114500-6ec256a6213f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', description: 'A sweet and creamy strawberry milkshake.' },
     ],
     flowerProducts: [
       { id: "fp1", name: "Single Rose", price: "50", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/single%20rose.jpg", description: "A single, elegant rose for a simple gesture." },
@@ -224,3 +233,5 @@ export const config = {
     qrCodeUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/qr%20code.jpeg"
   }
 };
+
+    

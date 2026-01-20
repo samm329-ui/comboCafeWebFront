@@ -78,6 +78,17 @@ export default function Home() {
         showViewAll={true}
         viewAllLink="/food"
       />
+      <ProductSection
+        id="cold-beverages"
+        title="Cold Beverages"
+        subtitle="Cool down with our refreshing drinks"
+        items={config.productSections.coldBeverages.slice(0, 3)}
+        bgColor="bg-background"
+        showViewAll={true}
+        viewAllLink="/food"
+      />
     </main>
   );
 }
+
+    
