@@ -8,9 +8,10 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import HorizontalCollection from '@/components/sections/horizontal-collection';
+import IconCategoryStrip from '@/components/sections/icon-category-strip';
 
 const BestSellingSection = () => (
-  <section className="bg-background">
+  <section className="bg-background py-16">
     <div className="container mx-auto">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-semibold">Best Selling Cakes</h2>
@@ -34,20 +35,7 @@ export default function Home() {
   return (
     <main className="bg-background">
       <Hero />
-
-      <section className="py-8">
-          <div className="container mx-auto">
-              <div className="relative aspect-[5.45/1] w-full overflow-hidden rounded-lg">
-                  <Image
-                      src={config.freeDeliveryBanner.imageUrl}
-                      alt={config.freeDeliveryBanner.alt}
-                      layout="fill"
-                      objectFit="cover"
-                      priority
-                  />
-              </div>
-          </div>
-      </section>
+      <IconCategoryStrip />
 
       <BestSellingSection />
 
@@ -62,8 +50,8 @@ export default function Home() {
         id="quick-bites"
         title="Quick Bites"
         subtitle="Delicious and savory snacks"
-        items={config.productSections.snacks.slice(0, 3)}
-        bgColor="bg-background"
+        items={config.productSections.snacks.slice(0, 4)}
+        bgColor="bg-accent"
         showViewAll={true}
         viewAllLink="/food"
       />
@@ -71,16 +59,7 @@ export default function Home() {
         id="hot-beverages"
         title="Hot Beverages"
         subtitle="Warm up with our selection of coffees and more"
-        items={config.productSections.hotBeverages.slice(0, 3)}
-        bgColor="bg-background"
-        showViewAll={true}
-        viewAllLink="/food"
-      />
-      <ProductSection
-        id="cold-beverages"
-        title="Cold Beverages"
-        subtitle="Cool down with our refreshing drinks"
-        items={config.productSections.coldBeverages.slice(0, 3)}
+        items={config.productSections.hotBeverages.slice(0, 4)}
         bgColor="bg-background"
         showViewAll={true}
         viewAllLink="/food"
@@ -89,8 +68,8 @@ export default function Home() {
         id="top-gifts"
         title="Thoughtful Gifts"
         subtitle="Find the perfect present for your loved ones"
-        items={config.productSections.gifts}
-        bgColor="bg-background"
+        items={config.productSections.gifts.slice(0, 4)}
+        bgColor="bg-accent"
         showViewAll={true}
         viewAllLink="/gifts"
       />
@@ -98,7 +77,7 @@ export default function Home() {
         id="flowers-and-more"
         title="Flowers &amp; More"
         subtitle="Fresh arrangements for any occasion"
-        items={config.productSections.flowerProducts}
+        items={config.productSections.flowerProducts.slice(0, 4)}
         bgColor="bg-background"
         showViewAll={true}
         viewAllLink="/flowers"
