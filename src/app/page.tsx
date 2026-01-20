@@ -1,4 +1,5 @@
 
+
 import Hero from '@/components/sections/hero';
 import ServiceStrip from '@/components/sections/service-strip';
 import ProductSection from '@/components/sections/product-section';
@@ -20,7 +21,7 @@ const BestSellingSection = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <ProductSection items={config.productSections.bestSellingCakes} />
+          <ProductSection items={config.productSections.bestSellingCakes} prioritizeImages={true} />
         </div>
         <div className="md:col-span-1">
           <GiftFinder />
@@ -48,6 +49,7 @@ export default function Home() {
           alt="Delectable Cakes Banner"
           layout="fill"
           objectFit="cover"
+          priority
         />
       </div>
 
@@ -56,6 +58,7 @@ export default function Home() {
         items={config.collections.cakes}
         bgColor="bg-background"
         viewAllLink="/cakes"
+        prioritizeImages={true}
       />
       
       <ProductSection
@@ -74,6 +77,7 @@ export default function Home() {
           alt="Hot Beverages Banner"
           layout="fill"
           objectFit="cover"
+          priority
         />
       </div>
 

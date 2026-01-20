@@ -1,4 +1,5 @@
 
+
 import { config } from '@/app/config';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -20,7 +21,7 @@ export default function MenuPage() {
               <p className="mt-2 text-lg text-muted-foreground">{config.menu.subtitle}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {config.menu.images.map((image) => (
+              {config.menu.images.map((image, index) => (
                   <div key={image.id} className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
                       <Image
                           src={image.src}
@@ -28,6 +29,7 @@ export default function MenuPage() {
                           layout="fill"
                           objectFit="cover"
                           className="transform hover:scale-105 transition-transform duration-300"
+                          priority={index < 3}
                       />
                   </div>
               ))}

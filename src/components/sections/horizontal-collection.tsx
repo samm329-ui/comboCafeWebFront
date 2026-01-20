@@ -44,9 +44,10 @@ type HorizontalCollectionProps = {
   items: CollectionItem[];
   bgColor?: string;
   viewAllLink?: string;
+  prioritizeImages?: boolean;
 };
 
-const CollectionCard = ({ item }: { item: CollectionItem }) => {
+const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: boolean }) => {
     const phoneNumber = "918436860216";
     const { toast } = useToast();
     const { addToCart } = useCart();
@@ -158,6 +159,7 @@ Transaction ID: *${transactionId}*
                         alt={item.title} 
                         layout="fill" 
                         className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                        priority={priority}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
@@ -317,7 +319,7 @@ Transaction ID: *${transactionId}*
     );
 };
 
-export default function HorizontalCollection({ title, items, bgColor = 'bg-white', viewAllLink = '#' }: HorizontalCollectionProps) {
+export default function HorizontalCollection({ title, items, bgColor = 'bg-white', viewAllLink = '#', prioritizeImages = false }: HorizontalCollectionProps) {
   return (
     <section className={bgColor}>
       <div className="container mx-auto">
@@ -338,7 +340,7 @@ export default function HorizontalCollection({ title, items, bgColor = 'bg-white
                 {items.map((item, index) => (
                     <CarouselItem key={index} className="pl-4 basis-4/5 sm:basis-1/2 md:basis-1/4 lg:basis-1/5">
                         <div className="h-full">
-                            <CollectionCard item={item} />
+                            <CollectionCard item={item} priority={prioritizeImages && index < 5} />
                         </div>
                     </CarouselItem>
                 ))}

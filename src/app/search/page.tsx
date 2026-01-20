@@ -95,6 +95,7 @@ function SearchResults() {
               items={filteredProducts}
               bgColor="bg-white"
               showViewAll={false}
+              prioritizeImages={true}
             />
           ) : (
             <div className="text-center py-20">

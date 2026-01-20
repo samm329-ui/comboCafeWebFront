@@ -1,3 +1,4 @@
+
 "use client";
 import React from 'react';
 import { Button } from '../ui/button';
@@ -25,9 +26,10 @@ type ProductSectionProps = {
   bgColor?: string;
   viewAllLink?: string;
   showViewAll?: boolean;
+  prioritizeImages?: boolean;
 };
 
-const ProductCard = ({ item }: { item: Product }) => {
+const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) => {
   const { toast } = useToast();
   const { addToCart } = useCart();
   const phoneNumber = "8436860216";
@@ -49,6 +51,7 @@ const ProductCard = ({ item }: { item: Product }) => {
             alt={item.name}
             layout="fill"
             className="object-cover group-hover:scale-105 transition-transform duration-300"
+            priority={priority}
           />
         </div>
         {item.badge && (
@@ -97,14 +100,14 @@ const ProductCard = ({ item }: { item: Product }) => {
 };
 
 
-export default function ProductSection({ id, title, subtitle, items, bgColor = 'bg-background', viewAllLink = "#", showViewAll = true }: ProductSectionProps) {
+export default function ProductSection({ id, title, subtitle, items, bgColor = 'bg-background', viewAllLink = "#", showViewAll = true, prioritizeImages = false }: ProductSectionProps) {
   
   // If there's no title, we assume it's being used just to render a grid of cards
   if (!title) {
     return (
       <>
-        {items.map((item) => (
-            <ProductCard key={item.id} item={item} />
+        {items.map((item, index) => (
+            <ProductCard key={item.id} item={item} priority={prioritizeImages && index < 2} />
           ))}
       </>
     )
@@ -120,8 +123,8 @@ export default function ProductSection({ id, title, subtitle, items, bgColor = '
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {items.map((item) => (
-            <ProductCard key={item.id} item={item} />
+          {items.map((item, index) => (
+            <ProductCard key={item.id} item={item} priority={prioritizeImages && index < 4} />
           ))}
         </div>
 

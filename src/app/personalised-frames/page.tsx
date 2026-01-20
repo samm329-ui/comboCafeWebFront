@@ -1,4 +1,5 @@
 
+
 import ProductSection from '@/components/sections/product-section';
 import { config } from '@/app/config';
 import { Button } from '@/components/ui/button';
@@ -22,6 +23,7 @@ export default function PersonalisedFramesPage() {
         items={config.productSections.personalisedFrames}
         bgColor="bg-white"
         showViewAll={false}
+        prioritizeImages={true}
       />
     </main>
   );
