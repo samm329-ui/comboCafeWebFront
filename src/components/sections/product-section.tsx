@@ -1,4 +1,3 @@
-
 "use client";
 import React from 'react';
 import { Button } from '../ui/button';
@@ -7,7 +6,8 @@ import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { useCart } from '@/context/cart-provider';
-import { Heart, Phone, Search, Star, ZoomIn } from 'lucide-react';
+import { Heart, Phone, Search } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type Product = {
   id: string;
@@ -136,7 +136,12 @@ export default function ProductSection({ id, title, subtitle, items, bgColor = '
           <div className="w-20 h-px bg-soft-divider mx-auto mt-4"></div>
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+        <div className={cn(
+            "grid gap-3 md:gap-6",
+            id === 'hot-beverages' ? "grid-cols-4" : "grid-cols-2 sm:grid-cols-2",
+            "md:grid-cols-4"
+          )}
+        >
           {items.map((item, index) => (
             <ProductCard key={item.id} item={item} priority={prioritizeImages && index < 4} />
           ))}
