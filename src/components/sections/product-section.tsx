@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState } from 'react';
 import { Button } from '../ui/button';
@@ -193,17 +194,17 @@ Transaction ID: *${transactionId}*
                 <p className="font-sans font-bold text-base text-primary-dark">{`Rs. ${item.price}`}</p>
                 <div className="mt-2 space-y-2">
                     <div className="flex items-center gap-2">
-                        <Button onClick={handleAddToCart} variant="secondary" size="sm" className="w-full flex-1 rounded-lg h-8" suppressHydrationWarning>
+                        <Button onClick={handleAddToCart} size="sm" className="w-full flex-1 text-xs text-center rounded-md h-8" suppressHydrationWarning>
                             Add to Cart
                         </Button>
-                        <Button variant="outline" size="icon" className="h-8 w-8 shrink-0 rounded-lg border-primary-dark/30 text-primary-dark/80 hover:bg-primary-dark/10" asChild suppressHydrationWarning>
+                        <Button variant="outline" size="icon" className="h-8 w-8 shrink-0 rounded-md border-primary-dark/30 text-primary-dark/80 hover:bg-primary-dark/10" asChild suppressHydrationWarning>
                             <a href={`tel:${phoneNumber}`}>
                                 <Phone className="h-4 w-4" />
                                 <span className="sr-only">Call to Order</span>
                             </a>
                         </Button>
                     </div>
-                    <Button onClick={() => setIsQrModalOpen(true)} variant="secondary" size="sm" className="w-full text-xs text-center h-8" suppressHydrationWarning>
+                    <Button onClick={() => setIsQrModalOpen(true)} variant="secondary" size="sm" className="w-full text-xs text-center rounded-md h-8" suppressHydrationWarning>
                         Order on WhatsApp
                     </Button>
                 </div>
