@@ -67,7 +67,7 @@ const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) 
             className="object-contain transition-transform duration-300 group-hover:scale-105"
             priority={priority}
           />
-           <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+           <div className="absolute top-3 right-3 flex flex-col gap-2 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
               <Button onClick={handleWishlistClick} variant="outline" size="icon" className="h-8 w-8 bg-white/80 hover:bg-white border-0 rounded-full shadow-md" suppressHydrationWarning>
                 <Heart className="w-4 h-4 text-gray-700" />
               </Button>
