@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -20,7 +19,7 @@ export default function IconCategoryStrip() {
 
 
   return (
-    <section className="pt-2 pb-4 md:pt-8 md:pb-12">
+    <section className="pt-6 pb-6 md:pt-8 md:pb-12">
         <div className="container mx-auto">
             <div className="flex items-start justify-start gap-x-2 overflow-x-auto scrollbar-hide">
                 {(isMounted ? categories : config.iconCategories).map((category: any, index: number) => (
@@ -28,7 +27,7 @@ export default function IconCategoryStrip() {
                     href={category.href}
                     key={category.id}
                     className={cn(
-                        "group w-24 text-center shrink-0 flex flex-col items-center gap-2 transition-opacity duration-500",
+                        "group w-20 text-center shrink-0 flex flex-col items-center gap-2 transition-opacity duration-500",
                         isMounted ? 'opacity-100' : 'opacity-0'
                     )}
                     style={{ transitionDelay: `${index * 100}ms` }}

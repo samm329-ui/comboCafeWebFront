@@ -26,7 +26,7 @@ export default function Hero() {
           <CarouselContent className="ml-0">
             {config.hero.banners.map((banner, index) => (
               <CarouselItem key={index} className="pl-0 basis-2/3 md:basis-full">
-                <div className="relative aspect-[16/9] w-full">
+                <div className="relative aspect-[4/3] md:aspect-[16/9] w-full">
                   <Image
                     src={banner.imageUrl}
                     alt={banner.alt}
