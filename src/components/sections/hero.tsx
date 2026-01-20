@@ -35,7 +35,6 @@ export default function Hero() {
                   objectPosition="center"
                   priority={index === 0}
                 />
-                 <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-transparent"></div>
               </div>
             </CarouselItem>
           ))}
@@ -46,5 +45,3 @@ export default function Hero() {
     </section>
   );
 }
-
-    
