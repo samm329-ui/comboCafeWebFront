@@ -59,7 +59,7 @@ const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) 
   return (
     <Card className="overflow-hidden group bg-card shadow-card border-0 rounded-card flex flex-col h-full">
       <div className="relative">
-        <div className="relative aspect-square w-full overflow-hidden rounded-t-card bg-background">
+        <div className="relative aspect-[1/1] w-full overflow-hidden rounded-t-card bg-background">
           <Image
             src={item.imageUrl}
             alt={item.name}
@@ -136,16 +136,23 @@ export default function ProductSection({ id, title, subtitle, items, bgColor = '
           <div className="w-20 h-px bg-soft-divider mx-auto mt-4"></div>
         </div>
         
-        <div className={cn(
-            "grid gap-3 md:gap-6",
-            id === 'hot-beverages' ? "grid-cols-4" : "grid-cols-2 sm:grid-cols-2",
-            "md:grid-cols-4"
-          )}
-        >
-          {items.map((item, index) => (
-            <ProductCard key={item.id} item={item} priority={prioritizeImages && index < 4} />
-          ))}
-        </div>
+        {id === 'hot-beverages' ? (
+            <div className="md:grid md:grid-cols-4 md:gap-6">
+                <div className="flex overflow-x-auto gap-3 pb-4 -mx-4 px-4 scrollbar-hide md:contents">
+                    {items.map((item, index) => (
+                        <div key={item.id} className="w-[173px] shrink-0 md:w-auto">
+                            <ProductCard item={item} priority={prioritizeImages && index < 4} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+              {items.map((item, index) => (
+                <ProductCard key={item.id} item={item} priority={prioritizeImages && index < 4} />
+              ))}
+            </div>
+        )}
 
         {showViewAll && viewAllLink && (
             <div className="text-center mt-10">
