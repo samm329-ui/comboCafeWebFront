@@ -175,11 +175,14 @@ const NavLink = ({ href, label, subLinks }: { href: string, label: string, subLi
 const CategoryNavigation = () => (
     <div className="bg-background/95 backdrop-blur-sm border-b sticky top-0 z-40 hidden md:block">
         <div className="container mx-auto flex justify-between items-center">
-            <nav className="flex items-center gap-x-6 overflow-x-auto scrollbar-hide py-3">
-                {config.header.navLinks.map((link) => (
-                    <NavLink key={link.id} {...link} />
-                ))}
-            </nav>
+            <div className="relative flex-1 overflow-hidden">
+                <nav className="flex items-center gap-x-6 overflow-x-auto scrollbar-hide py-3">
+                    {config.header.navLinks.map((link) => (
+                        <NavLink key={link.id} {...link} />
+                    ))}
+                </nav>
+                <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background/95 to-transparent pointer-events-none" />
+            </div>
             {config.header.bannerUrl && (
                 <div className="pl-6 shrink-0">
                     <Image src={config.header.bannerUrl} alt="Special Offer" width={200} height={40} />
