@@ -1,4 +1,3 @@
-
 'use client';
 
 import { config } from '@/app/config';
@@ -15,11 +14,11 @@ export default function IconCategoryStrip() {
               href={category.href}
               key={category.id}
               className={cn(
-                "group w-24 text-center shrink-0"
+                "group w-28 text-center shrink-0"
               )}
             >
               <div className="flex justify-center items-center">
-                <div className="relative w-20 h-20 rounded-full bg-card flex items-center justify-center shadow-md border border-black/5 transition-all duration-300 group-hover:shadow-card group-hover:border-primary/50 group-hover:-translate-y-1">
+                <div className="relative w-24 h-20 rounded-card bg-card flex items-center justify-center shadow-md border border-black/5 transition-all duration-300 group-hover:shadow-card group-hover:border-primary/50 group-hover:-translate-y-1">
                     <category.Icon className="w-9 h-9 text-muted-foreground transition-colors group-hover:text-primary" />
                 </div>
               </div>
