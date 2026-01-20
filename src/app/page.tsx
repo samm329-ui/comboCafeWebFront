@@ -35,9 +35,21 @@ export default function Home() {
   return (
     <main className="bg-background">
       <Hero />
-      <IconCategoryStrip />
+      
+      <section className="bg-background">
+        <IconCategoryStrip />
+      </section>
 
       <BestSellingSection />
+
+      <div className="relative w-full aspect-[24/5]">
+        <Image
+          src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/1ChatGPT%20Image%20Jan%2020,%202026,%2003_26_56%20PM_upscayl_2x_digital-art-4x.webp"
+          alt="Delectable Cakes Banner"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
 
       <HorizontalCollection
         title="Delectable Cakes"
