@@ -1,4 +1,3 @@
-
 "use client";
 import React from 'react';
 import Image from 'next/image';
@@ -15,7 +14,7 @@ export default function Hero() {
           alt="Anniversary Gifts" 
           layout="fill" 
           objectFit="cover" 
-          objectPosition="right"
+          objectPosition="center"
           priority 
           className="opacity-50 md:opacity-100"
         />
