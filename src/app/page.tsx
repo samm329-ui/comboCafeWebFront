@@ -17,7 +17,7 @@ const BestSellingSection = () => (
         <div className="w-20 h-px bg-soft-divider mx-auto mt-4"></div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-2 grid grid-cols-2 gap-4">
+        <div className="md:col-span-2 grid grid-cols-2 gap-3">
           <ProductSection items={config.productSections.bestSellingCakes} prioritizeImages={true} />
         </div>
         <div className="md:col-span-1 hidden md:block">

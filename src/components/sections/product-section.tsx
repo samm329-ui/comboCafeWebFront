@@ -88,7 +88,11 @@ const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) 
           {item.name}
         </h3>
         
-        <p className="text-xs text-muted-foreground mt-1 line-clamp-2 h-8">{item.description}</p>
+        <div className="h-9">
+            <p className="text-xs text-muted-foreground line-clamp-2">
+                {item.description || '\u00A0' /* Non-breaking space to preserve height */}
+            </p>
+        </div>
 
         <div className="mt-auto pt-2">
           <p className="font-sans font-bold text-base text-primary-dark">{`Rs. ${item.price}`}</p>
@@ -131,7 +135,7 @@ export default function ProductSection({ id, title, subtitle, items, bgColor = '
           <div className="w-20 h-px bg-soft-divider mx-auto mt-4"></div>
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {items.map((item, index) => (
             <ProductCard key={item.id} item={item} priority={prioritizeImages && index < 4} />
           ))}
