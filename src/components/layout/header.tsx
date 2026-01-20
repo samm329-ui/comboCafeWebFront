@@ -1,12 +1,13 @@
+
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Search, ShoppingCart, Menu } from 'lucide-react';
+import { Search, ShoppingCart, Menu, ChevronDown } from 'lucide-react';
 import { config } from '@/app/config';
 import { useCart } from '@/context/cart-provider';
 import { Button } from '../ui/button';
-import { Popover, PopoverContent, PopoverAnchor } from "@/components/ui/popover"
+import { Popover, PopoverContent, PopoverTrigger, PopoverAnchor } from "@/components/ui/popover"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import MobileSearch from '../mobile/MobileSearch';
 
@@ -139,6 +140,50 @@ const MainHeader = () => {
   );
 };
 
+const NavLink = ({ href, label, subLinks }: { href: string, label: string, subLinks?: {id: string, label: string, href: string}[] }) => {
+    if (subLinks) {
+        return (
+            <Popover>
+                <PopoverTrigger asChild>
+                    <button className="flex items-center gap-1 text-sm font-medium text-gray-700 pb-1 hover:text-gray-900 transition-colors duration-200" suppressHydrationWarning>
+                        {label}
+                        <ChevronDown className="h-4 w-4" />
+                    </button>
+                </PopoverTrigger>
+                <PopoverContent className="w-56 p-2">
+                    <div className="grid">
+                        {subLinks.map((subLink) => (
+                            <Link key={subLink.id} href={subLink.href} className="p-2 block text-sm text-gray-700 rounded-md hover:bg-gray-100">{subLink.label}</Link>
+                        ))}
+                    </div>
+                </PopoverContent>
+            </Popover>
+        )
+    }
+
+    return (
+        <a 
+          href={href}
+          className="text-sm font-medium text-gray-700 pb-1 hover:text-gray-900 transition-colors duration-200"
+        >
+            {label}
+        </a>
+    )
+}
+
+const CategoryNavigation = () => (
+    <div className="bg-background/95 backdrop-blur-sm border-b sticky top-0 z-40 hidden md:block">
+        <div className="container mx-auto">
+            <nav className="flex items-center gap-x-6 overflow-x-auto scrollbar-hide py-3">
+                {config.header.navLinks.map((link) => (
+                    <NavLink key={link.id} {...link} />
+                ))}
+            </nav>
+        </div>
+    </div>
+);
+
+
 const MobileHeader = () => {
     const { cart } = useCart();
     const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -223,6 +268,7 @@ export default function Header() {
       <div className='hidden md:block'>
         <TopUtilityBar />
         <MainHeader />
+        <CategoryNavigation />
       </div>
 
       {/* Mobile Header */}
