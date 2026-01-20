@@ -87,6 +87,24 @@ export default function Home() {
         showViewAll={true}
         viewAllLink="/food"
       />
+      <ProductSection
+        id="top-gifts"
+        title="Thoughtful Gifts"
+        subtitle="Find the perfect present for your loved ones"
+        items={config.productSections.gifts}
+        bgColor="bg-background"
+        showViewAll={true}
+        viewAllLink="/gifts"
+      />
+       <ProductSection
+        id="flowers-and-more"
+        title="Flowers &amp; More"
+        subtitle="Fresh arrangements for any occasion"
+        items={config.productSections.flowerProducts}
+        bgColor="bg-background"
+        showViewAll={true}
+        viewAllLink="/flowers"
+      />
     </main>
   );
 }
