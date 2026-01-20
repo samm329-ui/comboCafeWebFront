@@ -35,7 +35,7 @@ export default function IconCategoryStrip() {
                     <div className="relative w-20 h-20 rounded-lg bg-card flex items-center justify-center shadow-subtle border border-black/5 transition-all duration-300 group-hover:shadow-card group-hover:border-primary/50 group-hover:-translate-y-1 overflow-hidden">
                         <Image src={category.imageUrl} alt={category.label} layout="fill" objectFit="cover" className="transition-transform duration-300 group-hover:scale-110" />
                     </div>
-                    <h4 className="font-semibold text-base text-text/80 group-hover:text-text transition-colors duration-300 text-ui leading-tight">
+                    <h4 className="font-semibold text-sm text-text/80 group-hover:text-text transition-colors duration-300 text-ui leading-tight">
                     {category.label}
                     </h4>
                 </Link>
