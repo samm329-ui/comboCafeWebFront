@@ -158,7 +158,7 @@ Transaction ID: *${transactionId}*
                         src={item.imageUrl} 
                         alt={item.title} 
                         layout="fill" 
-                        className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                        className="object-contain group-hover:scale-105 transition-transform duration-300" 
                         priority={priority}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
