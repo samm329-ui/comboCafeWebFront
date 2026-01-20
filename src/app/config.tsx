@@ -132,7 +132,15 @@ export const config = {
       { id: "g1", name: "Coffee Mug", price: "199", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Coffee%20Mug%20(1)%20199.jpeg", description: "A classic mug for your daily coffee." },
     ],
     foodItems: [
-        { id: "f1", name: "Veg Puff", price: "60", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A savory and flaky pastry filled with spiced vegetables." },
+        { id: "s1", name: "Veg Puff", price: "60", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A savory and flaky pastry filled with spiced vegetables." },
+        { id: "s2", name: "Cheese Sandwich", price: "90", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/cheese%20sandwich.jpg", description: "A classic sandwich with a generous layer of cheese." },
+        { id: "s3", name: "Garlic Bread", price: "100", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/garluc%20bread.jpg", description: "Toasted bread with a savory garlic butter spread." },
+        { id: "hb1", name: "Espresso", price: "80", imageUrl: `https://images.unsplash.com/photo-1676689082818-bc4fed83bad3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A strong and concentrated coffee shot." },
+        { id: "hb2", name: "Americano", price: "100", imageUrl: `https://images.unsplash.com/photo-1669872484166-e11b9638b50e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "Espresso diluted with hot water." },
+        { id: "hb3", name: "Cappuccino", price: "120", imageUrl: `https://images.unsplash.com/photo-1718267050132-2f3126e1e57e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "Espresso, steamed milk, and milk foam." },
+        { id: "hb4", name: "Caffe Latte", price: "120", imageUrl: `https://images.unsplash.com/photo-1729364983489-d4d569978fd7?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A creamy coffee with more steamed milk." },
+        { id: "hb5", name: "Mocha", price: "130", imageUrl: `https://images.unsplash.com/photo-1592663533909-f75fe1ae99a4?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A rich blend of coffee and chocolate." },
+        { id: "hb6", name: "Hot Chocolate", price: "110", imageUrl: `https://images.unsplash.com/photo-1637572815755-c4b80092dce1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A warm and comforting chocolate beverage." },
         { id: "f10", name: "Cold Coffee", price: "140", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/cold%20coffee.jpg`, description: "A refreshing chilled coffee beverage." },
     ],
     snacks: [
@@ -141,9 +149,12 @@ export const config = {
         { id: "s3", name: "Garlic Bread", price: "100", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/garluc%20bread.jpg", description: "Toasted bread with a savory garlic butter spread.", badge: "SAME DAY" },
     ],
     hotBeverages: [
-        { id: "hb1", name: "Espresso", price: "80", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/expresso.jpg`, description: "A strong and concentrated coffee shot.", badge: "HOT" },
-        { id: "hb2", name: "Americano", price: "100", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/americano.jpg`, description: "Espresso diluted with hot water." },
-        { id: "hb3", name: "Cappuccino", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/cappacuino.jpg`, description: "Espresso, steamed milk, and milk foam." },
+        { id: "hb1", name: "Espresso", price: "80", imageUrl: `https://images.unsplash.com/photo-1676689082818-bc4fed83bad3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A strong and concentrated coffee shot.", badge: "HOT" },
+        { id: "hb2", name: "Americano", price: "100", imageUrl: `https://images.unsplash.com/photo-1669872484166-e11b9638b50e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "Espresso diluted with hot water." },
+        { id: "hb3", name: "Cappuccino", price: "120", imageUrl: `https://images.unsplash.com/photo-1718267050132-2f3126e1e57e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "Espresso, steamed milk, and milk foam." },
+        { id: "hb4", name: "Caffe Latte", price: "120", imageUrl: `https://images.unsplash.com/photo-1729364983489-d4d569978fd7?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A creamy coffee with more steamed milk." },
+        { id: "hb5", name: "Mocha", price: "130", imageUrl: `https://images.unsplash.com/photo-1592663533909-f75fe1ae99a4?q=80&w=881&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A rich blend of coffee and chocolate." },
+        { id: "hb6", name: "Hot Chocolate", price: "110", imageUrl: `https://images.unsplash.com/photo-1637572815755-c4b80092dce1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`, description: "A warm and comforting chocolate beverage." },
     ],
     flowerProducts: [
       { id: "fp1", name: "Single Rose", price: "50", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/single%20rose.jpg", description: "A single, elegant rose for a simple gesture." },
