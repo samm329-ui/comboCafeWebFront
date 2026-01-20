@@ -1,6 +1,5 @@
 
-import { Facebook, Instagram, CakeSlice, Gift, Flower, Cookie, Home, BookOpen, PartyPopper, Heart, Sparkles, Package, MoreHorizontal } from "lucide-react";
-import { GiChocolateBar } from "react-icons/gi";
+import { Facebook, Instagram, Gift, Flower, Cookie, Home, BookOpen } from "lucide-react";
 
 const supabaseUrl = "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images";
 
@@ -36,15 +35,6 @@ export const config = {
     buttonLink: "#best-selling-cakes",
     imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/1ChatGPT%20Image%20Jan%2020,%202026,%2003_26_56%20PM_upscayl_2x_digital-art-4x.webp",
   },
-  iconCategories: [
-    { id: "cakes", label: "Cakes", href: "/cakes", Icon: CakeSlice },
-    { id: "mugs", label: "Mugs", href: "/gifts", Icon: Gift },
-    { id: "quick-bites", label: "Quick Bites", href: "/food", Icon: Cookie },
-    { id: "flowers", label: "Flowers", href: "/flowers", Icon: Flower },
-    { id: "combos", label: "Combos", href: "/flowers", Icon: Package },
-    { id: "chocolates", label: "Chocolates", href: "/search?q=chocolate", Icon: GiChocolateBar },
-    { id: "all-products", label: "All", href: "/", Icon: MoreHorizontal },
-  ],
   serviceStrip: {
     title: "Bulk orders are acceptable",
   },
