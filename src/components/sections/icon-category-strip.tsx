@@ -16,19 +16,8 @@ export default function IconCategoryStrip() {
     setCategories(initialShuffle);
     const initialTimeout = setTimeout(() => setVisible(true), 100);
 
-    // Set up interval for subsequent shuffles
-    const intervalId = setInterval(() => {
-      setVisible(false); // Fade out
-
-      setTimeout(() => {
-        setCategories(prevCategories => [...prevCategories].sort(() => Math.random() - 0.5));
-        setVisible(true); // Fade in with new order
-      }, 500); // This should match the fade-out duration
-    }, 5000); // Shuffle every 5 seconds
-
     return () => {
       clearTimeout(initialTimeout);
-      clearInterval(intervalId);
     };
   }, []);
 
