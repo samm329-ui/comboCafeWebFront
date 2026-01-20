@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { useCart } from '@/context/cart-provider';
-import { Heart, Star, ZoomIn } from 'lucide-react';
+import { Heart, Phone, Search, Star, ZoomIn } from 'lucide-react';
 
 type Product = {
   id: string;
@@ -59,12 +59,12 @@ const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) 
   return (
     <Card className="overflow-hidden group bg-card shadow-card border-0 rounded-card flex flex-col h-full">
       <div className="relative">
-        <div className="relative aspect-square w-full overflow-hidden rounded-t-card">
+        <div className="relative aspect-square w-full overflow-hidden rounded-t-card bg-background">
           <Image
             src={item.imageUrl}
             alt={item.name}
             layout="fill"
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
             priority={priority}
           />
            <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -72,7 +72,7 @@ const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) 
                 <Heart className="w-4 h-4 text-gray-700" />
               </Button>
               <Button onClick={handleQuickViewClick} variant="outline" size="icon" className="h-8 w-8 bg-white/80 hover:bg-white border-0 rounded-full shadow-md" suppressHydrationWarning>
-                <ZoomIn className="w-4 h-4 text-gray-700" />
+                <Search className="w-4 h-4 text-gray-700" />
               </Button>
             </div>
         </div>
@@ -84,30 +84,22 @@ const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) 
       </div>
 
       <CardContent className="p-3 md:p-4 flex flex-col flex-grow bg-card rounded-b-card">
-        <h3 className="font-sans font-semibold text-text text-sm md:text-base leading-tight line-clamp-2 h-10 md:h-12">
+        <h3 className="font-sans font-semibold text-text text-sm leading-tight line-clamp-2 h-10">
           {item.name}
         </h3>
         
-        <div className="flex items-center gap-2 mt-1 text-ui">
-            <div className="flex items-center gap-0.5">
-                <Star className="w-4 h-4 text-star fill-star" />
-                <Star className="w-4 h-4 text-star fill-star" />
-                <Star className="w-4 h-4 text-star fill-star" />
-                <Star className="w-4 h-4 text-star fill-star" />
-                <Star className="w-4 h-4 text-gray-300" />
-            </div>
-        </div>
+        <p className="text-xs text-muted-foreground mt-1 line-clamp-2 h-8">{item.description}</p>
 
         <div className="mt-auto pt-2">
-          <div className="flex justify-between items-center">
-            <p className="font-sans font-bold text-base md:text-lg text-primary-dark">{`Rs. ${item.price}`}</p>
-          </div>
+          <p className="font-sans font-bold text-base text-primary-dark">{`Rs. ${item.price}`}</p>
            <div className="mt-2 space-y-2">
-                <Button onClick={handleAddToCart} variant="secondary" size="sm" className="w-full rounded-lg h-9 px-4" suppressHydrationWarning>
+                <Button onClick={handleAddToCart} variant="secondary" size="lg" className="w-full rounded-lg h-11" suppressHydrationWarning>
                     Add to Cart
                 </Button>
-                <Button onClick={handleWishlistClick} variant="outline" size="sm" className="w-full rounded-lg h-9 px-4 border-primary-dark/30 text-primary-dark/80 hover:bg-primary-dark/10" suppressHydrationWarning>
-                    <Heart className="mr-2 h-4 w-4" /> Wishlist
+                <Button variant="outline" size="lg" className="w-full rounded-lg h-11 border-primary-dark/30 text-primary-dark/80 hover:bg-primary-dark/10" asChild suppressHydrationWarning>
+                   <a href={`tel:${phoneNumber}`}>
+                    <Phone className="mr-2 h-4 w-4" /> Call to Order
+                   </a>
                 </Button>
             </div>
         </div>

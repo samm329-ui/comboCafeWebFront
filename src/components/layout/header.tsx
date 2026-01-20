@@ -9,7 +9,6 @@ import { useCart } from '@/context/cart-provider';
 import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger, PopoverAnchor } from "@/components/ui/popover"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import MobileSearch from '../mobile/MobileSearch';
 import Image from 'next/image';
 
 
@@ -192,8 +191,8 @@ const MobileHeader = () => {
     const [isSheetOpen, setIsSheetOpen] = useState(false);
 
     return (
-        <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background shadow-sm">
-            <div className="flex items-center justify-between p-2 h-16">
+        <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm shadow-sm">
+            <div className="flex items-center justify-between p-2 h-16 container mx-auto">
                 <Link href="/" className="shrink-0">
                     <span className="text-lg font-bold text-gray-800">Combo Café and Gift Shop</span>
                 </Link>

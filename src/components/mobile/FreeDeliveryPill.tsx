@@ -5,12 +5,12 @@ import React from 'react';
 export default function FreeDeliveryPill() {
   return (
     <div className="px-4">
-      <div className="relative aspect-[350/65] w-full overflow-hidden rounded-lg">
+      <div className="relative aspect-[2.5/1] w-full overflow-hidden rounded-lg">
         <Image
-          src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/image%20(3).png"
+          src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hero%20images/ChatGPT%20Image%20Jan%2016,%202026,%2012_05_00%20AM.png"
           alt="Free delivery banner"
           layout="fill"
-          objectFit="contain"
+          objectFit="cover"
         />
       </div>
     </div>
