@@ -8,6 +8,7 @@ import IconCategoryStrip from '@/components/sections/icon-category-strip';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import HorizontalCollection from '@/components/sections/horizontal-collection';
 
 const BestSellingSection = () => (
   <section className="bg-background">
@@ -51,6 +52,13 @@ export default function Home() {
       </section>
 
       <BestSellingSection />
+
+      <HorizontalCollection
+        title="Delectable Cakes"
+        items={config.collections.cakes}
+        bgColor="bg-background"
+        viewAllLink="/cakes"
+      />
       
       <ProductSection
         id="quick-bites"
