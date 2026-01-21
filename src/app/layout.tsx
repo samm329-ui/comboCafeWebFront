@@ -11,7 +11,14 @@ import MobileBottomNav from '@/components/mobile/MobileBottomNav';
 export const metadata = {
   title: 'Combo Cafe and Gift Shop',
   description: 'Your one-stop destination for delightful cakes, thoughtful gifts, and delicious food in Rampurhat.',
-}
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export default function RootLayout({
   children,
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>" />
       </head>
@@ -32,15 +39,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CartProvider>
-              <div className="flex flex-col min-h-screen">
-                <Header />
-                <main className='flex-grow md:pt-0 pt-16'>
-                  {children}
-                </main>
-                <Footer />
-              </div>
-              <MobileBottomNav />
-              <Toaster />
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className='flex-grow md:pt-0 pt-16'>
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <MobileBottomNav />
+            <Toaster />
           </CartProvider>
         </ThemeProvider>
       </body>
