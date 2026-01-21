@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <main className="bg-background">
       <Hero />
-      
+
       <IconCategoryStrip />
 
       <BestSellingSection />
@@ -42,8 +42,9 @@ export default function Home() {
         <Image
           src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/1ChatGPT%20Image%20Jan%2020,%202026,%2003_26_56%20PM_upscayl_2x_digital-art-4x.webp"
           alt="Delectable Cakes Banner"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
+          sizes="100vw"
           priority
         />
       </div>
@@ -55,7 +56,7 @@ export default function Home() {
         viewAllLink="/cakes"
         prioritizeImages={true}
       />
-      
+
       <ProductSection
         id="quick-bites"
         title="Quick Bites"
@@ -70,8 +71,9 @@ export default function Home() {
         <Image
           src="https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/ChatGPT%20Image%20Jan%2020,%202026,%2003_m33_32%20PM_upscayl_2x_digital-art-4x.webp"
           alt="Hot Beverages Banner"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
+          sizes="100vw"
           priority
         />
       </div>
@@ -85,7 +87,7 @@ export default function Home() {
         showViewAll={true}
         viewAllLink="/food"
       />
-       <ProductSection
+      <ProductSection
         id="top-gifts"
         title="Thoughtful Gifts"
         subtitle="Find the perfect present for your loved ones"
@@ -94,7 +96,7 @@ export default function Home() {
         showViewAll={true}
         viewAllLink="/gifts"
       />
-       <ProductSection
+      <ProductSection
         id="flowers-and-more"
         title="Flowers &amp; More"
         subtitle="Fresh arrangements for any occasion"
