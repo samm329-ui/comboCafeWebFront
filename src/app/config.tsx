@@ -1,5 +1,5 @@
 
-import { Facebook, Instagram, CakeSlice, Gift, Flower, Cookie, Home, BookOpen, PartyPopper, Heart, Sparkles, Package, ShoppingCart, User } from "lucide-react";
+import { Facebook, Instagram, CakeSlice, Gift, Flower, Cookie, Home, BookOpen, PartyPopper, Heart, Sparkles, Package, ShoppingCart, User, Phone } from "lucide-react";
 
 const supabaseUrl = "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images";
 
@@ -264,7 +264,7 @@ export const config = {
       { id: "cart", label: "Cart", href: "/checkout", Icon: ShoppingCart },
       { id: "gifts", label: "Gifts", href: "/gifts", Icon: Gift },
       { id: "wishlist", label: "Wishlist", href: "/coming-soon", Icon: Heart },
-      { id: "profile", label: "Profile", href: "/coming-soon", Icon: User }
+      { id: "contact", label: "Contact", href: "/contact", Icon: Phone }
     ]
   },
   payment: {
