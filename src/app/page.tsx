@@ -9,7 +9,7 @@ import IconCategoryStrip from '@/components/sections/icon-category-strip';
 import Hero from '@/components/sections/hero';
 
 const BestSellingSection = () => (
-  <section className="bg-background py-16">
+  <section className="bg-background pt-8 pb-16">
     <div className="container mx-auto">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-semibold">Best Selling Cakes</h2>
