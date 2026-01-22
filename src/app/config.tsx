@@ -40,7 +40,7 @@ export const config = {
         subLinks: [
           { id: "all-flowers", label: "All Flowers & Combos", href: "/flowers" },
           { id: "bouquets", label: "Flower Bouquets", href: "/flowers" },
-          { id: "combos", label: "Combos & Hampers", href: "/flowers" },
+          { id: "combos", label: "Combos & Hampers", href: "/combos" },
         ]
       },
       { id: "about-us", label: "About Us", href: "/about" },
@@ -60,7 +60,7 @@ export const config = {
     { id: "mugs", label: "Mugs", href: "/personalised-gifts", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/mugs.png" },
     { id: "quick-bites", label: "Quick Bites", href: "/food", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/food.png" },
     { id: "flowers", label: "Flowers", href: "/flowers", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/flowers.png" },
-    { id: "combos", label: "Combos", href: "/flowers", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/combo.png" },
+    { id: "combos", label: "Combos", href: "/combos", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/combo.png" },
     { id: "chocolates", label: "Chocolates", href: "/chocolates", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/chocolates.png" },
   ],
   serviceStrip: {
@@ -198,6 +198,10 @@ export const config = {
       { id: "fp1", name: "Single Rose", price: "50", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/single%20rose.jpg", description: "A single, elegant rose for a simple gesture." },
       { id: "fp2", name: "Rose Bouquet", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/rose%20bouquet.jpg", description: "A beautiful bouquet of fresh roses." },
       { id: "fp3", name: "Mixed Flower Bouquet", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/flower%20bouquet.jpg", description: "A vibrant mix of seasonal flowers." },
+      { id: "fp4", name: "Cake + Flower Combo", price: "699", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/cake%20plus%20flower.jpg", description: "The perfect combo for any celebration." },
+      { id: "fp5", name: "Gift Hampers", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/gift%20hamper.jpg", description: "Thoughtfully curated hampers for your loved ones." },
+    ],
+    comboProducts: [
       { id: "fp4", name: "Cake + Flower Combo", price: "699", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/cake%20plus%20flower.jpg", description: "The perfect combo for any celebration." },
       { id: "fp5", name: "Gift Hampers", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/gift%20hamper.jpg", description: "Thoughtfully curated hampers for your loved ones." },
     ],
