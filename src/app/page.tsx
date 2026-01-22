@@ -29,8 +29,12 @@ const BestSellingSection = () => (
 );
 
 
+
+
 export default function Home() {
   return (
+
+
     <main className="bg-background">
       <Hero />
 

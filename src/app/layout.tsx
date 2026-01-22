@@ -20,18 +20,50 @@ export const metadata: Metadata = {
   },
   description: 'Combo Cafe - Your one-stop destination for delicious cakes, customized gifts, fresh flowers, and tasty food in Rampurhat, Birbhum. Order online for delivery or visit our cafe!',
   keywords: [
+    // Brand & Core Business
     'combo cafe rampurhat',
     'cake shop rampurhat',
     'gift shop rampurhat',
     'cafe in rampurhat',
+    'bakery in rampurhat',
+    'florist rampurhat',
+    'restaurant rampurhat',
+
+    // Top Products
     'birthday cake rampurhat',
     'customized gifts birbhum',
-    'flower delivery rampurhat',
-    'restaurant rampurhat',
-    'best cafe rampurhat',
+    'photo cakes',
+    'customized mugs',
+    'printed cushions',
+    'chocolate bouquet',
+    'red velvet cake',
+    'black forest cake',
+    'butterscotch cake',
+    'chocolate truffle cake',
+
+    // Services
     'cake delivery rampurhat',
+    'flower delivery rampurhat',
+    'online cake delivery rampurhat',
+    'send gifts to rampurhat',
+    'same day cake delivery rampurhat',
+    'home delivery food rampurhat',
     'personalised gifts rampurhat',
+
+    // Search Intent & Occasions
+    'best cafe rampurhat',
     'coffee shop rampurhat',
+    'best place for birthday celebration',
+    'couples cafe in rampurhat',
+    'family restaurant rampurhat',
+
+    // Locations
+    'Rampurhat',
+    'Birbhum',
+    'Tarapith',
+    'Mallarpur',
+    'Nalhati',
+    'Sainthia',
   ],
   authors: [{ name: 'Combo Cafe and Gift Shop' }],
   creator: 'Combo Cafe',
