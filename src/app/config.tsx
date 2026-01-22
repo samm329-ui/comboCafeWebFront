@@ -56,7 +56,7 @@ export const config = {
     ],
   },
   iconCategories: [
-    { id: "cakes", label: "Cakes", href: "/cakes", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/download.webp" },
+    { id: "cakes", label: "Cakes", href: "/cakes", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/cake%20.png" },
     { id: "mugs", label: "Mugs", href: "/personalised-gifts", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Coffee%20Mug%20(1)%20199.jpeg" },
     { id: "quick-bites", label: "Quick Bites", href: "/food", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg" },
     { id: "flowers", label: "Flowers", href: "/flowers", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/rose%20bouquet.jpg" },
