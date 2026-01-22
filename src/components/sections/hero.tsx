@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
+import Link from 'next/link';
 import Image from 'next/image';
 import { config } from '@/app/config';
 import { cn } from '@/lib/utils';
@@ -31,14 +32,16 @@ export default function Hero() {
           {config.hero.banners.map((banner, index) => (
             <CarouselItem key={index} className="pl-0 basis-full md:basis-full">
               <div className="relative h-[50vh] md:h-auto md:aspect-[16/7] w-full">
-                <Image
-                  src={banner.imageUrl}
-                  alt={banner.alt}
-                  fill
-                  className="object-cover object-center"
-                  sizes="100vw"
-                  priority={index === 0}
-                />
+                <Link href={(banner as any).href || '/'}>
+                  <Image
+                    src={banner.imageUrl}
+                    alt={banner.alt}
+                    fill
+                    className="object-cover object-center"
+                    sizes="100vw"
+                    priority={index === 0}
+                  />
+                </Link>
               </div>
             </CarouselItem>
           ))}
