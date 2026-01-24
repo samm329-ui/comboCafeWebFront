@@ -3,6 +3,62 @@ import { Facebook, Instagram, CakeSlice, Gift, Flower, Cookie, Home, BookOpen, P
 
 const supabaseUrl = "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images";
 
+const pizzas = [
+  { id: "p1", name: "Margherita Veg Pizza", price: "150", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Margherita%20Veg%20Pizza.webp", description: "Classic Margherita with fresh tomatoes and cheese." },
+  { id: "p2", name: "Corn Pizza", price: "150", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Corn%20Pizza.webp", description: "A delightful pizza topped with sweet corn and cheese." },
+  { id: "p3", name: "Paneer Pizza", price: "160", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Pannir%20Pizza.webp", description: "Spicy paneer, onions, and capsicum on a cheesy base." },
+  { id: "p4", name: "Chicken Pizza", price: "160", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Chicken%20Pizza.webp", description: "Loaded with succulent chicken pieces and cheese." },
+];
+
+const burgers = [
+  { id: "b1", name: "Veg Cheese Burger", price: "70", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Veg%20Cheese%20.webp", description: "A classic veg patty with a slice of cheese." },
+  { id: "b2", name: "Chilli Chicken Burger", price: "80", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Chilli%20chicken%20burger.webp", description: "Spicy chilli chicken in a soft burger bun." },
+  { id: "b3", name: "Crispy Chicken Burger", price: "99", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Crishpy%20Chicken%20burger.webp", description: "A crispy chicken fillet for that perfect crunch." },
+  { id: "b4", name: "Chicken Cheese Burger", price: "120", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Chicken%20Cheese%20Burger.webp", description: "Juicy chicken patty topped with melted cheese." },
+];
+
+const sandwiches = [
+  { id: "sw1", name: "Veg Cheese Sandwich", price: "55", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Veg%20Cheese%20Sandwich.webp", description: "A simple yet delicious veg and cheese sandwich." },
+  { id: "sw2", name: "Corn Sandwich", price: "55", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Corn%20Sandwich.webp", description: "Creamy sweet corn filling in a grilled sandwich." },
+  { id: "sw3", name: "Paneer Sandwich", price: "80", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Pannir%20Sandwich%20.webp", description: "Grilled sandwich with a spicy paneer filling." },
+  { id: "sw4", name: "Chicken Sandwich", price: "80", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Chicken%20Sandwich.webp", description: "Hearty sandwich with a savory chicken filling." },
+  { id: "sw5", name: "Club Sandwich", price: "110", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Club%20Sandwich%20Sandwich.webp", description: "A classic multi-layered club sandwich." },
+  { id: "f2", name: "Cheese Sandwich", price: "90", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/cheese%20sandwich.jpg", description: "A classic sandwich with a generous layer of cheese." },
+];
+
+const noodles = [
+  { id: "n1", name: "Veg Korean Noodles", price: "99", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Veg%20Korean%20Noodles.webp", description: "Spicy and savory Korean-style noodles with vegetables." },
+  { id: "n2", name: "Chicken Korean Noodles", price: "129", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Chicken%20Korean%20Noodles%20.webp", description: "Spicy Korean noodles with tender chicken pieces." },
+];
+
+const pastas = [
+  { id: "ps1", name: "Veg Masala Pasta", price: "85", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Veg%20Masala%20Pasta.webp", description: "Pasta cooked in a flavorful Indian masala sauce." },
+  { id: "ps2", name: "Cheese White Sauce Macaroni Pasta", price: "95", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Cheese%20White%20Souce%20Macroni%20Pasta%20.webp", description: "Creamy white sauce macaroni pasta with cheese." },
+  { id: "ps3", name: "Chicken White Sauce Pasta", price: "99", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/Chicken%20White%20Souce%20Pasta.webp", description: "Pasta in a creamy white sauce with chicken." },
+];
+
+const snacks = [
+  { id: "s1", name: "Veg Puff", price: "60", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A savory and flaky pastry filled with spiced vegetables." },
+  { id: "s2", name: "Cheese Sandwich", price: "90", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/cheese%20sandwich.jpg", description: "A classic sandwich with a generous layer of cheese." },
+  { id: "s3", name: "Garlic Bread", price: "100", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/garluc%20bread.jpg", description: "Toasted bread with a savory garlic butter spread." },
+  { id: "s4", name: "Paneer Puff", price: "70", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A delicious puff filled with spiced paneer." },
+];
+
+const hotBeverages = [
+  { id: "hb1", name: "Espresso", price: "80", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/expresso.jpg`, description: "A strong and concentrated coffee shot." },
+  { id: "hb2", name: "Americano", price: "100", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/americano.jpg`, description: "Espresso diluted with hot water." },
+  { id: "hb3", name: "Cappuccino", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/cappacuino.jpg`, description: "Espresso, steamed milk, and milk foam." },
+  { id: "hb4", name: "Caffè Latte", price: "130", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/latte.jpg`, description: "Espresso with a larger amount of steamed milk." },
+  { id: "hb6", name: "Hot Chocolate", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/hot%20chocolate.jpg`, description: "A warm and comforting chocolate drink." },
+];
+
+const coldBeverages = [
+  { id: "cb1", name: "Cold Coffee", price: "140", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/cold%20coffee.jpg`, description: "A refreshing chilled coffee beverage." },
+  { id: "cb2", name: "Iced Latte", price: "150", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/iced%20latte.jpg`, description: "Chilled espresso mixed with cold milk over ice." },
+  { id: "cb3", name: "Chocolate Frappe", price: "160", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/chocolate%20frappe.jpg`, description: "A blended iced coffee drink with rich chocolate flavor." },
+  { id: "cb4", name: "Strawberry Milkshake", price: "150", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/strawberry%20milkshake.jpg`, description: "A sweet and creamy shake made with fresh strawberries." }
+];
+
 export const config = {
   header: {
     utilityBar: {
@@ -27,9 +83,13 @@ export const config = {
         href: "/food",
         subLinks: [
           { id: "all-food", label: "All Food & Drinks", href: "/food" },
-          { id: "snacks", label: "Snacks", href: "/food" },
-          { id: "hot-beverages", label: "Hot Beverages", href: "/food" },
-          { id: "cold-beverages", label: "Cold Beverages", href: "/food" },
+          { id: "snacks", label: "Snacks", href: "/food#snacks" },
+          { id: "pizzas", label: "Pizzas", href: "/food#pizzas" },
+          { id: "burgers", label: "Burgers", href: "/food#burgers" },
+          { id: "sandwiches", label: "Sandwiches", href: "/food#sandwiches" },
+          { id: "noodles", label: "Noodles", href: "/food#noodles" },
+          { id: "pastas", label: "Pastas", href: "/food#pastas" },
+          { id: "beverages", label: "Beverages", href: "/food#beverages" },
         ]
       },
       { id: "our-menu", label: "Our Menu", href: "/menu" },
@@ -167,33 +227,15 @@ export const config = {
       { id: "g5", name: "Customised Cushion", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Customized%20Cushion%20550.jpeg", description: "A soft, personalized cushion for your home." },
       { id: "g10", name: "Magic Mug", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Magic%20Mug%20399.jpeg", description: "Reveals a surprise image with hot liquid." }
     ],
-    foodItems: [
-      { id: "f1", name: "Veg Puff", price: "60", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A savory and flaky pastry filled with spiced vegetables." },
-      { id: "f2", name: "Cheese Sandwich", price: "90", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/cheese%20sandwich.jpg", description: "A classic sandwich with a generous layer of cheese." },
-      { id: "f3", name: "Garlic Bread", price: "100", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/garluc%20bread.jpg", description: "Toasted bread with a savory garlic butter spread." },
-      { id: "f4", name: "Espresso", price: "80", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/expresso.jpg`, description: "A strong and concentrated coffee shot." },
-      { id: "f5", name: "Americano", price: "100", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/americano.jpg`, description: "Espresso diluted with hot water, giving it a similar strength to drip coffee." },
-      { id: "f6", name: "Cappuccino", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/cappacuino.jpg`, description: "A classic coffee drink with equal parts espresso, steamed milk, and milk foam." },
-      { id: "f7", name: "Caffè Latte", price: "130", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/latte.jpg`, description: "A coffee drink made with espresso and steamed milk." },
-      { id: "f9", name: "Hot Chocolate", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/hot%20chocolate.jpg`, description: "A warm and comforting chocolate-flavored drink." },
-      { id: "f10", name: "Cold Coffee", price: "140", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/cold%20coffee.jpg`, description: "A refreshing chilled coffee beverage." },
-      { id: "f11", name: "Iced Latte", price: "150", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/iced%20latte.jpg`, description: "Chilled espresso mixed with cold milk over ice." },
-      { id: "f12", name: "Chocolate Frappe", price: "160", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/chocolate%20frappe.jpg`, description: "A blended iced coffee drink with rich chocolate flavor." },
-      { id: "f13", name: "Strawberry Milkshake", price: "150", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/strawberry%20milkshake.jpg`, description: "A sweet and creamy shake made with fresh strawberries." }
-    ],
-    snacks: [
-      { id: "s1", name: "Veg Puff", price: "60", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A savory and flaky pastry filled with spiced vegetables." },
-      { id: "s2", name: "Cheese Sandwich", price: "90", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/cheese%20sandwich.jpg", description: "A classic sandwich with a generous layer of cheese." },
-      { id: "s3", name: "Garlic Bread", price: "100", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/garluc%20bread.jpg", description: "Toasted bread with a savory garlic butter spread." },
-      { id: "s4", name: "Paneer Puff", price: "70", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A delicious puff filled with spiced paneer." },
-    ],
-    hotBeverages: [
-      { id: "hb1", name: "Espresso", price: "80", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/expresso.jpg`, description: "A strong and concentrated coffee shot." },
-      { id: "hb2", name: "Americano", price: "100", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/americano.jpg`, description: "Espresso diluted with hot water." },
-      { id: "hb3", name: "Cappuccino", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/cappacuino.jpg`, description: "Espresso, steamed milk, and milk foam." },
-      { id: "hb4", name: "Caffè Latte", price: "130", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/latte.jpg`, description: "Espresso with a larger amount of steamed milk." },
-      { id: "hb6", name: "Hot Chocolate", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/hot%20chocolate.jpg`, description: "A warm and comforting chocolate drink." },
-    ],
+    foodItems: [...pizzas, ...burgers, ...sandwiches, ...noodles, ...pastas, ...snacks, ...hotBeverages, ...coldBeverages],
+    pizzas,
+    burgers,
+    sandwiches,
+    noodles,
+    pastas,
+    snacks,
+    hotBeverages,
+    coldBeverages,
     flowerProducts: [
       { id: "fp1", name: "Single Rose", price: "50", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/single%20rose.jpg", description: "A single, elegant rose for a simple gesture." },
       { id: "fp2", name: "Rose Bouquet", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/rose%20bouquet.jpg", description: "A beautiful bouquet of fresh roses." },
