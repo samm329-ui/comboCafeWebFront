@@ -75,17 +75,6 @@ export const config = {
           { id: "pastas", label: "Pastas", href: "/food#pastas" },
         ]
       },
-      { id: "our-menu", label: "Our Menu", href: "/menu" },
-      {
-        id: "flowers",
-        label: "Flowers & More",
-        href: "/flowers",
-        subLinks: [
-          { id: "all-flowers", label: "All Flowers & Combos", href: "/flowers" },
-          { id: "bouquets", label: "Flower Bouquets", href: "/flowers" },
-          { id: "combos", label: "Combos & Hampers", href: "/combos" },
-        ]
-      },
       { id: "about-us", label: "About Us", href: "/about" },
       { id: "contact-us", label: "Contact Us", href: "/contact" },
     ],
@@ -102,7 +91,6 @@ export const config = {
     { id: "cakes", label: "Cakes", href: "/cakes", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/cake%20.png" },
     { id: "mugs", label: "Mugs", href: "/personalised-gifts", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/mugs.png" },
     { id: "quick-bites", label: "Quick Bites", href: "/food", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/food.png" },
-    { id: "flowers", label: "Flowers", href: "/flowers", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/flowers.png" },
     { id: "combos", label: "Combos", href: "/combos", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/combo.png" },
     { id: "chocolates", label: "Chocolates", href: "/chocolates", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/chocolates.png" },
   ],

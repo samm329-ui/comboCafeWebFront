@@ -85,15 +85,6 @@ export default function Home() {
         showViewAll={true}
         viewAllLink="/gifts"
       />
-      <ProductSection
-        id="flowers-and-more"
-        title="Flowers &amp; More"
-        subtitle="Fresh arrangements for any occasion"
-        items={config.productSections.flowerProducts.slice(0, 4)}
-        bgColor="bg-background"
-        showViewAll={true}
-        viewAllLink="/flowers"
-      />
     </main>
   );
 }
