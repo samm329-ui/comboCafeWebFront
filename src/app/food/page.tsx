@@ -17,8 +17,8 @@ export default function FoodPage() {
               </Link>
           </Button>
           <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold tracking-tight">Food & Beverages</h1>
-              <p className="mt-2 text-lg text-muted-foreground">Browse our delicious menu</p>
+              <h1 className="text-4xl font-bold tracking-tight">Our Food Menu</h1>
+              <p className="mt-2 text-lg text-muted-foreground">Explore our delicious offerings</p>
           </div>
       </div>
       <ProductSection
@@ -73,5 +73,3 @@ export default function FoodPage() {
     </main>
   );
 }
-
-    
