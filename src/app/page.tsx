@@ -73,19 +73,9 @@ export default function Home() {
           fill
           className="object-cover"
           sizes="100vw"
-          priority
         />
       </div>
 
-      <ProductSection
-        id="hot-beverages"
-        title="Hot Beverages"
-        subtitle="Warm up with our selection of coffees and more"
-        items={config.productSections.hotBeverages.slice(0, 4)}
-        bgColor="bg-background"
-        showViewAll={true}
-        viewAllLink="/food"
-      />
       <ProductSection
         id="top-gifts"
         title="Thoughtful Gifts"
@@ -107,3 +97,5 @@ export default function Home() {
     </main>
   );
 }
+
+    

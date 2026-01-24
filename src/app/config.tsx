@@ -38,25 +38,9 @@ const pastas = [
 ];
 
 const snacks = [
-  { id: "s1", name: "Veg Puff", price: "60", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A savory and flaky pastry filled with spiced vegetables." },
   { id: "s2", name: "Cheese Sandwich", price: "90", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/cheese%20sandwich.jpg", description: "A classic sandwich with a generous layer of cheese." },
   { id: "s3", name: "Garlic Bread", price: "100", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/garluc%20bread.jpg", description: "Toasted bread with a savory garlic butter spread." },
   { id: "s4", name: "Paneer Puff", price: "70", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/snacks/veg%20puff.jpg", description: "A delicious puff filled with spiced paneer." },
-];
-
-const hotBeverages = [
-  { id: "hb1", name: "Espresso", price: "80", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/expresso.jpg`, description: "A strong and concentrated coffee shot." },
-  { id: "hb2", name: "Americano", price: "100", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/americano.jpg`, description: "Espresso diluted with hot water." },
-  { id: "hb3", name: "Cappuccino", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/cappacuino.jpg`, description: "Espresso, steamed milk, and milk foam." },
-  { id: "hb4", name: "Caffè Latte", price: "130", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/latte.jpg`, description: "Espresso with a larger amount of steamed milk." },
-  { id: "hb6", name: "Hot Chocolate", price: "120", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/hot%20bevrages/hot%20chocolate.jpg`, description: "A warm and comforting chocolate drink." },
-];
-
-const coldBeverages = [
-  { id: "cb1", name: "Cold Coffee", price: "140", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/cold%20coffee.jpg`, description: "A refreshing chilled coffee beverage." },
-  { id: "cb2", name: "Iced Latte", price: "150", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/iced%20latte.jpg`, description: "Chilled espresso mixed with cold milk over ice." },
-  { id: "cb3", name: "Chocolate Frappe", price: "160", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/chocolate%20frappe.jpg`, description: "A blended iced coffee drink with rich chocolate flavor." },
-  { id: "cb4", name: "Strawberry Milkshake", price: "150", imageUrl: `https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cold%20beverages/strawberry%20milkshake.jpg`, description: "A sweet and creamy shake made with fresh strawberries." }
 ];
 
 export const config = {
@@ -82,14 +66,13 @@ export const config = {
         label: "Food",
         href: "/food",
         subLinks: [
-          { id: "all-food", label: "All Food & Drinks", href: "/food" },
+          { id: "all-food", label: "All Food", href: "/food" },
           { id: "snacks", label: "Snacks", href: "/food#snacks" },
           { id: "pizzas", label: "Pizzas", href: "/food#pizzas" },
           { id: "burgers", label: "Burgers", href: "/food#burgers" },
           { id: "sandwiches", label: "Sandwiches", href: "/food#sandwiches" },
           { id: "noodles", label: "Noodles", href: "/food#noodles" },
           { id: "pastas", label: "Pastas", href: "/food#pastas" },
-          { id: "beverages", label: "Beverages", href: "/food#beverages" },
         ]
       },
       { id: "our-menu", label: "Our Menu", href: "/menu" },
@@ -227,15 +210,13 @@ export const config = {
       { id: "g5", name: "Customised Cushion", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Customized%20Cushion%20550.jpeg", description: "A soft, personalized cushion for your home." },
       { id: "g10", name: "Magic Mug", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Magic%20Mug%20399.jpeg", description: "Reveals a surprise image with hot liquid." }
     ],
-    foodItems: [...pizzas, ...burgers, ...sandwiches, ...noodles, ...pastas, ...snacks, ...hotBeverages, ...coldBeverages],
+    foodItems: [...pizzas, ...burgers, ...sandwiches, ...noodles, ...pastas, ...snacks],
     pizzas,
     burgers,
     sandwiches,
     noodles,
     pastas,
     snacks,
-    hotBeverages,
-    coldBeverages,
     flowerProducts: [
       { id: "fp1", name: "Single Rose", price: "50", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/single%20rose.jpg", description: "A single, elegant rose for a simple gesture." },
       { id: "fp2", name: "Rose Bouquet", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/rose%20bouquet.jpg", description: "A beautiful bouquet of fresh roses." },
@@ -319,4 +300,6 @@ export const config = {
 };
 
     
+    
+
     

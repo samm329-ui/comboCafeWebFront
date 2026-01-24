@@ -70,14 +70,8 @@ export default function FoodPage() {
         bgColor="bg-accent"
         showViewAll={false}
       />
-      <ProductSection
-        id="beverages"
-        title="Beverages"
-        subtitle="Hot and Cold drinks"
-        items={[...config.productSections.hotBeverages, ...config.productSections.coldBeverages]}
-        bgColor="bg-white"
-        showViewAll={false}
-      />
     </main>
   );
 }
+
+    
