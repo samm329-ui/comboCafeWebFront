@@ -226,15 +226,13 @@ export const config = {
     pastas,
     snacks,
     friedItems,
-    flowerProducts: [
-      { id: "fp1", name: "Single Rose", price: "50", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/single%20rose.jpg", description: "A single, elegant rose for a simple gesture." },
-      { id: "fp2", name: "Rose Bouquet", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/rose%20bouquet.jpg", description: "A beautiful bouquet of fresh roses." },
-      { id: "fp3", name: "Mixed Flower Bouquet", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/flower%20bouquet.jpg", description: "A vibrant mix of seasonal flowers." },
-      { id: "fp5", name: "Gift Hampers", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/gift%20hamper.jpg", description: "Thoughtfully curated hampers for your loved ones." },
-    ],
     comboProducts: [
-      ...foodCombos,
-      { id: "fp5", name: "Gift Hampers", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/flowers/gift%20hamper.jpg", description: "Thoughtfully curated hampers for your loved ones." },
+      ...foodCombos
+    ],
+    chocolates: [
+      { id: "choc1", name: "Milky Bar", price: "40", imageUrl: "https://images.unsplash.com/photo-1623862214221-98427181353e?q=80&w=400&h=400&fit=crop", description: "Rich and creamy white chocolate bar." },
+      { id: "choc2", name: "KitKat 150g", price: "185", imageUrl: "https://images.unsplash.com/photo-1581989022669-79a05953a558?q=80&w=400&h=400&fit=crop", description: "Crisp wafer fingers covered with milk chocolate." },
+      { id: "choc3", name: "Dairy Milk Silk", price: "230", imageUrl: "https://images.unsplash.com/photo-1600055882386-5d18b02a74ea?q=80&w=400&h=400&fit=crop", description: "The classic taste of Cadbury dairy milk." }
     ],
   },
   giftFinder: {
@@ -311,6 +309,7 @@ export const config = {
     
 
     
+
 
 
 

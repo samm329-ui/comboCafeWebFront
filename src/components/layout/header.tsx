@@ -27,6 +27,7 @@ const allProducts: Product[] = Array.from(new Set([ // Use Set to remove duplica
   ...config.productSections.gifts,
   ...config.collections.cakes.map(c => ({...c, id: c.id || c.title, name: c.title, price: c.price || '0', description: c.description || ''})),
   ...config.productSections.foodItems,
+  ...config.productSections.chocolates,
 ]));
 
 
