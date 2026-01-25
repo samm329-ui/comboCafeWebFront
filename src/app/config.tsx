@@ -95,6 +95,8 @@ export const config = {
           { id: "snacks", label: "Snacks", href: "/food#snacks" },
         ]
       },
+      { id: "combos", label: "Combos", href: "/combos" },
+      { id: "chocolates", label: "Chocolates", href: "/chocolates" },
       { id: "about-us", label: "About Us", href: "/about" },
       { id: "contact-us", label: "Contact Us", href: "/contact" },
     ],
@@ -309,6 +311,7 @@ export const config = {
     
 
     
+
 
 
 
