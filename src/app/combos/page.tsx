@@ -10,7 +10,7 @@ export default function CombosPage() {
     <main className="bg-white">
       <div className="container mx-auto">
           <Button asChild variant="outline" className="my-6">
-              <Link href="/#flowers-and-more">
+              <Link href="/">
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Back
               </Link>
