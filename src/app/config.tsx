@@ -220,6 +220,7 @@ export const config = {
       { id: "g5", name: "Customised Cushion", price: "550", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Customized%20Cushion%20550.jpeg", description: "A soft, personalized cushion for your home." },
       { id: "g10", name: "Magic Mug", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Magic%20Mug%20399.jpeg", description: "Reveals a surprise image with hot liquid." }
     ],
+    flowerProducts: [],
     foodItems: [...pizzas, ...burgers, ...sandwiches, ...noodles, ...pastas, ...snacks, ...friedItems],
     pizzas,
     burgers,
@@ -311,6 +312,7 @@ export const config = {
     
 
     
+
 
 
 
