@@ -230,9 +230,9 @@ export const config = {
       ...foodCombos
     ],
     chocolates: [
-      { id: "choc1", name: "Milky Bar", price: "40", imageUrl: "https://images.unsplash.com/photo-1623862214221-98427181353e?q=80&w=400&h=400&fit=crop", description: "Rich and creamy white chocolate bar." },
-      { id: "choc2", name: "KitKat 150g", price: "185", imageUrl: "https://images.unsplash.com/photo-1581989022669-79a05953a558?q=80&w=400&h=400&fit=crop", description: "Crisp wafer fingers covered with milk chocolate." },
-      { id: "choc3", name: "Dairy Milk Silk", price: "230", imageUrl: "https://images.unsplash.com/photo-1600055882386-5d18b02a74ea?q=80&w=400&h=400&fit=crop", description: "The classic taste of Cadbury dairy milk." }
+      { id: "choc1", name: "Milky Bar", price: "40", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/milkybar.webp", description: "Rich and creamy white chocolate bar." },
+      { id: "choc2", name: "KitKat 150g", price: "185", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/kitkat.webp", description: "Crisp wafer fingers covered with milk chocolate." },
+      { id: "choc3", name: "Dairy Milk Silk", price: "230", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/diary%20mik.webp", description: "The classic taste of Cadbury dairy milk." }
     ],
   },
   giftFinder: {
@@ -309,6 +309,7 @@ export const config = {
     
 
     
+
 
 
 
