@@ -354,8 +354,7 @@ Transaction ID: *${transactionId}*
                                 mode="single"
                                 selected={date}
                                 onSelect={setDate}
-                                initialFocus
-                                disabled={{ before: tomorrow }}
+                                disabled={(day) => day < tomorrow}
                               />
                             </PopoverContent>
                           </Popover>
