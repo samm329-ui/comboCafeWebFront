@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Plus, Minus, Trash2, Calendar as CalendarIcon } from 'lucide-react';
+import { ArrowLeft, Plus, Minus, Trash2, Calendar as CalendarIcon, Phone, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
@@ -216,6 +216,19 @@ Transaction ID: *${transactionId}*
               </Card>
             </div>
             <div>
+              <div className="bg-white p-4 rounded-lg shadow-sm border mb-6">
+                  <h3 className="font-semibold text-center text-base mb-2">Cash on delivery is available!</h3>
+                  <div className="text-sm text-center text-muted-foreground space-y-1">
+                      <a href="https://wa.me/918436860216" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5 hover:text-primary">
+                          <Phone className="h-4 w-4" />
+                          <span>WhatsApp: 84368 60216</span>
+                      </a>
+                      <div className="flex items-center justify-center gap-1.5">
+                          <MapPin className="h-4 w-4" />
+                          <span>Location: Rampurhat</span>
+                      </div>
+                  </div>
+              </div>
               <Card className="sticky top-24">
                 <CardHeader>
                   <CardTitle>Order Summary</CardTitle>
