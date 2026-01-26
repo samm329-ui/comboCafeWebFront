@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Plus, Minus, Trash2, Calendar as CalendarIcon, Phone, MapPin } from 'lucide-react';
+import { ArrowLeft, Plus, Minus, Trash2, Calendar as CalendarIcon, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
@@ -223,8 +223,7 @@ Transaction ID: *${transactionId}*
                           <Phone className="h-4 w-4" />
                           <span>WhatsApp: 84368 60216</span>
                       </a>
-                      <div className="flex items-center justify-start gap-1.5">
-                          <MapPin className="h-4 w-4" />
+                      <div className="flex items-center justify-start">
                           <span>Location: Rampurhat, Nischintapur</span>
                       </div>
                   </div>
@@ -336,9 +335,8 @@ Transaction ID: *${transactionId}*
                   href="https://google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/data=!4m2!3m1!1s0x0:0x20d4a8fe5d070ebc?sa=X&ved=1t:2428&ictx=111" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 mt-2 text-muted-foreground hover:text-primary transition-colors"
+                  className="inline-block mt-2 text-muted-foreground hover:text-primary transition-colors"
                 >
-                    <MapPin className="h-4 w-4" />
                     <span>Nischintapur, Rampurhat, West Bengal 731224</span>
                 </a>
               </CardContent>
