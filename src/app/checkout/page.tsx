@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useCart, Product } from '@/context/cart-provider';
@@ -356,6 +357,9 @@ Transaction ID: *${transactionId}*
               3. Click confirm to place your order via WhatsApp.
             </DialogDescription>
           </DialogHeader>
+          <p className="text-destructive text-sm font-medium text-center">
+            Due to high payment issues, we are taking payment before placing the order. Please pay the appropriate amount.
+          </p>
           <div className="flex items-center justify-center py-4">
             <Image
               src={config.payment.qrCodeUrl}
