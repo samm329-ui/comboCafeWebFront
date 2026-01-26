@@ -99,12 +99,16 @@ export default {
           from: { opacity: '1', transform: 'scale(1)' },
           to: { opacity: '0', transform: 'scale(0.95)' },
         },
+        'blink': {
+          '50%': { opacity: '0.5' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.5s ease-out forwards',
         'fade-out': 'fade-out 0.5s ease-in forwards',
+        'blink': 'blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       boxShadow: {
         'card': '0 8px 20px rgba(66,46,37,0.06)',
