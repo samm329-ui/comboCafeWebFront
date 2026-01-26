@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -256,8 +257,9 @@ Transaction ID: *${transactionId}*
                             <p className="font-semibold">Due to high payment issues, we are taking payment before placing the order.</p>
                             <p className="mt-1">Don't worry, you are dealing with genuine people.</p>
                             <p className="mt-2 text-xs text-green-600">
-                                Contact: 8436860216<br/>
-                                Location: Nischintapur, Rampurhat
+                                <a href="tel:8436860216" className="hover:underline">Contact: 8436860216</a>
+                                <span className="mx-2">|</span>
+                                <a href="https://google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/data=!4m2!3m1!1s0x0:0x20d4a8fe5d070ebc?sa=X&ved=1t:2428&ictx=111" target="_blank" rel="noopener noreferrer" className="hover:underline">Location: Nischintapur, Rampurhat</a>
                             </p>
                         </div>
 
