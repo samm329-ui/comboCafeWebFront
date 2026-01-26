@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -27,6 +26,7 @@ import {
 } from "@/components/ui/select"
 import { Separator } from '@/components/ui/separator';
 import { config } from '@/app/config';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 export const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) => {
     const { toast } = useToast();
@@ -37,6 +37,7 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
     const [transactionId, setTransactionId] = useState('');
     const [date, setDate] = useState<Date | undefined>(addDays(new Date(), 1));
     const [timeSlot, setTimeSlot] = useState("10-12");
+    const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
     const [customerDetails, setCustomerDetails] = useState({
         name: '',
         email: '',
@@ -81,6 +82,19 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
             '18-20': '06:00 PM - 08:00 PM',
         };
 
+        const deliveryMethodText = deliveryMethod === 'home-delivery' ? 'Home Delivery' : 'Take Away';
+
+        const deliveryDetails = deliveryMethod === 'home-delivery' ? `
+*Delivery Details:*
+Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDetails.landmark}` : ''}, ${customerDetails.pincode}
+Date: ${deliveryDate}
+Time Slot: ${timeSlotMap[timeSlot]}
+` : `
+*Pickup Details:*
+Date: ${deliveryDate}
+Time Slot: ${timeSlotMap[timeSlot]}
+`;
+
         const whatsappMessage = `
 *New Single Item Order from Combo Cafe Website*
 
@@ -89,10 +103,8 @@ Name: ${customerDetails.name}
 Phone: ${customerDetails.phone}
 Email: ${customerDetails.email}
 
-*Delivery Details:*
-Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDetails.landmark}` : ''}, ${customerDetails.pincode}
-Date: ${deliveryDate}
-Time Slot: ${timeSlotMap[timeSlot]}
+*Delivery Method: ${deliveryMethodText}*
+${deliveryDetails}
 
 *Order Item:*
 - ${item.name}
@@ -190,21 +202,46 @@ Transaction ID: *${transactionId}*
                             <Label htmlFor={`phone-${cardId}`}>Phone Number</Label>
                             <Input id={`phone-${cardId}`} name="phone" type="tel" placeholder="9876543210" required onChange={handleDetailsChange} value={customerDetails.phone} suppressHydrationWarning />
                         </div>
-                        <div className="space-y-2">
-                            <Label htmlFor={`address-${cardId}`}>Delivery Address</Label>
-                            <Input id={`address-${cardId}`} name="address" placeholder="123 Main St, Rampurhat" required onChange={handleDetailsChange} value={customerDetails.address} suppressHydrationWarning />
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor={`landmark-${cardId}`}>Landmark</Label>
-                            <Input id={`landmark-${cardId}`} name="landmark" placeholder="Near City Mall" onChange={handleDetailsChange} value={customerDetails.landmark} suppressHydrationWarning />
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor={`pincode-${cardId}`}>Pincode</Label>
-                            <Input id={`pincode-${cardId}`} name="pincode" type="text" placeholder="731235" maxLength={6} required onChange={handleDetailsChange} value={customerDetails.pincode} suppressHydrationWarning />
-                        </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor={`date-${cardId}`}>Delivery Date</Label>
+                            <Label>Delivery Method</Label>
+                            <RadioGroup
+                                value={deliveryMethod}
+                                onValueChange={setDeliveryMethod}
+                                className="flex space-x-4 pt-2"
+                                defaultValue="home-delivery"
+                            >
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="home-delivery" id={`home-delivery-${cardId}`} />
+                                    <Label htmlFor={`home-delivery-${cardId}`} className="font-normal">Home Delivery</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="take-away" id={`take-away-${cardId}`} />
+                                    <Label htmlFor={`take-away-${cardId}`} className="font-normal">Take Away</Label>
+                                </div>
+                            </RadioGroup>
+                        </div>
+                        
+                        {deliveryMethod === 'home-delivery' && (
+                            <>
+                                <div className="space-y-2">
+                                    <Label htmlFor={`address-${cardId}`}>Delivery Address</Label>
+                                    <Input id={`address-${cardId}`} name="address" placeholder="123 Main St, Rampurhat" required={deliveryMethod === 'home-delivery'} onChange={handleDetailsChange} value={customerDetails.address} suppressHydrationWarning />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor={`landmark-${cardId}`}>Landmark</Label>
+                                    <Input id={`landmark-${cardId}`} name="landmark" placeholder="Near City Mall" onChange={handleDetailsChange} value={customerDetails.landmark} suppressHydrationWarning />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor={`pincode-${cardId}`}>Pincode</Label>
+                                    <Input id={`pincode-${cardId}`} name="pincode" type="text" placeholder="731235" maxLength={6} required={deliveryMethod === 'home-delivery'} onChange={handleDetailsChange} value={customerDetails.pincode} suppressHydrationWarning />
+                                </div>
+                            </>
+                        )}
+
+
+                        <div className="space-y-2">
+                            <Label htmlFor={`date-${cardId}`}>{deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Date</Label>
                             <Popover>
                                 <PopoverTrigger asChild>
                                     <Button
@@ -232,7 +269,7 @@ Transaction ID: *${transactionId}*
                             </Popover>
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor={`time-${cardId}`}>Delivery Time</Label>
+                            <Label htmlFor={`time-${cardId}`}>{deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Time</Label>
                             <Select value={timeSlot} onValueChange={setTimeSlot}>
                                 <SelectTrigger id={`time-${cardId}`} suppressHydrationWarning>
                                     <SelectValue placeholder="Select a time slot" />

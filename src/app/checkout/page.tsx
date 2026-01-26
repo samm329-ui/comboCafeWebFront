@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useCart, Product } from '@/context/cart-provider';
@@ -37,6 +36,7 @@ import {
 } from "@/components/ui/dialog"
 import { format, addDays, startOfDay } from "date-fns";
 import { config } from '@/app/config';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 
 type CartItemView = {
@@ -50,6 +50,7 @@ export default function CheckoutPage() {
   const router = useRouter();
   const [date, setDate] = useState<Date | undefined>(addDays(new Date(), 1));
   const [timeSlot, setTimeSlot] = useState("10-12");
+  const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
 
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [transactionId, setTransactionId] = useState('');
@@ -121,6 +122,19 @@ export default function CheckoutPage() {
 
     const itemsSummary = cartItems.map(item => `${item.product.name} (x${item.quantity})`).join('\n - ');
 
+    const deliveryMethodText = deliveryMethod === 'home-delivery' ? 'Home Delivery' : 'Take Away';
+
+    const deliveryDetails = deliveryMethod === 'home-delivery' ? `
+*Delivery Details:*
+Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDetails.landmark}` : ''}, ${customerDetails.pincode}
+Date: ${deliveryDate}
+Time Slot: ${timeSlotMap[timeSlot]}
+` : `
+*Pickup Details:*
+Date: ${deliveryDate}
+Time Slot: ${timeSlotMap[timeSlot]}
+`;
+
     const whatsappMessage = `
 *New Order from Combo Cafe Website*
 
@@ -129,10 +143,8 @@ Name: ${customerDetails.name}
 Phone: ${customerDetails.phone}
 Email: ${customerDetails.email}
 
-*Delivery Details:*
-Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDetails.landmark}` : ''}, ${customerDetails.pincode}
-Date: ${deliveryDate}
-Time Slot: ${timeSlotMap[timeSlot]}
+*Delivery Method: ${deliveryMethodText}*
+${deliveryDetails}
 
 *Order Items:*
  - ${itemsSummary}
@@ -262,21 +274,46 @@ Transaction ID: *${transactionId}*
                             <Label htmlFor="phone">Phone Number</Label>
                             <Input id="phone" name="phone" type="tel" placeholder="9876543210" required suppressHydrationWarning />
                         </div>
-                         <div className="space-y-2">
-                            <Label htmlFor="address">Delivery Address</Label>
-                            <Input id="address" name="address" placeholder="123 Main St, Rampurhat" required suppressHydrationWarning />
-                        </div>
+                        
                         <div className="space-y-2">
-                            <Label htmlFor="landmark">Landmark</Label>
-                            <Input id="landmark" name="landmark" placeholder="Near City Mall" suppressHydrationWarning />
+                            <Label>Delivery Method</Label>
+                            <RadioGroup
+                                value={deliveryMethod}
+                                onValueChange={setDeliveryMethod}
+                                className="flex space-x-4 pt-2"
+                                defaultValue="home-delivery"
+                            >
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="home-delivery" id="home-delivery" />
+                                    <Label htmlFor="home-delivery" className="font-normal">Home Delivery</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="take-away" id="take-away" />
+                                    <Label htmlFor="take-away" className="font-normal">Take Away</Label>
+                                </div>
+                            </RadioGroup>
                         </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="pincode">Pincode</Label>
-                            <Input id="pincode" name="pincode" type="text" placeholder="731235" maxLength={6} required suppressHydrationWarning />
-                        </div>
+                        
+                        {deliveryMethod === 'home-delivery' && (
+                            <>
+                                <div className="space-y-2">
+                                    <Label htmlFor="address">Delivery Address</Label>
+                                    <Input id="address" name="address" placeholder="123 Main St, Rampurhat" required={deliveryMethod === 'home-delivery'} suppressHydrationWarning />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="landmark">Landmark</Label>
+                                    <Input id="landmark" name="landmark" placeholder="Near City Mall" suppressHydrationWarning />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="pincode">Pincode</Label>
+                                    <Input id="pincode" name="pincode" type="text" placeholder="731235" maxLength={6} required={deliveryMethod === 'home-delivery'} suppressHydrationWarning />
+                                </div>
+                            </>
+                        )}
+
 
                         <div className="space-y-2">
-                            <Label htmlFor="date">Delivery Date</Label>
+                            <Label htmlFor="date">{deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Date</Label>
                             <Popover>
                                 <PopoverTrigger asChild>
                                     <Button
@@ -304,7 +341,7 @@ Transaction ID: *${transactionId}*
                             </Popover>
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="time">Delivery Time</Label>
+                            <Label htmlFor="time">{deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Time</Label>
                             <Select value={timeSlot} onValueChange={setTimeSlot}>
                                 <SelectTrigger id="time" suppressHydrationWarning>
                                     <SelectValue placeholder="Select a time slot" />
