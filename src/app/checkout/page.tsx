@@ -327,6 +327,14 @@ Transaction ID: *${transactionId}*
               </Card>
             </div>
           </div>
+          <div className="text-center mt-12 border-t pt-8">
+            <p className="text-lg text-muted-foreground">Visit our shop and get more unique Gifts and Chocolates...</p>
+            <p className="font-semibold mt-2 text-xl">Combo Cafe & Gifts Shop</p>
+            <div className="flex items-center justify-center gap-2 mt-2 text-muted-foreground">
+                <MapPin className="h-4 w-4" />
+                <span>Nischintapur, Rampurhat, West Bengal 731224</span>
+            </div>
+          </div>
         </div>
       </main>
        <Dialog open={isQrModalOpen} onOpenChange={setIsQrModalOpen}>
