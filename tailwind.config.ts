@@ -113,6 +113,7 @@ export default {
       boxShadow: {
         'card': '0 8px 20px rgba(66,46,37,0.06)',
         'subtle': '0 4px 12px rgba(0, 0, 0, 0.05)',
+        'date-focus': '0px 0px 0px 7px rgb(74 157 236 / 0.2)',
       }
     },
   },
