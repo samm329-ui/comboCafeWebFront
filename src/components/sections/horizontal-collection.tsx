@@ -19,6 +19,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 type CollectionItem = {
     id?: string;
@@ -44,6 +45,7 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
     const [transactionId, setTransactionId] = useState('');
     const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
     const [date, setDate] = useState<Date | undefined>(new Date());
+    const [timeSlot, setTimeSlot] = useState("10:00 AM - 12:00 PM");
     const [customerDetails, setCustomerDetails] = useState({
         name: '',
         email: '',
@@ -52,6 +54,14 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
         landmark: '',
         pincode: '',
     });
+
+    const timeSlots = [
+        "10:00 AM - 12:00 PM",
+        "12:00 PM - 02:00 PM",
+        "02:00 PM - 04:00 PM",
+        "04:00 PM - 06:00 PM",
+        "06:00 PM - 08:00 PM",
+    ];
 
     const handleAddToCart = () => {
         if (!item.id || !item.price) {
@@ -113,6 +123,7 @@ Email: ${customerDetails.email}
 ${deliveryDetails}
 
 *${deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Date:* ${date ? format(date, "PPP") : 'Not specified'}
+*${deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Time:* ${timeSlot}
 
 *Order Item:*
 - ${item.title}
@@ -280,6 +291,26 @@ Transaction ID: *${transactionId}*
                                         />
                                     </PopoverContent>
                                 </Popover>
+                            </div>
+                            
+                            <div className="space-y-2">
+                                <Label htmlFor={`time-slot-collection-${cardId}`}>{deliveryMethod === 'home-delivery' ? 'Delivery Time' : 'Pickup Time'}</Label>
+                                <Select value={timeSlot} onValueChange={setTimeSlot}>
+                                    <SelectTrigger
+                                    id={`time-slot-collection-${cardId}`}
+                                    className="w-full justify-start text-left font-normal bg-[#f3f3f3] border-2 border-transparent rounded-md h-10 px-3 text-foreground transition-all duration-500 hover:bg-white hover:border-[#4a9dec] focus-visible:bg-white focus-visible:border-[#4a9dec] focus-visible:shadow-date-focus focus-visible:ring-0 focus-visible:ring-offset-0"
+                                    suppressHydrationWarning
+                                    >
+                                    <SelectValue placeholder="Select a time slot" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                    {timeSlots.map((slot) => (
+                                        <SelectItem key={slot} value={slot}>
+                                        {slot}
+                                        </SelectItem>
+                                    ))}
+                                    </SelectContent>
+                                </Select>
                             </div>
 
                             <Separator />
