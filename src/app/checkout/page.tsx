@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Plus, Minus, Trash2, Phone } from 'lucide-react';
+import { ArrowLeft, Plus, Minus, Trash2, Phone, Calendar as CalendarIcon } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
@@ -22,6 +22,10 @@ import {
 } from "@/components/ui/dialog"
 import { config } from '@/app/config';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
 
 
 type CartItemView = {
@@ -34,6 +38,7 @@ export default function CheckoutPage() {
   const { toast } = useToast();
   const router = useRouter();
   const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
+  const [date, setDate] = useState<Date | undefined>(new Date());
 
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [transactionId, setTransactionId] = useState('');
@@ -116,6 +121,8 @@ Email: ${customerDetails.email}
 
 *Delivery Method: ${deliveryMethodText}*
 ${deliveryDetails}
+
+*${deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Date:* ${date ? format(date, "PPP") : 'Not specified'}
 
 *Order Items:*
  - ${itemsSummary}
@@ -281,6 +288,36 @@ Transaction ID: *${transactionId}*
                                 </div>
                             </>
                         )}
+
+                        <div className="space-y-2">
+                          <Label htmlFor="date">
+                            {deliveryMethod === 'home-delivery' ? 'Delivery Date' : 'Pickup Date'}
+                          </Label>
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button
+                                variant={"outline"}
+                                className={cn(
+                                  "w-full justify-start text-left font-normal bg-[#f3f3f3] border-2 border-transparent rounded-lg h-10 px-3 text-foreground transition-all duration-500 hover:bg-white hover:border-[#4a9dec] focus-visible:bg-white focus-visible:border-[#4a9dec] focus-visible:shadow-date-focus focus-visible:ring-0 focus-visible:ring-offset-0",
+                                  !date && "text-muted-foreground"
+                                )}
+                                suppressHydrationWarning
+                              >
+                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                {date ? format(date, "PPP") : <span>Pick a date</span>}
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0">
+                              <Calendar
+                                mode="single"
+                                selected={date}
+                                onSelect={setDate}
+                                initialFocus
+                                disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() - 1))}
+                              />
+                            </PopoverContent>
+                          </Popover>
+                        </div>
 
 
                         <Button type="submit" className="w-full" size="lg" disabled={cart.length === 0} suppressHydrationWarning>

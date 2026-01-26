@@ -5,13 +5,17 @@ import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
 import { useCart, Product } from '@/context/cart-provider';
-import { Phone } from 'lucide-react';
+import { Phone, Calendar as CalendarIcon } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { config } from '@/app/config';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
 
 export const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) => {
     const { toast } = useToast();
@@ -21,6 +25,7 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
     const [isQrModalOpen, setIsQrModalOpen] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
+    const [date, setDate] = useState<Date | undefined>(new Date());
     const [customerDetails, setCustomerDetails] = useState({
         name: '',
         email: '',
@@ -76,6 +81,8 @@ Email: ${customerDetails.email}
 
 *Delivery Method: ${deliveryMethodText}*
 ${deliveryDetails}
+
+*${deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Date:* ${date ? format(date, "PPP") : 'Not specified'}
 
 *Order Item:*
 - ${item.name}
@@ -209,7 +216,36 @@ Transaction ID: *${transactionId}*
                                 </div>
                             </>
                         )}
-
+                        
+                        <div className="space-y-2">
+                            <Label htmlFor={`date-${cardId}`}>
+                                {deliveryMethod === 'home-delivery' ? 'Delivery Date' : 'Pickup Date'}
+                            </Label>
+                            <Popover>
+                                <PopoverTrigger asChild>
+                                    <Button
+                                        variant={"outline"}
+                                        className={cn(
+                                            "w-full justify-start text-left font-normal bg-[#f3f3f3] border-2 border-transparent rounded-lg h-10 px-3 text-foreground transition-all duration-500 hover:bg-white hover:border-[#4a9dec] focus-visible:bg-white focus-visible:border-[#4a9dec] focus-visible:shadow-date-focus focus-visible:ring-0 focus-visible:ring-offset-0",
+                                            !date && "text-muted-foreground"
+                                        )}
+                                        suppressHydrationWarning
+                                    >
+                                        <CalendarIcon className="mr-2 h-4 w-4" />
+                                        {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-auto p-0">
+                                    <Calendar
+                                        mode="single"
+                                        selected={date}
+                                        onSelect={setDate}
+                                        initialFocus
+                                        disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() - 1))}
+                                    />
+                                </PopoverContent>
+                            </Popover>
+                        </div>
 
                         <Separator />
 
