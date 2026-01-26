@@ -251,6 +251,15 @@ Transaction ID: *${transactionId}*
                         <div className="text-sm text-center text-muted-foreground">
                             1. Scan the QR code to pay Rs. {item.price}.<br />2. Enter the transaction ID below.
                         </div>
+                        
+                        <div className="text-sm text-center text-green-700 bg-green-50 p-3 my-2 rounded-md border border-green-200">
+                            <p className="font-semibold">Due to high payment issues, we are taking payment before placing the order.</p>
+                            <p className="mt-1">Don't worry, you are dealing with genuine people.</p>
+                            <p className="mt-2 text-xs text-green-600">
+                                Contact: 8436860216 | combocafe24x7@gmail.com<br/>
+                                Location: Nischintapur, Rampurhat
+                            </p>
+                        </div>
 
                         <div className="flex items-center justify-center py-2">
                             <Image

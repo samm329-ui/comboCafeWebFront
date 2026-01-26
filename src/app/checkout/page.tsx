@@ -357,9 +357,14 @@ Transaction ID: *${transactionId}*
               3. Click confirm to place your order via WhatsApp.
             </DialogDescription>
           </DialogHeader>
-          <p className="text-destructive text-sm font-medium text-center">
-            Due to high payment issues, we are taking payment before placing the order. Please pay the appropriate amount.
-          </p>
+          <div className="text-sm text-center text-green-700 bg-green-50 p-3 rounded-md border border-green-200">
+            <p className="font-semibold">Due to high payment issues, we are taking payment before placing the order.</p>
+            <p className="mt-1">Don't worry, you are dealing with genuine people.</p>
+            <p className="mt-2 text-xs text-green-600">
+                Contact: 8436860216 | combocafe24x7@gmail.com<br/>
+                Location: Nischintapur, Rampurhat
+            </p>
+          </div>
           <div className="flex items-center justify-center py-4">
             <Image
               src={config.payment.qrCodeUrl}
