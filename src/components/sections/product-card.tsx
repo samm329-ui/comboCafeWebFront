@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -6,25 +5,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
 import { useCart, Product } from '@/context/cart-provider';
-import { Calendar as CalendarIcon, Phone } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Phone } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { format, addDays, startOfDay } from "date-fns";
-import { Calendar } from "@/components/ui/calendar"
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
 import { Separator } from '@/components/ui/separator';
 import { config } from '@/app/config';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -36,8 +20,6 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
 
     const [isQrModalOpen, setIsQrModalOpen] = useState(false);
     const [transactionId, setTransactionId] = useState('');
-    const [date, setDate] = useState<Date | undefined>(addDays(new Date(), 1));
-    const [timeSlot, setTimeSlot] = useState("10-12");
     const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
     const [customerDetails, setCustomerDetails] = useState({
         name: '',
@@ -74,26 +56,14 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
             return;
         }
 
-        const deliveryDate = date ? format(date, "PPP") : "Not selected";
-        const timeSlotMap: { [key: string]: string } = {
-            '10-12': '10:00 AM - 12:00 PM',
-            '12-14': '12:00 PM - 02:00 PM',
-            '14-16': '02:00 PM - 04:00 PM',
-            '16-18': '04:00 PM - 06:00 PM',
-            '18-20': '06:00 PM - 08:00 PM',
-        };
-
         const deliveryMethodText = deliveryMethod === 'home-delivery' ? 'Home Delivery' : 'Take Away';
 
         const deliveryDetails = deliveryMethod === 'home-delivery' ? `
 *Delivery Details:*
 Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDetails.landmark}` : ''}, ${customerDetails.pincode}
-Date: ${deliveryDate}
-Time Slot: ${timeSlotMap[timeSlot]}
 ` : `
 *Pickup Details:*
-Date: ${deliveryDate}
-Time Slot: ${timeSlotMap[timeSlot]}
+The customer will pick up from the store.
 `;
 
         const whatsappMessage = `
@@ -240,49 +210,6 @@ Transaction ID: *${transactionId}*
                             </>
                         )}
 
-
-                        <div className="space-y-2">
-                            <Label htmlFor={`date-${cardId}`}>{deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Date</Label>
-                            <Popover>
-                                <PopoverTrigger asChild>
-                                    <Button
-                                        className={cn(
-                                            "w-full justify-start text-left font-normal bg-[#f3f3f3] border-2 border-transparent rounded-lg h-10 px-3 text-foreground transition-all duration-500 hover:bg-white hover:border-[#4a9dec] focus-visible:bg-white focus-visible:border-[#4a9dec] focus-visible:shadow-date-focus focus-visible:ring-0 focus-visible:ring-offset-0",
-                                            !date && "text-muted-foreground"
-                                        )}
-                                        suppressHydrationWarning>
-                                        <CalendarIcon className="mr-2 h-4 w-4" />
-                                        {date ? format(date, "PPP") : <span>Pick a date</span>}
-                                    </Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-auto p-0">
-                                    <Calendar
-                                        mode="single"
-                                        selected={date}
-                                        onSelect={setDate}
-                                        disabled={(day) =>
-                                            day < addDays(startOfDay(new Date()), 1) || day > addDays(new Date(), 30)
-                                        }
-                                        initialFocus
-                                    />
-                                </PopoverContent>
-                            </Popover>
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor={`time-${cardId}`}>{deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Time</Label>
-                            <Select value={timeSlot} onValueChange={setTimeSlot}>
-                                <SelectTrigger id={`time-${cardId}`} suppressHydrationWarning>
-                                    <SelectValue placeholder="Select a time slot" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="10-12">10:00 AM - 12:00 PM</SelectItem>
-                                    <SelectItem value="12-14">12:00 PM - 02:00 PM</SelectItem>
-                                    <SelectItem value="14-16">02:00 PM - 04:00 PM</SelectItem>
-                                    <SelectItem value="16-18">04:00 PM - 06:00 PM</SelectItem>
-                                    <SelectItem value="18-20">06:00 PM - 08:00 PM</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
 
                         <Separator />
 
