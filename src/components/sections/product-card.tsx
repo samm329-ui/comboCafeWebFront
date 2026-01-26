@@ -277,7 +277,7 @@ Transaction ID: *${transactionId}*
                                         selected={date}
                                         onSelect={setDate}
                                         initialFocus
-                                        disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() - 1))}
+                                        disabled={(d) => d <= new Date()}
                                     />
                                 </PopoverContent>
                             </Popover>
