@@ -273,7 +273,7 @@ Transaction ID: *${transactionId}*
                   <h3 className="font-semibold text-left text-base mb-2 text-green-800">Cash on delivery is available!</h3>
                   <div className="text-sm text-green-700 space-y-1">
                       <a href="https://wa.me/918436860216" target="_blank" rel="noopener noreferrer" className="flex items-center justify-start gap-1.5 hover:text-green-900">
-                          <Phone className="h-4 w-4" />
+                          <Phone className="mr-2 h-4 w-4" />
                           <span>WhatsApp: 84368 60216</span>
                       </a>
                       <div className="flex items-center justify-start">
@@ -469,8 +469,9 @@ Transaction ID: *${transactionId}*
           </DialogHeader>
           <div className="max-h-[70vh] overflow-y-auto -mx-6 px-6">
               <div className="text-sm text-center text-green-700 bg-green-50 p-3 rounded-md border border-green-200">
-                <p className="font-semibold">Orders are confirmed only after payment verification.</p>
-                <p className="mt-1">Orders without correct UTR will not be processed.</p>
+                <p className="font-semibold text-base">You're dealing with genuine people!</p>
+                <p className="mt-2">To avoid delays from payment issues, please double-check the UPI Transaction ID (UTR) you enter.</p>
+                <p className="font-semibold mt-2">Orders are confirmed only after payment verification, and orders without a correct UTR cannot be processed.</p>
                 <p className="mt-2 text-xs text-green-600">
                     <a href="tel:8436860216" className="hover:underline">Contact: 8436860216</a>
                     <span className="mx-2">|</span>
