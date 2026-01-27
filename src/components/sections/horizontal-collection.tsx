@@ -147,14 +147,7 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
             });
             return;
         }
-        addToCart({
-            id: item.id,
-            name: item.title,
-            price: item.price,
-            imageUrl: item.imageUrl,
-            description: item.description || ''
-        });
-        router.push('/checkout');
+        setIsQrModalOpen(true);
     };
 
     const handleDetailsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -390,9 +383,15 @@ ${paymentInfo}
 
                             <Separator />
                             
-                            <div className="text-sm text-center text-green-700 bg-green-50 p-3 my-2 rounded-md border border-green-200">
-                                <p className="font-semibold">Orders are confirmed only after payment verification.</p>
-                                <p className="mt-1">Orders without correct UTR will not be processed.</p>
+                            <div className="text-sm text-center text-green-700 bg-green-50 p-3 rounded-md border border-green-200">
+                                <p className="font-semibold text-base">You're dealing with genuine people!</p>
+                                <p className="mt-2">To avoid delays from payment issues, please double-check the UPI Transaction ID (UTR) you enter.</p>
+                                <p className="font-semibold mt-2">Orders are confirmed only after payment verification, and orders without a correct UTR cannot be processed.</p>
+                                <p className="mt-2 text-xs text-green-600">
+                                    <a href="tel:8436860216" className="hover:underline">Contact: 8436860216</a>
+                                    <span className="mx-2">|</span>
+                                    <a href="https://google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/data=!4m2!3m1!1s0x0:0x20d4a8fe5d070ebc?sa=X&ved=1t:2428&ictx=111" target="_blank" rel="noopener noreferrer" className="hover:underline">Location: Nischintapur, Rampurhat</a>
+                                </p>
                             </div>
 
                             <div className="flex items-center justify-center py-2">
