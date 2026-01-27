@@ -18,11 +18,13 @@ import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useRouter } from 'next/navigation';
 
 export const ProductCard = ({ item, priority }: { item: Product; priority?: boolean }) => {
     const { toast } = useToast();
     const { addToCart } = useCart();
     const phoneNumber = "918436860216";
+    const router = useRouter();
 
     const [isQrModalOpen, setIsQrModalOpen] = useState(false);
     const [transactionId, setTransactionId] = useState('');
@@ -83,7 +85,7 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
     useEffect(() => {
         if (isQrModalOpen) {
             const upiLink = `upi://pay?pa=soumyasaha18@oksbi&pn=Soumya%20Saha&am=${parseFloat(item.price).toFixed(2)}&cu=INR&tn=${encodeURIComponent(item.name)}`;
-            QRCode.toDataURL(upiLink)
+            QRCode.toDataURL(upiLink, { errorCorrectionLevel: 'M' })
                 .then(url => {
                     setQrCodeUrl(url);
                 })
@@ -171,6 +173,11 @@ ${paymentInfo}
             description: "Your order has been sent via WhatsApp. We will confirm shortly.",
         });
     };
+    
+    const handleBuyNow = () => {
+        addToCart(item);
+        router.push('/checkout');
+    };
 
     return (
         <>
@@ -207,7 +214,7 @@ ${paymentInfo}
                     <div className="mt-auto pt-2">
                         <p className="font-sans font-bold text-base text-primary-dark">{`Rs. ${item.price}`}</p>
                         <div className="mt-2 space-y-2">
-                            <div className="flex gap-2">
+                            <div className="flex gap-1">
                                 <Button onClick={handleAddToCart} size="sm" className="w-full text-xs text-center rounded-md h-8" variant="default" suppressHydrationWarning>
                                     Add to Cart
                                 </Button>
@@ -217,7 +224,7 @@ ${paymentInfo}
                                     </a>
                                 </Button>
                             </div>
-                            <Button onClick={() => setIsQrModalOpen(true)} variant="secondary" size="sm" className="w-full text-xs text-center rounded-md h-8" suppressHydrationWarning>
+                            <Button onClick={handleBuyNow} variant="secondary" size="sm" className="w-full text-xs text-center rounded-md h-8" suppressHydrationWarning>
                                 Buy Now
                             </Button>
                         </div>

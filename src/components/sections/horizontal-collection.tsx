@@ -21,6 +21,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useRouter } from 'next/navigation';
 
 type CollectionItem = {
     id?: string;
@@ -46,6 +47,7 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
     const [transactionId, setTransactionId] = useState('');
     const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
     const [qrCodeUrl, setQrCodeUrl] = useState('');
+    const router = useRouter();
     
     const tomorrow = useMemo(() => {
         const d = new Date();
@@ -99,7 +101,7 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
     useEffect(() => {
         if (isQrModalOpen && item.price) {
             const upiLink = `upi://pay?pa=soumyasaha18@oksbi&pn=Soumya%20Saha&am=${parseFloat(item.price).toFixed(2)}&cu=INR&tn=${encodeURIComponent(item.title)}`;
-            QRCode.toDataURL(upiLink)
+            QRCode.toDataURL(upiLink, { errorCorrectionLevel: 'M' })
                 .then(url => {
                     setQrCodeUrl(url);
                 })
@@ -134,6 +136,25 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
             title: "Added to cart",
             description: `${item.title} has been added to your cart.`,
         });
+    };
+
+    const handleBuyNow = () => {
+        if (!item.id || !item.price) {
+            toast({
+                variant: "destructive",
+                title: "Cannot buy now",
+                description: "This item cannot be purchased directly.",
+            });
+            return;
+        }
+        addToCart({
+            id: item.id,
+            name: item.title,
+            price: item.price,
+            imageUrl: item.imageUrl,
+            description: item.description || ''
+        });
+        router.push('/checkout');
     };
 
     const handleDetailsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -232,23 +253,23 @@ ${paymentInfo}
                         </div>
                     )}
                 </CardContent>
-                <div className="p-3 pt-0 bg-white space-y-2">
+                <div className="p-3 pt-0 bg-white">
                     {item.price ? (
-                        <>
-                           <div className="flex gap-2">
+                        <div className="space-y-2">
+                           <div className="flex gap-1">
                                 <Button onClick={handleAddToCart} className="w-full text-xs text-center rounded-md h-8" size="sm" suppressHydrationWarning>
                                     Add to Cart
                                 </Button>
-                                <Button asChild variant="outline" size="icon" className="h-8 w-8" suppressHydrationWarning>
+                                <Button asChild variant="outline" size="icon" className="h-8 w-8 rounded-md" suppressHydrationWarning>
                                     <a href={`tel:${phoneNumber}`}>
                                         <Phone className="h-4 w-4" />
                                     </a>
                                 </Button>
                             </div>
-                            <Button onClick={() => setIsQrModalOpen(true)} variant="secondary" className="w-full text-xs text-center rounded-md h-8" size="sm" suppressHydrationWarning>
+                            <Button onClick={handleBuyNow} variant="secondary" className="w-full text-xs text-center rounded-md h-8" size="sm" suppressHydrationWarning>
                                 Buy Now
                             </Button>
-                        </>
+                        </div>
                     ) : (
                         <Button asChild variant="secondary" className="w-full text-xs text-center h-8" size="sm" suppressHydrationWarning>
                             <a href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(`I'd like to inquire about: ${item.title}`)}`} target="_blank" rel="noopener noreferrer">
