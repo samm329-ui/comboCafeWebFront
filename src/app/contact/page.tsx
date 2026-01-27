@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -47,7 +46,7 @@ export default function ContactPage() {
             <form onSubmit={handleSendMessage} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name</Label>
-                <Input id="name" name="name" placeholder="John Doe" required suppressHydrationWarning />
+                <Input id="name" name="name" placeholder="Priya Sharma" required suppressHydrationWarning />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
@@ -96,3 +95,5 @@ export default function ContactPage() {
     </main>
   );
 }
+
+    

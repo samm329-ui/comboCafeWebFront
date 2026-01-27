@@ -314,7 +314,7 @@ Transaction ID: *${transactionId}*
                     <form onSubmit={handleFormSubmit} className="w-full space-y-4">
                          <div className="space-y-2">
                             <Label htmlFor="name">Full Name</Label>
-                            <Input id="name" name="name" placeholder="John Doe" required suppressHydrationWarning />
+                            <Input id="name" name="name" placeholder="Priya Sharma" required suppressHydrationWarning />
                         </div>
                          <div className="space-y-2">
                             <Label htmlFor="email">Email</Label>
@@ -379,7 +379,7 @@ Transaction ID: *${transactionId}*
                                 {date ? format(date, "PPP") : <span>Pick a date</span>}
                               </Button>
                             </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0 z-[200]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                            <PopoverContent className="w-auto p-0 z-[200]">
                               <Calendar
                                 mode="single"
                                 selected={date}
@@ -527,5 +527,7 @@ Transaction ID: *${transactionId}*
     </>
   );
 }
+
+    
 
     

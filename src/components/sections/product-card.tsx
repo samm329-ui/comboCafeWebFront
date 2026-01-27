@@ -118,9 +118,9 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
         
         if (deliveryMethod === 'home-delivery' && customerDetails.pincode !== '731224') {
             toast({
-                variant: "destructive",
-                title: "Pincode not serviceable",
-                description: "We currently only deliver to pincode 731224.",
+                variant: 'destructive',
+                title: 'Pincode not serviceable',
+                description: 'We currently only deliver to pincode 731224.',
             });
             return;
         }
@@ -240,7 +240,7 @@ ${paymentInfo}
                 </CardContent>
             </Card>
             <Dialog open={isQrModalOpen} onOpenChange={setIsQrModalOpen}>
-                <DialogContent className="sm:max-w-lg" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <DialogContent className="sm:max-w-lg">
                     <DialogHeader>
                         <DialogTitle>Order: {item.name}</DialogTitle>
                         <DialogDescription>
@@ -250,7 +250,7 @@ ${paymentInfo}
                     <form onSubmit={handleSendToWhatsapp} className="space-y-4 max-h-[70vh] overflow-y-auto p-1 pr-3">
                         <div className="space-y-2">
                             <Label htmlFor={`name-${cardId}`}>Full Name</Label>
-                            <Input id={`name-${cardId}`} name="name" placeholder="John Doe" required onChange={handleDetailsChange} value={customerDetails.name} suppressHydrationWarning />
+                            <Input id={`name-${cardId}`} name="name" placeholder="Priya Sharma" required onChange={handleDetailsChange} value={customerDetails.name} suppressHydrationWarning />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor={`email-${cardId}`}>Email</Label>
@@ -315,7 +315,7 @@ ${paymentInfo}
                                         {date ? format(date, "PPP") : <span>Pick a date</span>}
                                     </Button>
                                 </PopoverTrigger>
-                                <PopoverContent className="w-auto p-0 z-[200]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                                <PopoverContent className="w-auto p-0 z-[200]">
                                     <Calendar
                                         mode="single"
                                         selected={date}
@@ -398,5 +398,7 @@ ${paymentInfo}
         </>
     );
 };
+
+    
 
     
