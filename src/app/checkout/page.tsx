@@ -99,7 +99,7 @@ export default function CheckoutPage() {
     return Object.values(groupedItems);
   }, [cart]);
 
-  const { subtotal, deliveryCharge, total } = useMemo(() => {
+  const { subtotal, deliveryCharge, handlingFee, total } = useMemo(() => {
     const subtotal = cart.reduce((acc, item) => acc + parseFloat(item.price), 0);
     
     let calcDeliveryCharge = 0;
@@ -109,9 +109,11 @@ export default function CheckoutPage() {
         }
     }
 
-    const total = subtotal + calcDeliveryCharge;
+    const handlingFee = cart.length * 5;
 
-    return { subtotal, deliveryCharge: calcDeliveryCharge, total };
+    const total = subtotal + calcDeliveryCharge + handlingFee;
+
+    return { subtotal, deliveryCharge: calcDeliveryCharge, handlingFee, total };
   }, [cart]);
 
   useEffect(() => {
@@ -314,6 +316,10 @@ Transaction ID: *${transactionId}*
                   <div className="flex justify-between text-sm text-gray-500">
                     <span>Delivery</span>
                     <span>{deliveryCharge > 0 ? `Rs. ${deliveryCharge.toFixed(2)}` : 'Free'}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-500">
+                    <span>Handling Fee</span>
+                    <span>{`Rs. ${handlingFee.toFixed(2)}`}</span>
                   </div>
                   <Separator />
                   <div className="flex justify-between font-bold text-lg">
@@ -542,3 +548,4 @@ Transaction ID: *${transactionId}*
     
 
     
+
