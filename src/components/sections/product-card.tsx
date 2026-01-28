@@ -387,15 +387,16 @@ ${paymentInfo}
                                 </div>
                             )}
                         </div>
-                        <div className="space-y-2">
+                        <div className="space-y-2 text-center">
                             <Label htmlFor={`transactionId-product-${cardId}`}>UPI Transaction ID (UTR)</Label>
                             <Input
                                 id={`transactionId-product-${cardId}`}
                                 value={transactionId}
                                 onChange={(e) => setTransactionId(e.target.value)}
-                                placeholder="Enter 12-digit transaction ID"
+                                placeholder="Enter 12-digit UTR here"
                                 required
                                 minLength={12}
+                                className="text-lg text-center font-mono tracking-widest bg-gray-50 border-2 border-dashed"
                                 suppressHydrationWarning
                             />
                         </div>
@@ -410,6 +411,8 @@ ${paymentInfo}
         </>
     );
 };
+
+    
 
     
 
