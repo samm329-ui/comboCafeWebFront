@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'gpfocwgfedokhmfsbcpy.supabase.co',
         port: '',
-        pathname: '/**',
+        pathname: '/storage/v1/object/public/asset/**',
       }
     ],
   },
