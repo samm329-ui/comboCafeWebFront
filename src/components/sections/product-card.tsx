@@ -57,7 +57,6 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
         "12:00 PM - 02:00 PM",
         "02:00 PM - 04:00 PM",
         "06:00 PM - 08:00 PM",
-        "06:00 PM - 08:00 PM",
     ];
 
     const takeAwayTimeSlots = [

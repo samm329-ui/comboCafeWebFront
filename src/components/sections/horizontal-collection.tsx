@@ -76,7 +76,6 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
         "12:00 PM - 02:00 PM",
         "02:00 PM - 04:00 PM",
         "06:00 PM - 08:00 PM",
-        "06:00 PM - 08:00 PM",
     ];
 
     const takeAwayTimeSlots = [
