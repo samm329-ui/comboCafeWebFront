@@ -86,6 +86,7 @@ export default function CheckoutPage() {
   const [transactionId, setTransactionId] = useState('');
   const [customerDetails, setCustomerDetails] = useState<any>(null);
   const [qrCodeUrl, setQrCodeUrl] = useState('');
+  const [upiLink, setUpiLink] = useState('');
 
   const cartItems = useMemo((): CartItemView[] => {
     const groupedItems: { [key: string]: CartItemView } = {};
@@ -118,8 +119,9 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (isQrModalOpen && total > 0) {
-      const upiLink = `upi://pay?pa=soumyasaha18@oksbi&pn=Soumya%20Saha&am=${total.toFixed(2)}&cu=INR&tn=Website%20Order`;
-      QRCode.toDataURL(upiLink)
+      const upiUrl = `upi://pay?pa=soumyasaha18@oksbi&pn=Soumya%20Saha&am=${total.toFixed(2)}&cu=INR&tn=Website%20Order`;
+      setUpiLink(upiUrl);
+      QRCode.toDataURL(upiUrl)
         .then(url => {
           setQrCodeUrl(url);
         })
@@ -521,6 +523,19 @@ Transaction ID: *${transactionId}*
                   </div>
                 )}
               </div>
+              
+              {qrCodeUrl && upiLink && (
+                <div className="py-2">
+                  <Button
+                    onClick={() => { window.location.href = upiLink; }}
+                    className="w-full"
+                    suppressHydrationWarning
+                  >
+                    Pay using UPI App
+                  </Button>
+                </div>
+              )}
+
               <div className="space-y-2 text-center">
                 <Label htmlFor="transactionId">UPI Transaction ID (UTR)</Label>
                 <Input
@@ -545,12 +560,3 @@ Transaction ID: *${transactionId}*
     </>
   );
 }
-
-    
-
-    
-
-
-
-
-    

@@ -47,6 +47,7 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
     const [transactionId, setTransactionId] = useState('');
     const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
     const [qrCodeUrl, setQrCodeUrl] = useState('');
+    const [upiLink, setUpiLink] = useState('');
     const router = useRouter();
 
     const finalPrice = useMemo(() => {
@@ -108,8 +109,9 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
 
     useEffect(() => {
         if (isQrModalOpen && finalPrice > 0) {
-            const upiLink = `upi://pay?pa=soumyasaha18@oksbi&pn=Soumya%20Saha&am=${finalPrice.toFixed(2)}&cu=INR&tn=${encodeURIComponent(item.title)}`;
-            QRCode.toDataURL(upiLink, { errorCorrectionLevel: 'M' })
+            const upiUrl = `upi://pay?pa=soumyasaha18@oksbi&pn=Soumya%20Saha&am=${finalPrice.toFixed(2)}&cu=INR&tn=${encodeURIComponent(item.title)}`;
+            setUpiLink(upiUrl);
+            QRCode.toDataURL(upiUrl, { errorCorrectionLevel: 'M' })
                 .then(url => {
                     setQrCodeUrl(url);
                 })
@@ -430,6 +432,19 @@ ${paymentInfo}
                                     </div>
                                 )}
                             </div>
+                            
+                            {qrCodeUrl && upiLink && (
+                                <div className="py-2">
+                                    <Button
+                                        onClick={() => { window.location.href = upiLink; }}
+                                        className="w-full"
+                                        suppressHydrationWarning
+                                    >
+                                        Pay using UPI App
+                                    </Button>
+                                </div>
+                            )}
+
                             <div className="space-y-2 text-center">
                                 <Label htmlFor={`transactionId-collection-${cardId}`}>UPI Transaction ID (UTR)</Label>
                                 <Input
@@ -502,9 +517,3 @@ export default function HorizontalCollection({ title, items, bgColor = 'bg-white
         </section>
     );
 }
-
-    
-
-    
-
-    

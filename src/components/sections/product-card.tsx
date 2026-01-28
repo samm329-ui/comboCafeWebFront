@@ -30,6 +30,7 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
     const [transactionId, setTransactionId] = useState('');
     const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
     const [qrCodeUrl, setQrCodeUrl] = useState('');
+    const [upiLink, setUpiLink] = useState('');
 
     const finalPrice = useMemo(() => {
         const price = parseFloat(item.price);
@@ -91,8 +92,9 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
 
     useEffect(() => {
         if (isQrModalOpen) {
-            const upiLink = `upi://pay?pa=soumyasaha18@oksbi&pn=Soumya%20Saha&am=${finalPrice.toFixed(2)}&cu=INR&tn=${encodeURIComponent(item.name)}`;
-            QRCode.toDataURL(upiLink, { errorCorrectionLevel: 'M' })
+            const upiUrl = `upi://pay?pa=soumyasaha18@oksbi&pn=Soumya%20Saha&am=${finalPrice.toFixed(2)}&cu=INR&tn=${encodeURIComponent(item.name)}`;
+            setUpiLink(upiUrl);
+            QRCode.toDataURL(upiUrl, { errorCorrectionLevel: 'M' })
                 .then(url => {
                     setQrCodeUrl(url);
                 })
@@ -387,6 +389,19 @@ ${paymentInfo}
                                 </div>
                             )}
                         </div>
+                        
+                        {qrCodeUrl && upiLink && (
+                            <div className="py-2">
+                                <Button
+                                    onClick={() => { window.location.href = upiLink; }}
+                                    className="w-full"
+                                    suppressHydrationWarning
+                                >
+                                    Pay using UPI App
+                                </Button>
+                            </div>
+                        )}
+
                         <div className="space-y-2 text-center">
                             <Label htmlFor={`transactionId-product-${cardId}`}>UPI Transaction ID (UTR)</Label>
                             <Input
@@ -411,9 +426,3 @@ ${paymentInfo}
         </>
     );
 };
-
-    
-
-    
-
-    
