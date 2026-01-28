@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useCart, Product } from '@/context/cart-provider';
 import { Phone, Calendar as CalendarIcon } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
@@ -27,6 +28,7 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
     const router = useRouter();
 
     const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+    const [isCancelConfirmOpen, setIsCancelConfirmOpen] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
     const [paymentMethod, setPaymentMethod] = useState('prepaid');
@@ -208,6 +210,12 @@ ${paymentInfo}
         setIsQrModalOpen(true);
     };
 
+    const handlePaymentModalOpenChange = (open: boolean) => {
+        if (!open) {
+            setIsCancelConfirmOpen(true);
+        }
+    };
+
     return (
         <>
             <Card className="overflow-hidden group bg-card shadow-card border-0 rounded-card flex flex-col h-full">
@@ -259,7 +267,7 @@ ${paymentInfo}
                     </div>
                 </CardContent>
             </Card>
-            <Dialog open={isQrModalOpen} onOpenChange={setIsQrModalOpen}>
+            <Dialog open={isQrModalOpen} onOpenChange={handlePaymentModalOpenChange}>
                 <DialogContent className="w-screen h-screen max-w-full rounded-none border-0 p-0 sm:h-auto sm:w-full sm:max-w-4xl sm:rounded-lg sm:border" onPointerDownOutside={(e) => e.preventDefault()} onEscapeKeyDown={(e) => e.preventDefault()}>
                     <DialogHeader className="p-6 pb-0">
                         <DialogTitle>Your Order</DialogTitle>
@@ -503,6 +511,22 @@ ${paymentInfo}
                     </form>
                 </DialogContent>
             </Dialog>
+             <AlertDialog open={isCancelConfirmOpen} onOpenChange={setIsCancelConfirmOpen}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Are you sure you want to cancel?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            If you have already paid, please do NOT cancel. Instead, complete the process by sending your order details on WhatsApp.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Go Back</AlertDialogCancel>
+                        <AlertDialogAction onClick={() => setIsQrModalOpen(false)}>
+                            Confirm Cancel
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </>
     );
 };

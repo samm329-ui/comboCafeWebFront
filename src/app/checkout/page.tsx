@@ -21,6 +21,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { config } from '@/app/config';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -83,6 +93,7 @@ export default function CheckoutPage() {
   };
 
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+  const [isCancelConfirmOpen, setIsCancelConfirmOpen] = useState(false);
   const [transactionId, setTransactionId] = useState('');
   const [customerDetails, setCustomerDetails] = useState<any>(null);
   const [qrCodeUrl, setQrCodeUrl] = useState('');
@@ -173,6 +184,14 @@ export default function CheckoutPage() {
     });
 
     setIsQrModalOpen(true);
+  };
+  
+  const handlePaymentModalOpenChange = (open: boolean) => {
+    if (!open) {
+      // User is trying to close the dialog, show confirmation
+      setIsCancelConfirmOpen(true);
+    }
+    // Do not close the main dialog here, let the confirmation dialog handle it
   };
 
   const handleSendToWhatsapp = () => {
@@ -485,7 +504,7 @@ Transaction ID: *${transactionId}*
           </div>
         </div>
       </main>
-       <Dialog open={isQrModalOpen} onOpenChange={setIsQrModalOpen}>
+       <Dialog open={isQrModalOpen} onOpenChange={handlePaymentModalOpenChange}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Scan to Pay</DialogTitle>
@@ -558,6 +577,25 @@ Transaction ID: *${transactionId}*
             </div>
         </DialogContent>
       </Dialog>
+      <AlertDialog open={isCancelConfirmOpen} onOpenChange={setIsCancelConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure you want to cancel?</AlertDialogTitle>
+            <AlertDialogDescription>
+              If you have already paid, please do NOT cancel. Instead, complete the process by sending your order on WhatsApp.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Go Back</AlertDialogCancel>
+            <AlertDialogAction onClick={() => {
+              setIsQrModalOpen(false);
+              router.push('/');
+            }}>
+              Confirm and Leave Page
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 }
