@@ -285,25 +285,6 @@ ${paymentInfo}
                         </div>
                         
                         <div className="space-y-2">
-                            <Label>Payment Method</Label>
-                            <RadioGroup
-                                value={paymentMethod}
-                                onValueChange={setPaymentMethod}
-                                className="flex space-x-4 pt-2"
-                                defaultValue="prepaid"
-                            >
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="prepaid" id={`prepaid-product-${cardId}`} />
-                                    <Label htmlFor={`prepaid-product-${cardId}`} className="font-normal">Pay Now</Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="cod" id={`cod-product-${cardId}`} />
-                                    <Label htmlFor={`cod-product-${cardId}`} className="font-normal">Cash on Delivery</Label>
-                                </div>
-                            </RadioGroup>
-                        </div>
-
-                        <div className="space-y-2">
                             <Label>Delivery Method</Label>
                             <RadioGroup
                                 value={deliveryMethod}
@@ -388,6 +369,25 @@ ${paymentInfo}
                             </Select>
                         </div>
                         
+                        <div className="space-y-2">
+                            <Label>Payment Method</Label>
+                            <RadioGroup
+                                value={paymentMethod}
+                                onValueChange={setPaymentMethod}
+                                className="flex space-x-4 pt-2"
+                                defaultValue="prepaid"
+                            >
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="prepaid" id={`prepaid-product-${cardId}`} />
+                                    <Label htmlFor={`prepaid-product-${cardId}`} className="font-normal">Pay Now</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="cod" id={`cod-product-${cardId}`} />
+                                    <Label htmlFor={`cod-product-${cardId}`} className="font-normal">Cash on Delivery</Label>
+                                </div>
+                            </RadioGroup>
+                        </div>
+
                         {paymentMethod === 'prepaid' && (
                             <>
                                 <Separator />

@@ -328,25 +328,6 @@ ${paymentInfo}
                             </div>
 
                             <div className="space-y-2">
-                                <Label>Payment Method</Label>
-                                <RadioGroup
-                                    value={paymentMethod}
-                                    onValueChange={setPaymentMethod}
-                                    className="flex space-x-4 pt-2"
-                                    defaultValue="prepaid"
-                                >
-                                    <div className="flex items-center space-x-2">
-                                        <RadioGroupItem value="prepaid" id={`prepaid-collection-${cardId}`} />
-                                        <Label htmlFor={`prepaid-collection-${cardId}`} className="font-normal">Pay Now</Label>
-                                    </div>
-                                    <div className="flex items-center space-x-2">
-                                        <RadioGroupItem value="cod" id={`cod-collection-${cardId}`} />
-                                        <Label htmlFor={`cod-collection-${cardId}`} className="font-normal">Cash on Delivery</Label>
-                                    </div>
-                                </RadioGroup>
-                            </div>
-
-                            <div className="space-y-2">
                                 <Label>Delivery Method</Label>
                                 <RadioGroup
                                     value={deliveryMethod}
@@ -429,6 +410,25 @@ ${paymentInfo}
                                     ))}
                                     </SelectContent>
                                 </Select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label>Payment Method</Label>
+                                <RadioGroup
+                                    value={paymentMethod}
+                                    onValueChange={setPaymentMethod}
+                                    className="flex space-x-4 pt-2"
+                                    defaultValue="prepaid"
+                                >
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="prepaid" id={`prepaid-collection-${cardId}`} />
+                                        <Label htmlFor={`prepaid-collection-${cardId}`} className="font-normal">Pay Now</Label>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="cod" id={`cod-collection-${cardId}`} />
+                                        <Label htmlFor={`cod-collection-${cardId}`} className="font-normal">Cash on Delivery</Label>
+                                    </div>
+                                </RadioGroup>
                             </div>
 
                             {paymentMethod === 'prepaid' && (
