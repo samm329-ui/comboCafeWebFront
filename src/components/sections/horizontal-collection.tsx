@@ -283,16 +283,9 @@ ${paymentInfo}
                 <div className="p-3 pt-0 bg-white">
                     {item.price ? (
                         <div className="space-y-2">
-                           <div className="flex gap-1">
-                                <Button onClick={handleAddToCart} className="w-full text-xs text-center rounded-md h-8" size="sm" suppressHydrationWarning>
-                                    Add to Cart
-                                </Button>
-                                <Button asChild variant="outline" size="icon" className="h-8 w-8 rounded-md" suppressHydrationWarning>
-                                    <a href={`tel:${phoneNumber}`}>
-                                        <Phone className="h-4 w-4" />
-                                    </a>
-                                </Button>
-                            </div>
+                           <Button onClick={handleAddToCart} className="w-full text-xs text-center rounded-md h-8" size="sm" suppressHydrationWarning>
+                                Add to Cart
+                            </Button>
                             <Button onClick={handleBuyNow} variant="secondary" className="w-full text-xs text-center rounded-md h-8" size="sm" suppressHydrationWarning>
                                 Buy Now
                             </Button>
@@ -317,7 +310,7 @@ ${paymentInfo}
                             </DialogDescription>
                         </DialogHeader>
                         <form id={`form-collection-${cardId}`} onSubmit={handleSendToWhatsapp}>
-                           <div className="grid md:grid-cols-2 md:gap-8 overflow-y-auto px-6 h-[calc(100vh-240px)] sm:h-auto sm:max-h-[65vh]">
+                           <div className="grid md:grid-cols-2 md:gap-8 overflow-y-auto px-6 h-[calc(100vh-170px)] sm:h-auto sm:max-h-[65vh]">
                                {/* Left Column: Form fields */}
                                <div className="space-y-4 py-4">
                                     <h3 className="text-lg font-semibold">Contact & Delivery Details</h3>
