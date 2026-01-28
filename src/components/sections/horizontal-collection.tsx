@@ -107,7 +107,7 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
         phone: '',
         address: '',
         landmark: '',
-        pincode: '',
+        pincode: '731224',
     });
 
     useEffect(() => {
@@ -240,7 +240,7 @@ ${paymentInfo}
 
         setIsQrModalOpen(false);
         setTransactionId('');
-        setCustomerDetails({ name: '', email: '', phone: '', address: '', landmark: '', pincode: '' });
+        setCustomerDetails({ name: '', email: '', phone: '', address: '', landmark: '', pincode: '731224' });
         toast({
             title: "Order details sent!",
             description: "Your order has been sent via WhatsApp. We will confirm shortly.",
@@ -364,7 +364,7 @@ ${paymentInfo}
                                             </div>
                                             <div className="space-y-2">
                                                 <Label htmlFor={`pincode-${cardId}`}>Pincode</Label>
-                                                <Input id={`pincode-${cardId}`} name="pincode" type="text" placeholder="731224" maxLength={6} required={deliveryMethod === 'home-delivery'} onChange={handleDetailsChange} value={customerDetails.pincode} suppressHydrationWarning />
+                                                <Input id={`pincode-${cardId}`} name="pincode" type="text" value="731224" readOnly required={deliveryMethod === 'home-delivery'} className="bg-gray-100" suppressHydrationWarning />
                                             </div>
                                         </>
                                     )}
@@ -518,7 +518,7 @@ ${paymentInfo}
                                             )}
 
                                             <div className="space-y-2 text-center">
-                                                <Label htmlFor={`transactionId-collection-${cardId}`}>UPI Transaction ID (UTR)</Label>
+                                                <Label htmlFor={`transactionId-collection-${cardId}`} className="text-center w-full block">UPI Transaction ID (UTR)</Label>
                                                 <Input
                                                     id={`transactionId-collection-${cardId}`}
                                                     value={transactionId}

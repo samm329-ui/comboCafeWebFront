@@ -375,7 +375,7 @@ Transaction ID: *${transactionId}*
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="pincode">Pincode</Label>
-                                    <Input id="pincode" name="pincode" type="text" placeholder="731224" maxLength={6} required={deliveryMethod === 'home-delivery'} suppressHydrationWarning />
+                                    <Input id="pincode" name="pincode" type="text" value="731224" readOnly required={deliveryMethod === 'home-delivery'} className="bg-gray-100" suppressHydrationWarning />
                                 </div>
                             </>
                         )}
@@ -536,7 +536,7 @@ Transaction ID: *${transactionId}*
               )}
 
               <div className="space-y-2 text-center">
-                <Label htmlFor="transactionId">UPI Transaction ID (UTR)</Label>
+                <Label htmlFor="transactionId" className="text-center w-full block">UPI Transaction ID (UTR)</Label>
                 <Input
                   id="transactionId"
                   value={transactionId}
