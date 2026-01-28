@@ -64,7 +64,7 @@ export default function CheckoutPage() {
     "10:00 AM - 12:00 PM",
     "12:00 PM - 02:00 PM",
     "02:00 PM - 04:00 PM",
-    "04:00 PM - 06:00 PM",
+    "06:00 PM - 08:00 PM",
     "06:00 PM - 08:00 PM",
   ];
 
@@ -516,7 +516,7 @@ Transaction ID: *${transactionId}*
               3. Click confirm to place your order via WhatsApp.
             </DialogDescription>
           </DialogHeader>
-          <div className="max-h-[70vh] overflow-y-auto -mx-6 px-6">
+          <div className="max-h-[70vh] overflow-y-auto -mx-6 px-6 pb-4">
               <div className="text-sm text-center text-green-700 bg-green-50 p-3 rounded-md border border-green-200">
                 <p className="font-semibold text-base">You're dealing with genuine people!</p>
                 <p className="mt-2 font-semibold">Please double-check the Transaction ID (UTR). Orders without a correct UTR cannot be processed.</p>
@@ -555,7 +555,7 @@ Transaction ID: *${transactionId}*
                 </div>
               )}
 
-              <div className="space-y-2 text-center">
+              <div className="space-y-2 text-center pt-4">
                 <Label htmlFor="transactionId" className="text-center w-full block">UPI Transaction ID (UTR)</Label>
                 <Input
                   id="transactionId"
@@ -569,12 +569,12 @@ Transaction ID: *${transactionId}*
                   autoComplete="off"
                 />
               </div>
-              <DialogFooter className="sm:justify-start pt-4">
-                <Button onClick={handleSendToWhatsapp} className="w-full" disabled={!transactionId || transactionId.length < 12} suppressHydrationWarning>
-                  I have paid - Place Order on WhatsApp
-                </Button>
-              </DialogFooter>
             </div>
+            <DialogFooter className="sm:justify-start pt-4 px-6 pb-6 border-t">
+              <Button onClick={handleSendToWhatsapp} className="w-full" disabled={!transactionId || transactionId.length < 12} suppressHydrationWarning>
+                I have paid - Place Order on WhatsApp
+              </Button>
+            </DialogFooter>
         </DialogContent>
       </Dialog>
       <AlertDialog open={isCancelConfirmOpen} onOpenChange={setIsCancelConfirmOpen}>

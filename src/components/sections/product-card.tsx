@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useMemo, useEffect } from 'react';
 import QRCode from 'qrcode';
@@ -57,7 +56,7 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
         "10:00 AM - 12:00 PM",
         "12:00 PM - 02:00 PM",
         "02:00 PM - 04:00 PM",
-        "04:00 PM - 06:00 PM",
+        "06:00 PM - 08:00 PM",
         "06:00 PM - 08:00 PM",
     ];
 
@@ -276,7 +275,7 @@ ${paymentInfo}
                         </DialogDescription>
                     </DialogHeader>
                     <form id={`form-${cardId}`} onSubmit={handleSendToWhatsapp}>
-                        <div className="grid md:grid-cols-2 md:gap-8 overflow-y-auto px-6 h-[calc(100vh-170px)] sm:h-auto sm:max-h-[65vh]">
+                        <div className="grid md:grid-cols-2 md:gap-8 overflow-y-auto px-6 h-[calc(100vh-170px)] sm:h-auto sm:max-h-[65vh] pb-4">
                             {/* Left Column: Form fields */}
                             <div className="space-y-4 py-4">
                                 <h3 className="text-lg font-semibold">Contact & Delivery Details</h3>
@@ -479,7 +478,7 @@ ${paymentInfo}
                                             </Button>
                                         )}
 
-                                        <div className="space-y-2 text-center">
+                                        <div className="space-y-2 text-center pt-4">
                                             <Label htmlFor={`transactionId-product-${cardId}`} className="text-center w-full block">UPI Transaction ID (UTR)</Label>
                                             <Input
                                                 id={`transactionId-product-${cardId}`}
