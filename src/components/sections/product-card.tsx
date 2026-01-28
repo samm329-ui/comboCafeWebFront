@@ -29,6 +29,7 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
     const [isQrModalOpen, setIsQrModalOpen] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
+    const [paymentMethod, setPaymentMethod] = useState('prepaid');
     const [qrCodeUrl, setQrCodeUrl] = useState('');
     const [upiLink, setUpiLink] = useState('');
 
@@ -134,13 +135,26 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
             return;
         }
         
-        if (!transactionId || transactionId.length < 12) {
-            toast({
-                variant: "destructive",
-                title: "Valid Transaction ID is required",
-                description: "Please enter a 12-digit transaction ID.",
-            });
-            return;
+        let paymentInfo = '';
+        if (paymentMethod === 'prepaid') {
+            if (!transactionId || transactionId.length < 12) {
+                toast({
+                    variant: "destructive",
+                    title: "Valid Transaction ID is required",
+                    description: "Please enter a 12-digit transaction ID.",
+                });
+                return;
+            }
+            paymentInfo = `
+*Payment Information:*
+Payment Method: Pay Now (Prepaid)
+Transaction ID: *${transactionId}*
+`;
+        } else { // cod
+             paymentInfo = `
+*Payment Information:*
+Payment Method: Cash on Delivery
+`;
         }
 
         const deliveryMethodText = deliveryMethod === 'home-delivery' ? 'Home Delivery' : 'Take Away';
@@ -151,10 +165,6 @@ Address: ${customerDetails.address}${customerDetails.landmark ? `, ${customerDet
 ` : `
 *Pickup Details:*
 The customer will pick up from the store.
-`;
-        const paymentInfo = `
-*Payment Information:*
-Transaction ID: *${transactionId}*
 `;
 
         const whatsappMessage = `
@@ -175,7 +185,6 @@ ${deliveryDetails}
 - ${item.name} (x1)
 
 *Order Total: Rs. ${finalPrice.toFixed(2)}*
-
 ${paymentInfo}
         `.trim().replace(/^\s+/gm, '');
 
@@ -274,6 +283,25 @@ ${paymentInfo}
                             <Label htmlFor={`phone-${cardId}`}>Phone Number</Label>
                             <Input id={`phone-${cardId}`} name="phone" type="tel" placeholder="9876543210" required onChange={handleDetailsChange} value={customerDetails.phone} suppressHydrationWarning />
                         </div>
+                        
+                        <div className="space-y-2">
+                            <Label>Payment Method</Label>
+                            <RadioGroup
+                                value={paymentMethod}
+                                onValueChange={setPaymentMethod}
+                                className="flex space-x-4 pt-2"
+                                defaultValue="prepaid"
+                            >
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="prepaid" id={`prepaid-product-${cardId}`} />
+                                    <Label htmlFor={`prepaid-product-${cardId}`} className="font-normal">Pay Now</Label>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <RadioGroupItem value="cod" id={`cod-product-${cardId}`} />
+                                    <Label htmlFor={`cod-product-${cardId}`} className="font-normal">Cash on Delivery</Label>
+                                </div>
+                            </RadioGroup>
+                        </div>
 
                         <div className="space-y-2">
                             <Label>Delivery Method</Label>
@@ -360,65 +388,77 @@ ${paymentInfo}
                             </Select>
                         </div>
                         
-                        <Separator />
-                        
-                        <div className="text-sm text-center text-green-700 bg-green-50 p-3 rounded-md border border-green-200">
-                            <p className="font-semibold text-base">You're dealing with genuine people!</p>
-                            <p className="mt-2">To avoid delays from payment issues, please double-check the UPI Transaction ID (UTR) you enter.</p>
-                            <p className="font-semibold mt-2">Orders are confirmed only after payment verification, and orders without a correct UTR cannot be processed.</p>
-                            <p className="mt-2 text-xs text-green-600">
-                                <a href="tel:8436860216" className="hover:underline">Contact: 8436860216</a>
-                                <span className="mx-2">|</span>
-                                <a href="https://google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/data=!4m2!3m1!1s0x0:0x20d4a8fe5d070ebc?sa=X&ved=1t:2428&ictx=111" target="_blank" rel="noopener noreferrer" className="hover:underline">Location: Nischintapur, Rampurhat</a>
-                            </p>
-                        </div>
-
-                        <div className="flex items-center justify-center py-2">
-                             {qrCodeUrl ? (
-                                <Image
-                                    src={qrCodeUrl}
-                                    alt="UPI QR Code for payment"
-                                    width={200}
-                                    height={200}
-                                    className="rounded-md ring-1 ring-border"
-                                    priority
-                                />
-                            ) : (
-                                <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-100 rounded-md">
-                                    <p className="text-sm text-gray-500">Generating QR Code...</p>
+                        {paymentMethod === 'prepaid' && (
+                            <>
+                                <Separator />
+                                
+                                <div className="text-sm text-center text-green-700 bg-green-50 p-3 rounded-md border border-green-200">
+                                    <p className="font-semibold text-base">You're dealing with genuine people!</p>
+                                    <p className="mt-2">To avoid delays from payment issues, please double-check the UPI Transaction ID (UTR) you enter.</p>
+                                    <p className="font-semibold mt-2">Orders are confirmed only after payment verification, and orders without a correct UTR cannot be processed.</p>
+                                    <p className="mt-2 text-xs text-green-600">
+                                        <a href="tel:8436860216" className="hover:underline">Contact: 8436860216</a>
+                                        <span className="mx-2">|</span>
+                                        <a href="https://google.com/maps/place/Combo+Cafe+%26+Gifts+Shop/data=!4m2!3m1!1s0x0:0x20d4a8fe5d070ebc?sa=X&ved=1t:2428&ictx=111" target="_blank" rel="noopener noreferrer" className="hover:underline">Location: Nischintapur, Rampurhat</a>
+                                    </p>
                                 </div>
-                            )}
-                        </div>
-                        
-                        {qrCodeUrl && upiLink && (
-                            <div className="py-2">
-                                <Button
-                                    onClick={() => { window.location.href = upiLink; }}
-                                    className="w-full"
-                                    suppressHydrationWarning
-                                >
-                                    Pay using UPI App
-                                </Button>
-                            </div>
+
+                                <div className="flex items-center justify-center py-2">
+                                    {qrCodeUrl ? (
+                                        <Image
+                                            src={qrCodeUrl}
+                                            alt="UPI QR Code for payment"
+                                            width={200}
+                                            height={200}
+                                            className="rounded-md ring-1 ring-border"
+                                            priority
+                                        />
+                                    ) : (
+                                        <div className="w-[200px] h-[200px] flex items-center justify-center bg-gray-100 rounded-md">
+                                            <p className="text-sm text-gray-500">Generating QR Code...</p>
+                                        </div>
+                                    )}
+                                </div>
+                                
+                                {qrCodeUrl && upiLink && (
+                                    <div className="py-2">
+                                        <Button
+                                            type="button"
+                                            onClick={() => { window.location.href = upiLink; }}
+                                            className="w-full"
+                                            suppressHydrationWarning
+                                        >
+                                            Pay using UPI App
+                                        </Button>
+                                    </div>
+                                )}
+
+                                <div className="space-y-2 text-center">
+                                    <Label htmlFor={`transactionId-product-${cardId}`}>UPI Transaction ID (UTR)</Label>
+                                    <Input
+                                        id={`transactionId-product-${cardId}`}
+                                        value={transactionId}
+                                        onChange={(e) => setTransactionId(e.target.value)}
+                                        placeholder="Enter 12-digit UTR here"
+                                        required={paymentMethod === 'prepaid'}
+                                        minLength={12}
+                                        className="text-lg text-center font-mono tracking-widest bg-gray-50 border-2 border-dashed"
+                                        suppressHydrationWarning
+                                    />
+                                </div>
+                            </>
                         )}
 
-                        <div className="space-y-2 text-center">
-                            <Label htmlFor={`transactionId-product-${cardId}`}>UPI Transaction ID (UTR)</Label>
-                            <Input
-                                id={`transactionId-product-${cardId}`}
-                                value={transactionId}
-                                onChange={(e) => setTransactionId(e.target.value)}
-                                placeholder="Enter 12-digit UTR here"
-                                required
-                                minLength={12}
-                                className="text-lg text-center font-mono tracking-widest bg-gray-50 border-2 border-dashed"
-                                suppressHydrationWarning
-                            />
-                        </div>
                         <DialogFooter className="sm:justify-start pt-4">
-                            <Button type="submit" className="w-full" disabled={!transactionId || transactionId.length < 12} suppressHydrationWarning>
-                                I have paid - Place Order on WhatsApp
-                            </Button>
+                            {paymentMethod === 'prepaid' ? (
+                                <Button type="submit" className="w-full" disabled={!transactionId || transactionId.length < 12} suppressHydrationWarning>
+                                    I have paid - Place Order on WhatsApp
+                                </Button>
+                            ) : (
+                                 <Button type="submit" className="w-full" suppressHydrationWarning>
+                                    Place Order on WhatsApp
+                                </Button>
+                            )}
                         </DialogFooter>
                     </form>
                 </DialogContent>
