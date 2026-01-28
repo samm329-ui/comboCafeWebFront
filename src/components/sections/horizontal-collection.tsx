@@ -52,7 +52,9 @@ const CollectionCard = ({ item, priority }: { item: CollectionItem; priority?: b
     const finalPrice = useMemo(() => {
         if (!item.price) return 0;
         const price = parseFloat(item.price);
-        return price < 299 ? price + 25 : price;
+        const delivery = price < 299 ? 25 : 0;
+        const handling = 5;
+        return price + delivery + handling;
     }, [item.price]);
     
     const tomorrow = useMemo(() => {

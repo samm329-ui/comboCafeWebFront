@@ -33,7 +33,9 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
 
     const finalPrice = useMemo(() => {
         const price = parseFloat(item.price);
-        return price < 299 ? price + 25 : price;
+        const delivery = price < 299 ? 25 : 0;
+        const handling = 5;
+        return price + delivery + handling;
     }, [item.price]);
     
     const tomorrow = useMemo(() => {

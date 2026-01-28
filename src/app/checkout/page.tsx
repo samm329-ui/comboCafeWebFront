@@ -109,7 +109,7 @@ export default function CheckoutPage() {
         }
     }
 
-    const handlingFee = cart.length * 5;
+    const handlingFee = cart.length > 0 ? 5 : 0;
 
     const total = subtotal + calcDeliveryCharge + handlingFee;
 
@@ -548,4 +548,5 @@ Transaction ID: *${transactionId}*
     
 
     
+
 
