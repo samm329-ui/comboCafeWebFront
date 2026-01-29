@@ -49,6 +49,8 @@ export default function CheckoutPage() {
   const { cart, addToCart, removeFromCart, clearCart } = useCart();
   const { toast } = useToast();
   const router = useRouter();
+
+  const [orderMethod, setOrderMethod] = useState('whatsapp');
   const [deliveryMethod, setDeliveryMethod] = useState('home-delivery');
   const [paymentMethod, setPaymentMethod] = useState('prepaid');
   
@@ -255,6 +257,71 @@ Transaction ID: *${transactionId}*
     router.push('/');
   };
 
+  const handleCodWhatsappOrder = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const form = e.currentTarget.form;
+    if (!form) return;
+
+    if (!form.reportValidity()) {
+        return;
+    }
+
+    const formData = new FormData(form);
+    const customerData = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        address: formData.get('address'),
+        landmark: formData.get('landmark'),
+        pincode: formData.get('pincode'),
+    };
+
+    const itemsSummary = cartItems.map(item => `${item.product.name} (x${item.quantity})`).join('\n - ');
+    const deliveryMethodText = deliveryMethod === 'home-delivery' ? 'Home Delivery' : 'Take Away';
+
+    const deliveryDetails = deliveryMethod === 'home-delivery' ? `
+*Delivery Details:*
+Address: ${customerData.address}${customerData.landmark ? `, ${customerData.landmark}` : ''}, ${customerData.pincode}
+` : `
+*Pickup Details:*
+The customer will pick up from the store.
+`;
+
+    const whatsappMessage = `
+*New COD Order from Combo Cafe Website*
+
+*Customer Details:*
+Name: ${customerData.name}
+Phone: ${customerData.phone}
+Email: ${customerData.email}
+
+*Delivery Method: ${deliveryMethodText}*
+${deliveryDetails}
+
+*${deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Date:* ${date ? format(date, "PPP") : 'Not specified'}
+*${deliveryMethod === 'home-delivery' ? 'Delivery' : 'Pickup'} Time:* ${timeSlot}
+
+*Order Items:*
+ - ${itemsSummary}
+
+*Order Total: Rs. ${total.toFixed(2)}*
+
+*Payment Method: Cash on Delivery*
+    `.trim().replace(/^\s+/gm, '');
+
+    const phoneNumber = "918436860216";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappUrl, '_blank');
+    
+    clearCart();
+    toast({
+        title: "Order details sent!",
+        description: "Your COD order has been sent via WhatsApp. We will confirm shortly.",
+    });
+    router.push('/');
+  };
+
+
   const handleClearCart = () => {
     clearCart();
     toast({
@@ -370,135 +437,166 @@ Transaction ID: *${transactionId}*
                 </CardContent>
                 <CardFooter>
                     <form onSubmit={handleFormSubmit} className="w-full space-y-4">
-                         <div className="space-y-2">
-                            <Label htmlFor="name">Full Name</Label>
-                            <Input id="name" name="name" placeholder="Priya Sharma" required suppressHydrationWarning />
-                        </div>
-                         <div className="space-y-2">
-                            <Label htmlFor="email">Email</Label>
-                            <Input id="email" name="email" type="email" placeholder="you@example.com" required suppressHydrationWarning />
-                        </div>
                         <div className="space-y-2">
-                            <Label htmlFor="phone">Phone Number</Label>
-                            <Input id="phone" name="phone" type="tel" placeholder="9876543210" required suppressHydrationWarning />
+                          <Label>Ordering Method</Label>
+                          <RadioGroup
+                              value={orderMethod}
+                              onValueChange={setOrderMethod}
+                              className="flex space-x-4 pt-2"
+                              defaultValue="whatsapp"
+                          >
+                              <div className="flex items-center space-x-2">
+                                  <RadioGroupItem value="whatsapp" id="whatsapp-order" />
+                                  <Label htmlFor="whatsapp-order" className="font-normal">Order on WhatsApp</Label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                  <RadioGroupItem value="call" id="call-order" />
+                                  <Label htmlFor="call-order" className="font-normal">Call to Order</Label>
+                              </div>
+                          </RadioGroup>
                         </div>
                         
-                        <div className="space-y-2">
-                            <Label>Delivery Method</Label>
-                            <RadioGroup
-                                value={deliveryMethod}
-                                onValueChange={handleDeliveryMethodChange}
-                                className="flex space-x-4 pt-2"
-                                defaultValue="home-delivery"
-                            >
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="home-delivery" id="home-delivery" />
-                                    <Label htmlFor="home-delivery" className="font-normal">Home Delivery</Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="take-away" id="take-away" />
-                                    <Label htmlFor="take-away" className="font-normal">Take Away</Label>
-                                </div>
-                            </RadioGroup>
-                        </div>
-                        
-                        {deliveryMethod === 'home-delivery' && (
-                            <>
-                                <div className="space-y-2">
-                                    <Label htmlFor="address">Delivery Address</Label>
-                                    <Input id="address" name="address" placeholder="123 Main St, Rampurhat" required={deliveryMethod === 'home-delivery'} suppressHydrationWarning />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="landmark">Landmark</Label>
-                                    <Input id="landmark" name="landmark" placeholder="Near City Mall" suppressHydrationWarning />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="pincode">Pincode</Label>
-                                    <Input id="pincode" name="pincode" type="text" value="731224" readOnly required={deliveryMethod === 'home-delivery'} className="bg-gray-100" suppressHydrationWarning />
-                                </div>
-                            </>
-                        )}
+                        <Separator />
 
-                        <div className="space-y-2">
-                          <Label htmlFor="date">
-                            {deliveryMethod === 'home-delivery' ? 'Delivery Date' : 'Pickup Date'}
-                          </Label>
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button
-                                variant={"outline"}
-                                className={cn(
-                                  "w-full justify-start text-left font-normal bg-[#f3f3f3] border-2 border-transparent rounded-md h-10 px-3 text-foreground transition-all duration-500 hover:bg-white hover:border-[#4a9dec] focus-visible:bg-white focus-visible:border-[#4a9dec] focus-visible:shadow-date-focus focus-visible:ring-0 focus-visible:ring-offset-0",
-                                  !date && "text-muted-foreground"
-                                )}
-                                suppressHydrationWarning
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {date ? format(date, "PPP") : <span>Pick a date</span>}
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0 z-[200]">
-                              <Calendar
-                                mode="single"
-                                selected={date}
-                                onSelect={setDate}
-                                disabled={{ before: tomorrow }}
-                              />
-                            </PopoverContent>
-                          </Popover>
-                        </div>
+                        {orderMethod === 'whatsapp' ? (
+                          <div className="space-y-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="name">Full Name</Label>
+                                <Input id="name" name="name" placeholder="Priya Sharma" required suppressHydrationWarning />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="email">Email</Label>
+                                <Input id="email" name="email" type="email" placeholder="you@example.com" required suppressHydrationWarning />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="phone">Phone Number</Label>
+                                <Input id="phone" name="phone" type="tel" placeholder="9876543210" required suppressHydrationWarning />
+                            </div>
+                            
+                            <div className="space-y-2">
+                                <Label>Delivery Method</Label>
+                                <RadioGroup
+                                    value={deliveryMethod}
+                                    onValueChange={handleDeliveryMethodChange}
+                                    className="flex space-x-4 pt-2"
+                                    defaultValue="home-delivery"
+                                >
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="home-delivery" id="home-delivery" />
+                                        <Label htmlFor="home-delivery" className="font-normal">Home Delivery</Label>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="take-away" id="take-away" />
+                                        <Label htmlFor="take-away" className="font-normal">Take Away</Label>
+                                    </div>
+                                </RadioGroup>
+                            </div>
+                            
+                            {deliveryMethod === 'home-delivery' && (
+                                <>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="address">Delivery Address</Label>
+                                        <Input id="address" name="address" placeholder="123 Main St, Rampurhat" required={deliveryMethod === 'home-delivery'} suppressHydrationWarning />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="landmark">Landmark</Label>
+                                        <Input id="landmark" name="landmark" placeholder="Near City Mall" suppressHydrationWarning />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="pincode">Pincode</Label>
+                                        <Input id="pincode" name="pincode" type="text" value="731224" readOnly required={deliveryMethod === 'home-delivery'} className="bg-gray-100" suppressHydrationWarning />
+                                    </div>
+                                </>
+                            )}
 
-                        <div className="space-y-2">
-                          <Label htmlFor="time-slot">{deliveryMethod === 'home-delivery' ? 'Delivery Time' : 'Pickup Time'}</Label>
-                          <Select value={timeSlot} onValueChange={setTimeSlot}>
-                            <SelectTrigger
-                              id="time-slot"
-                              className="w-full justify-start text-left font-normal bg-[#f3f3f3] border-2 border-transparent rounded-md h-10 px-3 text-foreground transition-all duration-500 hover:bg-white hover:border-[#4a9dec] focus-visible:bg-white focus-visible:border-[#4a9dec] focus-visible:shadow-date-focus focus-visible:ring-0 focus-visible:ring-offset-0"
-                              suppressHydrationWarning
-                            >
-                              <SelectValue placeholder="Select a time slot" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {timeSlots.map((slot, index) => (
-                                <SelectItem key={slot + index} value={slot}>
-                                  {slot}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="date">
+                                {deliveryMethod === 'home-delivery' ? 'Delivery Date' : 'Pickup Date'}
+                              </Label>
+                              <Popover>
+                                <PopoverTrigger asChild>
+                                  <Button
+                                    variant={"outline"}
+                                    className={cn(
+                                      "w-full justify-start text-left font-normal bg-[#f3f3f3] border-2 border-transparent rounded-md h-10 px-3 text-foreground transition-all duration-500 hover:bg-white hover:border-[#4a9dec] focus-visible:bg-white focus-visible:border-[#4a9dec] focus-visible:shadow-date-focus focus-visible:ring-0 focus-visible:ring-offset-0",
+                                      !date && "text-muted-foreground"
+                                    )}
+                                    suppressHydrationWarning
+                                  >
+                                    <CalendarIcon className="mr-2 h-4 w-4" />
+                                    {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                  </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-auto p-0 z-[200]">
+                                  <Calendar
+                                    mode="single"
+                                    selected={date}
+                                    onSelect={setDate}
+                                    disabled={{ before: tomorrow }}
+                                  />
+                                </PopoverContent>
+                              </Popover>
+                            </div>
 
-                        <div className="space-y-2">
-                            <Label>Payment Method</Label>
-                            <RadioGroup
-                                value={paymentMethod}
-                                onValueChange={setPaymentMethod}
-                                className="flex space-x-4 pt-2"
-                                defaultValue="prepaid"
-                            >
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="prepaid" id="prepaid-checkout" />
-                                    <Label htmlFor="prepaid-checkout" className="font-normal">Pay Now</Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="cod" id="cod-checkout" />
-                                    <Label htmlFor="cod-checkout" className="font-normal">Cash on Delivery</Label>
-                                </div>
-                            </RadioGroup>
-                        </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="time-slot">{deliveryMethod === 'home-delivery' ? 'Delivery Time' : 'Pickup Time'}</Label>
+                              <Select value={timeSlot} onValueChange={setTimeSlot}>
+                                <SelectTrigger
+                                  id="time-slot"
+                                  className="w-full justify-start text-left font-normal bg-[#f3f3f3] border-2 border-transparent rounded-md h-10 px-3 text-foreground transition-all duration-500 hover:bg-white hover:border-[#4a9dec] focus-visible:bg-white focus-visible:border-[#4a9dec] focus-visible:shadow-date-focus focus-visible:ring-0 focus-visible:ring-offset-0"
+                                  suppressHydrationWarning
+                                >
+                                  <SelectValue placeholder="Select a time slot" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {timeSlots.map((slot, index) => (
+                                    <SelectItem key={slot + index} value={slot}>
+                                      {slot}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label>Payment Method</Label>
+                                <RadioGroup
+                                    value={paymentMethod}
+                                    onValueChange={setPaymentMethod}
+                                    className="flex space-x-4 pt-2"
+                                    defaultValue="prepaid"
+                                >
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="prepaid" id="prepaid-checkout" />
+                                        <Label htmlFor="prepaid-checkout" className="font-normal">Pay Now</Label>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="cod" id="cod-checkout" />
+                                        <Label htmlFor="cod-checkout" className="font-normal">Cash on Delivery</Label>
+                                    </div>
+                                </RadioGroup>
+                            </div>
 
 
-                        {paymentMethod === 'prepaid' ? (
-                            <Button type="submit" className="w-full" size="lg" disabled={cart.length === 0} suppressHydrationWarning>
-                                Place Order
-                            </Button>
+                            {paymentMethod === 'prepaid' ? (
+                                <Button type="submit" className="w-full" size="lg" disabled={cart.length === 0} suppressHydrationWarning>
+                                    Place Order
+                                </Button>
+                            ) : (
+                                <Button type="button" onClick={handleCodWhatsappOrder} className="w-full" size="lg" disabled={cart.length === 0} suppressHydrationWarning>
+                                    Place COD Order via WhatsApp
+                                </Button>
+                            )}
+                          </div>
                         ) : (
-                            <Button asChild className="w-full" size="lg" suppressHydrationWarning>
+                          <div className="pt-4 border-t">
+                            <Button asChild className="w-full" size="lg">
                                 <a href="tel:918436860216">
                                     <Phone className="mr-2 h-4 w-4" />
                                     Call to Place Order
                                 </a>
                             </Button>
+                          </div>
                         )}
                     </form>
                 </CardFooter>
@@ -575,7 +673,7 @@ Transaction ID: *${transactionId}*
               )}
 
               <div className="space-y-2 text-center pt-4">
-                <Label htmlFor="transactionId" className="text-center w-full block">UPI Transaction ID (UTR)</Label>
+                <Label htmlFor="transactionId" className="text-center w-full block">Enter Transaction ID</Label>
                 <Input
                   id="transactionId"
                   value={transactionId}
@@ -643,4 +741,3 @@ Transaction ID: *${transactionId}*
     </>
   );
 }
-
