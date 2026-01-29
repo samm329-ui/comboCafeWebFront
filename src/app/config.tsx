@@ -309,7 +309,7 @@ export const config = {
       { id: "home", label: "Home", href: "/", Icon: Home },
       { id: "cart", label: "Cart", href: "/checkout", Icon: ShoppingCart },
       { id: "gifts", label: "Gifts", href: "/gifts", Icon: Gift },
-      { id: "menu", label: "Menu", href: "/menu", Icon: BookOpen },
+      { id: "food", label: "Food", href: "/food", Icon: Cookie },
       { id: "contact", label: "Contact", href: "/contact", Icon: Phone }
     ]
   },
