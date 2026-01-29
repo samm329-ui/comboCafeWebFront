@@ -93,6 +93,7 @@ export default function CheckoutPage() {
 
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [isCancelConfirmOpen, setIsCancelConfirmOpen] = useState(false);
+  const [isClearCartConfirmOpen, setIsClearCartConfirmOpen] = useState(false);
   const [transactionId, setTransactionId] = useState('');
   const [customerDetails, setCustomerDetails] = useState<any>(null);
   const [qrCodeUrl, setQrCodeUrl] = useState('');
@@ -114,9 +115,11 @@ export default function CheckoutPage() {
     const subtotal = cart.reduce((acc, item) => acc + parseFloat(item.price), 0);
     
     let calcDeliveryCharge = 0;
-    for (const item of cart) {
-        if (parseFloat(item.price) < 299) {
-            calcDeliveryCharge += 25;
+    if (deliveryMethod === 'home-delivery') {
+        for (const item of cart) {
+            if (parseFloat(item.price) < 299) {
+                calcDeliveryCharge += 25;
+            }
         }
     }
 
@@ -125,7 +128,7 @@ export default function CheckoutPage() {
     const total = subtotal + calcDeliveryCharge + handlingFee;
 
     return { subtotal, deliveryCharge: calcDeliveryCharge, handlingFee, total };
-  }, [cart]);
+  }, [cart, deliveryMethod]);
 
   useEffect(() => {
     if (isQrModalOpen && total > 0) {
@@ -252,6 +255,15 @@ Transaction ID: *${transactionId}*
     router.push('/');
   };
 
+  const handleClearCart = () => {
+    clearCart();
+    toast({
+      title: 'Cart Cleared',
+      description: 'All items have been removed from your cart.',
+    });
+    setIsClearCartConfirmOpen(false);
+  }
+
   return (
     <>
       <main className="bg-gray-50 py-12">
@@ -268,7 +280,15 @@ Transaction ID: *${transactionId}*
             <div className="lg:col-span-2">
               <Card>
                 <CardHeader>
-                  <CardTitle>Shopping Cart ({cart.length} items)</CardTitle>
+                    <div className="flex justify-between items-center">
+                        <CardTitle>Shopping Cart ({cart.length} items)</CardTitle>
+                        {cartItems.length > 0 && (
+                            <Button variant="outline" size="sm" onClick={() => setIsClearCartConfirmOpen(true)} suppressHydrationWarning>
+                                <Trash2 className="mr-2 h-4 w-4" />
+                                Empty Cart
+                            </Button>
+                        )}
+                    </div>
                 </CardHeader>
                 <CardContent>
                   {cartItems.length === 0 ? (
@@ -440,7 +460,7 @@ Transaction ID: *${transactionId}*
                             </SelectTrigger>
                             <SelectContent>
                               {timeSlots.map((slot, index) => (
-                                <SelectItem key={`${slot}-${index}`} value={slot}>
+                                <SelectItem key={slot + index} value={slot}>
                                   {slot}
                                 </SelectItem>
                               ))}
@@ -518,7 +538,7 @@ Transaction ID: *${transactionId}*
           <div className="overflow-y-auto flex-grow p-6">
               <div className="text-sm text-center text-green-700 bg-green-50 p-3 rounded-md border border-green-200">
                 <p className="font-semibold text-base">You're dealing with genuine people!</p>
-                <p className="mt-2 font-semibold">Please double-check the Transaction ID. Orders without a correct ID cannot be processed.</p>
+                <p className="mt-2 font-semibold">Please double-check the Transaction ID (UTR). Orders without a correct UTR cannot be processed.</p>
                 <p className="mt-2 text-xs text-green-600">
                     <a href="tel:8436860216" className="hover:underline">Contact: 8436860216</a>
                     <span className="mx-2">|</span>
@@ -555,11 +575,12 @@ Transaction ID: *${transactionId}*
               )}
 
               <div className="space-y-2 text-center pt-4">
+                <Label htmlFor="transactionId" className="text-center w-full block">UPI Transaction ID (UTR)</Label>
                 <Input
                   id="transactionId"
                   value={transactionId}
                   onChange={(e) => setTransactionId(e.target.value)}
-                  placeholder="Enter Transaction ID"
+                  placeholder="Enter 12-digit UTR here"
                   aria-label="Transaction ID"
                   required
                   minLength={12}
@@ -600,6 +621,26 @@ Transaction ID: *${transactionId}*
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+      <AlertDialog open={isClearCartConfirmOpen} onOpenChange={setIsClearCartConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure you want to empty your cart?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action will remove all items from your cart and cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={handleClearCart}
+            >
+              Empty Cart
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 }
+
