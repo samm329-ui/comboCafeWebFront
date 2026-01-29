@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useCart, Product } from '@/context/cart-provider';
@@ -343,18 +342,6 @@ ${deliveryDetails}
                 Continue Shopping
               </Link>
             </Button>
-            <div className="bg-green-50 p-4 rounded-lg shadow-sm border border-green-200 w-full md:w-auto animate-blink">
-                <h3 className="font-semibold text-left text-base mb-2 text-green-800">Cash on delivery is available!</h3>
-                <div className="text-sm text-green-700 space-y-1">
-                    <a href="https://wa.me/918436860216" target="_blank" rel="noopener noreferrer" className="flex items-center justify-start gap-1.5 hover:text-green-900">
-                        <Phone className="mr-2 h-4 w-4" />
-                        <span>WhatsApp: 84368 60216</span>
-                    </a>
-                    <div className="flex items-center justify-start">
-                        <span>Location: Rampurhat, Nischintapur</span>
-                    </div>
-                </div>
-            </div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
@@ -742,5 +729,3 @@ ${deliveryDetails}
     </>
   );
 }
-
-    
