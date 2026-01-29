@@ -1,6 +1,6 @@
 
 
-import { Facebook, Instagram, CakeSlice, Gift, Flower, Home, PartyPopper, Heart, Sparkles, Package, ShoppingCart, User, Phone } from "lucide-react";
+import { Facebook, Instagram, CakeSlice, Gift, Flower, Home, PartyPopper, Heart, Sparkles, Package, ShoppingCart, User, Phone, Utensils } from "lucide-react";
 
 const supabaseUrl = "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/images";
 
@@ -310,7 +310,7 @@ export const config = {
       { id: "home", label: "Home", href: "/", Icon: Home },
       { id: "cart", label: "Cart", href: "/checkout", Icon: ShoppingCart },
       { id: "gifts", label: "Gifts", href: "/gifts", Icon: Gift },
-      { id: "food", label: "Food", href: "/food", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/icons/cutlery.png" },
+      { id: "food", label: "Food", href: "/food", Icon: Utensils },
       { id: "contact", label: "Contact", href: "/contact", Icon: Phone }
     ]
   },
@@ -338,3 +338,4 @@ export const config = {
 
 
     
+
