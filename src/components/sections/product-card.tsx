@@ -56,7 +56,6 @@ export const ProductCard = ({ item, priority }: { item: Product; priority?: bool
         "10:00 AM - 12:00 PM",
         "12:00 PM - 02:00 PM",
         "02:00 PM - 04:00 PM",
-        "06:00 PM - 08:00 PM",
     ];
 
     const takeAwayTimeSlots = [
@@ -368,8 +367,8 @@ ${paymentInfo}
                                         <SelectValue placeholder="Select a time slot" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                        {timeSlots.map((slot) => (
-                                            <SelectItem key={slot} value={slot}>
+                                        {timeSlots.map((slot, index) => (
+                                            <SelectItem key={`${slot}-${index}`} value={slot}>
                                             {slot}
                                             </SelectItem>
                                         ))}
@@ -519,8 +518,13 @@ ${paymentInfo}
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Go Back</AlertDialogCancel>
-                        <AlertDialogAction onClick={() => setIsQrModalOpen(false)}>
-                            Confirm Cancel
+                        <AlertDialogAction
+                          className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                          onClick={() => {
+                            setIsQrModalOpen(false);
+                            // No redirect here, just close the modal
+                        }}>
+                            Cancel Order
                         </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>

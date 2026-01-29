@@ -64,7 +64,6 @@ export default function CheckoutPage() {
     "10:00 AM - 12:00 PM",
     "12:00 PM - 02:00 PM",
     "02:00 PM - 04:00 PM",
-    "06:00 PM - 08:00 PM",
   ];
 
   const takeAwayTimeSlots = [
@@ -439,8 +438,8 @@ Transaction ID: *${transactionId}*
                               <SelectValue placeholder="Select a time slot" />
                             </SelectTrigger>
                             <SelectContent>
-                              {timeSlots.map((slot) => (
-                                <SelectItem key={slot} value={slot}>
+                              {timeSlots.map((slot, index) => (
+                                <SelectItem key={`${slot}-${index}`} value={slot}>
                                   {slot}
                                 </SelectItem>
                               ))}
@@ -586,11 +585,14 @@ Transaction ID: *${transactionId}*
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Go Back</AlertDialogCancel>
-            <AlertDialogAction onClick={() => {
-              setIsQrModalOpen(false);
-              router.push('/');
-            }}>
-              Confirm and Leave Page
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={() => {
+                setIsQrModalOpen(false);
+                router.push('/');
+              }}
+            >
+              Cancel Order
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
