@@ -12,7 +12,7 @@ export const metadata = {
   title: 'Combo Cafe and Gift Shop',
   description: 'Your one-stop destination for delightful cakes, thoughtful gifts, and delicious food in Rampurhat.',
   icons: {
-    icon: 'https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/buttons/cake%20.png',
+    icon: 'https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/icons/processed-image.png',
   },
 };
 
