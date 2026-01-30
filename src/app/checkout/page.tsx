@@ -719,9 +719,6 @@ ${deliveryDetails}
                 localStorage.removeItem('checkoutCustomerDetails');
                 setIsQrModalOpen(false);
                 setIsCancelConfirmOpen(false);
-                setTimeout(() => {
-                  router.push('/');
-                }, 300);
               }}
             >
               Cancel Order
