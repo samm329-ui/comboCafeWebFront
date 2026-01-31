@@ -192,7 +192,18 @@ export const config = {
       { id: "c52", name: "White Bloom", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/white%20blooms%20400.jpeg", description: "An elegant cake with beautiful white blooms." },
       { id: "c53", name: "White Forest", price: "400", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/white%20forest%20400.jpeg", description: "A delightful white chocolate version of black forest." },
       { id: "c54", name: "Yummy Butterscotch", price: "380", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/yummy%20butterscotch%20380%20.jpeg", description: "A truly yummy butterscotch cake." },
-      { id: "c55", name: "Yummy Butterscotch Extra", price: "380", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/yummy%20butterscoth%20380.jpeg", description: "An extra yummy butterscotch experience." }
+      { id: "c55", name: "Yummy Butterscotch Extra", price: "380", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/cakes/yummy%20butterscoth%20380.jpeg", description: "An extra yummy butterscotch experience." },
+      { id: "nc1", name: "Anniversary Cake", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/aniversary%20399.webp", description: "Celebrate your anniversary with this beautiful and delicious cake." },
+      { id: "nc2", name: "Anniversary Floral Cake", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/aniversary%20cake%20399.webp", description: "A special cake decorated with elegant floral designs for your anniversary." },
+      { id: "nc3", name: "Birthday Special Cake", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/birthday%20special%20cake%20499.webp", description: "Make their birthday extra special with this festive cake." },
+      { id: "nc4", name: "Butterfly Birthday Cake", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/butterfly%20birthday%20cake%20399.webp", description: "A beautiful and whimsical butterfly-themed cake for birthdays." },
+      { id: "nc5", name: "Customised Anniversary Cake", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/customised%20aniversary%20cake%20499.webp", description: "Personalize your anniversary celebration with this unique cake." },
+      { id: "nc6", name: "Customised Cake", price: "899", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/customised%20cake%20899.webp", description: "A fully customised cake designed to your specifications for any event." },
+      { id: "nc7", name: "Premium Birthday Special Cake", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/happy%20birthday%20special%20cake%20999.webp", description: "An extra special, premium cake to make birthdays unforgettable." },
+      { id: "nc8", name: "I Love You Cake", price: "699", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/i%20love%20you%20cake%20699.webp", description: "Express your love in the sweetest way with this heart-themed cake." },
+      { id: "nc9", name: "Love You Cake", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/love%20you%20cake%20299.webp", description: "A sweet and simple cake to show someone you care." },
+      { id: "nc10", name: "Special Anniversary Cake", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/special%20aniversary%20cake%20399.webp", description: "A special cake to mark your memorable anniversary." },
+      { id: "nc11", name: "Elegant Anniversary Cake", price: "599", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/special%20aniversary%20cake%20599.webp", description: "An elegant and delicious cake perfect for a milestone anniversary." },
     ],
     gifts: [
       { id: "g12", name: "Customised Mug", price: "199", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/mug/WhatsApp%20Image%202026-01-26%20at%2008.07.02.jpeg", description: "Personalize your mug with a cherished photo." },
@@ -210,7 +221,8 @@ export const config = {
       { id: "g8", name: "LED Mirror", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/LED%20Mirror%20350.jpeg", description: "A stylish mirror with built-in LED lights." },
       { id: "g9", name: "LED Premium Frame", price: "800", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Led%20Premium%20Frame800.jpeg", description: "Top-tier premium LED illuminated photo frame." },
       { id: "g10", name: "Magic Mug", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Magic%20Mug%20399.jpeg", description: "Reveals a surprise image with hot liquid." },
-      { id: "g11", name: "Customised Normal Frame", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Customized%20Normal%20Frame%20size%208/12%20350.jpeg", description: "Standard 8x12 inch photo frame." }
+      { id: "g11", name: "Customised Normal Frame", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Customized%20Normal%20Frame%20size%208/12%20350.jpeg", description: "Standard 8x12 inch photo frame." },
+      { id: "ng1", name: "Cuddly Teddy Gift", price: "799", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/teddy%20799.webp", description: "A big, cuddly teddy bear, the perfect gift to show you care." },
     ],
     personalisedFrames: [
       { id: "g6", name: "Customised Photo Frame", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Customized%20Photo%20Frame350.jpeg", description: "A classic frame for your cherished photos." },
@@ -241,12 +253,30 @@ export const config = {
     snacks,
     friedItems,
     comboProducts: [
-      ...foodCombos
+      ...foodCombos,
+      { id: "ncb1", name: "Birthday Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/birthday%20combo%20499.webp", description: "The perfect combo for a birthday celebration." },
+      { id: "ncb2", name: "Birthday Gift Hamper", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/birthday%20gift%20hamper%20499.webp", description: "A delightful hamper packed with birthday surprises." },
+      { id: "ncb3", name: "Cheese Cake Combo", price: "699", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/cheese%20cake%20combo%20699.webp", description: "A delicious cheesecake paired with special treats." },
+      { id: "ncb4", name: "Chocolate and Teddy Combo", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20and%20teddy%20combo%20999.webp", description: "The classic gift of a cute teddy and delicious chocolates." },
+      { id: "ncb5", name: "Chocolate Bucket and Teddy Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20bucket%20teddy%20499.webp", description: "A bucket of assorted chocolates with a cuddly teddy bear." },
+      { id: "ncb6", name: "Chocolate Flower Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20flower%20combo%20499.webp", description: "A beautiful bouquet-style arrangement of fine chocolates." },
+      { id: "ncb7", name: "Chocolate and Mug Combo", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20hamper%20299.webp", description: "A sweet treat paired with a customizable mug." },
+      { id: "ncb8", name: "Chocolate Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20hamper%20999.webp", description: "An indulgent hamper for the ultimate chocolate aficionado." },
+      { id: "ncb9", name: "Cup Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/cup%20combo%20499.webp", description: "A lovely combo featuring a custom cup and other goodies." },
+      { id: "ncb10", name: "Exclusive Chocolate Flower Hamper", price: "1499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/exclusive%20chocolate%20flower%20hamper%201499.webp", description: "A luxurious and exclusive hamper of premium chocolates and flowers." },
+      { id: "ncb11", name: "KitKat-Raffaello Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/kikat%20raffalo%20hamper%20999.webp", description: "A delicious combination of crispy KitKat and creamy Raffaello." },
+      { id: "ncb12", name: "Special Gift Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/specially%20gift%20hamper%20999.webp", description: "A specially curated gift hamper for any grand occasion." },
     ],
     chocolates: [
       { id: "choc1", name: "Milky Bar", price: "40", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/milkybar.webp", description: "Rich and creamy white chocolate bar." },
       { id: "choc2", name: "KitKat 150g", price: "185", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/kitkat.webp", description: "Crisp wafer fingers covered with milk chocolate." },
-      { id: "choc3", name: "Dairy Milk Silk", price: "230", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/diary%20mik.webp", description: "The classic taste of Cadbury dairy milk." }
+      { id: "choc3", name: "Dairy Milk Silk", price: "230", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/diary%20mik.webp", description: "The classic taste of Cadbury dairy milk." },
+      { id: "nch1", name: "Dairy Milk Heart Blush", price: "375", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/dairy%20milk%20heart%20blush%20375.webp", description: "A heart-shaped collection of delicious Dairy Milk chocolates." },
+      { id: "nch2", name: "Ferrero Rocher (16 Pieces)", price: "575", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/ferrero%20rocher%2016%20pis%20575.webp", description: "A 16-piece box of classic Ferrero Rocher chocolates." },
+      { id: "nch3", name: "Ferrero Rocher (4 Pieces)", price: "169", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/ferrero%20rocher%204%20pis%20169.webp", description: "A 4-piece pack of classic Ferrero Rocher, a perfect small treat." },
+      { id: "nch4", name: "Special Chocolate (3 Pieces)", price: "69", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/special%20chocolate%203pis%2069,%205%20pis%2099,%2024%20pis%20399.webp", description: "A small pack of 3 special, handcrafted chocolates." },
+      { id: "nch5", name: "Special Chocolate (5 Pieces)", price: "99", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/special%20chocolate%203pis%2069,%205%20pis%2099,%2024%20pis%20399.webp", description: "A pack of 5 special, handcrafted chocolates." },
+      { id: "nch6", name: "Special Chocolate (24 Pieces)", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/special%20chocolate%203pis%2069,%205%20pis%2099,%2024%20pis%20399.webp", description: "A large box of 24 special, handcrafted chocolates to share." },
     ],
   },
   giftFinder: {
@@ -338,4 +368,5 @@ export const config = {
 
 
     
+
 
