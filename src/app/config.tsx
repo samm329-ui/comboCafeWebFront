@@ -63,6 +63,21 @@ const foodCombos = [
   { id: "fc8", name: "Popcorn Combo", price: "99", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/combo/Whisk_fb81eb943345afd8055485e68178df12eg.png", description: "Popcorn with Dip Mayo + 400ml Pepsi" },
 ];
 
+const giftHampers = [
+  { id: "ncb1", name: "Birthday Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/birthday%20combo%20499.webp", description: "The perfect combo for a birthday celebration." },
+  { id: "ncb2", name: "Birthday Gift Hamper", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/birthday%20gift%20hamper%20499.webp", description: "A delightful hamper packed with birthday surprises." },
+  { id: "ncb3", name: "Cheese Cake Combo", price: "699", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/cheese%20cake%20combo%20699.webp", description: "A delicious cheesecake paired with special treats." },
+  { id: "ncb4", name: "Chocolate and Teddy Combo", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20and%20teddy%20combo%20999.webp", description: "The classic gift of a cute teddy and delicious chocolates." },
+  { id: "ncb5", name: "Chocolate Bucket and Teddy Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20bucket%20teddy%20499.webp", description: "A bucket of assorted chocolates with a cuddly teddy bear." },
+  { id: "ncb6", name: "Chocolate Flower Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20flower%20combo%20499.webp", description: "A beautiful bouquet-style arrangement of fine chocolates." },
+  { id: "ncb7", name: "Chocolate and Mug Combo", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20hamper%20299.webp", description: "A sweet treat paired with a customizable mug." },
+  { id: "ncb8", name: "Chocolate Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20hamper%20999.webp", description: "An indulgent hamper for the ultimate chocolate aficionado." },
+  { id: "ncb9", name: "Cup Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/cup%20combo%20499.webp", description: "A lovely combo featuring a custom cup and other goodies." },
+  { id: "ncb10", name: "Exclusive Chocolate Flower Hamper", price: "1499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/exclusive%20chocolate%20flower%20hamper%201499.webp", description: "A luxurious and exclusive hamper of premium chocolates and flowers." },
+  { id: "ncb11", name: "KitKat-Raffaello Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/kikat%20raffalo%20hamper%20999.webp", description: "A delicious combination of crispy KitKat and creamy Raffaello." },
+  { id: "ncb12", name: "Special Gift Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/specially%20gift%20hamper%20999.webp", description: "A specially curated gift hamper for any grand occasion." },
+];
+
 export const config = {
   header: {
     utilityBar: {
@@ -223,6 +238,7 @@ export const config = {
       { id: "g10", name: "Magic Mug", price: "399", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Magic%20Mug%20399.jpeg", description: "Reveals a surprise image with hot liquid." },
       { id: "g11", name: "Customised Normal Frame", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Customized%20Normal%20Frame%20size%208/12%20350.jpeg", description: "Standard 8x12 inch photo frame." },
       { id: "ng1", name: "Cuddly Teddy Gift", price: "799", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/teddy%20799.webp", description: "A big, cuddly teddy bear, the perfect gift to show you care." },
+      ...giftHampers,
     ],
     personalisedFrames: [
       { id: "g6", name: "Customised Photo Frame", price: "350", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/gift%20images/Customized%20Photo%20Frame350.jpeg", description: "A classic frame for your cherished photos." },
@@ -252,21 +268,7 @@ export const config = {
     pastas,
     snacks,
     friedItems,
-    comboProducts: [
-      ...foodCombos,
-      { id: "ncb1", name: "Birthday Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/birthday%20combo%20499.webp", description: "The perfect combo for a birthday celebration." },
-      { id: "ncb2", name: "Birthday Gift Hamper", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/birthday%20gift%20hamper%20499.webp", description: "A delightful hamper packed with birthday surprises." },
-      { id: "ncb3", name: "Cheese Cake Combo", price: "699", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/cheese%20cake%20combo%20699.webp", description: "A delicious cheesecake paired with special treats." },
-      { id: "ncb4", name: "Chocolate and Teddy Combo", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20and%20teddy%20combo%20999.webp", description: "The classic gift of a cute teddy and delicious chocolates." },
-      { id: "ncb5", name: "Chocolate Bucket and Teddy Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20bucket%20teddy%20499.webp", description: "A bucket of assorted chocolates with a cuddly teddy bear." },
-      { id: "ncb6", name: "Chocolate Flower Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20flower%20combo%20499.webp", description: "A beautiful bouquet-style arrangement of fine chocolates." },
-      { id: "ncb7", name: "Chocolate and Mug Combo", price: "299", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20hamper%20299.webp", description: "A sweet treat paired with a customizable mug." },
-      { id: "ncb8", name: "Chocolate Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/chocolate%20hamper%20999.webp", description: "An indulgent hamper for the ultimate chocolate aficionado." },
-      { id: "ncb9", name: "Cup Combo", price: "499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/cup%20combo%20499.webp", description: "A lovely combo featuring a custom cup and other goodies." },
-      { id: "ncb10", name: "Exclusive Chocolate Flower Hamper", price: "1499", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/exclusive%20chocolate%20flower%20hamper%201499.webp", description: "A luxurious and exclusive hamper of premium chocolates and flowers." },
-      { id: "ncb11", name: "KitKat-Raffaello Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/kikat%20raffalo%20hamper%20999.webp", description: "A delicious combination of crispy KitKat and creamy Raffaello." },
-      { id: "ncb12", name: "Special Gift Hamper", price: "999", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/chocolates/combo/specially%20gift%20hamper%20999.webp", description: "A specially curated gift hamper for any grand occasion." },
-    ],
+    comboProducts: [...foodCombos],
     chocolates: [
       { id: "choc1", name: "Milky Bar", price: "40", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/milkybar.webp", description: "Rich and creamy white chocolate bar." },
       { id: "choc2", name: "KitKat 150g", price: "185", imageUrl: "https://gpfocwgfedokhmfsbcpy.supabase.co/storage/v1/object/public/asset/Food/chocolates/kitkat.webp", description: "Crisp wafer fingers covered with milk chocolate." },
@@ -368,5 +370,6 @@ export const config = {
 
 
     
+
 
 
