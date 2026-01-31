@@ -17,7 +17,7 @@ export default function CombosPage() {
           </Button>
       </div>
       <ProductSection
-        title="Combos & Hampers"
+        title="Combos"
         subtitle="Thoughtfully curated for your special moments"
         items={config.productSections.comboProducts}
         bgColor="bg-white"
